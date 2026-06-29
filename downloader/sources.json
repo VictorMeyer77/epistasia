@@ -1,0 +1,22 @@
+[
+  {
+    "name": "example_dataset",
+    "description": "Example dataset for testing",
+    "categorie": "test",
+    "provider": "example_provider",
+    "year": "2024",
+    "page_url": "https://example.com/dataset",
+    "download_url": "https://example.com/dataset/download",
+    "format": "csv"
+  },
+  {
+    "name": "multi_year_dataset",
+    "description": "Dataset covering multiple years",
+    "categorie": "test",
+    "provider": "example_provider",
+    "year": "2024-2026",
+    "page_url": "https://example.com/multi-year",
+    "download_url": "https://example.com/multi-year/download",
+    "format": "parquet"
+  }
+]
