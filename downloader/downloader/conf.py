@@ -7,7 +7,7 @@ from typing import Any, Dict, List
 
 
 class FileFormat(Enum):
-    """Valid file formats for downloads."""
+    """Enumeration of valid file formats for downloads."""
 
     PARQUET = "parquet"
     JSON = "json"
@@ -18,7 +18,19 @@ class FileFormat(Enum):
 
 @dataclass
 class SourceConfig:
-    """Configuration for a single source file to download."""
+    """
+    Configuration for a single source file to download.
+
+    Attributes:
+        name: Unique identifier for the source.
+        description: Human-readable description of the source.
+        categorie: Category the source belongs to.
+        provider: Organization or entity providing the data.
+        year: Year or year range of the data (format: YYYY or YYYY-YYYY).
+        page_url: URL to the source's information page.
+        download_url: URL to download the data file.
+        format: File format (one of FileFormat enum values).
+    """
 
     name: str
     description: str
@@ -31,7 +43,15 @@ class SourceConfig:
 
     @staticmethod
     def _validate_year(year: str) -> None:
-        """Validate year format. Must be YYYY or YYYY-YYYY."""
+        """
+        Validate year format.
+
+        Args:
+            year: The year string to validate.
+
+        Raises:
+            ValueError: If the year format is invalid. Must be YYYY or YYYY-YYYY.
+        """
         pattern = r"^\d{4}(-\d{4})?$"
         if not re.match(pattern, year):
             raise ValueError(
@@ -41,7 +61,15 @@ class SourceConfig:
 
     @staticmethod
     def _validate_format(fmt: str) -> None:
-        """Validate format. Must be one of: parquet, json, xlsx, csv, zip."""
+        """
+        Validate file format.
+
+        Args:
+            fmt: The format string to validate.
+
+        Raises:
+            ValueError: If the format is not one of the valid FileFormat enum values.
+        """
         valid_formats = {member.value for member in FileFormat}
         if fmt not in valid_formats:
             raise ValueError(
@@ -51,7 +79,20 @@ class SourceConfig:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "SourceConfig":
-        """Create a SourceConfig from a dictionary."""
+        """
+        Create a SourceConfig from a dictionary.
+
+        Args:
+            data: Dictionary containing source configuration data.
+                  Required keys: name, description, categorie, provider, year,
+                  page_url, download_url, format.
+
+        Returns:
+            A new SourceConfig instance.
+
+        Raises:
+            ValueError: If year or format validation fails.
+        """
         cls._validate_year(data["year"])
         cls._validate_format(data["format"])
         return cls(
@@ -67,7 +108,13 @@ class SourceConfig:
 
 
 class Conf:
-    """Configuration class that reads sources from ../sources.json."""
+    """
+    Configuration class that reads and validates sources from a JSON file.
+
+    This class loads source configurations from a JSON file, validates them,
+    and provides methods to access individual sources or all sources.
+    It ensures there are no duplicate sources (based on name + year).
+    """
 
     def __init__(self, sources_path: str | None = None):
         """
@@ -86,12 +133,20 @@ class Conf:
         self._load_sources()
 
     def _load_sources(self) -> None:
-        """Load sources from the JSON file."""
+        """
+        Load sources from the JSON file.
+
+        Raises:
+            FileNotFoundError: If the sources file does not exist.
+            ValueError: If the JSON is invalid or has duplicate sources.
+            KeyError: If required fields are missing from the JSON data.
+        """
         try:
             with open(self.sources_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
             self.sources = [SourceConfig.from_dict(item) for item in data]
+            self._validate_no_duplicates()
         except FileNotFoundError:
             raise FileNotFoundError(
                 f"Sources file not found at {self.sources_path}. "
@@ -106,18 +161,58 @@ class Conf:
                 "year, page_url, download_url, format"
             )
 
+    def _validate_no_duplicates(self) -> None:
+        """
+        Validate that there are no duplicate sources.
+
+        Checks that each source has a unique combination of name and year.
+
+        Raises:
+            ValueError: If duplicate sources are found (same name and year).
+        """
+        seen = set()
+        for source in self.sources:
+            key = (source.name, source.year)
+            if key in seen:
+                raise ValueError(
+                    f"Duplicate source found: name='{source.name}', year='{source.year}'. "
+                    "Each source must have a unique combination of name and year."
+                )
+            seen.add(key)
+
     def get_source(self, name: str) -> SourceConfig:
-        """Get a source by name."""
+        """
+        Get a source by its name.
+
+        Args:
+            name: The name of the source to retrieve.
+
+        Returns:
+            The SourceConfig object matching the given name.
+
+        Raises:
+            KeyError: If no source with the given name exists.
+        """
         for source in self.sources:
             if source.name == name:
                 return source
         raise KeyError(f"Source '{name}' not found")
 
     def get_all_sources(self) -> List[SourceConfig]:
-        """Get all sources."""
+        """
+        Get all configured sources.
+
+        Returns:
+            List of all SourceConfig objects loaded from the sources file.
+        """
         return self.sources
 
     def reload(self) -> None:
-        """Reload sources from the JSON file."""
+        """
+        Reload sources from the JSON file.
+
+        Clears the current sources list and reloads from the sources file.
+        This is useful for refreshing the configuration without restarting.
+        """
         self.sources = []
         self._load_sources()
