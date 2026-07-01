@@ -3,11 +3,20 @@ import sys
 from datetime import datetime
 
 from downloader.conf import Conf
+from downloader.downloader import Downloader
 from downloader.history import History
 
 
 def validate():
-    """Validate the sources configuration file."""
+    """
+    Validate the sources configuration file.
+
+    Loads and validates the sources.json configuration file by attempting
+    to parse it and create SourceConfig objects for each entry.
+
+    Returns:
+        int: 0 on success, 1 on validation failure.
+    """
     try:
         conf = Conf()
         sources = conf.get_all_sources()
@@ -35,48 +44,72 @@ def plan(from_date: datetime | None = None):
                    with no history.
 
     Returns:
-        0 on success, 1 on error.
+        list[SourceConfig] - Sources that need to be downloaded.
+    """
+    conf = Conf()
+    history = History()
+    sources = conf.get_all_sources()
+
+    sources_to_download = []
+
+    for source in sources:
+        records = history.get_records_by_key(source.name, source.year)
+
+        needs_download = False
+
+        if not records:
+            needs_download = True
+        elif from_date is not None:
+            latest_record = max(records, key=lambda r: r.download_timestamp)
+            latest_timestamp = datetime.fromisoformat(latest_record.download_timestamp)
+            if latest_timestamp < from_date:
+                needs_download = True
+        if needs_download:
+            sources_to_download.append(source)
+
+    return sources_to_download
+
+
+def download(from_date: datetime | None = None):
+    """
+    Download sources based on the plan.
+
+    Args:
+        from_date: Optional datetime. If provided, only download sources not downloaded
+                   since this date.
+
+    Returns:
+        0 on success, 1 on error or cancellation.
     """
     try:
-        conf = Conf()
         history = History()
-        sources = conf.get_all_sources()
+        sources_to_download = plan(from_date)
 
-        sources_to_download = []
-
-        for source in sources:
-            records = history.get_records_by_key(source.name, source.year)
-
-            needs_download = False
-
-            if not records:
-                needs_download = True
-            elif from_date is not None:
-                latest_record = max(records, key=lambda r: r.download_timestamp)
-                latest_timestamp = datetime.fromisoformat(
-                    latest_record.download_timestamp
-                )
-                if latest_timestamp < from_date:
-                    needs_download = True
-            if needs_download:
-                sources_to_download.append(source)
+        if not sources_to_download:
+            print("Download plan:")
+            print("  All sources are up to date.")
+            return 0
 
         print("Download plan:")
-        if sources_to_download:
-            print(f"  {len(sources_to_download)} source(s) to download:")
-            for source in sources_to_download:
-                status = (
-                    "NEW"
-                    if not history.get_records_by_key(source.name, source.year)
-                    else "UPDATE"
-                )
-                print(f"    [{status}] {source.name} ({source.format}, {source.year})")
-        else:
-            print("  All sources are up to date.")
+        print(f"  {len(sources_to_download)} source(s) to download:")
+        for source in sources_to_download:
+            records = history.get_records_by_key(source.name, source.year)
+            status = "NEW" if not records else "UPDATE"
+            print(f"    [{status}] {source.name} ({source.format}, {source.year})")
 
+        response = input("\nProceed with download? [Y/N]: ").strip().upper()
+        if response != "Y":
+            print("Download cancelled.")
+            return 1
+
+        print("\nStarting download...")
+        downloader = Downloader()
+        downloader.download_all(sources_to_download)
+        print("\nDownload complete!")
         return 0
+
     except Exception as e:
-        print(f"✗ Plan failed: {e}")
+        print(f"✗ Download failed: {e}")
         return 1
 
 
@@ -97,8 +130,15 @@ def main():
         default=None,
     )
 
-    # Download command (placeholder)
-    subparsers.add_parser("download", help="Download sources")
+    # Download command
+    download_parser = subparsers.add_parser("download", help="Download sources")
+    download_parser.add_argument(
+        "--from",
+        type=str,
+        dest="from_date",
+        help="Only download sources not downloaded since this date (ISO format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)",
+        default=None,
+    )
 
     args = parser.parse_args()
 
@@ -114,10 +154,29 @@ def main():
                     f"✗ Invalid date format: {args.from_date}. Use ISO format (YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)"
                 )
                 sys.exit(1)
-        sys.exit(plan(from_date))
-    elif args.command == "download":
-        print("Download command: Not yet implemented")
+        sources = plan(from_date)
+        print("Download plan:")
+        if sources:
+            print(f"  {len(sources)} source(s) to download:")
+            history = History()
+            for source in sources:
+                records = history.get_records_by_key(source.name, source.year)
+                status = "NEW" if not records else "UPDATE"
+                print(f"    [{status}] {source.name} ({source.format}, {source.year})")
+        else:
+            print("  All sources are up to date.")
         sys.exit(0)
+    elif args.command == "download":
+        from_date = None
+        if args.from_date:
+            try:
+                from_date = datetime.fromisoformat(args.from_date)
+            except ValueError:
+                print(
+                    f"✗ Invalid date format: {args.from_date}. Use ISO format (YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)"
+                )
+                sys.exit(1)
+        sys.exit(download(from_date))
     else:
         parser.print_help()
         sys.exit(1)

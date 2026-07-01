@@ -2,9 +2,7 @@ import csv
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
 
-# Define the CSV schema - all SourceConfig fields plus download metadata
 HISTORY_CSV_COLUMNS = [
     "name",
     "description",
@@ -35,7 +33,7 @@ class DownloadRecord:
     download_duration: float
 
     @classmethod
-    def from_dict(cls, data: Dict) -> "DownloadRecord":
+    def from_dict(cls, data: dict) -> "DownloadRecord":
         """
         Create a DownloadRecord from a dictionary.
 
@@ -60,7 +58,7 @@ class DownloadRecord:
             download_duration=float(data["download_duration"]),
         )
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """
         Convert to dictionary.
 
@@ -89,7 +87,7 @@ class History:
     all SourceConfig fields plus download_timestamp and download_duration.
     """
 
-    def __init__(self, history_path: Optional[str] = None):
+    def __init__(self, history_path: str | None = None):
         """
         Initialize the History class.
 
@@ -99,7 +97,6 @@ class History:
                          downloader directory.
         """
         if history_path is None:
-            # Default path: ~/datalake/raw/download_history.csv
             self.history_path = (
                 Path(__file__).parent.parent.parent
                 / "datalake"
@@ -109,7 +106,6 @@ class History:
         else:
             self.history_path = Path(history_path)
 
-        # Create file with headers if it doesn't exist
         if not self.history_path.exists():
             self.create_file()
 
@@ -165,7 +161,7 @@ class History:
 
         self._append_record(record)
 
-    def _append_record(self, record: Dict) -> None:
+    def _append_record(self, record: dict) -> None:
         """
         Append a validated record to the CSV file.
 
@@ -177,7 +173,7 @@ class History:
             writer = csv.DictWriter(f, fieldnames=HISTORY_CSV_COLUMNS)
             writer.writerow(record)
 
-    def read_all(self) -> List[DownloadRecord]:
+    def read_all(self) -> list[DownloadRecord]:
         """
         Read all records from the history file.
 
@@ -237,7 +233,7 @@ class History:
 
     def get_records_by_key(
         self, source_name: str, source_year: str
-    ) -> List[DownloadRecord]:
+    ) -> list[DownloadRecord]:
         """
         Get all download records matching the given source name and year.
 
@@ -255,7 +251,7 @@ class History:
 
     def get_records_by_download_timestamp(
         self, timestamp: datetime
-    ) -> List[DownloadRecord]:
+    ) -> list[DownloadRecord]:
         """
         Get all download records with download_timestamp before the given timestamp.
 

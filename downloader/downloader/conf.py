@@ -3,7 +3,6 @@ import re
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from typing import Any, Dict, List
 
 
 class FileFormat(Enum):
@@ -78,7 +77,7 @@ class SourceConfig:
             )
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> "SourceConfig":
+    def from_dict(cls, data: dict) -> "SourceConfig":
         """
         Create a SourceConfig from a dictionary.
 
@@ -129,7 +128,7 @@ class Conf:
         else:
             self.sources_path = Path(sources_path)
 
-        self.sources: List[SourceConfig] = []
+        self.sources: list[SourceConfig] = []
         self._load_sources()
 
     def _load_sources(self) -> None:
@@ -198,7 +197,7 @@ class Conf:
                 return source
         raise KeyError(f"Source '{name}' not found")
 
-    def get_all_sources(self) -> List[SourceConfig]:
+    def get_all_sources(self) -> list[SourceConfig]:
         """
         Get all configured sources.
 

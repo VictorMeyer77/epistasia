@@ -1,0 +1,182 @@
+"""Downloader module for downloading source files."""
+
+import time
+from datetime import datetime
+from pathlib import Path
+
+import requests
+from downloader.conf import SourceConfig
+from downloader.history import DownloadRecord, History
+
+
+class Downloader:
+    """
+    Downloads source files from a list of SourceConfig objects.
+
+    Files are saved to the datalake/raw/ directory with filename
+    format: {name}_{year}.{format}
+    """
+
+    def __init__(
+        self,
+        output_dir: str | None = None,
+        timeout: int = 30,
+        retry_count: int = 3,
+    ):
+        """
+        Initialize the Downloader.
+
+        Args:
+            output_dir: Directory to save downloaded files.
+                       Defaults to ../../datalake/raw/ relative to this file.
+            history: History | None - History instance for recording downloads.
+                     If None, a new History instance will be created.
+            timeout: Request timeout in seconds.
+            retry_count: Number of retries for failed downloads.
+        """
+        if output_dir is None:
+            self.output_dir = Path(__file__).parent.parent.parent / "datalake" / "raw"
+        else:
+            self.output_dir = Path(output_dir)
+
+        self.timeout = timeout
+        self.retry_count = retry_count
+        self.history = History()
+
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def _generate_filename(self, source: SourceConfig) -> str:
+        """
+        Generate a filename from source name and year.
+
+        Args:
+            source: SourceConfig containing source metadata.
+
+        Returns:
+            The filename as {name}_{year}.{format}
+        """
+        safe_year = source.year.replace("-", "_")
+        return f"{source.name}_{safe_year}.{source.format}"
+
+    def _download_file(
+        self, url: str, destination: Path, timeout: int = 30
+    ) -> tuple[bool, str | None]:
+        """
+        Download a file from a URL to a destination path.
+
+        Args:
+            url: URL to download from.
+            destination: Path to save the file.
+            timeout: Request timeout in seconds.
+
+        Returns:
+            tuple[bool, str | None]
+        """
+        try:
+            response = requests.get(url, timeout=timeout, stream=True)
+            response.raise_for_status()
+
+            with open(destination, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
+
+            return True, None
+
+        except requests.exceptions.RequestException as e:
+            return False, str(e)
+        except IOError as e:
+            return False, str(e)
+
+    def download_source(
+        self, source: SourceConfig
+    ) -> tuple[bool, DownloadRecord | None, str | None]:
+        """
+        Download a single source and return a DownloadRecord for history.
+
+        Args:
+            source: SourceConfig to download.
+
+        Returns:
+            tuple[bool, DownloadRecord | None, str | None]
+            If successful, download_record contains the DownloadRecord to insert into history.
+        """
+        filename = self._generate_filename(source)
+        destination = self.output_dir / filename
+
+        start_time = time.time()
+        last_error = None
+
+        for attempt in range(self.retry_count):
+            success, error_message = self._download_file(
+                source.download_url, destination, self.timeout
+            )
+
+            if success:
+                duration = time.time() - start_time
+                download_record = DownloadRecord(
+                    name=source.name,
+                    description=source.description,
+                    categorie=source.categorie,
+                    provider=source.provider,
+                    year=source.year,
+                    page_url=source.page_url,
+                    download_url=source.download_url,
+                    format=source.format,
+                    download_timestamp=datetime.now().isoformat(),
+                    download_duration=duration,
+                )
+                return True, download_record, None
+
+            last_error = error_message
+
+            if attempt < self.retry_count - 1:
+                wait_time = (attempt + 1) * 2
+                print(
+                    f"Retry {attempt + 1}/{self.retry_count} for {source.name} in {wait_time}s..."
+                )
+                time.sleep(wait_time)
+
+        duration = time.time() - start_time
+        return False, None, last_error or "Unknown error"
+
+    def download_all(self, sources: list[SourceConfig]) -> list[DownloadRecord]:
+        """
+        Download all sources in the list.
+
+        Args:
+            sources: list[SourceConfig] - SourceConfig objects to download.
+
+        Returns:
+            list[DownloadRecord] - DownloadRecord objects for successful downloads.
+        """
+        downloaded_records = []
+
+        for source in sources:
+            print(f"Downloading {source.name} ({source.format}, {source.year})...")
+            success, download_record, error_message = self.download_source(source)
+
+            if success and download_record:
+                print(
+                    f"  Success: Downloaded to {self.output_dir / self._generate_filename(source)}"
+                )
+                print(f"    Duration: {download_record.download_duration:.2f}s")
+                downloaded_records.append(download_record)
+
+                # Add to history
+                if self.history is not None:
+                    self.history.add_record(
+                        name=download_record.name,
+                        description=download_record.description,
+                        categorie=download_record.categorie,
+                        provider=download_record.provider,
+                        year=download_record.year,
+                        page_url=download_record.page_url,
+                        download_url=download_record.download_url,
+                        format=download_record.format,
+                        download_duration=download_record.download_duration,
+                    )
+            else:
+                print(f"  Failed: {error_message}")
+
+        return downloaded_records
