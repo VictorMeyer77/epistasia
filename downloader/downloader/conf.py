@@ -23,7 +23,7 @@ class SourceConfig:
     Attributes:
         name: Unique identifier for the source.
         description: Human-readable description of the source.
-        categorie: Category the source belongs to.
+        category: Category the source belongs to.
         provider: Organization or entity providing the data.
         year: Year or year range of the data (format: YYYY or YYYY-YYYY).
         page_url: URL to the source's information page.
@@ -33,7 +33,7 @@ class SourceConfig:
 
     name: str
     description: str
-    categorie: str
+    category: str
     provider: str
     year: str
     page_url: str
@@ -83,7 +83,7 @@ class SourceConfig:
 
         Args:
             data: Dictionary containing source configuration data.
-                  Required keys: name, description, categorie, provider, year,
+                  Required keys: name, description, category, provider, year,
                   page_url, download_url, format.
 
         Returns:
@@ -97,7 +97,7 @@ class SourceConfig:
         return cls(
             name=data["name"],
             description=data["description"],
-            categorie=data["categorie"],
+            category=data["category"],
             provider=data["provider"],
             year=data["year"],
             page_url=data["page_url"],
@@ -156,7 +156,7 @@ class Conf:
         except KeyError as e:
             raise ValueError(
                 f"Missing required field in sources.json: {e}. "
-                "Each source must have: name, description, categorie, provider, "
+                "Each source must have: name, description, category, provider, "
                 "year, page_url, download_url, format"
             )
 

@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 import requests
+
 from downloader.conf import SourceConfig
 from downloader.history import DownloadRecord, History
 
@@ -117,7 +118,7 @@ class Downloader:
                 download_record = DownloadRecord(
                     name=source.name,
                     description=source.description,
-                    categorie=source.categorie,
+                    category=source.category,
                     provider=source.provider,
                     year=source.year,
                     page_url=source.page_url,
@@ -168,7 +169,7 @@ class Downloader:
                     self.history.add_record(
                         name=download_record.name,
                         description=download_record.description,
-                        categorie=download_record.categorie,
+                        category=download_record.category,
                         provider=download_record.provider,
                         year=download_record.year,
                         page_url=download_record.page_url,

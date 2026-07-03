@@ -29,7 +29,7 @@ class TestHistoryCsvColumns:
         required_fields = [
             "name",
             "description",
-            "categorie",
+            "category",
             "provider",
             "year",
             "page_url",
@@ -54,7 +54,7 @@ class TestDownloadRecord:
         record = DownloadRecord(
             name="test_source",
             description="Test description",
-            categorie="test_category",
+            category="test_category",
             provider="test_provider",
             year="2024",
             page_url="https://example.com/page",
@@ -66,7 +66,7 @@ class TestDownloadRecord:
 
         assert record.name == "test_source"
         assert record.description == "Test description"
-        assert record.categorie == "test_category"
+        assert record.category == "test_category"
         assert record.provider == "test_provider"
         assert record.year == "2024"
         assert record.page_url == "https://example.com/page"
@@ -80,7 +80,7 @@ class TestDownloadRecord:
         data = {
             "name": "test_source",
             "description": "Test description",
-            "categorie": "test_category",
+            "category": "test_category",
             "provider": "test_provider",
             "year": "2024",
             "page_url": "https://example.com/page",
@@ -101,7 +101,7 @@ class TestDownloadRecord:
         data = {
             "name": "test",
             "description": "test",
-            "categorie": "test",
+            "category": "test",
             "provider": "test",
             "year": "2024",
             "page_url": "https://example.com",
@@ -120,7 +120,7 @@ class TestDownloadRecord:
         data = {
             "name": "test",
             "description": "test",
-            "categorie": "test",
+            "category": "test",
             "provider": "test",
             "year": "2024",
             "page_url": "https://example.com",
@@ -138,7 +138,7 @@ class TestDownloadRecord:
         record = DownloadRecord(
             name="test_source",
             description="Test description",
-            categorie="test_category",
+            category="test_category",
             provider="test_provider",
             year="2024",
             page_url="https://example.com/page",
@@ -152,7 +152,7 @@ class TestDownloadRecord:
 
         assert data["name"] == "test_source"
         assert data["description"] == "Test description"
-        assert data["categorie"] == "test_category"
+        assert data["category"] == "test_category"
         assert data["provider"] == "test_provider"
         assert data["year"] == "2024"
         assert data["page_url"] == "https://example.com/page"
@@ -166,7 +166,7 @@ class TestDownloadRecord:
         record = DownloadRecord(
             name="test",
             description="test",
-            categorie="test",
+            category="test",
             provider="test",
             year="2024",
             page_url="https://example.com",
@@ -224,7 +224,7 @@ class TestHistoryClass:
             history.add_record(
                 name="test_source",
                 description="Test description",
-                categorie="test_category",
+                category="test_category",
                 provider="test_provider",
                 year="2024",
                 page_url="https://example.com/page",
@@ -252,7 +252,7 @@ class TestHistoryClass:
                 history.add_record(
                     name=f"source{i}",
                     description=f"Description {i}",
-                    categorie="category",
+                    category="category",
                     provider="provider",
                     year="2024",
                     page_url="https://example.com",
@@ -278,7 +278,7 @@ class TestHistoryClass:
             history.add_record(
                 name="test",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="test",
                 year="2024",
                 page_url="https://example.com",
@@ -309,7 +309,7 @@ class TestHistoryClass:
             history.add_record(
                 name="existing_source",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="existing_provider",
                 year="2024",
                 page_url="https://example.com",
@@ -342,7 +342,7 @@ class TestHistoryClass:
             history.add_record(
                 name="source",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="provider1",
                 year="2024",
                 page_url="https://example.com",
@@ -364,7 +364,7 @@ class TestHistoryClass:
             history.add_record(
                 name="source1",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="provider",
                 year="2024",
                 page_url="https://example.com",
@@ -376,7 +376,7 @@ class TestHistoryClass:
             history.add_record(
                 name="source1",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="provider",
                 year="2025",
                 page_url="https://example.com",
@@ -388,7 +388,7 @@ class TestHistoryClass:
             history.add_record(
                 name="source2",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="provider",
                 year="2024",
                 page_url="https://example.com",
@@ -423,7 +423,7 @@ class TestHistoryClass:
             history.add_record(
                 name="early_source",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="provider",
                 year="2024",
                 page_url="https://example.com",
@@ -441,7 +441,7 @@ class TestHistoryClass:
             history.add_record(
                 name="late_source",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="provider",
                 year="2024",
                 page_url="https://example.com",
@@ -497,7 +497,7 @@ class TestHistoryClass:
             history.add_record(
                 name="test",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="test",
                 year="2024",
                 page_url="https://example.com",
@@ -519,7 +519,7 @@ class TestHistoryClass:
             history.add_record(
                 name="test",
                 description="test",
-                categorie="test",
+                category="test",
                 provider="test",
                 year="2024",
                 page_url="https://example.com",
@@ -590,7 +590,7 @@ class TestHistoryClass:
                     {
                         "name": "test",
                         "description": "test",
-                        "categorie": "test",
+                        "category": "test",
                         "provider": "test",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -616,7 +616,7 @@ class TestHistoryClass:
             record = {
                 "name": "direct_append",
                 "description": "test",
-                "categorie": "test",
+                "category": "test",
                 "provider": "test",
                 "year": "2024",
                 "page_url": "https://example.com",
@@ -644,7 +644,7 @@ class TestHistoryClass:
                 history.add_record(
                     name=f"source{i}",
                     description=f"Description {i}",
-                    categorie="category",
+                    category="category",
                     provider="provider",
                     year="2024",
                     page_url="https://example.com",
@@ -674,7 +674,7 @@ class TestHistoryClass:
             history.add_record(
                 name="new_source",
                 description="New",
-                categorie="new",
+                category="new",
                 provider="new",
                 year="2025",
                 page_url="https://new.com",

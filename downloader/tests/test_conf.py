@@ -117,7 +117,7 @@ class TestSourceConfigFromDict:
         data = {
             "name": "test_source",
             "description": "Test description",
-            "categorie": "test_category",
+            "category": "test_category",
             "provider": "test_provider",
             "year": "2024",
             "page_url": "https://example.com/page",
@@ -129,7 +129,7 @@ class TestSourceConfigFromDict:
 
         assert config.name == "test_source"
         assert config.description == "Test description"
-        assert config.categorie == "test_category"
+        assert config.category == "test_category"
         assert config.provider == "test_provider"
         assert config.year == "2024"
         assert config.page_url == "https://example.com/page"
@@ -141,7 +141,7 @@ class TestSourceConfigFromDict:
         data = {
             "name": "multi_year",
             "description": "Multi year dataset",
-            "categorie": "test",
+            "category": "test",
             "provider": "test",
             "year": "2020-2024",
             "page_url": "https://example.com",
@@ -157,7 +157,7 @@ class TestSourceConfigFromDict:
         data = {
             "name": "test",
             "description": "test",
-            "categorie": "test",
+            "category": "test",
             "provider": "test",
             "year": "invalid",
             "page_url": "https://example.com",
@@ -173,7 +173,7 @@ class TestSourceConfigFromDict:
         data = {
             "name": "test",
             "description": "test",
-            "categorie": "test",
+            "category": "test",
             "provider": "test",
             "year": "2024",
             "page_url": "https://example.com",
@@ -189,7 +189,7 @@ class TestSourceConfigFromDict:
         data = {
             "name": "test",
             "description": "test",
-            "categorie": "test",
+            "category": "test",
             "provider": "test",
             "year": "2024",
             "page_url": "https://example.com",
@@ -209,7 +209,7 @@ class TestSourceConfigDataclass:
         config = SourceConfig(
             name="test",
             description="desc",
-            categorie="cat",
+            category="cat",
             provider="prov",
             year="2024",
             page_url="https://example.com/page",
@@ -219,7 +219,7 @@ class TestSourceConfigDataclass:
 
         assert config.name == "test"
         assert config.description == "desc"
-        assert config.categorie == "cat"
+        assert config.category == "cat"
         assert config.provider == "prov"
         assert config.year == "2024"
         assert config.page_url == "https://example.com/page"
@@ -245,7 +245,7 @@ class TestConfClass:
                     {
                         "name": "custom_source",
                         "description": "Custom source",
-                        "categorie": "custom",
+                        "category": "custom",
                         "provider": "custom",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -289,7 +289,7 @@ class TestConfClass:
                     {
                         "name": "test",
                         "description": "test",
-                        # missing categorie
+                        # missing category
                         "provider": "test",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -315,7 +315,7 @@ class TestConfClass:
                     {
                         "name": "source1",
                         "description": "desc1",
-                        "categorie": "cat",
+                        "category": "cat",
                         "provider": "prov",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -325,7 +325,7 @@ class TestConfClass:
                     {
                         "name": "source2",
                         "description": "desc2",
-                        "categorie": "cat",
+                        "category": "cat",
                         "provider": "prov",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -351,7 +351,7 @@ class TestConfClass:
                     {
                         "name": "source",
                         "description": "desc1",
-                        "categorie": "cat",
+                        "category": "cat",
                         "provider": "prov",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -361,7 +361,7 @@ class TestConfClass:
                     {
                         "name": "source",
                         "description": "desc2",
-                        "categorie": "cat",
+                        "category": "cat",
                         "provider": "prov",
                         "year": "2025",
                         "page_url": "https://example.com",
@@ -387,7 +387,7 @@ class TestConfClass:
                     {
                         "name": "source",
                         "description": "desc1",
-                        "categorie": "cat",
+                        "category": "cat",
                         "provider": "prov",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -397,7 +397,7 @@ class TestConfClass:
                     {
                         "name": "source",
                         "description": "desc2",
-                        "categorie": "cat",
+                        "category": "cat",
                         "provider": "prov",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -423,7 +423,7 @@ class TestConfClass:
                     {
                         "name": "find_me",
                         "description": "Find me",
-                        "categorie": "cat",
+                        "category": "cat",
                         "provider": "prov",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -451,7 +451,7 @@ class TestConfClass:
                     {
                         "name": "existing",
                         "description": "Existing",
-                        "categorie": "cat",
+                        "category": "cat",
                         "provider": "prov",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -477,7 +477,7 @@ class TestConfClass:
                 {
                     "name": f"source{i}",
                     "description": f"desc{i}",
-                    "categorie": "cat",
+                    "category": "cat",
                     "provider": "prov",
                     "year": "2024",
                     "page_url": "https://example.com",
@@ -507,7 +507,7 @@ class TestConfClass:
                     {
                         "name": "original",
                         "description": "Original",
-                        "categorie": "cat",
+                        "category": "cat",
                         "provider": "prov",
                         "year": "2024",
                         "page_url": "https://example.com",
@@ -531,7 +531,7 @@ class TestConfClass:
                         {
                             "name": "updated",
                             "description": "Updated",
-                            "categorie": "cat",
+                            "category": "cat",
                             "provider": "prov",
                             "year": "2025",
                             "page_url": "https://example.com",

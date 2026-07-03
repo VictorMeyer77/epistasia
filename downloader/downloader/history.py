@@ -6,7 +6,7 @@ from pathlib import Path
 HISTORY_CSV_COLUMNS = [
     "name",
     "description",
-    "categorie",
+    "category",
     "provider",
     "year",
     "page_url",
@@ -23,7 +23,7 @@ class DownloadRecord:
 
     name: str
     description: str
-    categorie: str
+    category: str
     provider: str
     year: str
     page_url: str
@@ -39,7 +39,7 @@ class DownloadRecord:
 
         Args:
             data: Dictionary containing all the required fields to create a DownloadRecord.
-                 Must include: name, description, categorie, provider, year, page_url,
+                 Must include: name, description, category, provider, year, page_url,
                  download_url, format, download_timestamp, download_duration.
 
         Returns:
@@ -48,7 +48,7 @@ class DownloadRecord:
         return cls(
             name=data["name"],
             description=data["description"],
-            categorie=data["categorie"],
+            category=data["category"],
             provider=data["provider"],
             year=data["year"],
             page_url=data["page_url"],
@@ -68,7 +68,7 @@ class DownloadRecord:
         return {
             "name": self.name,
             "description": self.description,
-            "categorie": self.categorie,
+            "category": self.category,
             "provider": self.provider,
             "year": self.year,
             "page_url": self.page_url,
@@ -124,7 +124,7 @@ class History:
         self,
         name: str,
         description: str,
-        categorie: str,
+        category: str,
         provider: str,
         year: str,
         page_url: str,
@@ -138,7 +138,7 @@ class History:
         Args:
             name: Source name
             description: Source description
-            categorie: Source category
+            category: Source category
             provider: Source provider
             year: Source year
             page_url: Source page URL
@@ -149,7 +149,7 @@ class History:
         record = {
             "name": name,
             "description": description,
-            "categorie": categorie,
+            "category": category,
             "provider": provider,
             "year": year,
             "page_url": page_url,

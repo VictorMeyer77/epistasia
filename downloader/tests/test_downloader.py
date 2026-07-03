@@ -26,7 +26,7 @@ class TestGenerateFilename:
         source = SourceConfig(
             name="test_source",
             description="Test description",
-            categorie="test_category",
+            category="test_category",
             provider="test_provider",
             year="2024",
             page_url="https://example.com/page",
@@ -41,7 +41,7 @@ class TestGenerateFilename:
         source = SourceConfig(
             name="test_source",
             description="Test description",
-            categorie="test_category",
+            category="test_category",
             provider="test_provider",
             year="2024-2026",
             page_url="https://example.com/page",
@@ -56,7 +56,7 @@ class TestGenerateFilename:
         source = SourceConfig(
             name="data",
             description="Test",
-            categorie="cat",
+            category="cat",
             provider="prov",
             year="2025",
             page_url="https://example.com",
@@ -156,7 +156,7 @@ class TestDownloadSource:
         source = SourceConfig(
             name="test_source",
             description="Test description",
-            categorie="test_category",
+            category="test_category",
             provider="test_provider",
             year="2024",
             page_url="https://example.com/page",
@@ -181,7 +181,7 @@ class TestDownloadSource:
         source = SourceConfig(
             name="test_source",
             description="Test description",
-            categorie="test_category",
+            category="test_category",
             provider="test_provider",
             year="2024",
             page_url="https://example.com/page",
@@ -209,7 +209,7 @@ class TestDownloadSource:
         source = SourceConfig(
             name="test_source",
             description="Test description",
-            categorie="test_category",
+            category="test_category",
             provider="test_provider",
             year="2024",
             page_url="https://example.com/page",
@@ -246,7 +246,7 @@ class TestDownloadAll:
         source1 = SourceConfig(
             name="source1",
             description="Desc1",
-            categorie="cat1",
+            category="cat1",
             provider="prov1",
             year="2024",
             page_url="https://example.com/page1",
@@ -256,7 +256,7 @@ class TestDownloadAll:
         source2 = SourceConfig(
             name="source2",
             description="Desc2",
-            categorie="cat2",
+            category="cat2",
             provider="prov2",
             year="2025",
             page_url="https://example.com/page2",
@@ -270,7 +270,7 @@ class TestDownloadAll:
                 DownloadRecord(
                     name="source1",
                     description="Desc1",
-                    categorie="cat1",
+                    category="cat1",
                     provider="prov1",
                     year="2024",
                     page_url="https://example.com/page1",
@@ -286,7 +286,7 @@ class TestDownloadAll:
                 DownloadRecord(
                     name="source2",
                     description="Desc2",
-                    categorie="cat2",
+                    category="cat2",
                     provider="prov2",
                     year="2025",
                     page_url="https://example.com/page2",
@@ -312,7 +312,7 @@ class TestDownloadAll:
         source1 = SourceConfig(
             name="source1",
             description="Desc1",
-            categorie="cat1",
+            category="cat1",
             provider="prov1",
             year="2024",
             page_url="https://example.com/page1",
@@ -322,7 +322,7 @@ class TestDownloadAll:
         source2 = SourceConfig(
             name="source2",
             description="Desc2",
-            categorie="cat2",
+            category="cat2",
             provider="prov2",
             year="2025",
             page_url="https://example.com/page2",
@@ -336,7 +336,7 @@ class TestDownloadAll:
                 DownloadRecord(
                     name="source1",
                     description="Desc1",
-                    categorie="cat1",
+                    category="cat1",
                     provider="prov1",
                     year="2024",
                     page_url="https://example.com/page1",
