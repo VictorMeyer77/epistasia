@@ -1,6 +1,6 @@
 
 models:
-  - name: france_communes
+  - name: brz_france_communes
     description: >
       Bronze INSEE COG communes dataset. Preserves the raw commune fields and
       adds ingestion metadata from the downloaded source file.
@@ -37,10 +37,10 @@ models:
         description: Path of the raw CSV file from which the row was ingested.
       - name: dt_ingested
         description: Timestamp when the row was loaded into the bronze model.
-      - name: year
+      - name: release_year
         description: COG release year extracted from the raw source file path.
 
-  - name: france_departements
+  - name: brz_france_departements
     description: >
       Bronze INSEE COG departments dataset. Preserves the raw department fields
       and adds ingestion metadata from the downloaded source file.
@@ -63,10 +63,10 @@ models:
         description: Path of the raw CSV file from which the row was ingested.
       - name: dt_ingested
         description: Timestamp when the row was loaded into the bronze model.
-      - name: year
+      - name: release_year
         description: COG release year extracted from the raw source file path.
 
-  - name: france_regions
+  - name: brz_france_regions
     description: >
       Bronze INSEE COG regions dataset. Preserves the raw region fields and adds
       ingestion metadata from the downloaded source file.
@@ -87,5 +87,5 @@ models:
         description: Path of the raw CSV file from which the row was ingested.
       - name: dt_ingested
         description: Timestamp when the row was loaded into the bronze model.
-      - name: year
+      - name: release_year
         description: COG release year extracted from the raw source file path.
