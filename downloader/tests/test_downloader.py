@@ -1,11 +1,12 @@
 """Unit tests for the Downloader module."""
 
+import os
+import sys
 import tempfile
 from datetime import datetime
 from pathlib import Path
 from unittest.mock import MagicMock, patch
-import sys
-import os
+
 import requests
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -164,7 +165,7 @@ class TestDownloadSource:
             format="csv",
         )
 
-        success, record, error = self.downloader.download_source(source)
+        success, record, error, file_path = self.downloader.download_source(source)
 
         assert success is True
         assert record is not None
@@ -172,6 +173,7 @@ class TestDownloadSource:
         assert record.name == "test_source"
         assert record.format == "csv"
         assert error is None
+        assert file_path is not None
 
     @patch("downloader.downloader.Downloader._download_file")
     def test_failed_download_after_retries(self, mock_download_file):
@@ -189,11 +191,12 @@ class TestDownloadSource:
             format="csv",
         )
 
-        success, record, error = self.downloader.download_source(source)
+        success, record, error, file_path = self.downloader.download_source(source)
 
         assert success is False
         assert record is None
         assert error == "Connection error"
+        assert file_path is None
         assert mock_download_file.call_count == 3  # Default retry_count is 3
 
     @patch("downloader.downloader.Downloader._download_file")
@@ -217,11 +220,12 @@ class TestDownloadSource:
             format="csv",
         )
 
-        success, record, error = self.downloader.download_source(source)
+        success, record, error, file_path = self.downloader.download_source(source)
 
         assert success is True
         assert record is not None
         assert error is None
+        assert file_path is not None
         assert mock_download_file.call_count == 3
         assert mock_sleep.call_count == 2
 
@@ -280,6 +284,7 @@ class TestDownloadAll:
                     download_duration=1.0,
                 ),
                 None,
+                Path("/tmp/test/source1_2024.csv"),
             ),
             (
                 True,
@@ -296,6 +301,7 @@ class TestDownloadAll:
                     download_duration=2.0,
                 ),
                 None,
+                Path("/tmp/test/source2_2025.json"),
             ),
         ]
 
@@ -346,8 +352,9 @@ class TestDownloadAll:
                     download_duration=1.0,
                 ),
                 None,
+                Path("/tmp/test/source1_2024.csv"),
             ),
-            (False, None, "Download failed"),
+            (False, None, "Download failed", None),
         ]
 
         result = self.downloader.download_all([source1, source2])

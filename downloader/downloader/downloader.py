@@ -8,6 +8,7 @@ import requests
 
 from downloader.conf import SourceConfig
 from downloader.history import DownloadRecord, History
+from downloader.post_download import post
 
 
 class Downloader:
@@ -15,7 +16,10 @@ class Downloader:
     Downloads source files from a list of SourceConfig objects.
 
     Files are saved to the datalake/raw/ directory with filename
-    format: {name}_{year}.{format}
+    format: {name}_{year}.{format}.
+
+    If a source has a post-processing script specified (source.post), it will be
+    executed after successful download with the downloaded file path as argument.
     """
 
     def __init__(
@@ -91,7 +95,7 @@ class Downloader:
 
     def download_source(
         self, source: SourceConfig
-    ) -> tuple[bool, DownloadRecord | None, str | None]:
+    ) -> tuple[bool, DownloadRecord | None, str | None, Path | None]:
         """
         Download a single source and return a DownloadRecord for history.
 
@@ -99,8 +103,11 @@ class Downloader:
             source: SourceConfig to download.
 
         Returns:
-            tuple[bool, DownloadRecord | None, str | None]
-            If successful, download_record contains the DownloadRecord to insert into history.
+            tuple[bool, DownloadRecord | None, str | None, Path | None]
+            - success (bool): True if download succeeded, False otherwise
+            - download_record (DownloadRecord | None): Download record for history if successful
+            - error_message (str | None): Error message if failed, None if successful
+            - file_path (Path | None): Path to the downloaded file if successful, None otherwise
         """
         filename = self._generate_filename(source)
         destination = self.output_dir / filename
@@ -127,7 +134,7 @@ class Downloader:
                     download_timestamp=datetime.now().isoformat(),
                     download_duration=duration,
                 )
-                return True, download_record, None
+                return True, download_record, None, destination
 
             last_error = error_message
 
@@ -139,11 +146,15 @@ class Downloader:
                 time.sleep(wait_time)
 
         duration = time.time() - start_time
-        return False, None, last_error or "Unknown error"
+        return False, None, last_error or "Unknown error", None
 
     def download_all(self, sources: list[SourceConfig]) -> list[DownloadRecord]:
         """
         Download all sources in the list.
+
+        For each source, if post-processing is specified (source.post is not None),
+        the corresponding post-processing script will be executed with the downloaded
+        file path as argument.
 
         Args:
             sources: list[SourceConfig] - SourceConfig objects to download.
@@ -155,14 +166,19 @@ class Downloader:
 
         for source in sources:
             print(f"Downloading {source.name} ({source.format}, {source.year})...")
-            success, download_record, error_message = self.download_source(source)
+            success, download_record, error_message, file_path = self.download_source(
+                source
+            )
 
             if success and download_record:
-                print(
-                    f"  Success: Downloaded to {self.output_dir / self._generate_filename(source)}"
-                )
+                print(f"  Success: Downloaded to {file_path}")
                 print(f"    Duration: {download_record.download_duration:.2f}s")
                 downloaded_records.append(download_record)
+
+                # Post Download
+                if source.post:
+                    print(f"  Post download: {source.post}")
+                    post(source.post, file_path)
 
                 # Add to history
                 if self.history is not None:

@@ -29,6 +29,8 @@ class SourceConfig:
         page_url: URL to the source's information page.
         download_url: URL to download the data file.
         format: File format (one of FileFormat enum values).
+        post: Optional name of post-download processing script to run.
+              If None, no post-processing is performed. Defaults to None.
     """
 
     name: str
@@ -39,6 +41,7 @@ class SourceConfig:
     page_url: str
     download_url: str
     format: str
+    post: str | None = None
 
     @staticmethod
     def _validate_year(year: str) -> None:
@@ -85,6 +88,7 @@ class SourceConfig:
             data: Dictionary containing source configuration data.
                   Required keys: name, description, category, provider, year,
                   page_url, download_url, format.
+                  Optional keys: post.
 
         Returns:
             A new SourceConfig instance.
@@ -103,6 +107,7 @@ class SourceConfig:
             page_url=data["page_url"],
             download_url=data["download_url"],
             format=data["format"],
+            post=data.get("post"),
         )
 
 
@@ -157,7 +162,8 @@ class Conf:
             raise ValueError(
                 f"Missing required field in sources.json: {e}. "
                 "Each source must have: name, description, category, provider, "
-                "year, page_url, download_url, format"
+                "year, page_url, download_url, format. "
+                "Optional: post"
             )
 
     def _validate_no_duplicates(self) -> None:

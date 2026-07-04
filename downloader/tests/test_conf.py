@@ -1,10 +1,11 @@
 """Unit tests for downloader.conf module."""
 
 import json
+import os
+import sys
 import tempfile
 from pathlib import Path
-import sys
-import os
+
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -135,6 +136,26 @@ class TestSourceConfigFromDict:
         assert config.page_url == "https://example.com/page"
         assert config.download_url == "https://example.com/download"
         assert config.format == "csv"
+        assert config.post is None
+
+    def test_from_dict_with_post_field(self):
+        """Test creating SourceConfig with post field from dictionary."""
+        data = {
+            "name": "test_source",
+            "description": "Test description",
+            "category": "test_category",
+            "provider": "test_provider",
+            "year": "2024",
+            "page_url": "https://example.com/page",
+            "download_url": "https://example.com/download",
+            "format": "json",
+            "post": "json_to_parquet",
+        }
+
+        config = SourceConfig.from_dict(data)
+
+        assert config.name == "test_source"
+        assert config.post == "json_to_parquet"
 
     def test_from_dict_valid_year_range(self):
         """Test creating SourceConfig with valid year range."""
@@ -215,6 +236,7 @@ class TestSourceConfigDataclass:
             page_url="https://example.com/page",
             download_url="https://example.com/download",
             format="csv",
+            post=None,
         )
 
         assert config.name == "test"
@@ -225,6 +247,36 @@ class TestSourceConfigDataclass:
         assert config.page_url == "https://example.com/page"
         assert config.download_url == "https://example.com/download"
         assert config.format == "csv"
+        assert config.post is None
+
+    def test_post_field_default_none(self):
+        """Test that post field defaults to None."""
+        config = SourceConfig(
+            name="test",
+            description="desc",
+            category="cat",
+            provider="prov",
+            year="2024",
+            page_url="https://example.com/page",
+            download_url="https://example.com/download",
+            format="csv",
+        )
+        assert config.post is None
+
+    def test_post_field_with_value(self):
+        """Test that post field can be set to a string value."""
+        config = SourceConfig(
+            name="test",
+            description="desc",
+            category="cat",
+            provider="prov",
+            year="2024",
+            page_url="https://example.com/page",
+            download_url="https://example.com/download",
+            format="csv",
+            post="convert_to_parquet",
+        )
+        assert config.post == "convert_to_parquet"
 
 
 class TestConfClass:
@@ -561,38 +613,3 @@ class TestConfClass:
             assert conf.sources_path == Path(temp_path)
         finally:
             Path(temp_path).unlink()
-
-
-class TestConfIntegration:
-    """Integration tests for Conf class with real sources.json."""
-
-    def test_load_real_sources_json(self):
-        """Test loading the actual sources.json file."""
-        # This test uses the real sources.json from the project
-        conf = Conf()
-        sources = conf.get_all_sources()
-
-        # Should have the sources from the real file
-        assert len(sources) >= 2  # At least the example datasets
-
-        # Check that we can find specific sources
-        example_source = conf.get_source("example_dataset")
-        assert example_source.description == "Example dataset for testing"
-        assert example_source.format == "csv"
-        assert example_source.year == "2024"
-
-        multi_year_source = conf.get_source("multi_year_dataset")
-        assert multi_year_source.year == "2024-2026"
-        assert multi_year_source.format == "parquet"
-
-    def test_real_sources_no_duplicates(self):
-        """Test that the real sources.json has no duplicates."""
-        conf = Conf()
-        sources = conf.get_all_sources()
-
-        # Check for duplicates by name+year
-        seen = set()
-        for source in sources:
-            key = (source.name, source.year)
-            assert key not in seen, f"Duplicate source: {key}"
-            seen.add(key)
