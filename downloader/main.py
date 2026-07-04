@@ -74,7 +74,7 @@ def plan(from_date: datetime | None = None):
             latest_timestamp = datetime.fromisoformat(
                 latest_record.download_timestamp
             ).timestamp()
-            threshold = latest_timestamp - 24 * 60 * 60 * DOWNLOAD_REFRESH_DAYS
+            threshold = latest_timestamp + 24 * 60 * 60 * DOWNLOAD_REFRESH_DAYS
             if threshold < from_date.timestamp():
                 needs_download = True
         if needs_download:

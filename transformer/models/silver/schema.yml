@@ -42,7 +42,7 @@ models:
           Parent commune code for municipal arrondissements and associated or
           delegated communes.
       - name: release_year
-        description: COG release year retained in the silver dataset.
+        description: Source file release year retained in the silver dataset.
 
   - name: svr_france_departements
     description: >
@@ -68,7 +68,7 @@ models:
       - name: name_dep
         description: Department name in clear text with rich typography and article.
       - name: release_year
-        description: COG release year retained in the silver dataset.
+        description: Source file release year retained in the silver dataset.
 
   - name: svr_france_regions
     description: >
@@ -91,4 +91,93 @@ models:
       - name: name_reg
         description: Region name in clear text with rich typography and article.
       - name: release_year
-        description: COG release year retained in the silver dataset.
+        description: Source file release year retained in the silver dataset.
+
+  - name: svr_sirene_unite_legal
+    description: >
+      Silver Sirene legal units dataset for the latest available release year.
+      Standardizes raw Sirene legal-unit columns into lower snake_case names.
+    columns:
+      - name: siren
+        description: >
+          SIREN identifier of the legal unit. This is the nine-digit identifier
+          assigned by INSEE to a company or individual business.
+        tests:
+          - unique
+          - not_null
+      - name: statut_diffusion_unite_legale
+        description: >
+          Dissemination status of the legal unit. A partial dissemination status
+          indicates that some personal or address data may be masked.
+      - name: unite_purgee_unite_legale
+        description: Flag indicating whether the legal unit has been purged.
+      - name: date_creation_unite_legale
+        description: Creation date of the legal unit in the Sirene registry.
+      - name: sigle_unite_legale
+        description: Acronym or short name used by the legal unit.
+      - name: sexe_unite_legale
+        description: Sex of the natural person when the legal unit is an individual.
+      - name: prenom1_unite_legale
+        description: First given name of the natural person legal unit.
+      - name: prenom2_unite_legale
+        description: Second given name of the natural person legal unit.
+      - name: prenom3_unite_legale
+        description: Third given name of the natural person legal unit.
+      - name: prenom4_unite_legale
+        description: Fourth given name of the natural person legal unit.
+      - name: prenom_usuel_unite_legale
+        description: Usual given name of the natural person legal unit.
+      - name: pseudonyme_unite_legale
+        description: Pseudonym of the natural person legal unit.
+      - name: identifiant_association_unite_legale
+        description: Association identifier for legal units registered as associations.
+      - name: tranche_effectifs_unite_legale
+        description: Workforce size band of the legal unit.
+      - name: annee_effectifs_unite_legale
+        description: Reference year for the legal unit workforce size band.
+      - name: date_dernier_traitement_unite_legale
+        description: Date and time of the latest Sirene processing for the legal unit.
+      - name: nombre_periodes_unite_legale
+        description: Number of historical periods associated with the legal unit.
+      - name: categorie_entreprise
+        description: Enterprise category of the legal unit, such as SME or large enterprise.
+      - name: annee_categorie_entreprise
+        description: Reference year for the enterprise category.
+      - name: date_debut
+        description: Start date of the current legal unit period.
+      - name: etat_administratif_unite_legale
+        description: Administrative status of the legal unit.
+      - name: nom_unite_legale
+        description: Birth name or family name of the natural person legal unit.
+      - name: nom_usage_unite_legale
+        description: Usage name of the natural person legal unit.
+      - name: denomination_unite_legale
+        description: Registered corporate name of the legal unit.
+      - name: denomination_usuelle1_unite_legale
+        description: First usual trading name of the legal unit.
+      - name: denomination_usuelle2_unite_legale
+        description: Second usual trading name of the legal unit.
+      - name: denomination_usuelle3_unite_legale
+        description: Third usual trading name of the legal unit.
+      - name: categorie_juridique_unite_legale
+        description: Legal category code of the legal unit.
+      - name: activite_principale_unite_legale
+        description: Principal activity code of the legal unit.
+      - name: nomenclature_activite_principale_unite_legale
+        description: Activity classification used for the principal activity code.
+      - name: nic_siege_unite_legale
+        description: NIC code of the legal unit head office establishment.
+      - name: economie_sociale_solidaire_unite_legale
+        description: >
+          Flag indicating whether the legal unit belongs to the social and
+          solidarity economy.
+      - name: societe_mission_unite_legale
+        description: Flag indicating whether the legal unit is a mission-driven company.
+      - name: caractere_employeur_unite_legale
+        description: Flag indicating whether the legal unit has employer status.
+      - name: activite_principale_naf25_unite_legale
+        description: >
+          Future principal activity code in the NAF 2025 classification,
+          distributed in anticipation of the NAF 2025 transition.
+      - name: release_year
+        description: Source file release year retained in the silver dataset.
