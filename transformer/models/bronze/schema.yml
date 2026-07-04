@@ -1,0 +1,91 @@
+
+models:
+  - name: france_communes
+    description: >
+      Bronze INSEE COG communes dataset. Preserves the raw commune fields and
+      adds ingestion metadata from the downloaded source file.
+    columns:
+      - name: TYPECOM
+        description: Type of commune or commune-like administrative entity.
+      - name: COM
+        description: Official commune code.
+      - name: REG
+        description: Region code.
+      - name: DEP
+        description: Department code.
+      - name: CTCD
+        description: Code of the territorial authority with departmental powers.
+      - name: ARR
+        description: Arrondissement code.
+      - name: TNCC
+        description: Type of name in clear text.
+      - name: NCC
+        description: Name in clear text, uppercase.
+      - name: NCCENR
+        description: Name in clear text with rich typography.
+      - name: LIBELLE
+        description: Name in clear text with rich typography and article.
+      - name: CAN
+        description: >
+          Canton code. For multi-canton communes, INSEE uses pseudo-canton
+          codes from 99 to 90 or new commune codes from 89 to 80.
+      - name: COMPARENT
+        description: >
+          Parent commune code for municipal arrondissements and associated or
+          delegated communes.
+      - name: source_file_path
+        description: Path of the raw CSV file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: year
+        description: COG release year extracted from the raw source file path.
+
+  - name: france_departements
+    description: >
+      Bronze INSEE COG departments dataset. Preserves the raw department fields
+      and adds ingestion metadata from the downloaded source file.
+    columns:
+      - name: DEP
+        description: Department code.
+      - name: REG
+        description: Region code.
+      - name: CHEFLIEU
+        description: Official commune code of the department capital.
+      - name: TNCC
+        description: Type of name in clear text.
+      - name: NCC
+        description: Name in clear text, uppercase.
+      - name: NCCENR
+        description: Name in clear text with rich typography.
+      - name: LIBELLE
+        description: Name in clear text with rich typography and article.
+      - name: source_file_path
+        description: Path of the raw CSV file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: year
+        description: COG release year extracted from the raw source file path.
+
+  - name: france_regions
+    description: >
+      Bronze INSEE COG regions dataset. Preserves the raw region fields and adds
+      ingestion metadata from the downloaded source file.
+    columns:
+      - name: REG
+        description: Region code.
+      - name: CHEFLIEU
+        description: Official commune code of the region capital.
+      - name: TNCC
+        description: Type of name in clear text.
+      - name: NCC
+        description: Name in clear text, uppercase.
+      - name: NCCENR
+        description: Name in clear text with rich typography.
+      - name: LIBELLE
+        description: Name in clear text with rich typography and article.
+      - name: source_file_path
+        description: Path of the raw CSV file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: year
+        description: COG release year extracted from the raw source file path.

@@ -1,0 +1,81 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Raw CSV files downloaded from INSEE Code officiel geographique (COG).
+      These files describe the French administrative geography as published by
+      INSEE for the yearly COG release.
+    tables:
+      - name: france_communes
+        description: >
+          Raw INSEE COG communes file. Contains communes, municipal
+          arrondissements, delegated communes, and associated communes, with
+          higher-level geographic codes such as canton, department, and region.
+        meta:
+          external_location: "../datalake/raw/communes-france_*.csv"
+        columns:
+          - name: TYPECOM
+            description: Type of commune or commune-like administrative entity.
+          - name: COM
+            description: Official commune code.
+          - name: REG
+            description: Region code.
+          - name: DEP
+            description: Department code.
+          - name: CTCD
+            description: Code of the territorial authority with departmental powers.
+          - name: ARR
+            description: Arrondissement code.
+          - name: TNCC
+            description: Type of name in clear text.
+          - name: NCC
+            description: Name in clear text, uppercase.
+          - name: NCCENR
+            description: Name in clear text with rich typography.
+          - name: LIBELLE
+            description: Name in clear text with rich typography and article.
+          - name: CAN
+            description: >
+              Canton code. For multi-canton communes, INSEE uses pseudo-canton
+              codes from 99 to 90 or new commune codes from 89 to 80.
+          - name: COMPARENT
+            description: >
+              Parent commune code for municipal arrondissements and associated
+              or delegated communes.
+      - name: france_departements
+        description: Raw INSEE COG departments file.
+        meta:
+          external_location: "../datalake/raw/departements-france_*.csv"
+        columns:
+          - name: DEP
+            description: Department code.
+          - name: REG
+            description: Region code.
+          - name: CHEFLIEU
+            description: Official commune code of the department capital.
+          - name: TNCC
+            description: Type of name in clear text.
+          - name: NCC
+            description: Name in clear text, uppercase.
+          - name: NCCENR
+            description: Name in clear text with rich typography.
+          - name: LIBELLE
+            description: Name in clear text with rich typography and article.
+      - name: france_regions
+        description: Raw INSEE COG regions file.
+        meta:
+          external_location: "../datalake/raw/regions-france_*.csv"
+        columns:
+          - name: REG
+            description: Region code.
+          - name: CHEFLIEU
+            description: Official commune code of the region capital.
+          - name: TNCC
+            description: Type of name in clear text.
+          - name: NCC
+            description: Name in clear text, uppercase.
+          - name: NCCENR
+            description: Name in clear text with rich typography.
+          - name: LIBELLE
+            description: Name in clear text with rich typography and article.
