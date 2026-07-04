@@ -1,22 +1,44 @@
 [
+
   {
-    "name": "example_dataset",
-    "description": "Example dataset for testing",
-    "categorie": "test",
-    "provider": "example_provider",
-    "year": "2024",
-    "page_url": "https://example.com/dataset",
-    "download_url": "https://example.com/dataset/download",
+    "name": "communes-france",
+    "description": "Liste des communes, arrondissements municipaux, communes déléguées et communes associées, avec le code des niveaux supérieurs (canton ou pseudo-canton, département, région)",
+    "category": "geo",
+    "provider": "insee",
+    "year": "2026",
+    "page_url": "https://www.insee.fr/fr/information/8740222",
+    "download_url": "https://www.insee.fr/fr/statistiques/fichier/8740222/v_commune_2026.csv",
     "format": "csv"
   },
   {
-    "name": "multi_year_dataset",
-    "description": "Dataset covering multiple years",
-    "categorie": "test",
-    "provider": "example_provider",
-    "year": "2024-2026",
-    "page_url": "https://example.com/multi-year",
-    "download_url": "https://example.com/multi-year/download",
-    "format": "parquet"
+    "name": "departements-france",
+    "description": "Liste des départements de France.",
+    "category": "geo",
+    "provider": "insee",
+    "year": "2026",
+    "page_url": "https://www.insee.fr/fr/information/8740222",
+    "download_url": "https://www.insee.fr/fr/statistiques/fichier/8740222/v_departement_2026.csv",
+    "format": "csv"
+  },
+  {
+    "name": "regions-france",
+    "description": "Liste des régions de France.",
+    "category": "geo",
+    "provider": "insee",
+    "year": "2026",
+    "page_url": "https://www.insee.fr/fr/information/8740222",
+    "download_url": "https://www.insee.fr/fr/statistiques/fichier/8740222/v_region_2026.csv",
+    "format": "csv"
+  },
+  {
+    "name": "command-public-france",
+    "description": "Données essentielles de la commande publique - fichiers consolidés",
+    "category": "economic",
+    "provider": "ministeres-economiques-et-financiers",
+    "year": "2026",
+    "page_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/2551ad40-584a-42fd-b3cc-e8906183287e",
+    "format": "json",
+    "post": "command_public"
   }
 ]
