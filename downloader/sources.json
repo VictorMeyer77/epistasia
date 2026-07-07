@@ -43,17 +43,17 @@
   },
   {
     "name": "sirene-etablissement",
-    "description": "Base Sirene des établissements.",
+    "description": "Base Sirene des établissements (SIRET).",
     "category": "economic",
     "provider": "insee",
     "year": "2026",
     "page_url": "https://www.data.gouv.fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret",
-    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/0651fb76-bcf3-4f6a-a38d-bc04fa708576",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/a29c1297-1f92-4e2a-8f6b-8c902ce96c5f",
     "format": "parquet"
   },
   {
     "name": "sirene-unite-legal",
-    "description": "Base Sirene des entreprises (SIREN, SIRET).",
+    "description": "Base Sirene des entreprises (SIREN).",
     "category": "economic",
     "provider": "insee",
     "year": "2026",

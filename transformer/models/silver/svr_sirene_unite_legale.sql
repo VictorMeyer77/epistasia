@@ -1,7 +1,7 @@
 {{
     config(
         materialized="external",
-        location="../datalake/silver/sirene_unite_legal.parquet",
+        location="../datalake/silver/sirene_unite_legale.parquet",
         format="parquet"
     )
 }}
@@ -56,10 +56,10 @@ SELECT
         AS activite_principale_naf25_unite_legale,
     unite_legal.release_year
 FROM
-    {{ ref("brz_sirene_unite_legal") }} AS unite_legal
+    {{ ref("brz_sirene_unite_legale") }} AS unite_legal
 WHERE
     unite_legal.release_year
     = (
         SELECT MAX(unite_legal_max.release_year)
-        FROM {{ ref("brz_sirene_unite_legal") }} AS unite_legal_max
+        FROM {{ ref("brz_sirene_unite_legale") }} AS unite_legal_max
     )

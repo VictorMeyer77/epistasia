@@ -1,0 +1,37 @@
+version: 2
+
+seeds:
+  - name: insee_sirene_cat_juridique
+    description: >
+      The legal category classification used to manage the Sirene directory,
+      the official register of companies and establishments.
+      (https://www.insee.fr/fr/information/2028129)
+    columns:
+      - name: code
+        description: Legal category code.
+      - name: libelle
+        description: Legal category label.
+      - name: type
+        description: Legal type hierarchy level.
+  - name: insee_sirene_naf
+    description: >
+      The French activity classification revision 2 (NAF rev. 2, 2008) is the
+      national statistical classification of activities.
+      (https://www.insee.fr/fr/information/2120875)
+    columns:
+      - name: code
+        description: Classification code.
+      - name: libelle
+        description: Classification label.
+      - name: niveau
+        description: Classification hierarchy level, such as sections or divisions.
+  - name: nom_activite_artisanat
+    description: >
+      The French activity classification for craft trades (NAFA) describes
+      craft-sector activities.
+      (https://data.artisanat.fr/nafa/)
+    columns:
+      - name: code
+        description: NAFA code.
+      - name: libelle
+        description: NAFA label.

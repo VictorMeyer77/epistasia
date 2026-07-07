@@ -1,0 +1,1729 @@
+code,libelle,niveau
+A,"Agriculture, sylviculture et pêche",section
+B,Industries extractives,section
+C,Industrie manufacturière,section
+D,"Production et distribution d'électricité, de gaz, de vapeur et d'air conditionné",section
+E,"Production et distribution d'eau ; assainissement, gestion des déchets et dépollution",section
+F,Construction,section
+G,Commerce ; réparation d'automobiles et de motocycles,section
+H,Transports et entreposage,section
+I,Hébergement et restauration,section
+J,Information et communication,section
+K,Activités financières et d'assurance,section
+L,Activités immobilières,section
+M,"Activités spécialisées, scientifiques et techniques",section
+N,Activités de services administratifs et de soutien,section
+O,Administration publique,section
+P,Enseignement,section
+Q,Santé humaine et action sociale,section
+R,"Arts, spectacles et activités récréatives",section
+S,Autres activités de services,section
+T,Activités des ménages en tant qu'employeurs ; activités indifférenciées des ménages en tant que producteurs de biens et services pour usage propre,section
+U,Activités extra-territoriales,section
+1,"Culture et production animale, chasse et services annexes",division
+2,Sylviculture et exploitation forestière,division
+3,Pêche et aquaculture,division
+5,Extraction de houille et de lignite,division
+6,Extraction d'hydrocarbures,division
+7,Extraction de minerais métalliques,division
+8,Autres industries extractives,division
+9,Services de soutien aux industries extractives,division
+10,Industries alimentaires,division
+11,Fabrication de boissons,division
+12,Fabrication de produits à base de tabac,division
+13,Fabrication de textiles,division
+14,Industrie de l'habillement,division
+15,Industrie du cuir et de la chaussure,division
+16,"Travail du bois et fabrication d'articles en bois et en liège, à l'exception des meubles ; fabrication d'articles en vannerie et sparterie",division
+17,Industrie du papier et du carton,division
+18,Imprimerie et reproduction d'enregistrements,division
+19,Cokéfaction et raffinage,division
+20,Industrie chimique,division
+21,Industrie pharmaceutique,division
+22,Fabrication de produits en caoutchouc et en plastique,division
+23,Fabrication d'autres produits minéraux non métalliques,division
+24,Métallurgie,division
+25,"Fabrication de produits métalliques, à l'exception des machines et des équipements",division
+26,"Fabrication de produits informatiques, électroniques et optiques",division
+27,Fabrication d'équipements électriques,division
+28,Fabrication de machines et équipements n.c.a.,division
+29,Industrie automobile,division
+30,Fabrication d'autres matériels de transport,division
+31,Fabrication de meubles,division
+32,Autres industries manufacturières,division
+33,Réparation et installation de machines et d'équipements,division
+35,"Production et distribution d'électricité, de gaz, de vapeur et d'air conditionné",division
+36,"Captage, traitement et distribution d'eau",division
+37,Collecte et traitement des eaux usées,division
+38,"Collecte, traitement et élimination des déchets ; récupération",division
+39,Dépollution et autres services de gestion des déchets,division
+41,Construction de bâtiments,division
+42,Génie civil,division
+43,Travaux de construction spécialisés,division
+45,Commerce et réparation d'automobiles et de motocycles,division
+46,"Commerce de gros, à l'exception des automobiles et des motocycles",division
+47,"Commerce de détail, à l'exception des automobiles et des motocycles",division
+49,Transports terrestres et transport par conduites,division
+50,Transports par eau,division
+51,Transports aériens,division
+52,Entreposage et services auxiliaires des transports,division
+53,Activités de poste et de courrier,division
+55,Hébergement,division
+56,Restauration,division
+58,Édition,division
+59,"Production de films cinématographiques, de vidéo et de programmes de télévision ; enregistrement sonore et édition musicale",division
+60,Programmation et diffusion,division
+61,Télécommunications,division
+62,"Programmation, conseil et autres activités informatiques",division
+63,Services d'information,division
+64,"Activités des services financiers, hors assurance et caisses de retraite",division
+65,Assurance,division
+66,Activités auxiliaires de services financiers et d'assurance,division
+68,Activités immobilières,division
+69,Activités juridiques et comptables,division
+70,Activités des sièges sociaux ; conseil de gestion,division
+71,Activités d'architecture et d'ingénierie ; activités de contrôle et analyses techniques,division
+72,Recherche-développement scientifique,division
+73,Publicité et études de marché,division
+74,"Autres activités spécialisées, scientifiques et techniques",division
+75,Activités vétérinaires,division
+77,Activités de location et location-bail,division
+78,Activités liées à l'emploi,division
+79,"Activités des agences de voyage, voyagistes, services de réservation et activités connexes",division
+80,Enquêtes et sécurité,division
+81,Services relatifs aux bâtiments et aménagement paysager,division
+82,Activités administratives et autres activités de soutien aux entreprises,division
+84,Administration publique et défense ; sécurité sociale obligatoire,division
+85,Enseignement,division
+86,Activités pour la santé humaine,division
+87,Hébergement médico-social et social,division
+88,Action sociale sans hébergement,division
+90,"Activités créatives, artistiques et de spectacle",division
+91,"Bibliothèques, archives, musées et autres activités culturelles",division
+92,Organisation de jeux de hasard et d'argent,division
+93,"Activités sportives, récréatives et de loisirs",division
+94,Activités des organisations associatives,division
+95,Réparation d'ordinateurs et de biens personnels et domestiques,division
+96,Autres services personnels,division
+97,Activités des ménages en tant qu'employeurs de personnel domestique,division
+98,Activités indifférenciées des ménages en tant que producteurs de biens et services pour usage propre,division
+99,Activités des organisations et organismes extraterritoriaux,division
+1.1,Cultures non permanentes,groupe
+1.2,Cultures permanentes,groupe
+1.3,Reproduction de plantes,groupe
+1.4,Production animale,groupe
+1.5,Culture et élevage associés,groupe
+1.6,Activités de soutien à l'agriculture et traitement primaire des récoltes,groupe
+1.7,"Chasse, piégeage et services annexes",groupe
+2.1,Sylviculture et autres activités forestières,groupe
+2.2,Exploitation forestière,groupe
+2.3,Récolte de produits forestiers non ligneux poussant à l'état sauvage,groupe
+2.4,Services de soutien à l'exploitation forestière,groupe
+3.1,Pêche,groupe
+3.2,Aquaculture,groupe
+5.1,Extraction de houille,groupe
+5.2,Extraction de lignite,groupe
+6.1,Extraction de pétrole brut,groupe
+6.2,Extraction de gaz naturel,groupe
+7.1,Extraction de minerais de fer,groupe
+7.2,Extraction de minerais de métaux non ferreux,groupe
+8.1,"Extraction de pierres, de sables et d'argiles",groupe
+8.9,Activités extractives n.c.a.,groupe
+9.1,Activités de soutien à l'extraction d'hydrocarbures,groupe
+9.9,Activités de soutien aux autres industries extractives,groupe
+10.1,Transformation et conservation de la viande et préparation de produits à base de viande,groupe
+10.2,"Transformation et conservation de poisson, de crustacés et de mollusques",groupe
+10.3,Transformation et conservation de fruits et légumes,groupe
+10.4,Fabrication d'huiles et graisses végétales et animales,groupe
+10.5,Fabrication de produits laitiers,groupe
+10.6,Travail des grains ; fabrication de produits amylacés,groupe
+10.7,Fabrication de produits de boulangerie-pâtisserie et de pâtes alimentaires,groupe
+10.8,Fabrication d'autres produits alimentaires,groupe
+10.9,Fabrication d'aliments pour animaux,groupe
+11,Fabrication de boissons,groupe
+12,Fabrication de produits à base de tabac,groupe
+13.1,Préparation de fibres textiles et filature,groupe
+13.2,Tissage,groupe
+13.3,Ennoblissement textile,groupe
+13.9,Fabrication d'autres textiles,groupe
+14.1,"Fabrication de vêtements, autres qu'en fourrure",groupe
+14.2,Fabrication d'articles en fourrure,groupe
+14.3,Fabrication d'articles à mailles,groupe
+15.1,"Apprêt et tannage des cuirs ; préparation et teinture des fourrures ; fabrication d'articles de voyage, de maroquinerie et de sellerie",groupe
+15.2,Fabrication de chaussures,groupe
+16.1,Sciage et rabotage du bois,groupe
+16.2,"Fabrication d'articles en bois, liège, vannerie et sparterie",groupe
+17.1,"Fabrication de pâte à papier, de papier et de carton",groupe
+17.2,Fabrication d'articles en papier ou en carton,groupe
+18.1,Imprimerie et services annexes,groupe
+18.2,Reproduction d'enregistrements,groupe
+19.1,Cokéfaction,groupe
+19.2,Raffinage du pétrole,groupe
+20.1,"Fabrication de produits chimiques de base, de produits azotés et d'engrais, de matières plastiques de base et de caoutchouc synthétique",groupe
+20.2,Fabrication de pesticides et d'autres produits agrochimiques,groupe
+20.3,"Fabrication de peintures, vernis, encres et mastics",groupe
+20.4,"Fabrication de savons, de produits d'entretien et de parfums",groupe
+20.5,Fabrication d'autres produits chimiques,groupe
+20.6,Fabrication de fibres artificielles ou synthétiques,groupe
+21.1,Fabrication de produits pharmaceutiques de base,groupe
+21.2,Fabrication de préparations pharmaceutiques,groupe
+22.1,Fabrication de produits en caoutchouc,groupe
+22.2,Fabrication de produits en plastique,groupe
+23.1,Fabrication de verre et d'articles en verre,groupe
+23.2,Fabrication de produits réfractaires,groupe
+23.3,Fabrication de matériaux de construction en terre cuite,groupe
+23.4,Fabrication d'autres produits en céramique et en porcelaine,groupe
+23.5,"Fabrication de ciment, chaux et plâtre",groupe
+23.6,"Fabrication d'ouvrages en béton, en ciment ou en plâtre",groupe
+23.7,"Taille, façonnage et finissage de pierres",groupe
+23.9,Fabrication de produits abrasifs et de produits minéraux non métalliques n.c.a.,groupe
+24.1,Sidérurgie,groupe
+24.2,"Fabrication de tubes, tuyaux, profilés creux et accessoires correspondants en acier",groupe
+24.3,Fabrication d'autres produits de première transformation de l'acier,groupe
+24.4,Production de métaux précieux et d'autres métaux non ferreux,groupe
+24.5,Fonderie,groupe
+25.1,Fabrication d'éléments en métal pour la construction,groupe
+25.2,"Fabrication de réservoirs, citernes et conteneurs métalliques",groupe
+25.3,"Fabrication de générateurs de vapeur, à l'exception des chaudières pour le chauffage central",groupe
+25.4,Fabrication d'armes et de munitions,groupe
+25.5,"Forge, emboutissage, estampage ; métallurgie des poudres",groupe
+25.6,Traitement et revêtement des métaux ; usinage,groupe
+25.7,"Fabrication de coutellerie, d'outillage et de quincaillerie",groupe
+25.9,Fabrication d'autres ouvrages en métaux,groupe
+26.1,Fabrication de composants et cartes électroniques,groupe
+26.2,Fabrication d'ordinateurs et d'équipements périphériques,groupe
+26.3,Fabrication d'équipements de communication,groupe
+26.4,Fabrication de produits électroniques grand public,groupe
+26.5,"Fabrication d'instruments et d'appareils de mesure, d'essai et de navigation ; horlogerie",groupe
+26.6,"Fabrication d'équipements d'irradiation médicale, d'équipements électromédicaux et électrothérapeutiques",groupe
+26.7,Fabrication de matériels optique et photographique,groupe
+26.8,Fabrication de supports magnétiques et optiques,groupe
+27.1,"Fabrication de moteurs, génératrices et transformateurs électriques et de matériel de distribution et de commande électrique",groupe
+27.2,Fabrication de piles et d'accumulateurs électriques,groupe
+27.3,Fabrication de fils et câbles et de matériel d'installation électrique,groupe
+27.4,Fabrication d'appareils d'éclairage électrique,groupe
+27.5,Fabrication d'appareils ménagers,groupe
+27.9,Fabrication d'autres matériels électriques,groupe
+28.1,Fabrication de machines d'usage général,groupe
+28.2,Fabrication d'autres machines d'usage général,groupe
+28.3,Fabrication de machines agricoles et forestières,groupe
+28.4,Fabrication de machines de formage des métaux et de machines-outils,groupe
+28.9,Fabrication d'autres machines d'usage spécifique,groupe
+29.1,Construction de véhicules automobiles,groupe
+29.2,Fabrication de carrosseries et remorques,groupe
+29.3,Fabrication d'équipements automobiles,groupe
+30.1,Construction navale,groupe
+30.2,Construction de locomotives et d'autre matériel ferroviaire roulant,groupe
+30.3,Construction aéronautique et spatiale,groupe
+30.4,Construction de véhicules militaires de combat,groupe
+30.9,Fabrication de matériels de transport n.c.a.,groupe
+31,Fabrication de meubles,groupe
+32.1,"Fabrication d'articles de joaillerie, bijouterie et articles similaires",groupe
+32.2,Fabrication d'instruments de musique,groupe
+32.3,Fabrication d'articles de sport,groupe
+32.4,Fabrication de jeux et jouets,groupe
+32.5,Fabrication d'instruments et de fournitures à usage médical et dentaire,groupe
+32.9,Activités manufacturières n.c.a.,groupe
+33.1,"Réparation d'ouvrages en métaux, de machines et d'équipements",groupe
+33.2,Installation de machines et d'équipements industriels,groupe
+35.1,"Production, transport et distribution d'électricité",groupe
+35.2,Production et distribution de combustibles gazeux,groupe
+35.3,Production et distribution de vapeur et d'air conditionné,groupe
+36,"Captage, traitement et distribution d'eau",groupe
+37,Collecte et traitement des eaux usées,groupe
+38.1,Collecte des déchets,groupe
+38.2,Traitement et élimination des déchets,groupe
+38.3,Récupération,groupe
+39,Dépollution et autres services de gestion des déchets,groupe
+41.1,Promotion immobilière,groupe
+41.2,Construction de bâtiments résidentiels et non résidentiels,groupe
+42.1,Construction de routes et de voies ferrées,groupe
+42.2,Construction de réseaux et de lignes,groupe
+42.9,Construction d'autres ouvrages de génie civil,groupe
+43.1,Démolition et préparation des sites,groupe
+43.2,"Travaux d'installation électrique, plomberie et autres travaux d'installation",groupe
+43.3,Travaux de finition,groupe
+43.9,Autres travaux de construction spécialisés,groupe
+45.1,Commerce de véhicules automobiles,groupe
+45.2,Entretien et réparation de véhicules automobiles,groupe
+45.3,Commerce d'équipements automobiles,groupe
+45.4,Commerce et réparation de motocycles,groupe
+46.1,Intermédiaires du commerce de gros,groupe
+46.2,Commerce de gros de produits agricoles bruts et d'animaux vivants,groupe
+46.3,"Commerce de gros de produits alimentaires, de boissons et de tabac",groupe
+46.4,Commerce de gros de biens domestiques,groupe
+46.5,Commerce de gros d'équipements de l'information et de la communication,groupe
+46.6,Commerce de gros d'autres équipements industriels,groupe
+46.7,Autres commerces de gros spécialisés,groupe
+46.9,Commerce de gros non spécialisé,groupe
+47.1,Commerce de détail en magasin non spécialisé,groupe
+47.2,Commerce de détail alimentaire en magasin spécialisé,groupe
+47.3,Commerce de détail de carburants en magasin spécialisé,groupe
+47.4,Commerce de détail d'équipements de l'information et de la communication en magasin spécialisé,groupe
+47.5,Commerce de détail d'autres équipements du foyer en magasin spécialisé,groupe
+47.6,Commerce de détail de biens culturels et de loisirs en magasin spécialisé,groupe
+47.7,Autres commerces de détail en magasin spécialisé,groupe
+47.8,Commerce de détail sur éventaires et marchés,groupe
+47.9,"Commerce de détail hors magasin, éventaires ou marchés",groupe
+49.1,Transport ferroviaire interurbain de voyageurs,groupe
+49.2,Transports ferroviaires de fret,groupe
+49.3,Autres transports terrestres de voyageurs,groupe
+49.4,Transports routiers de fret et services de déménagement,groupe
+49.5,Transports par conduites,groupe
+50.1,Transports maritimes et côtiers de passagers,groupe
+50.2,Transports maritimes et côtiers de fret,groupe
+50.3,Transports fluviaux de passagers,groupe
+50.4,Transports fluviaux de fret,groupe
+51.1,Transports aériens de passagers,groupe
+51.2,Transports aériens de fret et transports spatiaux,groupe
+52.1,Entreposage et stockage,groupe
+52.2,Services auxiliaires des transports,groupe
+53.1,Activités de poste dans le cadre d'une obligation de service universel,groupe
+53.2,Autres activités de poste et de courrier,groupe
+55.1,Hôtels et hébergement similaire,groupe
+55.2,Hébergement touristique et autre hébergement de courte durée,groupe
+55.3,Terrains de camping et parcs pour caravanes ou véhicules de loisirs,groupe
+55.9,Autres hébergements,groupe
+56.1,Restaurants et services de restauration mobile,groupe
+56.2,Traiteurs et autres services de restauration,groupe
+56.3,Débits de boissons,groupe
+58.1,Édition de livres et périodiques et autres activités d'édition,groupe
+58.2,Édition de logiciels,groupe
+59.1,"Activités cinématographiques, vidéo et de télévision",groupe
+59.2,Enregistrement sonore et édition musicale,groupe
+60.1,Édition et diffusion de programmes radio,groupe
+60.2,Programmation de télévision et télédiffusion,groupe
+61.1,Télécommunications filaires,groupe
+61.2,Télécommunications sans fil,groupe
+61.3,Télécommunications par satellite,groupe
+61.9,Autres activités de télécommunication,groupe
+62,"Programmation, conseil et autres activités informatiques",groupe
+63.1,"Traitement de données, hébergement et activités connexes ; portails Internet",groupe
+63.9,Autres services d'information,groupe
+64.1,Intermédiation monétaire,groupe
+64.2,Activités des sociétés holding,groupe
+64.3,Fonds de placement et entités financières similaires,groupe
+64.9,"Autres activités des services financiers, hors assurance et caisses de retraite",groupe
+65.1,Assurance,groupe
+65.2,Réassurance,groupe
+65.3,Caisses de retraite,groupe
+66.1,"Activités auxiliaires de services financiers, hors assurance et caisses de retraite",groupe
+66.2,Activités auxiliaires d'assurance et de caisses de retraite,groupe
+66.3,Gestion de fonds,groupe
+68.1,Activités des marchands de biens immobiliers,groupe
+68.2,Location et exploitation de biens immobiliers propres ou loués,groupe
+68.3,Activités immobilières pour compte de tiers,groupe
+69.1,Activités juridiques,groupe
+69.2,Activités comptables,groupe
+70.1,Activités des sièges sociaux,groupe
+70.2,Conseil de gestion,groupe
+71.1,Activités d'architecture et d'ingénierie,groupe
+71.2,Activités de contrôle et analyses techniques,groupe
+72.1,Recherche-développement en sciences physiques et naturelles,groupe
+72.2,Recherche-développement en sciences humaines et sociales,groupe
+73.1,Publicité,groupe
+73.2,Études de marché et sondages,groupe
+74.1,Activités spécialisées de design,groupe
+74.2,Activités photographiques,groupe
+74.3,Traduction et interprétation,groupe
+74.9,"Autres activités spécialisées, scientifiques et techniques n.c.a.",groupe
+75,Activités vétérinaires,groupe
+77.1,Location et location-bail de véhicules automobiles,groupe
+77.2,Location et location-bail de biens personnels et domestiques,groupe
+77.3,"Location et location-bail d'autres machines, équipements et biens",groupe
+77.4,"Location-bail de propriété intellectuelle et de produits similaires, à l'exception des œuvres soumises à copyright",groupe
+78.1,Activités des agences de placement de main-d'œuvre,groupe
+78.2,Activités des agences de travail temporaire,groupe
+78.3,Autre mise à disposition de ressources humaines,groupe
+79.1,Activités des agences de voyage et voyagistes,groupe
+79.9,Autres services de réservation et activités connexes,groupe
+80.1,Activités de sécurité privée,groupe
+80.2,Activités liées aux systèmes de sécurité,groupe
+80.3,Activités d'enquête,groupe
+81.1,Activités combinées de soutien lié aux bâtiments,groupe
+81.2,Activités de nettoyage,groupe
+81.3,Services d'aménagement paysager,groupe
+82.1,Activités administratives,groupe
+82.2,Activités de centres d'appels,groupe
+82.3,Organisation de salons professionnels et congrès,groupe
+82.9,Activités de soutien aux entreprises n.c.a.,groupe
+84.1,"Administration générale, économique et sociale",groupe
+84.2,Services de prérogative publique,groupe
+84.3,Sécurité sociale obligatoire,groupe
+85.1,Enseignement pré-primaire,groupe
+85.2,Enseignement primaire,groupe
+85.3,Enseignement secondaire,groupe
+85.4,Enseignement supérieur et post-secondaire non supérieur,groupe
+85.5,Autres activités d'enseignement,groupe
+85.6,Activités de soutien à l'enseignement,groupe
+86.1,Activités hospitalières,groupe
+86.2,Activité des médecins et des dentistes,groupe
+86.9,Autres activités pour la santé humaine,groupe
+87.1,Hébergement médicalisé,groupe
+87.2,"Hébergement social pour personnes handicapées mentales, malades mentales et toxicomanes",groupe
+87.3,Hébergement social pour personnes âgées ou handicapées physiques,groupe
+87.9,Autres activités d'hébergement social,groupe
+88.1,Action sociale sans hébergement pour personnes âgées et pour personnes handicapées,groupe
+88.9,Autre action sociale sans hébergement,groupe
+90,"Activités créatives, artistiques et de spectacle",groupe
+91,"Bibliothèques, archives, musées et autres activités culturelles",groupe
+92,Organisation de jeux de hasard et d'argent,groupe
+93.1,Activités liées au sport,groupe
+93.2,Activités récréatives et de loisirs,groupe
+94.1,"Activités des organisations économiques, patronales et professionnelles",groupe
+94.2,Activités des syndicats de salariés,groupe
+94.9,Activités des autres organisations associatives,groupe
+95.1,Réparation d'ordinateurs et d'équipements de communication,groupe
+95.2,Réparation de biens personnels et domestiques,groupe
+96,Autres services personnels,groupe
+97,Activités des ménages en tant qu'employeurs de personnel domestique,groupe
+98.1,Activités indifférenciées des ménages en tant que producteurs de biens pour usage propre,groupe
+98.2,Activités indifférenciées des ménages en tant que producteurs de services pour usage propre,groupe
+99,Activités des organisations et organismes extraterritoriaux,groupe
+1.11,"Culture de céréales (à l'exception du riz), de légumineuses et de graines oléagineuses",classe
+1.12,Culture du riz,classe
+1.13,"Culture de légumes, de melons, de racines et de tubercules",classe
+1.14,Culture de la canne à sucre,classe
+1.15,Culture du tabac,classe
+1.16,Culture de plantes à fibres,classe
+1.19,Autres cultures non permanentes,classe
+1.21,Culture de la vigne,classe
+1.22,Culture de fruits tropicaux et subtropicaux,classe
+1.23,Culture d'agrumes,classe
+1.24,Culture de fruits à pépins et à noyau,classe
+1.25,Culture d'autres fruits d'arbres ou d'arbustes et de fruits à coque,classe
+1.26,Culture de fruits oléagineux,classe
+1.27,Culture de plantes à boissons,classe
+1.28,"Culture de plantes à épices, aromatiques, médicinales et pharmaceutiques",classe
+1.29,Autres cultures permanentes,classe
+1.3,Reproduction de plantes,classe
+1.41,Élevage de vaches laitières,classe
+1.42,Élevage d'autres bovins et de buffles,classe
+1.43,Élevage de chevaux et d'autres équidés,classe
+1.44,Élevage de chameaux et d'autres camélidés,classe
+1.45,Élevage d'ovins et de caprins,classe
+1.46,Élevage de porcins,classe
+1.47,Élevage de volailles,classe
+1.49,Élevage d'autres animaux,classe
+1.5,Culture et élevage associés,classe
+1.61,Activités de soutien aux cultures,classe
+1.62,Activités de soutien à la production animale,classe
+1.63,Traitement primaire des récoltes,classe
+1.64,Traitement des semences,classe
+1.7,"Chasse, piégeage et services annexes",classe
+2.1,Sylviculture et autres activités forestières,classe
+2.2,Exploitation forestière,classe
+2.3,Récolte de produits forestiers non ligneux poussant à l'état sauvage,classe
+2.4,Services de soutien à l'exploitation forestière,classe
+3.11,Pêche en mer,classe
+3.12,Pêche en eau douce,classe
+3.21,Aquaculture en mer,classe
+3.22,Aquaculture en eau douce,classe
+5.1,Extraction de houille,classe
+5.2,Extraction de lignite,classe
+6.1,Extraction de pétrole brut,classe
+6.2,Extraction de gaz naturel,classe
+7.1,Extraction de minerais de fer,classe
+7.21,Extraction de minerais d'uranium et de thorium,classe
+7.29,Extraction d'autres minerais de métaux non ferreux,classe
+8.11,"Extraction de pierres ornementales et de construction, de calcaire industriel, de gypse, de craie et d'ardoise",classe
+8.12,"Exploitation de gravières et sablières, extraction d'argiles et de kaolin",classe
+8.91,Extraction des minéraux chimiques et d'engrais minéraux,classe
+8.92,Extraction de tourbe,classe
+8.93,Production de sel,classe
+8.99,Autres activités extractives n.c.a.,classe
+9.1,Activités de soutien à l'extraction d'hydrocarbures,classe
+9.9,Activités de soutien aux autres industries extractives,classe
+10.11,Transformation et conservation de la viande de boucherie,classe
+10.12,Transformation et conservation de la viande de volaille,classe
+10.13,Préparation de produits à base de viande,classe
+10.2,"Transformation et conservation de poisson, de crustacés et de mollusques",classe
+10.31,Transformation et conservation de pommes de terre,classe
+10.32,Préparation de jus de fruits et légumes,classe
+10.39,Autre transformation et conservation de fruits et légumes,classe
+10.41,Fabrication d'huiles et graisses,classe
+10.42,Fabrication de margarine et graisses comestibles similaires,classe
+10.51,Exploitation de laiteries et fabrication de fromage,classe
+10.52,Fabrication de glaces et sorbets,classe
+10.61,Travail des grains,classe
+10.62,Fabrication de produits amylacés,classe
+10.71,Fabrication de pain et de pâtisserie fraîche,classe
+10.72,"Fabrication de biscuits, biscottes et pâtisseries de conservation",classe
+10.73,Fabrication de pâtes alimentaires,classe
+10.81,Fabrication de sucre,classe
+10.82,"Fabrication de cacao, chocolat et de produits de confiserie",classe
+10.83,Transformation du thé et du café,classe
+10.84,Fabrication de condiments et assaisonnements,classe
+10.85,Fabrication de plats préparés,classe
+10.86,Fabrication d'aliments homogénéisés et diététiques,classe
+10.89,Fabrication d'autres produits alimentaires n.c.a.,classe
+10.91,Fabrication d'aliments pour animaux de ferme,classe
+10.92,Fabrication d'aliments pour animaux de compagnie,classe
+11.01,Production de boissons alcooliques distillées,classe
+11.02,Production de vin (de raisin),classe
+11.03,Fabrication de cidre et de vins de fruits,classe
+11.04,Production d'autres boissons fermentées non distillées,classe
+11.05,Fabrication de bière,classe
+11.06,Fabrication de malt,classe
+11.07,Industrie des eaux minérales et autres eaux embouteillées et des boissons rafraîchissantes,classe
+12,Fabrication de produits à base de tabac,classe
+13.1,Préparation de fibres textiles et filature,classe
+13.2,Tissage,classe
+13.3,Ennoblissement textile,classe
+13.91,Fabrication d'étoffes à mailles,classe
+13.92,"Fabrication d'articles textiles, sauf habillement",classe
+13.93,Fabrication de tapis et moquettes,classe
+13.94,"Fabrication de ficelles, cordes et filets",classe
+13.95,"Fabrication de non-tissés, sauf habillement",classe
+13.96,Fabrication d'autres textiles techniques et industriels,classe
+13.99,Fabrication d'autres textiles n.c.a.,classe
+14.11,Fabrication de vêtements en cuir,classe
+14.12,Fabrication de vêtements de travail,classe
+14.13,Fabrication de vêtements de dessus,classe
+14.14,Fabrication de vêtements de dessous,classe
+14.19,Fabrication d'autres vêtements et accessoires,classe
+14.2,Fabrication d'articles en fourrure,classe
+14.31,Fabrication d'articles chaussants à mailles,classe
+14.39,Fabrication d'autres articles à mailles,classe
+15.11,Apprêt et tannage des cuirs ; préparation et teinture des fourrures,classe
+15.12,"Fabrication d'articles de voyage, de maroquinerie et de sellerie",classe
+15.2,Fabrication de chaussures,classe
+16.1,Sciage et rabotage du bois,classe
+16.21,Fabrication de placage et de panneaux de bois,classe
+16.22,Fabrication de parquets assemblés,classe
+16.23,Fabrication de charpentes et d'autres menuiseries,classe
+16.24,Fabrication d'emballages en bois,classe
+16.29,"Fabrication d'objets divers en bois ; fabrication d'objets en liège, vannerie et sparterie",classe
+17.11,Fabrication de pâte à papier,classe
+17.12,Fabrication de papier et de carton,classe
+17.21,Fabrication de papier et carton ondulés et d'emballages en papier ou en carton,classe
+17.22,Fabrication d'articles en papier à usage sanitaire ou domestique,classe
+17.23,Fabrication d'articles de papeterie,classe
+17.24,Fabrication de papiers peints,classe
+17.29,Fabrication d'autres articles en papier ou en carton,classe
+18.11,Imprimerie de journaux,classe
+18.12,Autre imprimerie (labeur),classe
+18.13,Activités de pré-presse,classe
+18.14,Reliure et activités connexes,classe
+18.2,Reproduction d'enregistrements,classe
+19.1,Cokéfaction,classe
+19.2,Raffinage du pétrole,classe
+20.11,Fabrication de gaz industriels,classe
+20.12,Fabrication de colorants et de pigments,classe
+20.13,Fabrication d'autres produits chimiques inorganiques de base,classe
+20.14,Fabrication d'autres produits chimiques organiques de base,classe
+20.15,Fabrication de produits azotés et d'engrais,classe
+20.16,Fabrication de matières plastiques de base,classe
+20.17,Fabrication de caoutchouc synthétique,classe
+20.2,Fabrication de pesticides et d'autres produits agrochimiques,classe
+20.3,"Fabrication de peintures, vernis, encres et mastics",classe
+20.41,"Fabrication de savons, détergents et produits d'entretien",classe
+20.42,Fabrication de parfums et de produits pour la toilette,classe
+20.51,Fabrication de produits explosifs,classe
+20.52,Fabrication de colles,classe
+20.53,Fabrication d'huiles essentielles,classe
+20.59,Fabrication d'autres produits chimiques n.c.a.,classe
+20.6,Fabrication de fibres artificielles ou synthétiques,classe
+21.1,Fabrication de produits pharmaceutiques de base,classe
+21.2,Fabrication de préparations pharmaceutiques,classe
+22.11,Fabrication et rechapage de pneumatiques,classe
+22.19,Fabrication d'autres articles en caoutchouc,classe
+22.21,"Fabrication de plaques, feuilles, tubes et profilés en matières plastiques",classe
+22.22,Fabrication d'emballages en matières plastiques,classe
+22.23,Fabrication d'éléments en matières plastiques pour la construction,classe
+22.29,Fabrication d'autres articles en matières plastiques,classe
+23.11,Fabrication de verre plat,classe
+23.12,Façonnage et transformation du verre plat,classe
+23.13,Fabrication de verre creux,classe
+23.14,Fabrication de fibres de verre,classe
+23.19,"Fabrication et façonnage d'autres articles en verre, y compris verre technique",classe
+23.2,Fabrication de produits réfractaires,classe
+23.31,Fabrication de carreaux en céramique,classe
+23.32,"Fabrication de briques, tuiles et produits de construction, en terre cuite",classe
+23.41,Fabrication d'articles céramiques à usage domestique ou ornemental,classe
+23.42,Fabrication d'appareils sanitaires en céramique,classe
+23.43,Fabrication d'isolateurs et pièces isolantes en céramique,classe
+23.44,Fabrication d'autres produits céramiques à usage technique,classe
+23.49,Fabrication d'autres produits céramiques,classe
+23.51,Fabrication de ciment,classe
+23.52,Fabrication de chaux et plâtre,classe
+23.61,Fabrication d'éléments en béton pour la construction,classe
+23.62,Fabrication d'éléments en plâtre pour la construction,classe
+23.63,Fabrication de béton prêt à l'emploi,classe
+23.64,Fabrication de mortiers et bétons secs,classe
+23.65,Fabrication d'ouvrages en fibre-ciment,classe
+23.69,"Fabrication d'autres ouvrages en béton, en ciment ou en plâtre",classe
+23.7,"Taille, façonnage et finissage de pierres",classe
+23.91,Fabrication de produits abrasifs,classe
+23.99,Fabrication d'autres produits minéraux non métalliques n.c.a.,classe
+24.1,Sidérurgie,classe
+24.2,"Fabrication de tubes, tuyaux, profilés creux et accessoires correspondants en acier",classe
+24.31,Étirage à froid de barres,classe
+24.32,Laminage à froid de feuillards,classe
+24.33,Profilage à froid par formage ou pliage,classe
+24.34,Tréfilage à froid,classe
+24.41,Production de métaux précieux,classe
+24.42,Métallurgie de l'aluminium,classe
+24.43,"Métallurgie du plomb, du zinc ou de l'étain",classe
+24.44,Métallurgie du cuivre,classe
+24.45,Métallurgie des autres métaux non ferreux,classe
+24.46,Élaboration et transformation de matières nucléaires,classe
+24.51,Fonderie de fonte,classe
+24.52,Fonderie d'acier,classe
+24.53,Fonderie de métaux légers,classe
+24.54,Fonderie d'autres métaux non ferreux,classe
+25.11,Fabrication de structures métalliques et de parties de structures,classe
+25.12,Fabrication de portes et fenêtres en métal,classe
+25.21,Fabrication de radiateurs et de chaudières pour le chauffage central,classe
+25.29,"Fabrication d'autres réservoirs, citernes et conteneurs métalliques",classe
+25.3,"Fabrication de générateurs de vapeur, à l'exception des chaudières pour le chauffage central",classe
+25.4,Fabrication d'armes et de munitions,classe
+25.5,"Forge, emboutissage, estampage ; métallurgie des poudres",classe
+25.61,Traitement et revêtement des métaux,classe
+25.62,Usinage,classe
+25.71,Fabrication de coutellerie,classe
+25.72,Fabrication de serrures et de ferrures,classe
+25.73,Fabrication d'outillage,classe
+25.91,Fabrication de fûts et emballages métalliques similaires,classe
+25.92,Fabrication d'emballages métalliques légers,classe
+25.93,"Fabrication d'articles en fils métalliques, de chaînes et de ressorts",classe
+25.94,Fabrication de vis et de boulons,classe
+25.99,Fabrication d'autres produits métalliques n.c.a.,classe
+26.11,Fabrication de composants électroniques,classe
+26.12,Fabrication de cartes électroniques assemblées,classe
+26.2,Fabrication d'ordinateurs et d'équipements périphériques,classe
+26.3,Fabrication d'équipements de communication,classe
+26.4,Fabrication de produits électroniques grand public,classe
+26.51,"Fabrication d'instruments et d'appareils de mesure, d'essai et de navigation",classe
+26.52,Horlogerie,classe
+26.6,"Fabrication d'équipements d'irradiation médicale, d'équipements électromédicaux et électrothérapeutiques",classe
+26.7,Fabrication de matériels optique et photographique,classe
+26.8,Fabrication de supports magnétiques et optiques,classe
+27.11,"Fabrication de moteurs, génératrices et transformateurs électriques",classe
+27.12,Fabrication de matériel de distribution et de commande électrique,classe
+27.2,Fabrication de piles et d'accumulateurs électriques,classe
+27.31,Fabrication de câbles de fibres optiques,classe
+27.32,Fabrication d'autres fils et câbles électroniques ou électriques,classe
+27.33,Fabrication de matériel d'installation électrique,classe
+27.4,Fabrication d'appareils d'éclairage électrique,classe
+27.51,Fabrication d'appareils électroménagers,classe
+27.52,Fabrication d'appareils ménagers non électriques,classe
+27.9,Fabrication d'autres matériels électriques,classe
+28.11,"Fabrication de moteurs et turbines, à l'exception des moteurs d'avions et de véhicules",classe
+28.12,Fabrication d'équipements hydrauliques et pneumatiques,classe
+28.13,Fabrication d'autres pompes et compresseurs,classe
+28.14,Fabrication d'autres articles de robinetterie,classe
+28.15,Fabrication d'engrenages et d'organes mécaniques de transmission,classe
+28.21,Fabrication de fours et brûleurs,classe
+28.22,Fabrication de matériel de levage et de manutention,classe
+28.23,Fabrication de machines et d'équipements de bureau (à l'exception des ordinateurs et équipements périphériques),classe
+28.24,Fabrication d'outillage portatif à moteur incorporé,classe
+28.25,Fabrication d'équipements aérauliques et frigorifiques industriels,classe
+28.29,Fabrication de machines diverses d'usage général,classe
+28.3,Fabrication de machines agricoles et forestières,classe
+28.41,Fabrication de machines de formage des métaux,classe
+28.49,Fabrication d'autres machines-outils,classe
+28.91,Fabrication de machines pour la métallurgie,classe
+28.92,Fabrication de machines pour l'extraction ou la construction,classe
+28.93,Fabrication de machines pour l'industrie agro-alimentaire,classe
+28.94,Fabrication de machines pour les industries textiles,classe
+28.95,Fabrication de machines pour les industries du papier et du carton,classe
+28.96,Fabrication de machines pour le travail du caoutchouc ou des plastiques,classe
+28.99,Fabrication d'autres machines d'usage spécifique n.c.a.,classe
+29.1,Construction de véhicules automobiles,classe
+29.2,Fabrication de carrosseries et remorques,classe
+29.31,Fabrication d'équipements électriques et électroniques automobiles,classe
+29.32,Fabrication d'autres équipements automobiles,classe
+30.11,Construction de navires et de structures flottantes,classe
+30.12,Construction de bateaux de plaisance,classe
+30.2,Construction de locomotives et d'autre matériel ferroviaire roulant,classe
+30.3,Construction aéronautique et spatiale,classe
+30.4,Construction de véhicules militaires de combat,classe
+30.91,Fabrication de motocycles,classe
+30.92,Fabrication de bicyclettes et de véhicules pour invalides,classe
+30.99,Fabrication d'autres équipements de transport n.c.a.,classe
+31.01,Fabrication de meubles de bureau et de magasin,classe
+31.02,Fabrication de meubles de cuisine,classe
+31.03,Fabrication de matelas,classe
+31.09,Fabrication d'autres meubles,classe
+32.11,Frappe de monnaie,classe
+32.12,Fabrication d'articles de joaillerie et bijouterie,classe
+32.13,Fabrication d'articles de bijouterie fantaisie et articles similaires,classe
+32.2,Fabrication d'instruments de musique,classe
+32.3,Fabrication d'articles de sport,classe
+32.4,Fabrication de jeux et jouets,classe
+32.5,Fabrication d'instruments et de fournitures à usage médical et dentaire,classe
+32.91,Fabrication d'articles de brosserie,classe
+32.99,Autres activités manufacturières n.c.a.,classe
+33.11,Réparation d'ouvrages en métaux,classe
+33.12,Réparation de machines et équipements mécaniques,classe
+33.13,Réparation de matériels électroniques et optiques,classe
+33.14,Réparation d'équipements électriques,classe
+33.15,Réparation et maintenance navale,classe
+33.16,Réparation et maintenance d'aéronefs et d'engins spatiaux,classe
+33.17,Réparation et maintenance d'autres équipements de transport,classe
+33.19,Réparation d'autres équipements,classe
+33.2,Installation de machines et d'équipements industriels,classe
+35.11,Production d'électricité,classe
+35.12,Transport d'électricité,classe
+35.13,Distribution d'électricité,classe
+35.14,Commerce d'électricité,classe
+35.21,Production de combustibles gazeux,classe
+35.22,Distribution de combustibles gazeux par conduites,classe
+35.23,Commerce de combustibles gazeux par conduites,classe
+35.3,Production et distribution de vapeur et d'air conditionné,classe
+36,"Captage, traitement et distribution d'eau",classe
+37,Collecte et traitement des eaux usées,classe
+38.11,Collecte des déchets non dangereux,classe
+38.12,Collecte des déchets dangereux,classe
+38.21,Traitement et élimination des déchets non dangereux,classe
+38.22,Traitement et élimination des déchets dangereux,classe
+38.31,Démantèlement d'épaves,classe
+38.32,Récupération de déchets triés,classe
+39,Dépollution et autres services de gestion des déchets,classe
+41.1,Promotion immobilière,classe
+41.2,Construction de bâtiments résidentiels et non résidentiels,classe
+42.11,Construction de routes et autoroutes,classe
+42.12,Construction de voies ferrées de surface et souterraines,classe
+42.13,Construction de ponts et tunnels,classe
+42.21,Construction de réseaux pour fluides,classe
+42.22,Construction de réseaux électriques et de télécommunications,classe
+42.91,Construction d'ouvrages maritimes et fluviaux,classe
+42.99,Construction d'autres ouvrages de génie civil n.c.a.,classe
+43.11,Travaux de démolition,classe
+43.12,Travaux de préparation des sites,classe
+43.13,Forages et sondages,classe
+43.21,Installation électrique,classe
+43.22,Travaux de plomberie et installation de chauffage et de conditionnement d'air,classe
+43.29,Autres travaux d'installation,classe
+43.31,Travaux de plâtrerie,classe
+43.32,Travaux de menuiserie,classe
+43.33,Travaux de revêtement des sols et des murs,classe
+43.34,Travaux de peinture et vitrerie,classe
+43.39,Autres travaux de finition,classe
+43.91,Travaux de couverture,classe
+43.99,Autres travaux de construction spécialisés n.c.a.,classe
+45.11,Commerce de voitures et de véhicules automobiles légers,classe
+45.19,Commerce d'autres véhicules automobiles,classe
+45.2,Entretien et réparation de véhicules automobiles,classe
+45.31,Commerce de gros d'équipements automobiles,classe
+45.32,Commerce de détail d'équipements automobiles,classe
+45.4,Commerce et réparation de motocycles,classe
+46.11,"Intermédiaires du commerce en matières premières agricoles, animaux vivants, matières premières textiles et produits semi-finis",classe
+46.12,"Intermédiaires du commerce en combustibles, métaux, minéraux et produits chimiques",classe
+46.13,Intermédiaires du commerce en bois et matériaux de construction,classe
+46.14,"Intermédiaires du commerce en machines, équipements industriels, navires et avions",classe
+46.15,"Intermédiaires du commerce en meubles, articles de ménage et quincaillerie",classe
+46.16,"Intermédiaires du commerce en textiles, habillement, fourrures, chaussures et articles en cuir",classe
+46.17,"Intermédiaires du commerce en denrées, boissons et tabac",classe
+46.18,Intermédiaires spécialisés dans le commerce d'autres produits spécifiques,classe
+46.19,Intermédiaires du commerce en produits divers,classe
+46.21,"Commerce de gros de céréales, de tabac non manufacturé, de semences et d'aliments pour le bétail",classe
+46.22,Commerce de gros de fleurs et plantes,classe
+46.23,Commerce de gros d'animaux vivants,classe
+46.24,Commerce de gros de cuirs et peaux,classe
+46.31,Commerce de gros de fruits et légumes,classe
+46.32,Commerce de gros de viandes et de produits à base de viande,classe
+46.33,"Commerce de gros de produits laitiers, œufs, huiles et matières grasses comestibles",classe
+46.34,Commerce de gros de boissons,classe
+46.35,Commerce de gros de produits à base de tabac,classe
+46.36,"Commerce de gros de sucre, chocolat et confiserie",classe
+46.37,"Commerce de gros de café, thé, cacao et épices",classe
+46.38,"Commerce de gros d'autres produits alimentaires, y compris poissons, crustacés et mollusques",classe
+46.39,"Commerce de gros non spécialisé de denrées, boissons et tabac",classe
+46.41,Commerce de gros de textiles,classe
+46.42,Commerce de gros d'habillement et de chaussures,classe
+46.43,Commerce de gros d'appareils électroménagers,classe
+46.44,"Commerce de gros de vaisselle, verrerie et produits d'entretien",classe
+46.45,Commerce de gros de parfumerie et de produits de beauté,classe
+46.46,Commerce de gros de produits pharmaceutiques,classe
+46.47,"Commerce de gros de meubles, de tapis et d'appareils d'éclairage",classe
+46.48,Commerce de gros d'articles d'horlogerie et de bijouterie,classe
+46.49,Commerce de gros d'autres biens domestiques,classe
+46.51,"Commerce de gros d'ordinateurs, d'équipements informatiques périphériques et de logiciels",classe
+46.52,Commerce de gros de composants et d'équipements électroniques et de télécommunication,classe
+46.61,Commerce de gros de matériel agricole,classe
+46.62,Commerce de gros de machines-outils,classe
+46.63,"Commerce de gros de machines pour l'extraction, la construction et le génie civil",classe
+46.64,Commerce de gros de machines pour l'industrie textile et l'habillement,classe
+46.65,Commerce de gros de mobilier de bureau,classe
+46.66,Commerce de gros d'autres machines et équipements de bureau,classe
+46.69,Commerce de gros d'autres machines et équipements,classe
+46.71,Commerce de gros de combustibles et de produits annexes,classe
+46.72,Commerce de gros de minerais et métaux,classe
+46.73,"Commerce de gros de bois, de matériaux de construction et d'appareils sanitaires",classe
+46.74,Commerce de gros de quincaillerie et fournitures pour plomberie et chauffage,classe
+46.75,Commerce de gros de produits chimiques,classe
+46.76,Commerce de gros d'autres produits intermédiaires,classe
+46.77,Commerce de gros de déchets et débris,classe
+46.9,Commerce de gros non spécialisé,classe
+47.11,Commerce de détail en magasin non spécialisé à prédominance alimentaire,classe
+47.19,Autre commerce de détail en magasin non spécialisé,classe
+47.21,Commerce de détail de fruits et légumes en magasin spécialisé,classe
+47.22,Commerce de détail de viandes et de produits à base de viande en magasin spécialisé,classe
+47.23,"Commerce de détail de poissons, crustacés et mollusques en magasin spécialisé",classe
+47.24,"Commerce de détail de pain, pâtisserie et confiserie en magasin spécialisé",classe
+47.25,Commerce de détail de boissons en magasin spécialisé,classe
+47.26,Commerce de détail de produits à base de tabac en magasin spécialisé,classe
+47.29,Autres commerces de détail alimentaires en magasin spécialisé,classe
+47.3,Commerce de détail de carburants en magasin spécialisé,classe
+47.41,"Commerce de détail d'ordinateurs, d'unités périphériques et de logiciels en magasin spécialisé",classe
+47.42,Commerce de détail de matériels de télécommunication en magasin spécialisé,classe
+47.43,Commerce de détail de matériels audio/vidéo en magasin spécialisé,classe
+47.51,Commerce de détail de textiles en magasin spécialisé,classe
+47.52,"Commerce de détail de quincaillerie, peintures et verres en magasin spécialisé",classe
+47.53,"Commerce de détail de tapis, moquettes et revêtements de murs et de sols en magasin spécialisé",classe
+47.54,Commerce de détail d'appareils électroménagers en magasin spécialisé,classe
+47.59,"Commerce de détail de meubles, appareils d'éclairage et autres articles de ménage en magasin spécialisé",classe
+47.61,Commerce de détail de livres en magasin spécialisé,classe
+47.62,Commerce de détail de journaux et papeterie en magasin spécialisé,classe
+47.63,Commerce de détail d'enregistrements musicaux et vidéo en magasin spécialisé,classe
+47.64,Commerce de détail d'articles de sport en magasin spécialisé,classe
+47.65,Commerce de détail de jeux et jouets en magasin spécialisé,classe
+47.71,Commerce de détail d'habillement en magasin spécialisé,classe
+47.72,Commerce de détail de chaussures et d'articles en cuir en magasin spécialisé,classe
+47.73,Commerce de détail de produits pharmaceutiques en magasin spécialisé,classe
+47.74,Commerce de détail d'articles médicaux et orthopédiques en magasin spécialisé,classe
+47.75,Commerce de détail de parfumerie et de produits de beauté en magasin spécialisé,classe
+47.76,"Commerce de détail de fleurs, plantes, graines, engrais, animaux de compagnie et aliments pour ces animaux en magasin spécialisé",classe
+47.77,Commerce de détail d'articles d'horlogerie et de bijouterie en magasin spécialisé,classe
+47.78,Autre commerce de détail de biens neufs en magasin spécialisé,classe
+47.79,Commerce de détail de biens d'occasion en magasin,classe
+47.81,Commerce de détail alimentaire sur éventaires et marchés,classe
+47.82,"Commerce de détail de textiles, d'habillement et de chaussures sur éventaires et marchés",classe
+47.89,Autres commerces de détail sur éventaires et marchés,classe
+47.91,Vente à distance,classe
+47.99,"Autres commerces de détail hors magasin, éventaires ou marchés",classe
+49.1,Transport ferroviaire interurbain de voyageurs,classe
+49.2,Transports ferroviaires de fret,classe
+49.31,Transports urbains et suburbains de voyageurs,classe
+49.32,Transports de voyageurs par taxis,classe
+49.39,Autres transports terrestres de voyageurs n.c.a.,classe
+49.41,Transports routiers de fret,classe
+49.42,Services de déménagement,classe
+49.5,Transports par conduites,classe
+50.1,Transports maritimes et côtiers de passagers,classe
+50.2,Transports maritimes et côtiers de fret,classe
+50.3,Transports fluviaux de passagers,classe
+50.4,Transports fluviaux de fret,classe
+51.1,Transports aériens de passagers,classe
+51.21,Transports aériens de fret,classe
+51.22,Transports spatiaux,classe
+52.1,Entreposage et stockage,classe
+52.21,Services auxiliaires des transports terrestres,classe
+52.22,Services auxiliaires des transports par eau,classe
+52.23,Services auxiliaires des transports aériens,classe
+52.24,Manutention,classe
+52.29,Autres services auxiliaires des transports,classe
+53.1,Activités de poste dans le cadre d'une obligation de service universel,classe
+53.2,Autres activités de poste et de courrier,classe
+55.1,Hôtels et hébergement similaire,classe
+55.2,Hébergement touristique et autre hébergement de courte durée,classe
+55.3,Terrains de camping et parcs pour caravanes ou véhicules de loisirs,classe
+55.9,Autres hébergements,classe
+56.1,Restaurants et services de restauration mobile,classe
+56.21,Services des traiteurs,classe
+56.29,Autres services de restauration,classe
+56.3,Débits de boissons,classe
+58.11,Édition de livres,classe
+58.12,Édition de répertoires et de fichiers d'adresses,classe
+58.13,Édition de journaux,classe
+58.14,Édition de revues et périodiques,classe
+58.19,Autres activités d'édition,classe
+58.21,Édition de jeux électroniques,classe
+58.29,Édition d'autres logiciels,classe
+59.11,"Production de films cinématographiques, de vidéo et de programmes de télévision",classe
+59.12,"Post-production de films cinématographiques, de vidéo et de programmes de télévision",classe
+59.13,"Distribution de films cinématographiques, de vidéo et de programmes de télévision",classe
+59.14,Projection de films cinématographiques,classe
+59.2,Enregistrement sonore et édition musicale,classe
+60.1,Édition et diffusion de programmes radio,classe
+60.2,Programmation de télévision et télédiffusion,classe
+61.1,Télécommunications filaires,classe
+61.2,Télécommunications sans fil,classe
+61.3,Télécommunications par satellite,classe
+61.9,Autres activités de télécommunication,classe
+62.01,Programmation informatique,classe
+62.02,Conseil informatique,classe
+62.03,Gestion d'installations informatiques,classe
+62.09,Autres activités informatiques,classe
+63.11,"Traitement de données, hébergement et activités connexes",classe
+63.12,Portails Internet,classe
+63.91,Activités des agences de presse,classe
+63.99,Autres services d'information n.c.a.,classe
+64.11,Activités de banque centrale,classe
+64.19,Autres intermédiations monétaires,classe
+64.2,Activités des sociétés holding,classe
+64.3,Fonds de placement et entités financières similaires,classe
+64.91,Crédit-bail,classe
+64.92,Autre distribution de crédit,classe
+64.99,"Autres activités des services financiers, hors assurance et caisses de retraite, n.c.a.",classe
+65.11,Assurance vie,classe
+65.12,Autres assurances,classe
+65.2,Réassurance,classe
+65.3,Caisses de retraite,classe
+66.11,Administration de marchés financiers,classe
+66.12,Courtage de valeurs mobilières et de marchandises,classe
+66.19,"Autres activités auxiliaires de services financiers, hors assurance et caisses de retraite",classe
+66.21,Évaluation des risques et dommages,classe
+66.22,Activités des agents et courtiers d'assurances,classe
+66.29,Autres activités auxiliaires d'assurance et de caisses de retraite,classe
+66.3,Gestion de fonds,classe
+68.1,Activités des marchands de biens immobiliers,classe
+68.2,Location et exploitation de biens immobiliers propres ou loués,classe
+68.31,Agences immobilières,classe
+68.32,Administration de biens immobiliers,classe
+69.1,Activités juridiques,classe
+69.2,Activités comptables,classe
+70.1,Activités des sièges sociaux,classe
+70.21,Conseil en relations publiques et communication,classe
+70.22,Conseil pour les affaires et autres conseils de gestion,classe
+71.11,Activités d'architecture,classe
+71.12,Activités d'ingénierie,classe
+71.2,Activités de contrôle et analyses techniques,classe
+72.11,Recherche-développement en biotechnologie,classe
+72.19,Recherche-développement en autres sciences physiques et naturelles,classe
+72.2,Recherche-développement en sciences humaines et sociales,classe
+73.11,Activités des agences de publicité,classe
+73.12,Régie publicitaire de médias,classe
+73.2,Études de marché et sondages,classe
+74.1,Activités spécialisées de design,classe
+74.2,Activités photographiques,classe
+74.3,Traduction et interprétation,classe
+74.9,"Autres activités spécialisées, scientifiques et techniques n.c.a.",classe
+75,Activités vétérinaires,classe
+77.11,Location et location-bail de voitures et de véhicules automobiles légers,classe
+77.12,Location et location-bail de camions,classe
+77.21,Location et location-bail d'articles de loisirs et de sport,classe
+77.22,Location de vidéocassettes et disques vidéo,classe
+77.29,Location et location-bail d'autres biens personnels et domestiques,classe
+77.31,Location et location-bail de machines et équipements agricoles,classe
+77.32,Location et location-bail de machines et équipements pour la construction,classe
+77.33,Location et location-bail de machines de bureau et de matériel informatique,classe
+77.34,Location et location-bail de matériels de transport par eau,classe
+77.35,Location et location-bail de matériels de transport aérien,classe
+77.39,"Location et location-bail d'autres machines, équipements et biens matériels n.c.a.",classe
+77.4,"Location-bail de propriété intellectuelle et de produits similaires, à l'exception des œuvres soumises à copyright",classe
+78.1,Activités des agences de placement de main-d'œuvre,classe
+78.2,Activités des agences de travail temporaire,classe
+78.3,Autre mise à disposition de ressources humaines,classe
+79.11,Activités des agences de voyage,classe
+79.12,Activités des voyagistes,classe
+79.9,Autres services de réservation et activités connexes,classe
+80.1,Activités de sécurité privée,classe
+80.2,Activités liées aux systèmes de sécurité,classe
+80.3,Activités d'enquête,classe
+81.1,Activités combinées de soutien lié aux bâtiments,classe
+81.21,Nettoyage courant des bâtiments,classe
+81.22,Autres activités de nettoyage des bâtiments et nettoyage industriel,classe
+81.29,Autres activités de nettoyage,classe
+81.3,Services d'aménagement paysager,classe
+82.11,Services administratifs combinés de bureau,classe
+82.19,"Photocopie, préparation de documents et autres activités spécialisées de soutien de bureau",classe
+82.2,Activités de centres d'appels,classe
+82.3,Organisation de salons professionnels et congrès,classe
+82.91,Activités des agences de recouvrement de factures et des sociétés d'information financière sur la clientèle,classe
+82.92,Activités de conditionnement,classe
+82.99,Autres activités de soutien aux entreprises n.c.a.,classe
+84.11,Administration publique générale,classe
+84.12,"Administration publique (tutelle) de la santé, de la formation, de la culture et des services sociaux, autre que sécurité sociale",classe
+84.13,Administration publique (tutelle) des activités économiques,classe
+84.21,Affaires étrangères,classe
+84.22,Défense,classe
+84.23,Justice,classe
+84.24,Activités d'ordre public et de sécurité,classe
+84.25,Services du feu et de secours,classe
+84.3,Sécurité sociale obligatoire,classe
+85.1,Enseignement pré-primaire,classe
+85.2,Enseignement primaire,classe
+85.31,Enseignement secondaire général,classe
+85.32,Enseignement secondaire technique ou professionnel,classe
+85.41,Enseignement post-secondaire non supérieur,classe
+85.42,Enseignement supérieur,classe
+85.51,Enseignement de disciplines sportives et d'activités de loisirs,classe
+85.52,Enseignement culturel,classe
+85.53,Enseignement de la conduite,classe
+85.59,Enseignements divers,classe
+85.6,Activités de soutien à l'enseignement,classe
+86.1,Activités hospitalières,classe
+86.21,Activité des médecins généralistes,classe
+86.22,Activité des médecins spécialistes,classe
+86.23,Pratique dentaire,classe
+86.9,Autres activités pour la santé humaine,classe
+87.1,Hébergement médicalisé,classe
+87.2,"Hébergement social pour personnes handicapées mentales, malades mentales et toxicomanes",classe
+87.3,Hébergement social pour personnes âgées ou handicapées physiques,classe
+87.9,Autres activités d'hébergement social,classe
+88.1,Action sociale sans hébergement pour personnes âgées et pour personnes handicapées,classe
+88.91,Action sociale sans hébergement pour jeunes enfants,classe
+88.99,Autre action sociale sans hébergement n.c.a.,classe
+90.01,Arts du spectacle vivant,classe
+90.02,Activités de soutien au spectacle vivant,classe
+90.03,Création artistique,classe
+90.04,Gestion de salles de spectacles,classe
+91.01,Gestion des bibliothèques et des archives,classe
+91.02,Gestion des musées,classe
+91.03,Gestion des sites et monuments historiques et des attractions touristiques similaires,classe
+91.04,Gestion des jardins botaniques et zoologiques et des réserves naturelles,classe
+92,Organisation de jeux de hasard et d'argent,classe
+93.11,Gestion d'installations sportives,classe
+93.12,Activités de clubs de sports,classe
+93.13,Activités des centres de culture physique,classe
+93.19,Autres activités liées au sport,classe
+93.21,Activités des parcs d'attractions et parcs à thèmes,classe
+93.29,Autres activités récréatives et de loisirs,classe
+94.11,Activités des organisations patronales et consulaires,classe
+94.12,Activités des organisations professionnelles,classe
+94.2,Activités des syndicats de salariés,classe
+94.91,Activités des organisations religieuses,classe
+94.92,Activités des organisations politiques,classe
+94.99,Activités des organisations associatives n.c.a.,classe
+95.11,Réparation d'ordinateurs et d'équipements périphériques,classe
+95.12,Réparation d'équipements de communication,classe
+95.21,Réparation de produits électroniques grand public,classe
+95.22,Réparation d'appareils électroménagers et d'équipements pour la maison et le jardin,classe
+95.23,Réparation de chaussures et d'articles en cuir,classe
+95.24,Réparation de meubles et d'équipements du foyer,classe
+95.25,Réparation d'articles d'horlogerie et de bijouterie,classe
+95.29,Réparation d'autres biens personnels et domestiques,classe
+96.01,Blanchisserie-teinturerie,classe
+96.02,Coiffure et soins de beauté,classe
+96.03,Services funéraires,classe
+96.04,Entretien corporel,classe
+96.09,Autres services personnels n.c.a.,classe
+97,Activités des ménages en tant qu'employeurs de personnel domestique,classe
+98.1,Activités indifférenciées des ménages en tant que producteurs de biens pour usage propre,classe
+98.2,Activités indifférenciées des ménages en tant que producteurs de services pour usage propre,classe
+99,Activités des organisations et organismes extraterritoriaux,classe
+01.11Z,"Culture de céréales (à l'exception du riz), de légumineuses et de graines oléagineuses",sousclasse
+01.12Z,Culture du riz,sousclasse
+01.13Z,"Culture de légumes, de melons, de racines et de tubercules",sousclasse
+01.14Z,Culture de la canne à sucre,sousclasse
+01.15Z,Culture du tabac,sousclasse
+01.16Z,Culture de plantes à fibres,sousclasse
+01.19Z,Autres cultures non permanentes,sousclasse
+01.21Z,Culture de la vigne,sousclasse
+01.22Z,Culture de fruits tropicaux et subtropicaux,sousclasse
+01.23Z,Culture d'agrumes,sousclasse
+01.24Z,Culture de fruits à pépins et à noyau,sousclasse
+01.25Z,Culture d'autres fruits d'arbres ou d'arbustes et de fruits à coque,sousclasse
+01.26Z,Culture de fruits oléagineux,sousclasse
+01.27Z,Culture de plantes à boissons,sousclasse
+01.28Z,"Culture de plantes à épices, aromatiques, médicinales et pharmaceutiques",sousclasse
+01.29Z,Autres cultures permanentes,sousclasse
+01.30Z,Reproduction de plantes,sousclasse
+01.41Z,Élevage de vaches laitières,sousclasse
+01.42Z,Élevage d'autres bovins et de buffles,sousclasse
+01.43Z,Élevage de chevaux et d'autres équidés,sousclasse
+01.44Z,Élevage de chameaux et d'autres camélidés,sousclasse
+01.45Z,Élevage d'ovins et de caprins,sousclasse
+01.46Z,Élevage de porcins,sousclasse
+01.47Z,Élevage de volailles,sousclasse
+01.49Z,Élevage d'autres animaux,sousclasse
+01.50Z,Culture et élevage associés,sousclasse
+01.61Z,Activités de soutien aux cultures,sousclasse
+01.62Z,Activités de soutien à la production animale,sousclasse
+01.63Z,Traitement primaire des récoltes,sousclasse
+01.64Z,Traitement des semences,sousclasse
+01.70Z,"Chasse, piégeage et services annexes",sousclasse
+02.10Z,Sylviculture et autres activités forestières,sousclasse
+02.20Z,Exploitation forestière,sousclasse
+02.30Z,Récolte de produits forestiers non ligneux poussant à l'état sauvage,sousclasse
+02.40Z,Services de soutien à l'exploitation forestière,sousclasse
+03.11Z,Pêche en mer,sousclasse
+03.12Z,Pêche en eau douce,sousclasse
+03.21Z,Aquaculture en mer,sousclasse
+03.22Z,Aquaculture en eau douce,sousclasse
+05.10Z,Extraction de houille,sousclasse
+05.20Z,Extraction de lignite,sousclasse
+06.10Z,Extraction de pétrole brut,sousclasse
+06.20Z,Extraction de gaz naturel,sousclasse
+07.10Z,Extraction de minerais de fer,sousclasse
+07.21Z,Extraction de minerais d'uranium et de thorium,sousclasse
+07.29Z,Extraction d'autres minerais de métaux non ferreux,sousclasse
+08.11Z,"Extraction de pierres ornementales et de construction, de calcaire industriel, de gypse, de craie et d'ardoise",sousclasse
+08.12Z,"Exploitation de gravières et sablières, extraction d'argiles et de kaolin",sousclasse
+08.91Z,Extraction des minéraux chimiques et d'engrais minéraux,sousclasse
+08.92Z,Extraction de tourbe,sousclasse
+08.93Z,Production de sel,sousclasse
+08.99Z,Autres activités extractives n.c.a.,sousclasse
+09.10Z,Activités de soutien à l'extraction d'hydrocarbures,sousclasse
+09.90Z,Activités de soutien aux autres industries extractives,sousclasse
+10.11Z,Transformation et conservation de la viande de boucherie,sousclasse
+10.12Z,Transformation et conservation de la viande de volaille,sousclasse
+10.13A,Préparation industrielle de produits à base de viande,sousclasse
+10.13B,Charcuterie,sousclasse
+10.20Z,"Transformation et conservation de poisson, de crustacés et de mollusques",sousclasse
+10.31Z,Transformation et conservation de pommes de terre,sousclasse
+10.32Z,Préparation de jus de fruits et légumes,sousclasse
+10.39A,Autre transformation et conservation de légumes,sousclasse
+10.39B,Transformation et conservation de fruits,sousclasse
+10.41A,Fabrication d'huiles et graisses brutes,sousclasse
+10.41B,Fabrication d'huiles et graisses raffinées,sousclasse
+10.42Z,Fabrication de margarine et graisses comestibles similaires,sousclasse
+10.51A,Fabrication de lait liquide et de produits frais,sousclasse
+10.51B,Fabrication de beurre,sousclasse
+10.51C,Fabrication de fromage,sousclasse
+10.51D,Fabrication d'autres produits laitiers,sousclasse
+10.52Z,Fabrication de glaces et sorbets,sousclasse
+10.61A,Meunerie,sousclasse
+10.61B,Autres activités du travail des grains,sousclasse
+10.62Z,Fabrication de produits amylacés,sousclasse
+10.71A,Fabrication industrielle de pain et de pâtisserie fraîche,sousclasse
+10.71B,Cuisson de produits de boulangerie,sousclasse
+10.71C,Boulangerie et boulangerie-pâtisserie,sousclasse
+10.71D,Pâtisserie,sousclasse
+10.72Z,"Fabrication de biscuits, biscottes et pâtisseries de conservation",sousclasse
+10.73Z,Fabrication de pâtes alimentaires,sousclasse
+10.81Z,Fabrication de sucre,sousclasse
+10.82Z,"Fabrication de cacao, chocolat et de produits de confiserie",sousclasse
+10.83Z,Transformation du thé et du café,sousclasse
+10.84Z,Fabrication de condiments et assaisonnements,sousclasse
+10.85Z,Fabrication de plats préparés,sousclasse
+10.86Z,Fabrication d'aliments homogénéisés et diététiques,sousclasse
+10.89Z,Fabrication d'autres produits alimentaires n.c.a.,sousclasse
+10.91Z,Fabrication d'aliments pour animaux de ferme,sousclasse
+10.92Z,Fabrication d'aliments pour animaux de compagnie,sousclasse
+11.01Z,Production de boissons alcooliques distillées,sousclasse
+11.02A,Fabrication de vins effervescents,sousclasse
+11.02B,Vinification,sousclasse
+11.03Z,Fabrication de cidre et de vins de fruits,sousclasse
+11.04Z,Production d'autres boissons fermentées non distillées,sousclasse
+11.05Z,Fabrication de bière,sousclasse
+11.06Z,Fabrication de malt,sousclasse
+11.07A,Industrie des eaux de table,sousclasse
+11.07B,Production de boissons rafraîchissantes,sousclasse
+12.00Z,Fabrication de produits à base de tabac,sousclasse
+13.10Z,Préparation de fibres textiles et filature,sousclasse
+13.20Z,Tissage,sousclasse
+13.30Z,Ennoblissement textile,sousclasse
+13.91Z,Fabrication d'étoffes à mailles,sousclasse
+13.92Z,"Fabrication d'articles textiles, sauf habillement",sousclasse
+13.93Z,Fabrication de tapis et moquettes,sousclasse
+13.94Z,"Fabrication de ficelles, cordes et filets",sousclasse
+13.95Z,"Fabrication de non-tissés, sauf habillement",sousclasse
+13.96Z,Fabrication d'autres textiles techniques et industriels,sousclasse
+13.99Z,Fabrication d'autres textiles n.c.a.,sousclasse
+14.11Z,Fabrication de vêtements en cuir,sousclasse
+14.12Z,Fabrication de vêtements de travail,sousclasse
+14.13Z,Fabrication de vêtements de dessus,sousclasse
+14.14Z,Fabrication de vêtements de dessous,sousclasse
+14.19Z,Fabrication d'autres vêtements et accessoires,sousclasse
+14.20Z,Fabrication d'articles en fourrure,sousclasse
+14.31Z,Fabrication d'articles chaussants à mailles,sousclasse
+14.39Z,Fabrication d'autres articles à mailles,sousclasse
+15.11Z,Apprêt et tannage des cuirs ; préparation et teinture des fourrures,sousclasse
+15.12Z,"Fabrication d'articles de voyage, de maroquinerie et de sellerie",sousclasse
+15.20Z,Fabrication de chaussures,sousclasse
+16.10A,"Sciage et rabotage du bois, hors imprégnation",sousclasse
+16.10B,Imprégnation du bois,sousclasse
+16.21Z,Fabrication de placage et de panneaux de bois,sousclasse
+16.22Z,Fabrication de parquets assemblés,sousclasse
+16.23Z,Fabrication de charpentes et d'autres menuiseries,sousclasse
+16.24Z,Fabrication d'emballages en bois,sousclasse
+16.29Z,"Fabrication d'objets divers en bois ; fabrication d'objets en liège, vannerie et sparterie",sousclasse
+17.11Z,Fabrication de pâte à papier,sousclasse
+17.12Z,Fabrication de papier et de carton,sousclasse
+17.21A,Fabrication de carton ondulé,sousclasse
+17.21B,Fabrication de cartonnages,sousclasse
+17.21C,Fabrication d'emballages en papier,sousclasse
+17.22Z,Fabrication d'articles en papier à usage sanitaire ou domestique,sousclasse
+17.23Z,Fabrication d'articles de papeterie,sousclasse
+17.24Z,Fabrication de papiers peints,sousclasse
+17.29Z,Fabrication d'autres articles en papier ou en carton,sousclasse
+18.11Z,Imprimerie de journaux,sousclasse
+18.12Z,Autre imprimerie (labeur),sousclasse
+18.13Z,Activités de pré-presse,sousclasse
+18.14Z,Reliure et activités connexes,sousclasse
+18.20Z,Reproduction d'enregistrements,sousclasse
+19.10Z,Cokéfaction,sousclasse
+19.20Z,Raffinage du pétrole,sousclasse
+20.11Z,Fabrication de gaz industriels,sousclasse
+20.12Z,Fabrication de colorants et de pigments,sousclasse
+20.13A,Enrichissement et retraitement de matières nucléaires,sousclasse
+20.13B,Fabrication d'autres produits chimiques inorganiques de base n.c.a.,sousclasse
+20.14Z,Fabrication d'autres produits chimiques organiques de base,sousclasse
+20.15Z,Fabrication de produits azotés et d'engrais,sousclasse
+20.16Z,Fabrication de matières plastiques de base,sousclasse
+20.17Z,Fabrication de caoutchouc synthétique,sousclasse
+20.20Z,Fabrication de pesticides et d'autres produits agrochimiques,sousclasse
+20.30Z,"Fabrication de peintures, vernis, encres et mastics",sousclasse
+20.41Z,"Fabrication de savons, détergents et produits d'entretien",sousclasse
+20.42Z,Fabrication de parfums et de produits pour la toilette,sousclasse
+20.51Z,Fabrication de produits explosifs,sousclasse
+20.52Z,Fabrication de colles,sousclasse
+20.53Z,Fabrication d'huiles essentielles,sousclasse
+20.59Z,Fabrication d'autres produits chimiques n.c.a.,sousclasse
+20.60Z,Fabrication de fibres artificielles ou synthétiques,sousclasse
+21.10Z,Fabrication de produits pharmaceutiques de base,sousclasse
+21.20Z,Fabrication de préparations pharmaceutiques,sousclasse
+22.11Z,Fabrication et rechapage de pneumatiques,sousclasse
+22.19Z,Fabrication d'autres articles en caoutchouc,sousclasse
+22.21Z,"Fabrication de plaques, feuilles, tubes et profilés en matières plastiques",sousclasse
+22.22Z,Fabrication d'emballages en matières plastiques,sousclasse
+22.23Z,Fabrication d'éléments en matières plastiques pour la construction,sousclasse
+22.29A,Fabrication de pièces techniques à base de matières plastiques,sousclasse
+22.29B,Fabrication de produits de consommation courante en matières plastiques,sousclasse
+23.11Z,Fabrication de verre plat,sousclasse
+23.12Z,Façonnage et transformation du verre plat,sousclasse
+23.13Z,Fabrication de verre creux,sousclasse
+23.14Z,Fabrication de fibres de verre,sousclasse
+23.19Z,"Fabrication et façonnage d'autres articles en verre, y compris verre technique",sousclasse
+23.20Z,Fabrication de produits réfractaires,sousclasse
+23.31Z,Fabrication de carreaux en céramique,sousclasse
+23.32Z,"Fabrication de briques, tuiles et produits de construction, en terre cuite",sousclasse
+23.41Z,Fabrication d'articles céramiques à usage domestique ou ornemental,sousclasse
+23.42Z,Fabrication d'appareils sanitaires en céramique,sousclasse
+23.43Z,Fabrication d'isolateurs et pièces isolantes en céramique,sousclasse
+23.44Z,Fabrication d'autres produits céramiques à usage technique,sousclasse
+23.49Z,Fabrication d'autres produits céramiques,sousclasse
+23.51Z,Fabrication de ciment,sousclasse
+23.52Z,Fabrication de chaux et plâtre,sousclasse
+23.61Z,Fabrication d'éléments en béton pour la construction,sousclasse
+23.62Z,Fabrication d'éléments en plâtre pour la construction,sousclasse
+23.63Z,Fabrication de béton prêt à l'emploi,sousclasse
+23.64Z,Fabrication de mortiers et bétons secs,sousclasse
+23.65Z,Fabrication d'ouvrages en fibre-ciment,sousclasse
+23.69Z,"Fabrication d'autres ouvrages en béton, en ciment ou en plâtre",sousclasse
+23.70Z,"Taille, façonnage et finissage de pierres",sousclasse
+23.91Z,Fabrication de produits abrasifs,sousclasse
+23.99Z,Fabrication d'autres produits minéraux non métalliques n.c.a.,sousclasse
+24.10Z,Sidérurgie,sousclasse
+24.20Z,"Fabrication de tubes, tuyaux, profilés creux et accessoires correspondants en acier",sousclasse
+24.31Z,Étirage à froid de barres,sousclasse
+24.32Z,Laminage à froid de feuillards,sousclasse
+24.33Z,Profilage à froid par formage ou pliage,sousclasse
+24.34Z,Tréfilage à froid,sousclasse
+24.41Z,Production de métaux précieux,sousclasse
+24.42Z,Métallurgie de l'aluminium,sousclasse
+24.43Z,"Métallurgie du plomb, du zinc ou de l'étain",sousclasse
+24.44Z,Métallurgie du cuivre,sousclasse
+24.45Z,Métallurgie des autres métaux non ferreux,sousclasse
+24.46Z,Élaboration et transformation de matières nucléaires,sousclasse
+24.51Z,Fonderie de fonte,sousclasse
+24.52Z,Fonderie d'acier,sousclasse
+24.53Z,Fonderie de métaux légers,sousclasse
+24.54Z,Fonderie d'autres métaux non ferreux,sousclasse
+25.11Z,Fabrication de structures métalliques et de parties de structures,sousclasse
+25.12Z,Fabrication de portes et fenêtres en métal,sousclasse
+25.21Z,Fabrication de radiateurs et de chaudières pour le chauffage central,sousclasse
+25.29Z,"Fabrication d'autres réservoirs, citernes et conteneurs métalliques",sousclasse
+25.30Z,"Fabrication de générateurs de vapeur, à l'exception des chaudières pour le chauffage central",sousclasse
+25.40Z,Fabrication d'armes et de munitions,sousclasse
+25.50A,"Forge, estampage, matriçage ; métallurgie des poudres",sousclasse
+25.50B,"Découpage, emboutissage",sousclasse
+25.61Z,Traitement et revêtement des métaux,sousclasse
+25.62A,Décolletage,sousclasse
+25.62B,Mécanique industrielle,sousclasse
+25.71Z,Fabrication de coutellerie,sousclasse
+25.72Z,Fabrication de serrures et de ferrures,sousclasse
+25.73A,Fabrication de moules et modèles,sousclasse
+25.73B,Fabrication d'autres outillages,sousclasse
+25.91Z,Fabrication de fûts et emballages métalliques similaires,sousclasse
+25.92Z,Fabrication d'emballages métalliques légers,sousclasse
+25.93Z,"Fabrication d'articles en fils métalliques, de chaînes et de ressorts",sousclasse
+25.94Z,Fabrication de vis et de boulons,sousclasse
+25.99A,Fabrication d'articles métalliques ménagers,sousclasse
+25.99B,Fabrication d'autres articles métalliques,sousclasse
+26.11Z,Fabrication de composants électroniques,sousclasse
+26.12Z,Fabrication de cartes électroniques assemblées,sousclasse
+26.20Z,Fabrication d'ordinateurs et d'équipements périphériques,sousclasse
+26.30Z,Fabrication d'équipements de communication,sousclasse
+26.40Z,Fabrication de produits électroniques grand public,sousclasse
+26.51A,Fabrication d'équipements d'aide à la navigation,sousclasse
+26.51B,Fabrication d'instrumentation scientifique et technique,sousclasse
+26.52Z,Horlogerie,sousclasse
+26.60Z,"Fabrication d'équipements d'irradiation médicale, d'équipements électromédicaux et électrothérapeutiques",sousclasse
+26.70Z,Fabrication de matériels optique et photographique,sousclasse
+26.80Z,Fabrication de supports magnétiques et optiques,sousclasse
+27.11Z,"Fabrication de moteurs, génératrices et transformateurs électriques",sousclasse
+27.12Z,Fabrication de matériel de distribution et de commande électrique,sousclasse
+27.20Z,Fabrication de piles et d'accumulateurs électriques,sousclasse
+27.31Z,Fabrication de câbles de fibres optiques,sousclasse
+27.32Z,Fabrication d'autres fils et câbles électroniques ou électriques,sousclasse
+27.33Z,Fabrication de matériel d'installation électrique,sousclasse
+27.40Z,Fabrication d'appareils d'éclairage électrique,sousclasse
+27.51Z,Fabrication d'appareils électroménagers,sousclasse
+27.52Z,Fabrication d'appareils ménagers non électriques,sousclasse
+27.90Z,Fabrication d'autres matériels électriques,sousclasse
+28.11Z,"Fabrication de moteurs et turbines, à l'exception des moteurs d'avions et de véhicules",sousclasse
+28.12Z,Fabrication d'équipements hydrauliques et pneumatiques,sousclasse
+28.13Z,Fabrication d'autres pompes et compresseurs,sousclasse
+28.14Z,Fabrication d'autres articles de robinetterie,sousclasse
+28.15Z,Fabrication d'engrenages et d'organes mécaniques de transmission,sousclasse
+28.21Z,Fabrication de fours et brûleurs,sousclasse
+28.22Z,Fabrication de matériel de levage et de manutention,sousclasse
+28.23Z,Fabrication de machines et d'équipements de bureau (à l'exception des ordinateurs et équipements périphériques),sousclasse
+28.24Z,Fabrication d'outillage portatif à moteur incorporé,sousclasse
+28.25Z,Fabrication d'équipements aérauliques et frigorifiques industriels,sousclasse
+28.29A,"Fabrication d'équipements d'emballage, de conditionnement et de pesage",sousclasse
+28.29B,Fabrication d'autres machines d'usage général,sousclasse
+28.30Z,Fabrication de machines agricoles et forestières,sousclasse
+28.41Z,Fabrication de machines-outils pour le travail des métaux,sousclasse
+28.49Z,Fabrication d'autres machines-outils,sousclasse
+28.91Z,Fabrication de machines pour la métallurgie,sousclasse
+28.92Z,Fabrication de machines pour l'extraction ou la construction,sousclasse
+28.93Z,Fabrication de machines pour l'industrie agro-alimentaire,sousclasse
+28.94Z,Fabrication de machines pour les industries textiles,sousclasse
+28.95Z,Fabrication de machines pour les industries du papier et du carton,sousclasse
+28.96Z,Fabrication de machines pour le travail du caoutchouc ou des plastiques,sousclasse
+28.99A,Fabrication de machines d'imprimerie,sousclasse
+28.99B,Fabrication d'autres machines spécialisées,sousclasse
+29.10Z,Construction de véhicules automobiles,sousclasse
+29.20Z,Fabrication de carrosseries et remorques,sousclasse
+29.31Z,Fabrication d'équipements électriques et électroniques automobiles,sousclasse
+29.32Z,Fabrication d'autres équipements automobiles,sousclasse
+30.11Z,Construction de navires et de structures flottantes,sousclasse
+30.12Z,Construction de bateaux de plaisance,sousclasse
+30.20Z,Construction de locomotives et d'autre matériel ferroviaire roulant,sousclasse
+30.30Z,Construction aéronautique et spatiale,sousclasse
+30.40Z,Construction de véhicules militaires de combat,sousclasse
+30.91Z,Fabrication de motocycles,sousclasse
+30.92Z,Fabrication de bicyclettes et de véhicules pour invalides,sousclasse
+30.99Z,Fabrication d'autres équipements de transport n.c.a.,sousclasse
+31.01Z,Fabrication de meubles de bureau et de magasin,sousclasse
+31.02Z,Fabrication de meubles de cuisine,sousclasse
+31.03Z,Fabrication de matelas,sousclasse
+31.09A,Fabrication de sièges d'ameublement d'intérieur,sousclasse
+31.09B,Fabrication d'autres meubles et industries connexes de l'ameublement,sousclasse
+32.11Z,Frappe de monnaie,sousclasse
+32.12Z,Fabrication d'articles de joaillerie et bijouterie,sousclasse
+32.13Z,Fabrication d'articles de bijouterie fantaisie et articles similaires,sousclasse
+32.20Z,Fabrication d'instruments de musique,sousclasse
+32.30Z,Fabrication d'articles de sport,sousclasse
+32.40Z,Fabrication de jeux et jouets,sousclasse
+32.50A,Fabrication de matériel médico-chirurgical et dentaire,sousclasse
+32.50B,Fabrication de lunettes,sousclasse
+32.91Z,Fabrication d'articles de brosserie,sousclasse
+32.99Z,Autres activités manufacturières n.c.a.,sousclasse
+33.11Z,Réparation d'ouvrages en métaux,sousclasse
+33.12Z,Réparation de machines et équipements mécaniques,sousclasse
+33.13Z,Réparation de matériels électroniques et optiques,sousclasse
+33.14Z,Réparation d'équipements électriques,sousclasse
+33.15Z,Réparation et maintenance navale,sousclasse
+33.16Z,Réparation et maintenance d'aéronefs et d'engins spatiaux,sousclasse
+33.17Z,Réparation et maintenance d'autres équipements de transport,sousclasse
+33.19Z,Réparation d'autres équipements,sousclasse
+33.20A,"Installation de structures métalliques, chaudronnées et de tuyauterie",sousclasse
+33.20B,Installation de machines et équipements mécaniques,sousclasse
+33.20C,Conception d'ensemble et assemblage sur site industriel d'équipements de contrôle des processus industriels,sousclasse
+33.20D,"Installation d'équipements électriques, de matériels électroniques et optiques ou d'autres matériels",sousclasse
+35.11Z,Production d'électricité,sousclasse
+35.12Z,Transport d'électricité,sousclasse
+35.13Z,Distribution d'électricité,sousclasse
+35.14Z,Commerce d'électricité,sousclasse
+35.21Z,Production de combustibles gazeux,sousclasse
+35.22Z,Distribution de combustibles gazeux par conduites,sousclasse
+35.23Z,Commerce de combustibles gazeux par conduites,sousclasse
+35.30Z,Production et distribution de vapeur et d'air conditionné,sousclasse
+36.00Z,"Captage, traitement et distribution d'eau",sousclasse
+37.00Z,Collecte et traitement des eaux usées,sousclasse
+38.11Z,Collecte des déchets non dangereux,sousclasse
+38.12Z,Collecte des déchets dangereux,sousclasse
+38.21Z,Traitement et élimination des déchets non dangereux,sousclasse
+38.22Z,Traitement et élimination des déchets dangereux,sousclasse
+38.31Z,Démantèlement d'épaves,sousclasse
+38.32Z,Récupération de déchets triés,sousclasse
+39.00Z,Dépollution et autres services de gestion des déchets,sousclasse
+41.10A,Promotion immobilière de logements,sousclasse
+41.10B,Promotion immobilière de bureaux,sousclasse
+41.10C,Promotion immobilière d'autres bâtiments,sousclasse
+41.10D,Supports juridiques de programmes,sousclasse
+41.20A,Construction de maisons individuelles,sousclasse
+41.20B,Construction d'autres bâtiments,sousclasse
+42.11Z,Construction de routes et autoroutes,sousclasse
+42.12Z,Construction de voies ferrées de surface et souterraines,sousclasse
+42.13A,Construction d'ouvrages d'art,sousclasse
+42.13B,Construction et entretien de tunnels,sousclasse
+42.21Z,Construction de réseaux pour fluides,sousclasse
+42.22Z,Construction de réseaux électriques et de télécommunications,sousclasse
+42.91Z,Construction d'ouvrages maritimes et fluviaux,sousclasse
+42.99Z,Construction d'autres ouvrages de génie civil n.c.a.,sousclasse
+43.11Z,Travaux de démolition,sousclasse
+43.12A,Travaux de terrassement courants et travaux préparatoires,sousclasse
+43.12B,Travaux de terrassement spécialisés ou de grande masse,sousclasse
+43.13Z,Forages et sondages,sousclasse
+43.21A,Travaux d'installation électrique dans tous locaux,sousclasse
+43.21B,Travaux d'installation électrique sur la voie publique,sousclasse
+43.22A,Travaux d'installation d'eau et de gaz en tous locaux,sousclasse
+43.22B,Travaux d'installation d'équipements thermiques et de climatisation,sousclasse
+43.29A,Travaux d'isolation,sousclasse
+43.29B,Autres travaux d'installation n.c.a.,sousclasse
+43.31Z,Travaux de plâtrerie,sousclasse
+43.32A,Travaux de menuiserie bois et PVC,sousclasse
+43.32B,Travaux de menuiserie métallique et serrurerie,sousclasse
+43.32C,Agencement de lieux de vente,sousclasse
+43.33Z,Travaux de revêtement des sols et des murs,sousclasse
+43.34Z,Travaux de peinture et vitrerie,sousclasse
+43.39Z,Autres travaux de finition,sousclasse
+43.91A,Travaux de charpente,sousclasse
+43.91B,Travaux de couverture par éléments,sousclasse
+43.99A,Travaux d'étanchéification,sousclasse
+43.99B,Travaux de montage de structures métalliques,sousclasse
+43.99C,Travaux de maçonnerie générale et gros œuvre de bâtiment,sousclasse
+43.99D,Autres travaux spécialisés de construction,sousclasse
+43.99E,Location avec opérateur de matériel de construction,sousclasse
+45.11Z,Commerce de voitures et de véhicules automobiles légers,sousclasse
+45.19Z,Commerce d'autres véhicules automobiles,sousclasse
+45.20A,Entretien et réparation de véhicules automobiles légers,sousclasse
+45.20B,Entretien et réparation d'autres véhicules automobiles,sousclasse
+45.31Z,Commerce de gros d'équipements automobiles,sousclasse
+45.32Z,Commerce de détail d'équipements automobiles,sousclasse
+45.40Z,Commerce et réparation de motocycles,sousclasse
+46.11Z,"Intermédiaires du commerce en matières premières agricoles, animaux vivants, matières premières textiles et produits semi-finis",sousclasse
+46.12A,Centrales d'achat de carburant,sousclasse
+46.12B,"Autres intermédiaires du commerce en combustibles, métaux, minéraux et produits chimiques",sousclasse
+46.13Z,Intermédiaires du commerce en bois et matériaux de construction,sousclasse
+46.14Z,"Intermédiaires du commerce en machines, équipements industriels, navires et avions",sousclasse
+46.15Z,"Intermédiaires du commerce en meubles, articles de ménage et quincaillerie",sousclasse
+46.16Z,"Intermédiaires du commerce en textiles, habillement, fourrures, chaussures et articles en cuir",sousclasse
+46.17A,Centrales d'achat alimentaires,sousclasse
+46.17B,"Autres intermédiaires du commerce en denrées, boissons et tabac",sousclasse
+46.18Z,Intermédiaires spécialisés dans le commerce d'autres produits spécifiques,sousclasse
+46.19A,Centrales d'achat non alimentaires,sousclasse
+46.19B,Autres intermédiaires du commerce en produits divers,sousclasse
+46.21Z,"Commerce de gros (commerce interentreprises) de céréales, de tabac non manufacturé, de semences et d'aliments pour le bétail",sousclasse
+46.22Z,Commerce de gros (commerce interentreprises) de fleurs et plantes,sousclasse
+46.23Z,Commerce de gros (commerce interentreprises) d'animaux vivants,sousclasse
+46.24Z,Commerce de gros (commerce interentreprises) de cuirs et peaux,sousclasse
+46.31Z,Commerce de gros (commerce interentreprises) de fruits et légumes,sousclasse
+46.32A,Commerce de gros (commerce interentreprises) de viandes de boucherie,sousclasse
+46.32B,Commerce de gros (commerce interentreprises) de produits à base de viande,sousclasse
+46.32C,Commerce de gros (commerce interentreprises) de volailles et gibier,sousclasse
+46.33Z,"Commerce de gros (commerce interentreprises) de produits laitiers, œufs, huiles et matières grasses comestibles",sousclasse
+46.34Z,Commerce de gros (commerce interentreprises) de boissons,sousclasse
+46.35Z,Commerce de gros (commerce interentreprises) de produits à base de tabac,sousclasse
+46.36Z,"Commerce de gros (commerce interentreprises) de sucre, chocolat et confiserie",sousclasse
+46.37Z,"Commerce de gros (commerce interentreprises) de café, thé, cacao et épices",sousclasse
+46.38A,"Commerce de gros (commerce interentreprises) de poissons, crustacés et mollusques",sousclasse
+46.38B,Commerce de gros (commerce interentreprises) alimentaire spécialisé divers,sousclasse
+46.39A,Commerce de gros (commerce interentreprises) de produits surgelés,sousclasse
+46.39B,Commerce de gros (commerce interentreprises) alimentaire non spécialisé,sousclasse
+46.41Z,Commerce de gros (commerce interentreprises) de textiles,sousclasse
+46.42Z,Commerce de gros (commerce interentreprises) d'habillement et de chaussures,sousclasse
+46.43Z,Commerce de gros (commerce interentreprises) d'appareils électroménagers,sousclasse
+46.44Z,"Commerce de gros (commerce interentreprises) de vaisselle, verrerie et produits d'entretien",sousclasse
+46.45Z,Commerce de gros (commerce interentreprises) de parfumerie et de produits de beauté,sousclasse
+46.46Z,Commerce de gros (commerce interentreprises) de produits pharmaceutiques,sousclasse
+46.47Z,"Commerce de gros (commerce interentreprises) de meubles, de tapis et d'appareils d'éclairage",sousclasse
+46.48Z,Commerce de gros (commerce interentreprises) d'articles d'horlogerie et de bijouterie,sousclasse
+46.49Z,Commerce de gros (commerce interentreprises) d'autres biens domestiques,sousclasse
+46.51Z,"Commerce de gros (commerce interentreprises) d'ordinateurs, d'équipements informatiques périphériques et de logiciels",sousclasse
+46.52Z,Commerce de gros (commerce interentreprises) de composants et d'équipements électroniques et de télécommunication,sousclasse
+46.61Z,Commerce de gros (commerce interentreprises) de matériel agricole,sousclasse
+46.62Z,Commerce de gros (commerce interentreprises) de machines-outils,sousclasse
+46.63Z,"Commerce de gros (commerce interentreprises) de machines pour l'extraction, la construction et le génie civil",sousclasse
+46.64Z,Commerce de gros (commerce interentreprises) de machines pour l'industrie textile et l'habillement,sousclasse
+46.65Z,Commerce de gros (commerce interentreprises) de mobilier de bureau,sousclasse
+46.66Z,Commerce de gros (commerce interentreprises) d'autres machines et équipements de bureau,sousclasse
+46.69A,Commerce de gros (commerce interentreprises) de matériel électrique,sousclasse
+46.69B,Commerce de gros (commerce interentreprises) de fournitures et équipements industriels divers,sousclasse
+46.69C,Commerce de gros (commerce interentreprises) de fournitures et équipements divers pour le commerce et les services,sousclasse
+46.71Z,Commerce de gros (commerce interentreprises) de combustibles et de produits annexes,sousclasse
+46.72Z,Commerce de gros (commerce interentreprises) de minerais et métaux,sousclasse
+46.73A,Commerce de gros (commerce interentreprises) de bois et de matériaux de construction,sousclasse
+46.73B,Commerce de gros (commerce interentreprises) d'appareils sanitaires et de produits de décoration,sousclasse
+46.74A,Commerce de gros (commerce interentreprises) de quincaillerie,sousclasse
+46.74B,Commerce de gros (commerce interentreprises) de fournitures pour la plomberie et le chauffage,sousclasse
+46.75Z,Commerce de gros (commerce interentreprises) de produits chimiques,sousclasse
+46.76Z,Commerce de gros (commerce interentreprises) d'autres produits intermédiaires,sousclasse
+46.77Z,Commerce de gros (commerce interentreprises) de déchets et débris,sousclasse
+46.90Z,Commerce de gros (commerce interentreprises) non spécialisé,sousclasse
+47.11A,Commerce de détail de produits surgelés,sousclasse
+47.11B,Commerce d'alimentation générale,sousclasse
+47.11C,Supérettes,sousclasse
+47.11D,Supermarchés,sousclasse
+47.11E,Magasins multi-commerces,sousclasse
+47.11F,Hypermarchés,sousclasse
+47.19A,Grands magasins,sousclasse
+47.19B,Autres commerces de détail en magasin non spécialisé,sousclasse
+47.21Z,Commerce de détail de fruits et légumes en magasin spécialisé,sousclasse
+47.22Z,Commerce de détail de viandes et de produits à base de viande en magasin spécialisé,sousclasse
+47.23Z,"Commerce de détail de poissons, crustacés et mollusques en magasin spécialisé",sousclasse
+47.24Z,"Commerce de détail de pain, pâtisserie et confiserie en magasin spécialisé",sousclasse
+47.25Z,Commerce de détail de boissons en magasin spécialisé,sousclasse
+47.26Z,Commerce de détail de produits à base de tabac en magasin spécialisé,sousclasse
+47.29Z,Autres commerces de détail alimentaires en magasin spécialisé,sousclasse
+47.30Z,Commerce de détail de carburants en magasin spécialisé,sousclasse
+47.41Z,"Commerce de détail d'ordinateurs, d'unités périphériques et de logiciels en magasin spécialisé",sousclasse
+47.42Z,Commerce de détail de matériels de télécommunication en magasin spécialisé,sousclasse
+47.43Z,Commerce de détail de matériels audio et vidéo en magasin spécialisé,sousclasse
+47.51Z,Commerce de détail de textiles en magasin spécialisé,sousclasse
+47.52A,"Commerce de détail de quincaillerie, peintures et verres en petites surfaces (moins de 400 m²)",sousclasse
+47.52B,"Commerce de détail de quincaillerie, peintures et verres en grandes surfaces (400 m² et plus)",sousclasse
+47.53Z,"Commerce de détail de tapis, moquettes et revêtements de murs et de sols en magasin spécialisé",sousclasse
+47.54Z,Commerce de détail d'appareils électroménagers en magasin spécialisé,sousclasse
+47.59A,Commerce de détail de meubles,sousclasse
+47.59B,Commerce de détail d'autres équipements du foyer,sousclasse
+47.61Z,Commerce de détail de livres en magasin spécialisé,sousclasse
+47.62Z,Commerce de détail de journaux et papeterie en magasin spécialisé,sousclasse
+47.63Z,Commerce de détail d'enregistrements musicaux et vidéo en magasin spécialisé,sousclasse
+47.64Z,Commerce de détail d'articles de sport en magasin spécialisé,sousclasse
+47.65Z,Commerce de détail de jeux et jouets en magasin spécialisé,sousclasse
+47.71Z,Commerce de détail d'habillement en magasin spécialisé,sousclasse
+47.72A,Commerce de détail de la chaussure,sousclasse
+47.72B,Commerce de détail de maroquinerie et d'articles de voyage,sousclasse
+47.73Z,Commerce de détail de produits pharmaceutiques en magasin spécialisé,sousclasse
+47.74Z,Commerce de détail d'articles médicaux et orthopédiques en magasin spécialisé,sousclasse
+47.75Z,Commerce de détail de parfumerie et de produits de beauté en magasin spécialisé,sousclasse
+47.76Z,"Commerce de détail de fleurs, plantes, graines, engrais, animaux de compagnie et aliments pour ces animaux en magasin spécialisé",sousclasse
+47.77Z,Commerce de détail d'articles d'horlogerie et de bijouterie en magasin spécialisé,sousclasse
+47.78A,Commerces de détail d'optique,sousclasse
+47.78B,Commerces de détail de charbons et combustibles,sousclasse
+47.78C,Autres commerces de détail spécialisés divers,sousclasse
+47.79Z,Commerce de détail de biens d'occasion en magasin,sousclasse
+47.81Z,Commerce de détail alimentaire sur éventaires et marchés,sousclasse
+47.82Z,"Commerce de détail de textiles, d'habillement et de chaussures sur éventaires et marchés",sousclasse
+47.89Z,Autres commerces de détail sur éventaires et marchés,sousclasse
+47.91A,Vente à distance sur catalogue général,sousclasse
+47.91B,Vente à distance sur catalogue spécialisé,sousclasse
+47.99A,Vente à domicile,sousclasse
+47.99B,"Vente par automates et autres commerces de détail hors magasin, éventaires ou marchés n.c.a.",sousclasse
+49.10Z,Transport ferroviaire interurbain de voyageurs,sousclasse
+49.20Z,Transports ferroviaires de fret,sousclasse
+49.31Z,Transports urbains et suburbains de voyageurs,sousclasse
+49.32Z,Transports de voyageurs par taxis,sousclasse
+49.39A,Transports routiers réguliers de voyageurs,sousclasse
+49.39B,Autres transports routiers de voyageurs,sousclasse
+49.39C,Téléphériques et remontées mécaniques,sousclasse
+49.41A,Transports routiers de fret interurbains,sousclasse
+49.41B,Transports routiers de fret de proximité,sousclasse
+49.41C,Location de camions avec chauffeur,sousclasse
+49.42Z,Services de déménagement,sousclasse
+49.50Z,Transports par conduites,sousclasse
+50.10Z,Transports maritimes et côtiers de passagers,sousclasse
+50.20Z,Transports maritimes et côtiers de fret,sousclasse
+50.30Z,Transports fluviaux de passagers,sousclasse
+50.40Z,Transports fluviaux de fret,sousclasse
+51.10Z,Transports aériens de passagers,sousclasse
+51.21Z,Transports aériens de fret,sousclasse
+51.22Z,Transports spatiaux,sousclasse
+52.10A,Entreposage et stockage frigorifique,sousclasse
+52.10B,Entreposage et stockage non frigorifique,sousclasse
+52.21Z,Services auxiliaires des transports terrestres,sousclasse
+52.22Z,Services auxiliaires des transports par eau,sousclasse
+52.23Z,Services auxiliaires des transports aériens,sousclasse
+52.24A,Manutention portuaire,sousclasse
+52.24B,Manutention non portuaire,sousclasse
+52.29A,"Messagerie, fret express",sousclasse
+52.29B,Affrètement et organisation des transports,sousclasse
+53.10Z,Activités de poste dans le cadre d'une obligation de service universel,sousclasse
+53.20Z,Autres activités de poste et de courrier,sousclasse
+55.10Z,Hôtels et hébergement similaire,sousclasse
+55.20Z,Hébergement touristique et autre hébergement de courte durée,sousclasse
+55.30Z,Terrains de camping et parcs pour caravanes ou véhicules de loisirs,sousclasse
+55.90Z,Autres hébergements,sousclasse
+56.10A,Restauration traditionnelle,sousclasse
+56.10B,Cafétérias et autres libres-services,sousclasse
+56.10C,Restauration de type rapide,sousclasse
+56.21Z,Services des traiteurs,sousclasse
+56.29A,Restauration collective sous contrat,sousclasse
+56.29B,Autres services de restauration n.c.a.,sousclasse
+56.30Z,Débits de boissons,sousclasse
+58.11Z,Édition de livres,sousclasse
+58.12Z,Édition de répertoires et de fichiers d'adresses,sousclasse
+58.13Z,Édition de journaux,sousclasse
+58.14Z,Édition de revues et périodiques,sousclasse
+58.19Z,Autres activités d'édition,sousclasse
+58.21Z,Édition de jeux électroniques,sousclasse
+58.29A,Édition de logiciels système et de réseau,sousclasse
+58.29B,Édition de logiciels outils de développement et de langages,sousclasse
+58.29C,Édition de logiciels applicatifs,sousclasse
+59.11A,Production de films et de programmes pour la télévision,sousclasse
+59.11B,Production de films institutionnels et publicitaires,sousclasse
+59.11C,Production de films pour le cinéma,sousclasse
+59.12Z,"Post-production de films cinématographiques, de vidéo et de programmes de télévision",sousclasse
+59.13A,Distribution de films cinématographiques,sousclasse
+59.13B,Édition et distribution vidéo,sousclasse
+59.14Z,Projection de films cinématographiques,sousclasse
+59.20Z,Enregistrement sonore et édition musicale,sousclasse
+60.10Z,Édition et diffusion de programmes radio,sousclasse
+60.20A,Édition de chaînes généralistes,sousclasse
+60.20B,Édition de chaînes thématiques,sousclasse
+61.10Z,Télécommunications filaires,sousclasse
+61.20Z,Télécommunications sans fil,sousclasse
+61.30Z,Télécommunications par satellite,sousclasse
+61.90Z,Autres activités de télécommunication,sousclasse
+62.01Z,Programmation informatique,sousclasse
+62.02A,Conseil en systèmes et logiciels informatiques,sousclasse
+62.02B,Tierce maintenance de systèmes et d'applications informatiques,sousclasse
+62.03Z,Gestion d'installations informatiques,sousclasse
+62.09Z,Autres activités informatiques,sousclasse
+63.11Z,"Traitement de données, hébergement et activités connexes",sousclasse
+63.12Z,Portails Internet,sousclasse
+63.91Z,Activités des agences de presse,sousclasse
+63.99Z,Autres services d'information n.c.a.,sousclasse
+64.11Z,Activités de banque centrale,sousclasse
+64.19Z,Autres intermédiations monétaires,sousclasse
+64.20Z,Activités des sociétés holding,sousclasse
+64.30Z,Fonds de placement et entités financières similaires,sousclasse
+64.91Z,Crédit-bail,sousclasse
+64.92Z,Autre distribution de crédit,sousclasse
+64.99Z,"Autres activités des services financiers, hors assurance et caisses de retraite, n.c.a.",sousclasse
+65.11Z,Assurance vie,sousclasse
+65.12Z,Autres assurances,sousclasse
+65.20Z,Réassurance,sousclasse
+65.30Z,Caisses de retraite,sousclasse
+66.11Z,Administration de marchés financiers,sousclasse
+66.12Z,Courtage de valeurs mobilières et de marchandises,sousclasse
+66.19A,Supports juridiques de gestion de patrimoine mobilier,sousclasse
+66.19B,"Autres activités auxiliaires de services financiers, hors assurance et caisses de retraite, n.c.a.",sousclasse
+66.21Z,Évaluation des risques et dommages,sousclasse
+66.22Z,Activités des agents et courtiers d'assurances,sousclasse
+66.29Z,Autres activités auxiliaires d'assurance et de caisses de retraite,sousclasse
+66.30Z,Gestion de fonds,sousclasse
+68.10Z,Activités des marchands de biens immobiliers,sousclasse
+68.20A,Location de logements,sousclasse
+68.20B,Location de terrains et d'autres biens immobiliers,sousclasse
+68.31Z,Agences immobilières,sousclasse
+68.32A,Administration d'immeubles et autres biens immobiliers,sousclasse
+68.32B,Supports juridiques de gestion de patrimoine immobilier,sousclasse
+69.10Z,Activités juridiques,sousclasse
+69.20Z,Activités comptables,sousclasse
+70.10Z,Activités des sièges sociaux,sousclasse
+70.21Z,Conseil en relations publiques et communication,sousclasse
+70.22Z,Conseil pour les affaires et autres conseils de gestion,sousclasse
+71.11Z,Activités d'architecture,sousclasse
+71.12A,Activité des géomètres,sousclasse
+71.12B,"Ingénierie, études techniques",sousclasse
+71.20A,Contrôle technique automobile,sousclasse
+71.20B,"Analyses, essais et inspections techniques",sousclasse
+72.11Z,Recherche-développement en biotechnologie,sousclasse
+72.19Z,Recherche-développement en autres sciences physiques et naturelles,sousclasse
+72.20Z,Recherche-développement en sciences humaines et sociales,sousclasse
+73.11Z,Activités des agences de publicité,sousclasse
+73.12Z,Régie publicitaire de médias,sousclasse
+73.20Z,Études de marché et sondages,sousclasse
+74.10Z,Activités spécialisées de design,sousclasse
+74.20Z,Activités photographiques,sousclasse
+74.30Z,Traduction et interprétation,sousclasse
+74.90A,Activité des économistes de la construction,sousclasse
+74.90B,"Activités spécialisées, scientifiques et techniques diverses",sousclasse
+75.00Z,Activités vétérinaires,sousclasse
+77.11A,Location de courte durée de voitures et de véhicules automobiles légers,sousclasse
+77.11B,Location de longue durée de voitures et de véhicules automobiles légers,sousclasse
+77.12Z,Location et location-bail de camions,sousclasse
+77.21Z,Location et location-bail d'articles de loisirs et de sport,sousclasse
+77.22Z,Location de vidéocassettes et disques vidéo,sousclasse
+77.29Z,Location et location-bail d'autres biens personnels et domestiques,sousclasse
+77.31Z,Location et location-bail de machines et équipements agricoles,sousclasse
+77.32Z,Location et location-bail de machines et équipements pour la construction,sousclasse
+77.33Z,Location et location-bail de machines de bureau et de matériel informatique,sousclasse
+77.34Z,Location et location-bail de matériels de transport par eau,sousclasse
+77.35Z,Location et location-bail de matériels de transport aérien,sousclasse
+77.39Z,"Location et location-bail d'autres machines, équipements et biens matériels n.c.a.",sousclasse
+77.40Z,"Location-bail de propriété intellectuelle et de produits similaires, à l'exception des œuvres soumises à copyright",sousclasse
+78.10Z,Activités des agences de placement de main-d'œuvre,sousclasse
+78.20Z,Activités des agences de travail temporaire,sousclasse
+78.30Z,Autre mise à disposition de ressources humaines,sousclasse
+79.11Z,Activités des agences de voyage,sousclasse
+79.12Z,Activités des voyagistes,sousclasse
+79.90Z,Autres services de réservation et activités connexes,sousclasse
+80.10Z,Activités de sécurité privée,sousclasse
+80.20Z,Activités liées aux systèmes de sécurité,sousclasse
+80.30Z,Activités d'enquête,sousclasse
+81.10Z,Activités combinées de soutien lié aux bâtiments,sousclasse
+81.21Z,Nettoyage courant des bâtiments,sousclasse
+81.22Z,Autres activités de nettoyage des bâtiments et nettoyage industriel,sousclasse
+81.29A,"Désinfection, désinsectisation, dératisation",sousclasse
+81.29B,Autres activités de nettoyage n.c.a.,sousclasse
+81.30Z,Services d'aménagement paysager,sousclasse
+82.11Z,Services administratifs combinés de bureau,sousclasse
+82.19Z,"Photocopie, préparation de documents et autres activités spécialisées de soutien de bureau",sousclasse
+82.20Z,Activités de centres d'appels,sousclasse
+82.30Z,"Organisation de foires, salons professionnels et congrès",sousclasse
+82.91Z,Activités des agences de recouvrement de factures et des sociétés d'information financière sur la clientèle,sousclasse
+82.92Z,Activités de conditionnement,sousclasse
+82.99Z,Autres activités de soutien aux entreprises n.c.a.,sousclasse
+84.11Z,Administration publique générale,sousclasse
+84.12Z,"Administration publique (tutelle) de la santé, de la formation, de la culture et des services sociaux, autre que sécurité sociale",sousclasse
+84.13Z,Administration publique (tutelle) des activités économiques,sousclasse
+84.21Z,Affaires étrangères,sousclasse
+84.22Z,Défense,sousclasse
+84.23Z,Justice,sousclasse
+84.24Z,Activités d'ordre public et de sécurité,sousclasse
+84.25Z,Services du feu et de secours,sousclasse
+84.30A,Activités générales de sécurité sociale,sousclasse
+84.30B,Gestion des retraites complémentaires,sousclasse
+84.30C,Distribution sociale de revenus,sousclasse
+85.10Z,Enseignement pré-primaire,sousclasse
+85.20Z,Enseignement primaire,sousclasse
+85.31Z,Enseignement secondaire général,sousclasse
+85.32Z,Enseignement secondaire technique ou professionnel,sousclasse
+85.41Z,Enseignement post-secondaire non supérieur,sousclasse
+85.42Z,Enseignement supérieur,sousclasse
+85.51Z,Enseignement de disciplines sportives et d'activités de loisirs,sousclasse
+85.52Z,Enseignement culturel,sousclasse
+85.53Z,Enseignement de la conduite,sousclasse
+85.59A,Formation continue d'adultes,sousclasse
+85.59B,Autres enseignements,sousclasse
+85.60Z,Activités de soutien à l'enseignement,sousclasse
+86.10Z,Activités hospitalières,sousclasse
+86.21Z,Activité des médecins généralistes,sousclasse
+86.22A,Activités de radiodiagnostic et de radiothérapie,sousclasse
+86.22B,Activités chirurgicales,sousclasse
+86.22C,Autres activités des médecins spécialistes,sousclasse
+86.23Z,Pratique dentaire,sousclasse
+86.90A,Ambulances,sousclasse
+86.90B,Laboratoires d'analyses médicales,sousclasse
+86.90C,Centres de collecte et banques d'organes,sousclasse
+86.90D,Activités des infirmiers et des sages-femmes,sousclasse
+86.90E,"Activités des professionnels de la rééducation, de l'appareillage et des pédicures-podologues",sousclasse
+86.90F,Activités de santé humaine non classées ailleurs,sousclasse
+87.10A,Hébergement médicalisé pour personnes âgées,sousclasse
+87.10B,Hébergement médicalisé pour enfants handicapés,sousclasse
+87.10C,Hébergement médicalisé pour adultes handicapés et autre hébergement médicalisé,sousclasse
+87.20A,Hébergement social pour handicapés mentaux et malades mentaux,sousclasse
+87.20B,Hébergement social pour toxicomanes,sousclasse
+87.30A,Hébergement social pour personnes âgées,sousclasse
+87.30B,Hébergement social pour handicapés physiques,sousclasse
+87.90A,Hébergement social pour enfants en difficultés,sousclasse
+87.90B,Hébergement social pour adultes et familles en difficultés et autre hébergement social,sousclasse
+88.10A,Aide à domicile,sousclasse
+88.10B,Accueil ou accompagnement sans hébergement d'adultes handicapés ou de personnes âgées,sousclasse
+88.10C,Aide par le travail,sousclasse
+88.91A,Accueil de jeunes enfants,sousclasse
+88.91B,Accueil ou accompagnement sans hébergement d'enfants handicapés,sousclasse
+88.99A,Autre accueil ou accompagnement sans hébergement d'enfants et d'adolescents,sousclasse
+88.99B,Action sociale sans hébergement n.c.a.,sousclasse
+90.01Z,Arts du spectacle vivant,sousclasse
+90.02Z,Activités de soutien au spectacle vivant,sousclasse
+90.03A,Création artistique relevant des arts plastiques,sousclasse
+90.03B,Autre création artistique,sousclasse
+90.04Z,Gestion de salles de spectacles,sousclasse
+91.01Z,Gestion des bibliothèques et des archives,sousclasse
+91.02Z,Gestion des musées,sousclasse
+91.03Z,Gestion des sites et monuments historiques et des attractions touristiques similaires,sousclasse
+91.04Z,Gestion des jardins botaniques et zoologiques et des réserves naturelles,sousclasse
+92.00Z,Organisation de jeux de hasard et d'argent,sousclasse
+93.11Z,Gestion d'installations sportives,sousclasse
+93.12Z,Activités de clubs de sports,sousclasse
+93.13Z,Activités des centres de culture physique,sousclasse
+93.19Z,Autres activités liées au sport,sousclasse
+93.21Z,Activités des parcs d'attractions et parcs à thèmes,sousclasse
+93.29Z,Autres activités récréatives et de loisirs,sousclasse
+94.11Z,Activités des organisations patronales et consulaires,sousclasse
+94.12Z,Activités des organisations professionnelles,sousclasse
+94.20Z,Activités des syndicats de salariés,sousclasse
+94.91Z,Activités des organisations religieuses,sousclasse
+94.92Z,Activités des organisations politiques,sousclasse
+94.99Z,Autres organisations fonctionnant par adhésion volontaire,sousclasse
+95.11Z,Réparation d'ordinateurs et d'équipements périphériques,sousclasse
+95.12Z,Réparation d'équipements de communication,sousclasse
+95.21Z,Réparation de produits électroniques grand public,sousclasse
+95.22Z,Réparation d'appareils électroménagers et d'équipements pour la maison et le jardin,sousclasse
+95.23Z,Réparation de chaussures et d'articles en cuir,sousclasse
+95.24Z,Réparation de meubles et d'équipements du foyer,sousclasse
+95.25Z,Réparation d'articles d'horlogerie et de bijouterie,sousclasse
+95.29Z,Réparation d'autres biens personnels et domestiques,sousclasse
+96.01A,Blanchisserie-teinturerie de gros,sousclasse
+96.01B,Blanchisserie-teinturerie de détail,sousclasse
+96.02A,Coiffure,sousclasse
+96.02B,Soins de beauté,sousclasse
+96.03Z,Services funéraires,sousclasse
+96.04Z,Entretien corporel,sousclasse
+96.09Z,Autres services personnels n.c.a.,sousclasse
+97.00Z,Activités des ménages en tant qu'employeurs de personnel domestique,sousclasse
+98.10Z,Activités indifférenciées des ménages en tant que producteurs de biens pour usage propre,sousclasse
+98.20Z,Activités indifférenciées des ménages en tant que producteurs de services pour usage propre,sousclasse
+99.00Z,Activités des organisations et organismes extraterritoriaux,sousclasse

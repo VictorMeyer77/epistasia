@@ -1,0 +1,310 @@
+code,libelle,type
+0,Organisme de placement collectif en valeurs mobilières sans personnalité morale,1
+1,Entrepreneur individuel,1
+2,Groupement de droit privé non doté de la personnalité morale,1
+3,Personne morale de droit étranger,1
+4,Personne morale de droit public soumise au droit commercial,1
+5,Société commerciale,1
+6,Autre personne morale immatriculée au RCS,1
+7,Personne morale et organisme soumis au droit administratif,1
+8,Organisme privé spécialisé,1
+9,Groupement de droit privé,1
+00,Organisme de placement collectif en valeurs mobilières sans personnalité morale,2
+10,Entrepreneur individuel,2
+21,Indivision,2
+22,Société créée de fait,2
+23,Société en participation,2
+24,Fiducie ,2
+27,Paroisse hors zone concordataire,2
+28,Assujetti unique à la TVA,2
+29,Autre groupement de droit privé non doté de la personnalité morale,2
+31,"Personne morale de droit étranger, immatriculée au RCS (registre du commerce et des sociétés)",2
+32,"Personne morale de droit étranger, non immatriculée au RCS",2
+41,Etablissement public ou régie à caractère industriel ou commercial,2
+51,Société coopérative commerciale particulière,2
+52,Société en nom collectif,2
+53,Société en commandite,2
+54,Société à responsabilité limitée (SARL),2
+55,Société anonyme à conseil d'administration,2
+56,Société anonyme à directoire,2
+57,Société par actions simplifiée,2
+58,Société européenne ,2
+61,Caisse d'épargne et de prévoyance,2
+62,Groupement d'intérêt économique,2
+63,Société coopérative agricole,2
+64,Société d'assurance mutuelle,2
+65,Société civile,2
+69,Autre personne morale de droit privé inscrite au registre du commerce et des sociétés,2
+71,Administration de l'état,2
+72,Collectivité territoriale,2
+73,Etablissement public administratif,2
+74,Autre personne morale de droit public administratif,2
+81,Organisme gérant un régime de protection sociale à adhésion obligatoire,2
+82,Organisme mutualiste,2
+83,Comité d'entreprise,2
+84,Organisme professionnel,2
+85,Organisme de retraite à adhésion non obligatoire,2
+91,Syndicat de propriétaires,2
+92,Association loi 1901 ou assimilé,2
+93,Fondation,2
+99,Autre personne morale de droit privé,2
+0000,Organisme de placement collectif en valeurs mobilières sans personnalité morale,3
+1000,Entrepreneur individuel,3
+2110,Indivision entre personnes physiques ,3
+2120,Indivision avec personne morale ,3
+2210,Société créée de fait entre personnes physiques ,3
+2220,Société créée de fait avec personne morale ,3
+2310,Société en participation entre personnes physiques ,3
+2320,Société en participation avec personne morale ,3
+2385,Société en participation de professions libérales ,3
+2400,Fiducie ,3
+2700,Paroisse hors zone concordataire ,3
+2800,Assujetti unique à la TVA,3
+2900,Autre groupement de droit privé non doté de la personnalité morale ,3
+3110,Représentation ou agence commerciale d'état ou organisme public étranger immatriculé au RCS ,3
+3120,Société commerciale étrangère immatriculée au RCS,3
+3205,Organisation internationale ,3
+3210,"État, collectivité ou établissement public étranger",3
+3220,Société étrangère non immatriculée au RCS ,3
+3290,Autre personne morale de droit étranger ,3
+4110,Établissement public national à caractère industriel ou commercial doté d'un comptable public ,3
+4120,Établissement public national à caractère industriel ou commercial non doté d'un comptable public ,3
+4130,Exploitant public ,3
+4140,Établissement public local à caractère industriel ou commercial ,3
+4150,Régie d'une collectivité locale à caractère industriel ou commercial ,3
+4160,Institution Banque de France ,3
+5191,Société de caution mutuelle ,3
+5192,Société coopérative de banque populaire ,3
+5193,Caisse de crédit maritime mutuel ,3
+5194,Caisse (fédérale) de crédit mutuel ,3
+5195,Association coopérative inscrite (droit local Alsace Moselle) ,3
+5196,Caisse d'épargne et de prévoyance à forme coopérative ,3
+5202,Société en nom collectif ,3
+5203,Société en nom collectif coopérative ,3
+5306,Société en commandite simple ,3
+5307,Société en commandite simple coopérative ,3
+5308,Société en commandite par actions ,3
+5309,Société en commandite par actions coopérative ,3
+5310,Société en libre partenariat (SLP),3
+5370,Société de Participations Financières de Profession Libérale Société en commandite par actions (SPFPL SCA),3
+5385,Société d'exercice libéral en commandite par actions ,3
+5410,SARL nationale ,3
+5415,SARL d'économie mixte ,3
+5422,SARL immobilière pour le commerce et l'industrie (SICOMI) ,3
+5426,SARL immobilière de gestion,3
+5430,SARL d'aménagement foncier et d'équipement rural (SAFER),3
+5431,SARL mixte d'intérêt agricole (SMIA) ,3
+5432,SARL d'intérêt collectif agricole (SICA) ,3
+5442,SARL d'attribution ,3
+5443,SARL coopérative de construction ,3
+5451,SARL coopérative de consommation ,3
+5453,SARL coopérative artisanale ,3
+5454,SARL coopérative d'intérêt maritime ,3
+5455,SARL coopérative de transport,3
+5458,SARL coopérative de production (SCOP),3
+5459,SARL union de sociétés coopératives ,3
+5460,Autre SARL coopérative ,3
+5470,Société de Participations Financières de Profession Libérale Société à responsabilité limitée (SPFPL SARL),3
+5485,Société d'exercice libéral à responsabilité limitée ,3
+5499,Société à responsabilité limitée (sans autre indication),3
+5505,SA à participation ouvrière à conseil d'administration ,3
+5510,SA nationale à conseil d'administration ,3
+5515,SA d'économie mixte à conseil d'administration ,3
+5520,Fonds à forme sociétale à conseil d'administration,3
+5522,SA immobilière pour le commerce et l'industrie (SICOMI) à conseil d'administration,3
+5525,SA immobilière d'investissement à conseil d'administration,3
+5530,SA d'aménagement foncier et d'équipement rural (SAFER) à conseil d'administration,3
+5531,Société anonyme mixte d'intérêt agricole (SMIA) à conseil d'administration ,3
+5532,SA d'intérêt collectif agricole (SICA) à conseil d'administration,3
+5542,SA d'attribution à conseil d'administration,3
+5543,SA coopérative de construction à conseil d'administration,3
+5546,SA de HLM à conseil d'administration ,3
+5547,SA coopérative de production de HLM à conseil d'administration ,3
+5548,SA de crédit immobilier à conseil d'administration ,3
+5551,SA coopérative de consommation à conseil d'administration ,3
+5552,SA coopérative de commerçants-détaillants à conseil d'administration,3
+5553,SA coopérative artisanale à conseil d'administration ,3
+5554,SA coopérative (d'intérêt) maritime à conseil d'administration ,3
+5555,SA coopérative de transport à conseil d'administration,3
+5558,SA coopérative de production  (SCOP) à conseil d'administration,3
+5559,SA union de sociétés coopératives à conseil d'administration ,3
+5560,Autre SA coopérative à conseil d'administration ,3
+5570,Société de Participations Financières de Profession Libérale Société anonyme à conseil d'administration (SPFPL SA à conseil d'administration),3
+5585,Société d'exercice libéral à forme anonyme à conseil d'administration ,3
+5599,SA à conseil d'administration (s.a.i.),3
+5605,SA à participation ouvrière à directoire ,3
+5610,SA nationale à directoire ,3
+5615,SA d'économie mixte à directoire ,3
+5620,Fonds à forme sociétale à directoire,3
+5622,SA immobilière pour le commerce et l'industrie (SICOMI) à directoire,3
+5625,SA immobilière d'investissement à directoire ,3
+5630,Safer anonyme à directoire ,3
+5631,SA mixte d'intérêt agricole (SMIA),3
+5632,SA d'intérêt collectif agricole (SICA),3
+5642,SA d'attribution à directoire,3
+5643,SA coopérative de construction à directoire,3
+5646,SA de HLM à directoire,3
+5647,Société coopérative de production de HLM anonyme à directoire ,3
+5648,SA de crédit immobilier à directoire ,3
+5651,SA coopérative de consommation à directoire ,3
+5652,SA coopérative de commerçants-détaillants à directoire,3
+5653,SA coopérative artisanale à directoire ,3
+5654,SA coopérative d'intérêt maritime à directoire ,3
+5655,SA coopérative de transport à directoire ,3
+5658,SA coopérative de production (SCOP) à directoire,3
+5659,SA union de sociétés coopératives à directoire ,3
+5660,Autre SA coopérative à directoire,3
+5670,Société de Participations Financières de Profession Libérale Société anonyme à Directoire (SPFPL SA à directoire),3
+5685,Société d'exercice libéral à forme anonyme à directoire ,3
+5699,SA à directoire (s.a.i.),3
+5710,"SAS, société par actions simplifiée",3
+5770,Société de Participations Financières de Profession Libérale Société par actions simplifiée (SPFPL SAS),3
+5785,Société d'exercice libéral par action simplifiée ,3
+5800,Société européenne ,3
+6100,Caisse d'Épargne et de Prévoyance ,3
+6210,Groupement européen d'intérêt économique (GEIE) ,3
+6220,Groupement d'intérêt économique (GIE) ,3
+6316,Coopérative d'utilisation de matériel agricole en commun (CUMA) ,3
+6317,Société coopérative agricole ,3
+6318,Union de sociétés coopératives agricoles ,3
+6411,Société d'assurance à forme mutuelle,3
+6511,Sociétés Interprofessionnelles de Soins Ambulatoires ,3
+6521,Société civile de placement collectif immobilier (SCPI) ,3
+6532,Société civile d'intérêt collectif agricole (SICA) ,3
+6533,Groupement agricole d'exploitation en commun (GAEC) ,3
+6534,Groupement foncier agricole ,3
+6535,Groupement agricole foncier ,3
+6536,Groupement forestier ,3
+6537,Groupement pastoral ,3
+6538,Groupement foncier et rural,3
+6539,Société civile foncière ,3
+6540,Société civile immobilière ,3
+6541,Société civile immobilière de construction-vente,3
+6542,Société civile d'attribution ,3
+6543,Société civile coopérative de construction ,3
+6544,Société civile immobilière d' accession progressive à la propriété,3
+6551,Société civile coopérative de consommation ,3
+6554,Société civile coopérative d'intérêt maritime ,3
+6558,Société civile coopérative entre médecins ,3
+6560,Autre société civile coopérative ,3
+6561,SCP d'avocats ,3
+6562,SCP d'avocats aux conseils ,3
+6563,SCP d'avoués d'appel ,3
+6564,SCP d'huissiers ,3
+6565,SCP de notaires ,3
+6566,SCP de commissaires-priseurs ,3
+6567,SCP de greffiers de tribunal de commerce ,3
+6568,SCP de conseils juridiques ,3
+6569,SCP de commissaires aux comptes ,3
+6571,SCP de médecins ,3
+6572,SCP de dentistes ,3
+6573,SCP d'infirmiers ,3
+6574,SCP de masseurs-kinésithérapeutes,3
+6575,SCP de directeurs de laboratoire d'analyse médicale ,3
+6576,SCP de vétérinaires ,3
+6577,SCP de géomètres experts,3
+6578,SCP d'architectes ,3
+6585,Autre société civile professionnelle,3
+6589,Société civile de moyens ,3
+6595,Caisse locale de crédit mutuel ,3
+6596,Caisse de crédit agricole mutuel ,3
+6597,Société civile d'exploitation agricole ,3
+6598,Exploitation agricole à responsabilité limitée ,3
+6599,Autre société civile ,3
+6901,Autre personne de droit privé inscrite au registre du commerce et des sociétés,3
+7111,Autorité constitutionnelle ,3
+7112,Autorité administrative ou publique indépendante,3
+7113,Ministère ,3
+7120,Service central d'un ministère ,3
+7150,Service du ministère de la Défense ,3
+7160,Service déconcentré à compétence nationale d'un ministère (hors Défense),3
+7171,Service déconcentré de l'État à compétence (inter) régionale ,3
+7172,Service déconcentré de l'État à compétence (inter) départementale ,3
+7179,(Autre) Service déconcentré de l'État à compétence territoriale ,3
+7190,Ecole nationale non dotée de la personnalité morale ,3
+7210,Commune et commune nouvelle ,3
+7220,Département ,3
+7225,Collectivité et territoire d'Outre Mer,3
+7229,(Autre) Collectivité territoriale ,3
+7230,Région ,3
+7312,Commune associée et commune déléguée ,3
+7313,Section de commune ,3
+7314,Ensemble urbain ,3
+7321,Association syndicale autorisée ,3
+7322,Association foncière urbaine ,3
+7323,Association foncière de remembrement ,3
+7331,Établissement public local d'enseignement ,3
+7340,Pôle métropolitain,3
+7341,Secteur de commune ,3
+7342,District urbain ,3
+7343,Communauté urbaine ,3
+7344,Métropole,3
+7345,Syndicat intercommunal à vocation multiple (SIVOM) ,3
+7346,Communauté de communes ,3
+7347,Communauté de villes ,3
+7348,Communauté d'agglomération ,3
+7349,Autre établissement public local de coopération non spécialisé ou entente ,3
+7351,Institution interdépartementale ou entente,3
+7352,Institution interrégionale ou entente ,3
+7353,Syndicat intercommunal à vocation unique (SIVU) ,3
+7354,Syndicat mixte fermé ,3
+7355,Syndicat mixte ouvert,3
+7356,Commission syndicale pour la gestion des biens indivis des communes ,3
+7357,Pôle d'équilibre territorial et rural (PETR),3
+7361,Centre communal d'action sociale ,3
+7362,Caisse des écoles ,3
+7363,Caisse de crédit municipal ,3
+7364,Établissement d'hospitalisation ,3
+7365,Syndicat inter hospitalier ,3
+7366,Établissement public local social et médico-social ,3
+7367,Centre Intercommunal d'action sociale (CIAS),3
+7371,Office public d'habitation à loyer modéré (OPHLM) ,3
+7372,Service départemental d'incendie et de secours (SDIS),3
+7373,Établissement public local culturel ,3
+7378,Régie d'une collectivité locale à caractère administratif ,3
+7379,(Autre) Établissement public administratif local ,3
+7381,Organisme consulaire ,3
+7382,Établissement public national ayant fonction d'administration centrale ,3
+7383,Établissement public national à caractère scientifique culturel et professionnel ,3
+7384,Autre établissement public national d'enseignement ,3
+7385,Autre établissement public national administratif à compétence territoriale limitée ,3
+7389,Établissement public national à caractère administratif ,3
+7410,Groupement d'intérêt public (GIP) ,3
+7430,Établissement public des cultes d'Alsace-Lorraine ,3
+7450,"Etablissement public administratif, cercle et foyer dans les armées ",3
+7470,Groupement de coopération sanitaire à gestion publique ,3
+7490,Autre personne morale de droit administratif ,3
+8110,Régime général de la Sécurité Sociale,3
+8120,Régime spécial de Sécurité Sociale,3
+8130,Institution de retraite complémentaire ,3
+8140,Mutualité sociale agricole ,3
+8150,Régime maladie des non-salariés non agricoles ,3
+8160,Régime vieillesse ne dépendant pas du régime général de la Sécurité Sociale,3
+8170,Régime d'assurance chômage ,3
+8190,Autre régime de prévoyance sociale ,3
+8210,Mutuelle ,3
+8250,Assurance mutuelle agricole ,3
+8290,Autre organisme mutualiste ,3
+8310,Comité social économique d’entreprise,3
+8311,Comité social économique d'établissement ,3
+8410,Syndicat de salariés ,3
+8420,Syndicat patronal ,3
+8450,Ordre professionnel ou assimilé ,3
+8470,Centre technique industriel ou comité professionnel du développement économique ,3
+8490,Autre organisme professionnel ,3
+8510,Institution de prévoyance ,3
+8520,Institution de retraite supplémentaire ,3
+9110,Syndicat de copropriété ,3
+9150,Association syndicale libre ,3
+9210,Association non déclarée ,3
+9220,Association déclarée ,3
+9221,Association déclarée d'insertion par l'économique,3
+9222,Association intermédiaire ,3
+9223,Groupement d'employeurs ,3
+9224,Association d'avocats à responsabilité professionnelle individuelle,3
+9230,"Association déclarée, reconnue d'utilité publique",3
+9240,Congrégation ,3
+9260,"Association de droit local (Bas-Rhin, Haut-Rhin et Moselle)",3
+9300,Fondation ,3
+9900,Autre personne morale de droit privé ,3
+9970,Groupement de coopération sanitaire à gestion privée ,3
