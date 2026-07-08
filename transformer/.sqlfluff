@@ -1,8 +1,10 @@
 [sqlfluff]
 
 dialect = duckdb
+exclude_rules = RF01, ST06
 
 [sqlfluff:rules:capitalisation.identifiers]
 
 extended_capitalisation_policy = lower
 unquoted_identifiers_policy = all
+

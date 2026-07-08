@@ -1,0 +1,14 @@
+{{
+    config(
+        materialized="external",
+        location="../datalake/bronze/commande_publique_marche.parquet",
+        format="parquet"
+    )
+}}
+
+SELECT
+    *,
+    filename AS source_file_path,
+    CURRENT_TIMESTAMP AS dt_ingested,
+    REGEXP_EXTRACT(source_file_path, '(\d{4})', 1) AS release_year
+FROM {{ source("raw", "commande_publique_marche") }}

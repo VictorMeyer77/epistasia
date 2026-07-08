@@ -2,7 +2,78 @@
 version: 2
 
 models:
-  - name: brz_sirene_unite_legal
+  - name: brz_commande_publique_marche
+    description: >
+      Bronze French public procurement contracts dataset. Preserves the raw
+      contract notice fields from the downloader and adds ingestion metadata
+      from the downloaded source file.
+    columns:
+      - name: id
+        description: Unique identifier of the public procurement contract notice.
+      - name: acheteur
+        description: Buyer information, including the buyer identifier.
+      - name: nature
+        description: Nature of the procurement contract.
+      - name: objet
+        description: Object or subject of the procurement contract.
+      - name: codeCPV
+        description: Common Procurement Vocabulary code describing the purchase.
+      - name: techniques
+        description: Procurement techniques used for the contract.
+      - name: modalitesExecution
+        description: Execution modalities attached to the contract.
+      - name: ccag
+        description: Applicable general administrative clauses reference.
+      - name: offresRecues
+        description: Number of offers received, as reported in the source data.
+      - name: tauxAvance
+        description: Advance payment rate for the contract.
+      - name: typeGroupementOperateurs
+        description: Type of economic operator grouping.
+      - name: procedure
+        description: Procurement procedure used for the contract.
+      - name: lieuExecution
+        description: Execution location, including location code and code type.
+      - name: dureeMois
+        description: Contract duration in months.
+      - name: dateNotification
+        description: Contract notification date.
+      - name: datePublicationDonnees
+        description: Data publication date for the contract notice.
+      - name: montant
+        description: Contract amount.
+      - name: typesPrix
+        description: Price type or types attached to the contract.
+      - name: formePrix
+        description: Price form used for the contract.
+      - name: origineUE
+        description: Share or amount of contract origin from the European Union.
+      - name: origineFrance
+        description: Share or amount of contract origin from France.
+      - name: titulaires
+        description: Awardee information, including identifier type and identifier.
+      - name: considerationsSociales
+        description: Social considerations attached to the contract.
+      - name: considerationsEnvironnementales
+        description: Environmental considerations attached to the contract.
+      - name: source
+        description: Source system or publisher of the contract data.
+      - name: marcheInnovant
+        description: Flag indicating whether the contract is considered innovative.
+      - name: attributionAvance
+        description: Flag indicating whether an advance payment was awarded.
+      - name: sousTraitanceDeclaree
+        description: Flag indicating whether subcontracting was declared.
+      - name: idAccordCadre
+        description: Identifier of the related framework agreement, when applicable.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.
+
+  - name: brz_sirene_unite_legale
     description: >
       Bronze Sirene stock legal units dataset from INSEE/data.gouv.fr. Preserves
       the raw unit legal fields describing companies and individual businesses
@@ -84,6 +155,141 @@ models:
       - name: caractereEmployeurUniteLegale
         description: Flag indicating whether the legal unit has employer status.
       - name: activitePrincipaleNAF25UniteLegale
+        description: >
+          Future principal activity code in the NAF 2025 classification,
+          distributed in anticipation of the NAF 2025 transition.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.
+
+  - name: brz_sirene_etablissement
+    description: >
+      Bronze Sirene stock establishments dataset from INSEE/data.gouv.fr.
+      Preserves the raw establishment fields describing business establishments
+      in their current Sirene registry state, and adds ingestion metadata from
+      the downloaded source file.
+    columns:
+      - name: siren
+        description: >
+          SIREN identifier of the legal unit that owns the establishment.
+      - name: nic
+        description: >
+          Internal establishment classification number identifying the
+          establishment within its legal unit.
+      - name: siret
+        description: >
+          SIRET identifier of the establishment, composed of the SIREN and NIC.
+      - name: statutDiffusionEtablissement
+        description: >
+          Dissemination status of the establishment. A partial dissemination
+          status indicates that some address or personal data may be masked.
+      - name: dateCreationEtablissement
+        description: Creation date of the establishment in the Sirene registry.
+      - name: trancheEffectifsEtablissement
+        description: Workforce size band of the establishment.
+      - name: anneeEffectifsEtablissement
+        description: Reference year for the establishment workforce size band.
+      - name: activitePrincipaleRegistreMetiersEtablissement
+        description: >
+          Principal activity recorded in the trades register for the
+          establishment.
+      - name: dateDernierTraitementEtablissement
+        description: >
+          Date and time of the latest Sirene processing for the establishment.
+      - name: etablissementSiege
+        description: Flag indicating whether the establishment is the legal-unit head office.
+      - name: nombrePeriodesEtablissement
+        description: Number of historical periods associated with the establishment.
+      - name: complementAdresseEtablissement
+        description: Additional address information for the establishment.
+      - name: numeroVoieEtablissement
+        description: Street number of the establishment address.
+      - name: indiceRepetitionEtablissement
+        description: Repetition index for the establishment street number.
+      - name: dernierNumeroVoieEtablissement
+        description: Last street number when the establishment address uses a range.
+      - name: indiceRepetitionDernierNumeroVoieEtablissement
+        description: >
+          Repetition index for the last street number when the establishment
+          address uses a range.
+      - name: typeVoieEtablissement
+        description: Street type of the establishment address.
+      - name: libelleVoieEtablissement
+        description: Street name of the establishment address.
+      - name: codePostalEtablissement
+        description: Postal code of the establishment address.
+      - name: libelleCommuneEtablissement
+        description: Commune name of the establishment address.
+      - name: libelleCommuneEtrangerEtablissement
+        description: Foreign commune name of the establishment address.
+      - name: distributionSpecialeEtablissement
+        description: Special delivery information for the establishment address.
+      - name: codeCommuneEtablissement
+        description: Official commune code of the establishment address.
+      - name: codeCedexEtablissement
+        description: CEDEX code of the establishment address.
+      - name: libelleCedexEtablissement
+        description: CEDEX label of the establishment address.
+      - name: codePaysEtrangerEtablissement
+        description: Foreign country code of the establishment address.
+      - name: libellePaysEtrangerEtablissement
+        description: Foreign country name of the establishment address.
+      - name: identifiantAdresseEtablissement
+        description: Address identifier of the establishment.
+      - name: coordonneeLambertAbscisseEtablissement
+        description: Lambert projected X coordinate of the establishment address.
+      - name: coordonneeLambertOrdonneeEtablissement
+        description: Lambert projected Y coordinate of the establishment address.
+      - name: complementAdresse2Etablissement
+        description: Additional information for the secondary establishment address.
+      - name: numeroVoie2Etablissement
+        description: Street number of the secondary establishment address.
+      - name: indiceRepetition2Etablissement
+        description: Repetition index for the secondary address street number.
+      - name: typeVoie2Etablissement
+        description: Street type of the secondary establishment address.
+      - name: libelleVoie2Etablissement
+        description: Street name of the secondary establishment address.
+      - name: codePostal2Etablissement
+        description: Postal code of the secondary establishment address.
+      - name: libelleCommune2Etablissement
+        description: Commune name of the secondary establishment address.
+      - name: libelleCommuneEtranger2Etablissement
+        description: Foreign commune name of the secondary establishment address.
+      - name: distributionSpeciale2Etablissement
+        description: Special delivery information for the secondary address.
+      - name: codeCommune2Etablissement
+        description: Official commune code of the secondary establishment address.
+      - name: codeCedex2Etablissement
+        description: CEDEX code of the secondary establishment address.
+      - name: libelleCedex2Etablissement
+        description: CEDEX label of the secondary establishment address.
+      - name: codePaysEtranger2Etablissement
+        description: Foreign country code of the secondary establishment address.
+      - name: libellePaysEtranger2Etablissement
+        description: Foreign country name of the secondary establishment address.
+      - name: dateDebut
+        description: Start date of the current establishment period.
+      - name: etatAdministratifEtablissement
+        description: Administrative status of the establishment.
+      - name: enseigne1Etablissement
+        description: First trade sign or commercial name of the establishment.
+      - name: enseigne2Etablissement
+        description: Second trade sign or commercial name of the establishment.
+      - name: enseigne3Etablissement
+        description: Third trade sign or commercial name of the establishment.
+      - name: denominationUsuelleEtablissement
+        description: Usual denomination of the establishment.
+      - name: activitePrincipaleEtablissement
+        description: Principal activity code of the establishment.
+      - name: nomenclatureActivitePrincipaleEtablissement
+        description: Activity classification used for the establishment activity code.
+      - name: caractereEmployeurEtablissement
+        description: Flag indicating whether the establishment has employer status.
+      - name: activitePrincipaleNAF25Etablissement
         description: >
           Future principal activity code in the NAF 2025 classification,
           distributed in anticipation of the NAF 2025 transition.
