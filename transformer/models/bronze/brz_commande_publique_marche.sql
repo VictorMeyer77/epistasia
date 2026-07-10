@@ -1,11 +1,3 @@
-{{
-    config(
-        materialized="external",
-        location="../datalake/bronze/commande_publique_marche.parquet",
-        format="parquet"
-    )
-}}
-
 SELECT
     *,
     filename AS source_file_path,

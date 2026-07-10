@@ -3,5 +3,5 @@ transformer:
   outputs:
     dev:
       type: duckdb
-      path: dev.duckdb
+      path: epistasia.duckdb
       threads: 4

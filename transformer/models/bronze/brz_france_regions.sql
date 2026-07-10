@@ -1,11 +1,3 @@
-{{
-    config(
-        materialized="external",
-        location="../datalake/bronze/france_regions.parquet",
-        format="parquet"
-    )
-}}
-
 SELECT
     *,
     filename AS source_file_path,
