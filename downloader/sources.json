@@ -39,7 +39,7 @@
     "page_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides",
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/2551ad40-584a-42fd-b3cc-e8906183287e",
     "format": "json",
-    "post": "command_public"
+    "post": "commande_publique"
   },
   {
     "name": "sirene-etablissement",

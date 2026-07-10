@@ -7,7 +7,7 @@ import polars as pl
 
 def commande_publique(file_path: Path) -> None:
     """
-    Process command_public JSON file into separate Parquet files.
+    Process commande_publique JSON file into separate Parquet files.
 
     Takes a JSON file containing 'marches' data with 'marche' and 'contrat-concession'
     arrays, and writes each as a separate Parquet file.
