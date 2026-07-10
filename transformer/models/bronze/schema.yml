@@ -7,6 +7,10 @@ models:
       Bronze French public procurement contracts dataset. Preserves the raw
       contract notice fields from the downloader and adds ingestion metadata
       from the downloaded source file.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
     columns:
       - name: id
         description: Unique identifier of the public procurement contract notice.
@@ -78,6 +82,10 @@ models:
       Bronze French public procurement concessions dataset. Preserves the raw
       concession notice fields from the downloader and adds ingestion metadata
       from the downloaded source file.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
     columns:
       - name: id
         description: Unique identifier of the public procurement concession notice.
@@ -134,6 +142,10 @@ models:
       the raw unit legal fields describing companies and individual businesses
       in their current Sirene registry state, and adds ingestion metadata from
       the downloaded source file.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
     columns:
       - name: siren
         description: >
@@ -226,6 +238,10 @@ models:
       Preserves the raw establishment fields describing business establishments
       in their current Sirene registry state, and adds ingestion metadata from
       the downloaded source file.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
     columns:
       - name: siren
         description: >
@@ -359,6 +375,10 @@ models:
     description: >
       Bronze INSEE COG communes dataset. Preserves the raw commune fields and
       adds ingestion metadata from the downloaded source file.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
     columns:
       - name: TYPECOM
         description: Type of commune or commune-like administrative entity.
@@ -399,6 +419,10 @@ models:
     description: >
       Bronze INSEE COG departments dataset. Preserves the raw department fields
       and adds ingestion metadata from the downloaded source file.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
     columns:
       - name: DEP
         description: Department code.
@@ -425,6 +449,10 @@ models:
     description: >
       Bronze INSEE COG regions dataset. Preserves the raw region fields and adds
       ingestion metadata from the downloaded source file.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
     columns:
       - name: REG
         description: Region code.

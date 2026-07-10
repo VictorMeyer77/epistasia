@@ -5,6 +5,10 @@ models:
     description: >
       Silver INSEE COG communes dataset for the latest available release year.
       Standardizes raw COG commune columns into analytics-friendly names.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
     data_tests:
       - unique:
           column_name: "code_commune || '-' || type_commune"
@@ -49,6 +53,10 @@ models:
       Silver INSEE COG departments dataset for the latest available release
       year. Standardizes raw COG department columns into analytics-friendly
       names.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
     columns:
       - name: code_dep
         description: Department code.
@@ -74,6 +82,10 @@ models:
     description: >
       Silver INSEE COG regions dataset for the latest available release year.
       Standardizes raw COG region columns into analytics-friendly names.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
     columns:
       - name: code_reg
         description: Region code.
@@ -97,6 +109,10 @@ models:
     description: >
       Silver Sirene legal units dataset for the latest available release year.
       Standardizes raw Sirene legal-unit columns into lower snake_case names.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
     columns:
       - name: siren
         description: >
@@ -187,6 +203,10 @@ models:
       Silver Sirene establishments dataset for the latest available release
       year. Standardizes raw Sirene establishment columns into lower snake_case
       names.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
     columns:
       - name: siren
         description: SIREN identifier of the legal unit that owns the establishment.
@@ -323,6 +343,10 @@ models:
       Enterprise-oriented Sirene legal units dataset for the latest available
       release year. Enriches silver legal-unit records with NAF activity labels
       and INSEE legal category labels.
+    config:
+      tags: silver | entreprise
+    docs:
+      node_color: "#5B8DEF"
     columns:
       - name: siren
         description: >
@@ -382,6 +406,10 @@ models:
       Enterprise-oriented Sirene establishments dataset for the latest available
       release year. Enriches silver establishment records with the activity
       label for the principal trades-register activity.
+    config:
+      tags: silver | entreprise
+    docs:
+      node_color: "#5B8DEF"
     columns:
       - name: siren
         description: SIREN identifier of the legal unit that owns the establishment.
@@ -473,6 +501,10 @@ models:
     description: >
       Silver public procurement markets dataset. Standardizes raw BOAMP market data
       into analytics-friendly columns, with one row per market-titulaire combination.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
     columns:
       - name: id
         description: Unique identifier for the market (marche).
@@ -552,6 +584,10 @@ models:
       Silver public procurement concessions dataset. Standardizes raw BOAMP
       concession data into analytics-friendly columns, with one row per
       concession-concessionnaire combination.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
     columns:
       - name: id
         description: Unique identifier for the concession.
@@ -605,6 +641,10 @@ models:
       Silver unified enterprise public procurement dataset. Combines market and
       concession data into a single table with standardized enterprise-focused
       columns.
+    config:
+      tags: silver | entreprise
+    docs:
+      node_color: "#5B8DEF"
     columns:
       - name: id_contrat
         description: Unique identifier for the contract (marche or concession).

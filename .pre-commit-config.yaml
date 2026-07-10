@@ -7,4 +7,6 @@ repos:
       - id: check-yaml
       - id: check-json
       - id: end-of-file-fixer
+        exclude: \.csv$
       - id: trailing-whitespace
+        exclude: \.csv$
