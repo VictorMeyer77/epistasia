@@ -73,6 +73,61 @@ models:
       - name: release_year
         description: Release year extracted from the raw source file path.
 
+  - name: brz_commande_publique_concession
+    description: >
+      Bronze French public procurement concessions dataset. Preserves the raw
+      concession notice fields from the downloader and adds ingestion metadata
+      from the downloaded source file.
+    columns:
+      - name: id
+        description: Unique identifier of the public procurement concession notice.
+      - name: nature
+        description: Nature of the concession contract.
+      - name: objet
+        description: Object or subject of the concession contract.
+      - name: tauxAvance
+        description: Advance payment rate for the concession.
+      - name: procedure
+        description: Procurement procedure used for the concession.
+      - name: dureeMois
+        description: Contract duration in months.
+      - name: datePublicationDonnees
+        description: Data publication date for the concession notice.
+      - name: origineUE
+        description: Share or amount of concession origin from the European Union.
+      - name: origineFrance
+        description: Share or amount of concession origin from France.
+      - name: titulaires
+        description: Awardee information, including identifier type and identifier.
+      - name: considerationsSociales
+        description: Social considerations attached to the concession.
+      - name: considerationsEnvironnementales
+        description: Environmental considerations attached to the concession.
+      - name: source
+        description: Source system or publisher of the concession data.
+      - name: autoriteConcedante
+        description: Granting authority information for the concession.
+      - name: dateSignature
+        description: Signature date of the concession contract.
+      - name: dateDebutExecution
+        description: Start date of concession execution.
+      - name: valeurGlobale
+        description: Global value of the concession.
+      - name: montantSubventionPublique
+        description: Amount of public subsidy for the concession.
+      - name: concessionnaires
+        description: Concessionaire information, including identifier type and identifier.
+      - name: donneesExecution
+        description: Execution data for the concession.
+      - name: modifications
+        description: Modifications to the concession contract.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.
+
   - name: brz_sirene_unite_legale
     description: >
       Bronze Sirene stock legal units dataset from INSEE/data.gouv.fr. Preserves

@@ -31,7 +31,7 @@
     "format": "csv"
   },
   {
-    "name": "command-public-france",
+    "name": "commande-publique-france",
     "description": "Données essentielles de la commande publique - fichiers consolidés",
     "category": "economic",
     "provider": "ministeres-economiques-et-financiers",

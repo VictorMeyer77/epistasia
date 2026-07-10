@@ -5,7 +5,7 @@ from pathlib import Path
 import polars as pl
 
 
-def command_public(file_path: Path) -> None:
+def commande_publique(file_path: Path) -> None:
     """
     Process command_public JSON file into separate Parquet files.
 
@@ -21,9 +21,9 @@ def command_public(file_path: Path) -> None:
         KeyError: If the expected keys are not found in the JSON data.
     """
     year = int(re.search(r"(\d{4})", file_path.stem).group(1))
-    marche_file_path = Path(file_path.parent / f"command-public-marche_{year}.parquet")
+    marche_file_path = Path(file_path.parent / f"commande-publique-marche_{year}.parquet")
     concession_file_path = Path(
-        file_path.parent / f"contrat-concession_{year}..parquet"
+        file_path.parent / f"commande-publique-concession_{year}.parquet"
     )
 
     with open(file_path, "r", encoding="utf-8") as f:
@@ -47,13 +47,13 @@ def post(post_name: str, file_path: Path) -> None:
 
     Args:
         post_name: Name of the post-processing script to execute.
-                   Currently supported: "command_public"
+                   Currently supported: "commande_publique"
         file_path: Path to the downloaded file to process.
 
     Raises:
         ValueError: If the specified post_name is not recognized.
     """
-    if post_name == "command_public":
-        command_public(file_path)
+    if post_name == "commande_publique":
+        commande_publique(file_path)
     else:
         raise ValueError(f"Unknown post-processing script: {post_name}")

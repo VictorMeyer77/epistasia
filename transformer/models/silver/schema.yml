@@ -546,3 +546,56 @@ models:
         description: Identifier for the framework agreement if applicable.
       - name: release_year
         description: Source file release year retained in the silver dataset.
+
+  - name: svr_commande_publique_concession
+    description: >
+      Silver public procurement concessions dataset. Standardizes raw BOAMP
+      concession data into analytics-friendly columns, with one row per
+      concession-concessionnaire combination.
+    columns:
+      - name: id
+        description: Unique identifier for the concession.
+        tests:
+          - not_null
+      - name: nature
+        description: Nature of the concession contract.
+      - name: objet
+        description: Object or subject of the concession contract.
+      - name: taux_avance
+        description: Advance payment rate for the concession.
+      - name: procedure
+        description: Procurement procedure used for the concession.
+      - name: duree_mois
+        description: Contract duration in months.
+      - name: date_publication_donnes
+        description: Data publication date for the concession notice.
+      - name: origine_ue
+        description: Flag indicating if the concession originates from the European Union.
+      - name: origine_france
+        description: Flag indicating if the concession originates from France.
+      - name: considerations_sociales
+        description: Social considerations, concatenated from array.
+      - name: considerations_environnementales
+        description: Environmental considerations, concatenated from array.
+      - name: source
+        description: Source of the concession data.
+      - name: concesionnaire_id
+        description: Identifier for the concession holder/winner.
+        tests:
+          - not_null
+      - name: concesionnaire_type_identifiant
+        description: Type of identifier for the concession holder.
+      - name: autorite_concedante_siret
+        description: SIRET identifier of the granting authority.
+        tests:
+          - not_null
+      - name: date_signature
+        description: Signature date of the concession contract.
+      - name: date_debut_execution
+        description: Start date of concession execution.
+      - name: valeur_globale
+        description: Global value of the concession.
+      - name: montant_subvention_publique
+        description: Amount of public subsidy for the concession.
+      - name: release_year
+        description: Source file release year retained in the silver dataset.
