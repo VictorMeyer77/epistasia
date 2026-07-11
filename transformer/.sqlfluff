@@ -7,4 +7,3 @@ exclude_rules = RF01, ST06
 
 extended_capitalisation_policy = lower
 unquoted_identifiers_policy = all
-

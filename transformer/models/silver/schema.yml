@@ -390,6 +390,12 @@ models:
         description: >
           Label of the legal category code from the INSEE Sirene legal category
           reference seed.
+      - name: categorie_juridique_unite_legale_libelle_I
+        description: Level I label of the legal category.
+      - name: categorie_juridique_unite_legale_libelle_II
+        description: Level II label of the legal category.
+      - name: categorie_juridique_unite_legale_libelle_III
+        description: Level III label of the legal category.
       - name: nic_siege_unite_legale
         description: NIC code of the legal unit head office establishment.
       - name: economie_sociale_solidaire_unite_legale
@@ -635,6 +641,33 @@ models:
         description: Amount of public subsidy for the concession.
       - name: release_year
         description: Source file release year retained in the silver dataset.
+
+  - name: svr_insee_categorie_juridique
+    description: >
+      Silver INSEE legal category dataset. Joins three levels of legal category
+      codes (I, II, III) into a single table with hierarchical relationships.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    data_tests:
+      - unique:
+          column_name: code_iii
+    columns:
+      - name: code_iii
+        description: Level III legal category code.
+        tests:
+          - not_null
+      - name: libelle_iii
+        description: Level III legal category label.
+      - name: code_ii
+        description: Level II legal category code, parent of level III.
+      - name: libelle_ii
+        description: Level II legal category label.
+      - name: code_i
+        description: Level I legal category code, parent of level II.
+      - name: libelle_i
+        description: Level I legal category label.
 
   - name: svr_ent_commande_publique
     description: >
