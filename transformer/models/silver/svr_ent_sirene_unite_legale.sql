@@ -28,7 +28,9 @@ SELECT
     ul.activite_principale_unite_legale,
     naf.libelle AS activite_principale_unite_legale_libelle,
     ul.categorie_juridique_unite_legale,
-    catj.libelle AS categorie_juridique_unite_legale_libelle,
+    catj.libelle_iii AS categorie_juridique_unite_legale_libelle_iii,
+    catj.libelle_ii AS categorie_juridique_unite_legale_libelle_ii,
+    catj.libelle_i AS categorie_juridique_unite_legale_libelle_i,
     ul.nic_siege_unite_legale,
     ul.economie_sociale_solidaire_unite_legale,
     ul.societe_mission_unite_legale,
@@ -46,5 +48,5 @@ SELECT
 FROM {{ ref("svr_sirene_unite_legale") }} AS ul
 LEFT JOIN naf_sousclasse AS naf
     ON ul.activite_principale_unite_legale = naf.code
-LEFT JOIN {{ ref("insee_sirene_cat_juridique") }} AS catj
-    ON ul.categorie_juridique_unite_legale = catj.code
+LEFT JOIN {{ ref("svr_insee_categorie_juridique") }} AS catj
+    ON ul.categorie_juridique_unite_legale = catj.code_iii
