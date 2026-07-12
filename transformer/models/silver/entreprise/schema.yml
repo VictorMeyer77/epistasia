@@ -1,0 +1,230 @@
+version: 2
+
+models:
+  - name: svr_ent_sirene_unite_legale
+    description: >
+      Enterprise-oriented Sirene legal units dataset for the latest available
+      release year. Enriches silver legal-unit records with NAF activity labels
+      and INSEE legal category labels.
+    config:
+      tags: silver | entreprise
+    docs:
+      node_color: "#5B8DEF"
+    columns:
+      - name: siren
+        description: >
+          SIREN identifier of the legal unit. This is the nine-digit identifier
+          assigned by INSEE to a company or individual business.
+        tests:
+          - unique
+          - not_null
+      - name: statut_diffusion_unite_legale
+        description: >
+          Dissemination status of the legal unit. A partial dissemination status
+          indicates that some personal or address data may be masked.
+      - name: unite_purgee_unite_legale
+        description: Flag indicating whether the legal unit has been purged.
+      - name: date_creation_unite_legale
+        description: Creation date of the legal unit in the Sirene registry.
+      - name: denomination_unite_legal
+        description: >
+          Display name of the legal unit. Uses the registered denomination when
+          available, otherwise falls back to the usual given name and family
+          name for natural-person legal units.
+      - name: identifiant_association_unite_legale
+        description: Association identifier for legal units registered as associations.
+      - name: tranche_effectifs_unite_legale
+        description: Workforce size band of the legal unit.
+      - name: annee_effectifs_unite_legale
+        description: Reference year for the legal unit workforce size band.
+      - name: date_dernier_traitement_unite_legale
+        description: Date and time of the latest Sirene processing for the legal unit.
+      - name: date_debut
+        description: Start date of the current legal unit period.
+      - name: etat_administratif_unite_legale
+        description: Administrative status of the legal unit.
+      - name: activite_principale_unite_legale
+        description: Principal activity code of the legal unit.
+      - name: activite_principale_unite_legale_libelle
+        description: Label of the principal activity code from the NAF reference seed.
+      - name: categorie_juridique_unite_legale
+        description: Legal category code of the legal unit.
+      - name: categorie_juridique_unite_legale_libelle_I
+        description: Level I label of the INSEE legal category.
+      - name: categorie_juridique_unite_legale_libelle_II
+        description: Level II label of the INSEE legal category.
+      - name: categorie_juridique_unite_legale_libelle_III
+        description: Level III label of the INSEE legal category.
+      - name: nic_siege_unite_legale
+        description: NIC code of the legal unit head office establishment.
+      - name: economie_sociale_solidaire_unite_legale
+        description: >
+          Flag indicating whether the legal unit belongs to the social and
+          solidarity economy.
+      - name: societe_mission_unite_legale
+        description: Flag indicating whether the legal unit is a mission-driven company.
+      - name: release_year
+        description: Source file release year retained in the silver dataset.
+
+  - name: svr_ent_sirene_etablissement
+    description: >
+      Enterprise-oriented Sirene establishments dataset for the latest available
+      release year. Enriches silver establishment records with the activity
+      label for the principal trades-register activity.
+    config:
+      tags: silver | entreprise
+    docs:
+      node_color: "#5B8DEF"
+    columns:
+      - name: siren
+        description: SIREN identifier of the legal unit that owns the establishment.
+        tests:
+          - not_null
+      - name: nic
+        description: >
+          Internal establishment classification number identifying the
+          establishment within its legal unit.
+        tests:
+          - not_null
+      - name: siret
+        description: >
+          SIRET identifier of the establishment, composed of the SIREN and NIC.
+        tests:
+          - unique
+          - not_null
+      - name: statut_diffusion_etablissement
+        description: >
+          Dissemination status of the establishment. A partial dissemination
+          status indicates that some address or personal data may be masked.
+      - name: date_creation_etablissement
+        description: Creation date of the establishment in the Sirene registry.
+      - name: tranche_effectifs_etablissement
+        description: Workforce size band of the establishment.
+      - name: annee_effectifs_etablissement
+        description: Reference year for the establishment workforce size band.
+      - name: activite_principale_registre_metiers_etablissement
+        description: >
+          Principal activity recorded in the trades register for the
+          establishment.
+      - name: activite_principale_registre_metiers_etablissement_libelle
+        description: >
+          Label of the principal trades-register activity code from the activity
+          reference seed.
+      - name: date_dernier_traitement_etablissement
+        description: >
+          Date and time of the latest Sirene processing for the establishment.
+      - name: etablissement_siege
+        description: Flag indicating whether the establishment is the legal-unit head office.
+      - name: nombre_periodes_etablissement
+        description: Number of historical periods associated with the establishment.
+      - name: complement_adresse_etablissement
+        description: Additional address information for the establishment.
+      - name: numero_voie_etablissement
+        description: Street number of the establishment address.
+      - name: type_voie_etablissement
+        description: Street type of the establishment address.
+      - name: libelle_voie_etablissement
+        description: Street name of the establishment address.
+      - name: code_postal_etablissement
+        description: Postal code of the establishment address.
+      - name: libelle_commune_etablissement
+        description: Commune name of the establishment address.
+      - name: libelle_commune_etranger_etablissement
+        description: Foreign commune name of the establishment address.
+      - name: code_commune_etablissement
+        description: Official commune code of the establishment address.
+      - name: code_cedex_etablissement
+        description: CEDEX code of the establishment address.
+      - name: libelle_cedex_etablissement
+        description: CEDEX label of the establishment address.
+      - name: code_pays_etranger_etablissement
+        description: Foreign country code of the establishment address.
+      - name: libelle_pays_etranger_etablissement
+        description: Foreign country name of the establishment address.
+      - name: identifiant_adresse_etablissement
+        description: Address identifier of the establishment.
+      - name: coordonnee_lambert_abscisse_etablissement
+        description: Lambert projected X coordinate of the establishment address.
+      - name: coordonnee_lambert_ordonnee_etablissement
+        description: Lambert projected Y coordinate of the establishment address.
+      - name: date_debut
+        description: Start date of the current establishment period.
+      - name: etat_administratif_etablissement
+        description: Administrative status of the establishment.
+      - name: enseigne1_etablissement
+        description: First trade sign or commercial name of the establishment.
+      - name: denomination_usuelle_etablissement
+        description: Usual denomination of the establishment.
+      - name: activite_principale_etablissement
+        description: Principal activity code of the establishment.
+      - name: caractere_employeur_etablissement
+        description: Flag indicating whether the establishment has employer status.
+      - name: release_year
+        description: Source file release year retained in the silver dataset.
+        
+  - name: svr_ent_commande_publique
+    description: >
+      Silver unified enterprise public procurement dataset. Combines market and
+      concession data into a single table with standardized enterprise-focused
+      columns.
+    config:
+      tags: silver | entreprise
+    docs:
+      node_color: "#5B8DEF"
+    columns:
+      - name: id_contrat
+        description: Unique identifier for the contract (marche or concession).
+        tests:
+          - not_null
+      - name: type_contrat
+        description: Type of contract - marche or concession.
+      - name: siret_autorite
+        description: SIRET identifier of the contracting authority.
+        tests:
+          - not_null
+      - name: id_titulaire
+        description: Identifier for the contract holder/winner.
+        tests:
+          - not_null
+      - name: type_identifiant_titulaire
+        description: Type of identifier for the contract holder.
+      - name: nature
+        description: Nature or type of the contract.
+      - name: objet
+        description: Object or subject of the contract.
+      - name: procedure
+        description: Procurement procedure used for the contract.
+      - name: duree_mois
+        description: Contract duration in months.
+      - name: montant
+        description: Financial amount of the contract.
+      - name: taux_avance
+        description: Advance payment rate as a percentage.
+      - name: date_contrat
+        description: Contract signature or notification date.
+      - name: date_publication
+        description: Date when the contract data was published.
+      - name: date_debut_execution
+        description: Start date of contract execution.
+      - name: origine_ue
+        description: Flag indicating if the contract originates from the European Union.
+      - name: origine_france
+        description: Flag indicating if the contract originates from France.
+      - name: considerations_sociales
+        description: Social considerations attached to the contract.
+      - name: considerations_environnementales
+        description: Environmental considerations attached to the contract.
+      - name: source
+        description: Source of the contract data.
+      - name: code_lieu_execution
+        description: Code for the execution location.
+      - name: type_lieu_execution
+        description: Type code for the execution location.
+      - name: nombre_offres
+        description: Number of offers received for the contract.
+      - name: type_prix
+        description: Price type or types attached to the contract.
+      - name: structure_prix
+        description: Price form or pricing structure.
+      - name: montant_subvention_publique
+        description: Amount of public subsidy for the contract.

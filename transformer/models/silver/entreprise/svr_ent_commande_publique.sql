@@ -1,7 +1,7 @@
 {{
     config(
         materialized="external",
-        location="../datalake/silver/entreprise_commande_publique.parquet",
+        location="../datalake/silver/entreprise/commande_publique.parquet",
         format="parquet"
     )
 }}
