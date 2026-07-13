@@ -161,7 +161,7 @@ models:
         description: Flag indicating whether the establishment has employer status.
       - name: release_year
         description: Source file release year retained in the silver dataset.
-        
+
   - name: svr_ent_commande_publique
     description: >
       Silver unified enterprise public procurement dataset. Combines market and
@@ -172,6 +172,10 @@ models:
     docs:
       node_color: "#5B8DEF"
     columns:
+      - name: id
+        description: Unique UUID identifier for the record. Used as node ID in Neo4j graph.
+        tests:
+          - not_null
       - name: id_contrat
         description: Unique identifier for the contract (marche or concession).
         tests:
