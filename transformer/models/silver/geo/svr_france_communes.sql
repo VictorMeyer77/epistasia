@@ -1,7 +1,7 @@
 {{
     config(
         materialized="external",
-        location="../datalake/silver/france_communes.parquet",
+        location="../datalake/silver/geo/france_communes.parquet",
         format="parquet"
     )
 }}

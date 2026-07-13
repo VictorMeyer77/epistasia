@@ -218,14 +218,6 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Epistasia
-
-datalake/raw/*
-!datalake/raw/.gitkeep
-datalake/bronze/*
-!datalake/bronze/.gitkeep
-datalake/silver/*
-!datalake/silver/.gitkeep
-datalake/gold/*
-!datalake/gold/.gitkeep
-datalake/database/*
-!datalake/database/.gitkeep
+datalake/**/*.parquet
+datalake/**/*.csv
+datalake/**/*.json

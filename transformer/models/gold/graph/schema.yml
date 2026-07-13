@@ -1,0 +1,276 @@
+version: 2
+
+models:
+  - name: gld_graph_node_unite_legale
+    description: >
+      Gold graph node model for legal entities (unite legale). Represents companies/organizations
+      as nodes in the Neo4j graph with their SIREN identifier.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "siren:ID(UniteLegale)"
+        description: Unique SIREN identifier for the legal entity. Used as the node ID in Neo4j.
+      - name: name
+        description: Name/denomination of the legal entity.
+
+  - name: gld_graph_node_etablissement
+    description: >
+      Gold graph node model for establishments (etablissement). Represents physical
+      establishments as nodes in the Neo4j graph with their SIRET identifier.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "siret:ID(Etablissement)"
+        description: Unique SIRET identifier for the establishment. Used as the node ID in Neo4j.
+      - name: siren
+        description: SIREN of the parent legal entity.
+
+  - name: gld_graph_node_commande_publique_marche
+    description: >
+      Gold graph node model for public procurement markets (marche). Represents
+      public procurement markets as nodes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "id:ID(CommandePubliqueMarche)"
+        description: Unique identifier for the public procurement market. Used as the node ID in Neo4j.
+      - name: montant
+        description: Financial amount of the market.
+
+  - name: gld_graph_node_commande_publique_concession
+    description: >
+      Gold graph node model for public procurement concessions. Represents
+      concessions as nodes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "id:ID(CommandePubliqueConcession)"
+        description: Unique identifier for the public procurement concession. Used as the node ID in Neo4j.
+      - name: montant
+        description: Financial amount of the concession.
+      - name: montant_subvention_publique
+        description: Amount of public subsidy for the concession.
+
+  - name: gld_graph_node_region
+    description: >
+      Gold graph node model for French administrative regions. Represents
+      regions as nodes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "code_reg:ID(Region)"
+        description: Unique code identifier for the region. Used as the node ID in Neo4j.
+      - name: name
+        description: Name of the region.
+
+  - name: gld_graph_node_departement
+    description: >
+      Gold graph node model for French departments (departement). Represents
+      departments as nodes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "code_dep:ID(Departement)"
+        description: Unique code identifier for the department. Used as the node ID in Neo4j.
+      - name: name
+        description: Name of the department.
+      - name: code_reg
+        description: Code of the region this department belongs to.
+
+  - name: gld_graph_node_arrondissement
+    description: >
+      Gold graph node model for French arrondissements. Represents
+      arrondissements as nodes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "code_arrondissement:ID(Arrondissement)"
+        description: Unique code identifier for the arrondissement. Used as the node ID in Neo4j.
+      - name: name
+        description: Name of the arrondissement.
+
+  - name: gld_graph_node_commune
+    description: >
+      Gold graph node model for French communes. Represents
+      communes as nodes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "code_commune:ID(Commune)"
+        description: Unique code identifier for the commune. Used as the node ID in Neo4j.
+      - name: name
+        description: Name of the commune.
+      - name: code_dep
+        description: Code of the department this commune belongs to.
+      - name: code_reg
+        description: Code of the region this commune belongs to.
+
+  - name: gld_graph_node_commune_deleguee
+    description: >
+      Gold graph node model for French delegated communes (commune deleguee).
+      Represents delegated communes as nodes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "code_commune_deleguee:ID(CommuneDeleguee)"
+        description: Unique code identifier for the delegated commune. Used as the node ID in Neo4j.
+      - name: name
+        description: Name of the delegated commune.
+
+  - name: gld_graph_relationship_has_etablissement
+    description: >
+      Gold graph relationship model linking legal entities to their establishments.
+      Represents HAS_ETABLISSEMENT relationships in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(UniteLegale)"
+        description: SIREN of the legal entity (start node).
+      - name: ":END_ID(Etablissement)"
+        description: SIRET of the establishment (end node).
+
+  - name: gld_graph_relationship_has_publique_marche
+    description: >
+      Gold graph relationship model linking establishments to public procurement markets.
+      Represents HAS_PUBLIQUE_MARCHE relationships in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Etablissement)"
+        description: SIRET of the establishment (start node).
+      - name: ":END_ID(CommandePubliqueMarche)"
+        description: ID of the public procurement market (end node).
+
+  - name: gld_graph_relationship_has_publique_concession
+    description: >
+      Gold graph relationship model linking establishments to public procurement concessions.
+      Represents HAS_PUBLIQUE_CONCESSION relationships in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Etablissement)"
+        description: SIRET of the establishment (start node).
+      - name: ":END_ID(CommandePubliqueConcession)"
+        description: ID of the public procurement concession (end node).
+
+  - name: gld_graph_relationship_etablissement_located_in_commune
+    description: >
+      Gold graph relationship model linking establishments to communes.
+      Represents LOCATED_IN relationships between establishments and communes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Etablissement)"
+        description: SIRET of the establishment (start node).
+      - name: ":END_ID(Commune)"
+        description: Code of the commune (end node).
+
+  - name: gld_graph_relationship_etablissement_located_in_commune_deleguee
+    description: >
+      Gold graph relationship model linking establishments to delegated communes.
+      Represents LOCATED_IN relationships between establishments and delegated communes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Etablissement)"
+        description: SIRET of the establishment (start node).
+      - name: ":END_ID(CommuneDeleguee)"
+        description: Code of the delegated commune (end node).
+
+  - name: gld_graph_relationship_etablissement_located_in_arrondissement
+    description: >
+      Gold graph relationship model linking establishments to arrondissements.
+      Represents LOCATED_IN relationships between establishments and arrondissements in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Etablissement)"
+        description: SIRET of the establishment (start node).
+      - name: ":END_ID(Arrondissement)"
+        description: Code of the arrondissement (end node).
+
+  - name: gld_graph_relationship_has_commune
+    description: >
+      Gold graph relationship model linking departments to communes.
+      Represents HAS_COMMUNE relationships in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Departement)"
+        description: Code of the department (start node).
+      - name: ":END_ID(Commune)"
+        description: Code of the commune (end node).
+
+  - name: gld_graph_relationship_has_commune_deleguee
+    description: >
+      Gold graph relationship model linking communes to delegated communes.
+      Represents HAS_COMMUNE_DELEGUEE relationships in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Commune)"
+        description: Code of the commune (start node).
+      - name: ":END_ID(CommuneDeleguee)"
+        description: Code of the delegated commune (end node).
+
+  - name: gld_graph_relationship_has_arrondissement
+    description: >
+      Gold graph relationship model linking communes to arrondissements.
+      Represents HAS_ARRONDISSEMENT relationships in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Commune)"
+        description: Code of the commune (start node).
+      - name: ":END_ID(Arrondissement)"
+        description: Code of the arrondissement (end node).
+
+  - name: gld_graph_relationship_has_departement
+    description: >
+      Gold graph relationship model linking regions to departments.
+      Represents HAS_DEPARTEMENT relationships in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Region)"
+        description: Code of the region (start node).
+      - name: ":END_ID(Departement)"
+        description: Code of the department (end node).

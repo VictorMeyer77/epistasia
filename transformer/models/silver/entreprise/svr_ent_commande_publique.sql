@@ -1,13 +1,14 @@
 {{
     config(
         materialized="external",
-        location="../datalake/silver/entreprise_commande_publique.parquet",
+        location="../datalake/silver/entreprise/commande_publique.parquet",
         format="parquet"
     )
 }}
 
 
 select
+    uuid() as id,
     id as id_contrat,
     'marche' as type_contrat,
     acheteur_siret as siret_autorite,
@@ -38,6 +39,7 @@ from {{ ref("svr_commande_publique_marche") }}
 union all
 
 select
+    uuid() as id,
     id as id_contrat,
     'concession' as type_contrat,
     autorite_concedante_siret as siret_autorite,

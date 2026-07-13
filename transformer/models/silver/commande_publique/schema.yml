@@ -1,0 +1,141 @@
+version: 2
+
+models:
+  - name: svr_commande_publique_marche
+    description: >
+      Silver public procurement markets dataset. Standardizes raw BOAMP market data
+      into analytics-friendly columns, with one row per market-titulaire combination.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: id
+        description: Unique identifier for the market (marche).
+        tests:
+          - not_null
+      - name: acheteur_siret
+        description: SIRET identifier of the buyer organization.
+        tests:
+          - not_null
+      - name: nature
+        description: Nature or type of the market.
+      - name: objet
+        description: Object or purpose of the market.
+      - name: code_cpv
+        description: Common Procurement Vocabulary (CPV) code for the market.
+      - name: techniques
+        description: Procurement techniques used, concatenated from array.
+      - name: modalites_execution
+        description: Execution modalities, concatenated from array.
+      - name: ccag
+        description: General Administrative Clauses for Public Procurement reference.
+      - name: offre_recues
+        description: Number of offers received for the market.
+      - name: taux_avance
+        description: Advance payment rate as a percentage.
+      - name: type_groupement_operateurs
+        description: Type of operator grouping for the market.
+      - name: procedure
+        description: Procurement procedure type.
+      - name: lieu_execution_type
+        description: Type code for the execution location.
+      - name: lieu_execution_code
+        description: Code for the execution location.
+      - name: duree_mois
+        description: Duration of the market in months.
+      - name: date_notification
+        description: Date when the market was notified.
+      - name: date_publication_donnees
+        description: Date when the market data was published.
+      - name: montant
+        description: Financial amount of the market.
+      - name: types_prix
+        description: Price types, concatenated from array.
+      - name: forme_prix
+        description: Price form or pricing structure.
+      - name: origine_ue
+        description: Flag indicating if the market originates from the European Union.
+      - name: origine_france
+        description: Flag indicating if the market originates from France.
+      - name: titulaire_id
+        description: Identifier for the market holder/winner.
+        tests:
+          - not_null
+      - name: titulaire_type_identifiant
+        description: Type of identifier for the market holder.
+      - name: nb_titulaires
+        description: Total number of holders for the market.
+      - name: considerations_sociales
+        description: Social considerations, concatenated from array.
+      - name: considerations_environnementales
+        description: Environmental considerations, concatenated from array.
+      - name: source
+        description: Source of the market data.
+      - name: marche_innovant
+        description: Flag indicating if this is an innovative market.
+      - name: attribution_avance
+        description: Flag indicating if advance attribution applies.
+      - name: sous_traitance_declaree
+        description: Flag indicating if subcontracting was declared.
+      - name: id_accord_cadre
+        description: Identifier for the framework agreement if applicable.
+      - name: release_year
+        description: Source file release year retained in the silver dataset.
+
+  - name: svr_commande_publique_concession
+    description: >
+      Silver public procurement concessions dataset. Standardizes raw BOAMP
+      concession data into analytics-friendly columns, with one row per
+      concession-concessionnaire combination.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: id
+        description: Unique identifier for the concession.
+        tests:
+          - not_null
+      - name: nature
+        description: Nature of the concession contract.
+      - name: objet
+        description: Object or subject of the concession contract.
+      - name: taux_avance
+        description: Advance payment rate for the concession.
+      - name: procedure
+        description: Procurement procedure used for the concession.
+      - name: duree_mois
+        description: Contract duration in months.
+      - name: date_publication_donnes
+        description: Data publication date for the concession notice.
+      - name: origine_ue
+        description: Flag indicating if the concession originates from the European Union.
+      - name: origine_france
+        description: Flag indicating if the concession originates from France.
+      - name: considerations_sociales
+        description: Social considerations, concatenated from array.
+      - name: considerations_environnementales
+        description: Environmental considerations, concatenated from array.
+      - name: source
+        description: Source of the concession data.
+      - name: concesionnaire_id
+        description: Identifier for the concession holder/winner.
+        tests:
+          - not_null
+      - name: concesionnaire_type_identifiant
+        description: Type of identifier for the concession holder.
+      - name: autorite_concedante_siret
+        description: SIRET identifier of the granting authority.
+        tests:
+          - not_null
+      - name: date_signature
+        description: Signature date of the concession contract.
+      - name: date_debut_execution
+        description: Start date of concession execution.
+      - name: valeur_globale
+        description: Global value of the concession.
+      - name: montant_subvention_publique
+        description: Amount of public subsidy for the concession.
+      - name: release_year
+        description: Source file release year retained in the silver dataset.

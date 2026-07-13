@@ -1,0 +1,106 @@
+version: 2
+
+models:
+  - name: svr_france_communes
+    description: >
+      Silver INSEE COG communes dataset for the latest available release year.
+      Standardizes raw COG commune columns into analytics-friendly names.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    data_tests:
+      - unique:
+          column_name: "code_commune || '-' || type_commune"
+    columns:
+      - name: type_commune
+        description: Type of commune or commune-like administrative entity.
+        tests:
+          - not_null
+      - name: code_commune
+        description: Official commune code.
+        tests:
+          - not_null
+      - name: code_reg
+        description: Region code.
+      - name: code_dep
+        description: Department code.
+      - name: code_collectivite_territorial
+        description: Code of the territorial authority with departmental powers.
+      - name: arrondissement
+        description: Arrondissement code.
+      - name: type_name_format
+        description: Type of name in clear text.
+      - name: name_commune_uppercase
+        description: Commune name in clear text, uppercase.
+      - name: name_commune_typo_enriched
+        description: Commune name in clear text with rich typography.
+      - name: name_commune
+        description: Commune name in clear text with rich typography and article.
+      - name: canton_code
+        description: >
+          Canton code. For multi-canton communes, INSEE uses pseudo-canton
+          codes from 99 to 90 or new commune codes from 89 to 80.
+      - name: parent_code_commune
+        description: >
+          Parent commune code for municipal arrondissements and associated or
+          delegated communes.
+      - name: release_year
+        description: Source file release year retained in the silver dataset.
+
+  - name: svr_france_departements
+    description: >
+      Silver INSEE COG departments dataset for the latest available release
+      year. Standardizes raw COG department columns into analytics-friendly
+      names.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: code_dep
+        description: Department code.
+        tests:
+          - unique
+          - not_null
+      - name: code_reg
+        description: Region code.
+      - name: code_commune_prefecture
+        description: Official commune code of the department capital.
+      - name: type_name_format
+        description: Type of name in clear text.
+      - name: name_dep_uppercase
+        description: Department name in clear text, uppercase.
+      - name: name_dep_typo_enriched
+        description: Department name in clear text with rich typography.
+      - name: name_dep
+        description: Department name in clear text with rich typography and article.
+      - name: release_year
+        description: Source file release year retained in the silver dataset.
+
+  - name: svr_france_regions
+    description: >
+      Silver INSEE COG regions dataset for the latest available release year.
+      Standardizes raw COG region columns into analytics-friendly names.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: code_reg
+        description: Region code.
+        tests:
+          - unique
+          - not_null
+      - name: code_commune_cheflieu
+        description: Official commune code of the region capital.
+      - name: type_name_format
+        description: Type of name in clear text.
+      - name: name_reg_uppercase
+        description: Region name in clear text, uppercase.
+      - name: name_reg_typo_enriched
+        description: Region name in clear text with rich typography.
+      - name: name_reg
+        description: Region name in clear text with rich typography and article.
+      - name: release_year
+        description: Source file release year retained in the silver dataset.

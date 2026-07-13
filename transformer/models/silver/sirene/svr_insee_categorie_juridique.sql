@@ -1,7 +1,7 @@
 {{
     config(
         materialized="external",
-        location="../datalake/silver/insee_categorie_juridique.parquet",
+        location="../datalake/silver/sirene/insee_categorie_juridique.parquet",
         format="parquet"
     )
 }}

@@ -1,7 +1,7 @@
 {{
     config(
         materialized="external",
-        location="../datalake/silver/france_departements.parquet",
+        location="../datalake/silver/geo/france_departements.parquet",
         format="parquet"
     )
 }}
