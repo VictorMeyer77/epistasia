@@ -26,34 +26,47 @@ class SourceConfig:
         category: Category the source belongs to.
         provider: Organization or entity providing the data.
         year: Year or year range of the data (format: YYYY or YYYY-YYYY).
+              If None, the table is considered a full refresh and current year
+              will be used for file output name.
         page_url: URL to the source's information page.
         download_url: URL to download the data file.
         format: File format (one of FileFormat enum values).
         post: Optional name of post-download processing script to run.
               If None, no post-processing is performed. Defaults to None.
+        refresh_days: Number of days after which the source should be re-downloaded.
+                     If None, defaults to a standard refresh period. When year is not None
+                     (historical data), this should only be run with single download.
     """
 
     name: str
     description: str
     category: str
     provider: str
-    year: str
     page_url: str
     download_url: str
     format: str
-    post: str | None = None
+    year: str | None
+    post: str | None
+    refresh_days: int | None
+
+    def __post_init__(self):
+        """Validate the combination of year and refresh_days after initialization."""
+        self._validate_year_refresh_days_combination(self.year, self.refresh_days)
 
     @staticmethod
-    def _validate_year(year: str) -> None:
+    def _validate_year(year: str | None) -> None:
         """
         Validate year format.
 
         Args:
-            year: The year string to validate.
+            year: The year string to validate. Can be None for full refresh sources.
 
         Raises:
             ValueError: If the year format is invalid. Must be YYYY or YYYY-YYYY.
         """
+        if year is None:
+            return
+
         pattern = r"^\d{4}(-\d{4})?$"
         if not re.match(pattern, year):
             raise ValueError(
@@ -79,6 +92,36 @@ class SourceConfig:
                 f"Format must be one of: {', '.join(sorted(valid_formats))}."
             )
 
+    @staticmethod
+    def _validate_year_refresh_days_combination(
+        year: str | None, refresh_days: int | None
+    ) -> None:
+        """
+        Validate the combination of year and refresh_days.
+
+        Rules:
+        - If year is None (full refresh), refresh_days must be set
+        - If year is not None (historical), refresh_days should not be set (use download_single)
+
+        Args:
+            year: The year value to check.
+            refresh_days: The refresh_days value to check.
+
+        Raises:
+            ValueError: If the combination is invalid according to the rules above.
+        """
+        if year is None and refresh_days is None:
+            raise ValueError(
+                "If year is None (full refresh), refresh_days must be set. "
+                "Full refresh sources need a refresh frequency."
+            )
+
+        if year is not None and refresh_days is not None:
+            raise ValueError(
+                "If year is set (historical data), refresh_days should not be set. "
+                "Historical sources should only be downloaded with download_single command."
+            )
+
     @classmethod
     def from_dict(cls, data: dict) -> "SourceConfig":
         """
@@ -86,9 +129,9 @@ class SourceConfig:
 
         Args:
             data: Dictionary containing source configuration data.
-                  Required keys: name, description, category, provider, year,
+                  Required keys: name, description, category, provider,
                   page_url, download_url, format.
-                  Optional keys: post.
+                  Optional keys: year, post, refresh_days.
 
         Returns:
             A new SourceConfig instance.
@@ -96,18 +139,22 @@ class SourceConfig:
         Raises:
             ValueError: If year or format validation fails.
         """
-        cls._validate_year(data["year"])
+        cls._validate_year(data.get("year"))
         cls._validate_format(data["format"])
+        cls._validate_year_refresh_days_combination(
+            data.get("year"), data.get("refresh_days")
+        )
         return cls(
             name=data["name"],
             description=data["description"],
             category=data["category"],
             provider=data["provider"],
-            year=data["year"],
+            year=data.get("year"),
             page_url=data["page_url"],
             download_url=data["download_url"],
             format=data["format"],
             post=data.get("post"),
+            refresh_days=data.get("refresh_days"),
         )
 
 
@@ -162,8 +209,8 @@ class Conf:
             raise ValueError(
                 f"Missing required field in sources.json: {e}. "
                 "Each source must have: name, description, category, provider, "
-                "year, page_url, download_url, format. "
-                "Optional: post"
+                "page_url, download_url, format. "
+                "Optional: year, post, refresh_days"
             )
 
     def _validate_no_duplicates(self) -> None:
@@ -171,6 +218,7 @@ class Conf:
         Validate that there are no duplicate sources.
 
         Checks that each source has a unique combination of name and year.
+        Sources with year=None are treated as a special case for uniqueness.
 
         Raises:
             ValueError: If duplicate sources are found (same name and year).
@@ -185,23 +233,21 @@ class Conf:
                 )
             seen.add(key)
 
-    def get_source(self, name: str) -> SourceConfig:
+    def get_source(self, name: str, year: str | None) -> SourceConfig | None:
         """
-        Get a source by its name.
+        Get a source by its name and year.
 
         Args:
             name: The name of the source to retrieve.
+            year: The year of the source to retrieve. Can be None for full refresh sources.
 
         Returns:
-            The SourceConfig object matching the given name.
-
-        Raises:
-            KeyError: If no source with the given name exists.
+            The SourceConfig object matching the given name and year, or None if not found.
         """
         for source in self.sources:
-            if source.name == name:
+            if source.name == name and source.year == year:
                 return source
-        raise KeyError(f"Source '{name}' not found")
+        return None
 
     def get_all_sources(self) -> list[SourceConfig]:
         """

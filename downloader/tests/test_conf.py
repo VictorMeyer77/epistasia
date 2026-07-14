@@ -237,6 +237,7 @@ class TestSourceConfigDataclass:
             download_url="https://example.com/download",
             format="csv",
             post=None,
+            refresh_days=None,
         )
 
         assert config.name == "test"
@@ -248,9 +249,10 @@ class TestSourceConfigDataclass:
         assert config.download_url == "https://example.com/download"
         assert config.format == "csv"
         assert config.post is None
+        assert config.refresh_days is None
 
     def test_post_field_default_none(self):
-        """Test that post field defaults to None."""
+        """Test that post field can be set to None."""
         config = SourceConfig(
             name="test",
             description="desc",
@@ -260,6 +262,8 @@ class TestSourceConfigDataclass:
             page_url="https://example.com/page",
             download_url="https://example.com/download",
             format="csv",
+            post=None,
+            refresh_days=None,
         )
         assert config.post is None
 
@@ -275,8 +279,25 @@ class TestSourceConfigDataclass:
             download_url="https://example.com/download",
             format="csv",
             post="convert_to_parquet",
+            refresh_days=None,
         )
         assert config.post == "convert_to_parquet"
+
+    def test_refresh_days_field(self):
+        """Test that refresh_days field can be set to an integer value."""
+        config = SourceConfig(
+            name="test",
+            description="desc",
+            category="cat",
+            provider="prov",
+            year=None,
+            page_url="https://example.com/page",
+            download_url="https://example.com/download",
+            format="csv",
+            post=None,
+            refresh_days=30,
+        )
+        assert config.refresh_days == 30
 
 
 class TestConfClass:
@@ -468,7 +489,7 @@ class TestConfClass:
             Path(temp_path).unlink()
 
     def test_get_source_found(self):
-        """Test getting a source by name."""
+        """Test getting a source by name and year."""
         with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             json.dump(
                 [
@@ -489,14 +510,14 @@ class TestConfClass:
 
         try:
             conf = Conf(temp_path)
-            source = conf.get_source("find_me")
+            source = conf.get_source("find_me", "2024")
             assert source.name == "find_me"
             assert source.description == "Find me"
         finally:
             Path(temp_path).unlink()
 
     def test_get_source_not_found(self):
-        """Test getting a non-existent source raises KeyError."""
+        """Test getting a non-existent source returns None."""
         with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             json.dump(
                 [
@@ -517,8 +538,8 @@ class TestConfClass:
 
         try:
             conf = Conf(temp_path)
-            with pytest.raises(KeyError, match="Source 'nonexistent' not found"):
-                conf.get_source("nonexistent")
+            source = conf.get_source("nonexistent", "2024")
+            assert source is None
         finally:
             Path(temp_path).unlink()
 

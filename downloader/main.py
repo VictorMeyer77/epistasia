@@ -6,9 +6,6 @@ from downloader.conf import Conf
 from downloader.downloader import Downloader
 from downloader.history import History
 
-# Number of days after which a source should be re-downloaded
-DOWNLOAD_REFRESH_DAYS = 180
-
 
 def validate():
     """
@@ -18,7 +15,7 @@ def validate():
     to parse it and create SourceConfig objects for each entry.
 
     Returns:
-        int: 0 on success, 1 on validation failure.
+        0 on success, 1 on validation failure.
     """
     try:
         conf = Conf()
@@ -33,22 +30,18 @@ def validate():
         return 1
 
 
-def plan(from_date: datetime | None = None):
+def plan():
     """
     Show download plan - sources that need to be downloaded.
 
     A source needs to be downloaded if:
+    - It has year=None (full refresh sources), OR
     - It has no download history, OR
-    - Its latest download was more than DOWNLOAD_REFRESH_DAYS days before the --from date
+    - Its latest download was more than its refresh_days days before now
 
-    By default, uses current datetime as --from date, so sources are re-downloaded
-    if they were downloaded more than DOWNLOAD_REFRESH_DAYS days ago.
+    Sources with year not None (historical data) are only included if they have no history.
 
-    Args:
-        from_date: Optional datetime. If provided, only show sources with no history
-                   or with download_timestamp older than DOWNLOAD_REFRESH_DAYS.
-                   If None, defaults to current datetime, showing only sources not yet
-                   downloaded or downloaded more than DOWNLOAD_REFRESH_DAYS days ago.
+    Uses current datetime to determine what needs refreshing.
 
     Returns:
         list[SourceConfig] - Sources that need to be downloaded.
@@ -56,62 +49,55 @@ def plan(from_date: datetime | None = None):
     conf = Conf()
     history = History()
     sources = conf.get_all_sources()
-
-    if from_date is None:
-        from_date = datetime.now()
-
+    now = datetime.now()
     sources_to_download = []
 
     for source in sources:
-        records = history.get_records_by_key(source.name, source.year)
+        file_year = now.strftime("%Y") if source.year is None else source.year
 
-        needs_download = False
+        record = history.get_records_by_key(source.name, file_year)
 
-        if not records:
-            needs_download = True
-        else:
-            latest_record = max(records, key=lambda r: r.download_timestamp)
-            latest_timestamp = datetime.fromisoformat(
-                latest_record.download_timestamp
-            ).timestamp()
-            threshold = latest_timestamp + 24 * 60 * 60 * DOWNLOAD_REFRESH_DAYS
-            if threshold < from_date.timestamp():
-                needs_download = True
-        if needs_download:
+        if not record:
+            source.year = file_year
             sources_to_download.append(source)
+        else:
+            if source.year is not None:
+                continue
+            else:
+                threshold = (
+                    datetime.fromisoformat(record.download_timestamp).timestamp()
+                    + 24 * 60 * 60 * source.refresh_days
+                )
+                if threshold < now.timestamp():
+                    sources_to_download.append(source)
 
     return sources_to_download
 
 
-def download_single(name: str, year: str):
+def download_single(name: str, year: str | None = None):
     """
     Download a single specific source identified by name and year.
 
     Args:
-        name: The name of the source to download.
-        year: The year of the source to download.
+        name: Name of the source to download.
+        year: Year of the source to download. Can be None for full refresh sources.
 
     Returns:
-        int: 0 on success, 1 on error.
+        0 on success, 1 on error.
     """
     try:
         conf = Conf()
         downloader = Downloader()
+        now = datetime.now()
+        source = conf.get_source(name, year)
 
-        matching_sources = [
-            s for s in conf.get_all_sources() if s.name == name and s.year == year
-        ]
-
-        if not matching_sources:
-            print(f"✗ No source found with name='{name}' and year='{year}'")
+        if not source:
+            year_display = year or "None"
+            print(f"✗ No source found with name='{name}' and year='{year_display}'")
             return 1
 
-        if len(matching_sources) > 1:
-            print(f"✗ Multiple sources found with name='{name}' and year='{year}'")
-            return 1
-
-        source = matching_sources[0]
-        print(f"Downloading {source.name} ({source.format}, {source.year})...")
+        file_year = now.strftime("%Y") if source.year is None else source.year
+        print(f"Downloading {source.name} ({source.format}, {file_year})...")
 
         success, record, error, file_path = downloader.download_source(source)
 
@@ -129,25 +115,22 @@ def download_single(name: str, year: str):
         return 1
 
 
-def download(from_date: datetime | None = None):
+def download(yes: bool = False):
     """
     Download sources based on the plan.
 
     Downloads sources that either have no download history or were downloaded more
-    than DOWNLOAD_REFRESH_DAYS days before the --from date.
+    than their refresh_days days ago.
 
     Args:
-        from_date: Optional datetime. If provided, only download sources not downloaded
-                   since this date. If None, defaults to current datetime, downloading
-                   only sources not yet downloaded or downloaded more than
-                   DOWNLOAD_REFRESH_DAYS days ago.
+        yes: If True, skip the confirmation prompt and proceed with download.
 
     Returns:
-        int: 0 on success, 1 on error or cancellation.
+        0 on success, 1 on error or cancellation.
     """
     try:
         history = History()
-        sources_to_download = plan(from_date)
+        sources_to_download = plan()
 
         if not sources_to_download:
             print("Download plan:")
@@ -161,10 +144,11 @@ def download(from_date: datetime | None = None):
             status = "NEW" if not records else "UPDATE"
             print(f"    [{status}] {source.name} ({source.format}, {source.year})")
 
-        response = input("\nProceed with download? [Y/N]: ").strip().upper()
-        if response != "Y":
-            print("Download cancelled.")
-            return 1
+        if not yes:
+            response = input("\nProceed with download? [Y/N]: ").strip().upper()
+            if response != "Y":
+                print("Download cancelled.")
+                return 1
 
         print("\nStarting download...")
         downloader = Downloader()
@@ -185,37 +169,32 @@ def main():
     subparsers.add_parser("validate", help="Validate sources configuration")
 
     # Plan command
-    plan_parser = subparsers.add_parser("plan", help="Show download plan")
-    plan_parser.add_argument(
-        "--from",
-        type=str,
-        dest="from_date",
-        help="Only include sources not downloaded since this date (ISO format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)",
-        default=None,
-    )
+    subparsers.add_parser("plan", help="Show download plan")
 
-    # Download command
-    download_parser = subparsers.add_parser("download", help="Download sources")
-    download_parser.add_argument(
-        "--from",
-        type=str,
-        dest="from_date",
-        help="Only download sources not downloaded since this date (ISO format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)",
-        default=None,
+    # Download command - for refreshing all full refresh sources
+    download_parser = subparsers.add_parser(
+        "download", help="Download and refresh all full refresh sources"
     )
     download_parser.add_argument(
         "--name",
         type=str,
-        dest="source_name",
-        help="Download only a specific source by name (requires --year)",
+        dest="name",
+        help="Download only a specific full refresh source by name",
         default=None,
     )
     download_parser.add_argument(
         "--year",
         type=str,
-        dest="source_year",
-        help="Download only a specific source by year (requires --name)",
+        dest="year",
+        help="Must be 'none' for full refresh sources",
         default=None,
+    )
+    download_parser.add_argument(
+        "--yes",
+        action="store_true",
+        dest="yes",
+        help="Skip confirmation prompt and proceed with download",
+        default=False,
     )
 
     args = parser.parse_args()
@@ -223,16 +202,7 @@ def main():
     if args.command == "validate":
         sys.exit(validate())
     elif args.command == "plan":
-        from_date = None
-        if args.from_date:
-            try:
-                from_date = datetime.fromisoformat(args.from_date)
-            except ValueError:
-                print(
-                    f"✗ Invalid date format: {args.from_date}. Use ISO format (YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)"
-                )
-                sys.exit(1)
-        sources = plan(from_date)
+        sources = plan()
         print("Download plan:")
         if sources:
             print(f"  {len(sources)} source(s) to download:")
@@ -245,23 +215,11 @@ def main():
             print("  All sources are up to date.")
         sys.exit(0)
     elif args.command == "download":
-        from_date = None
-        if args.from_date:
-            try:
-                from_date = datetime.fromisoformat(args.from_date)
-            except ValueError:
-                print(
-                    f"✗ Invalid date format: {args.from_date}. Use ISO format (YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)"
-                )
-                sys.exit(1)
+        if args.name:
+            sys.exit(download_single(args.name, args.year))
 
-        if args.source_name and args.source_year:
-            sys.exit(download_single(args.source_name, args.source_year))
-        elif args.source_name or args.source_year:
-            print("✗ Both --name and --year must be provided together")
-            sys.exit(1)
+        sys.exit(download(yes=args.yes))
 
-        sys.exit(download(from_date))
     else:
         parser.print_help()
         sys.exit(1)

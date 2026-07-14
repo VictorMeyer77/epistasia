@@ -35,30 +35,40 @@
     "description": "Données essentielles de la commande publique - fichiers consolidés",
     "category": "economic",
     "provider": "ministeres-economiques-et-financiers",
-    "year": "2026",
     "page_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides",
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/2551ad40-584a-42fd-b3cc-e8906183287e",
     "format": "json",
-    "post": "commande_publique"
+    "post": "commande_publique",
+    "refresh_days": 15
   },
   {
     "name": "sirene-etablissement",
     "description": "Base Sirene des établissements (SIRET).",
     "category": "economic",
     "provider": "insee",
-    "year": "2026",
     "page_url": "https://www.data.gouv.fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret",
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/a29c1297-1f92-4e2a-8f6b-8c902ce96c5f",
-    "format": "parquet"
+    "format": "parquet",
+    "refresh_days": 15
   },
   {
     "name": "sirene-unite-legal",
     "description": "Base Sirene des entreprises (SIREN).",
     "category": "economic",
     "provider": "insee",
-    "year": "2026",
     "page_url": "https://www.data.gouv.fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret",
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/350182c9-148a-46e0-8389-76c2ec1374a3",
-    "format": "parquet"
+    "format": "parquet",
+    "refresh_days": 15
+  },
+  {
+    "name": "culture-convention-subvention",
+    "description": "Liste des données essentielles des conventions de subvention du ministère de la Culture.",
+    "category": "economic",
+    "provider": "Ministère de la Culture",
+    "page_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-des-conventions-de-subvention-5",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/403c9108-dd0a-443d-9ed5-bca5f056fa8f",
+    "format": "csv",
+    "refresh_days": 15
   }
 ]

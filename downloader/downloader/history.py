@@ -38,7 +38,7 @@ class DownloadRecord:
         Create a DownloadRecord from a dictionary.
 
         Args:
-            data: Dictionary containing all the required fields to create a DownloadRecord.
+            data: Dictionary containing all the required fields.
                  Must include: name, description, category, provider, year, page_url,
                  download_url, format, download_timestamp, download_duration.
 
@@ -209,64 +209,38 @@ class History:
         """
         self.create_file()
 
-    def exists(self, name: str, year: str, provider: str) -> bool:
+    def exists(self, name: str, year: str) -> bool:
         """
         Check if a record with the given parameters already exists.
 
         Args:
-            name: Source name
-            year: Source year
-            provider: Source provider
+            name: Source name.
+            year: Source year.
 
         Returns:
             True if a matching record exists, False otherwise.
         """
         all_records = self.read_all()
         for record in all_records:
-            if (
-                record.name == name
-                and record.year == year
-                and record.provider == provider
-            ):
+            if record.name == name and record.year == year:
                 return True
         return False
 
-    def get_records_by_key(
-        self, source_name: str, source_year: str
-    ) -> list[DownloadRecord]:
+    def get_records_by_key(self, name: str, year: str) -> DownloadRecord | None:
         """
-        Get all download records matching the given source name and year.
+        Get a download record matching the given source name and year.
 
         Args:
-            source_name: The name of the source to filter by.
-            source_year: The year of the source to filter by.
+            name: The name of the source to filter by.
+            year: The year of the source to filter by.
 
         Returns:
-            List of DownloadRecord objects that match both the source name and year.
+            DownloadRecord object that matches both the source name and year, or None if not found.
         """
-        all_records = self.read_all()
-        return [
-            r for r in all_records if r.name == source_name and r.year == source_year
-        ]
-
-    def get_records_by_download_timestamp(
-        self, timestamp: datetime
-    ) -> list[DownloadRecord]:
-        """
-        Get all download records with download_timestamp before the given timestamp.
-
-        Args:
-            timestamp: Datetime threshold. Records with download_timestamp < timestamp are returned.
-
-        Returns:
-            List of DownloadRecord objects with download_timestamp before the given date.
-        """
-        all_records = self.read_all()
-        matching_records = []
-        for record in all_records:
-            if datetime.fromisoformat(record.download_timestamp) < timestamp:
-                matching_records.append(record)
-        return matching_records
+        for record in self.read_all():
+            if record.name == name and record.year == year:
+                return record
+        return None
 
     @property
     def file_path(self) -> str:
