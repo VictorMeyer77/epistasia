@@ -34,8 +34,6 @@ class Downloader:
         Args:
             output_dir: Directory to save downloaded files.
                        Defaults to ../../datalake/raw/ relative to this file.
-            history: History | None - History instance for recording downloads.
-                     If None, a new History instance will be created.
             timeout: Request timeout in seconds.
             retry_count: Number of retries for failed downloads.
         """
@@ -59,9 +57,14 @@ class Downloader:
 
         Returns:
             The filename as {name}_{year}.{format}
+            If year is None, uses current year for the filename.
         """
-        safe_year = source.year.replace("-", "_")
-        return f"{source.name}_{safe_year}.{source.format}"
+        if source.year is None:
+            current_year = datetime.now().strftime("%Y")
+            return f"{source.name}_{current_year}.{source.format}"
+        else:
+            safe_year = source.year.replace("-", "_")
+            return f"{source.name}_{safe_year}.{source.format}"
 
     def _download_file(
         self, url: str, destination: Path, timeout: int = 30
@@ -75,7 +78,9 @@ class Downloader:
             timeout: Request timeout in seconds.
 
         Returns:
-            tuple[bool, str | None]
+            tuple[bool, str | None]:
+                - success (bool): True if download succeeded, False otherwise
+                - error_message (str | None): Error message if failed, None if successful
         """
         try:
             response = requests.get(url, timeout=timeout, stream=True)
@@ -127,7 +132,7 @@ class Downloader:
                     description=source.description,
                     category=source.category,
                     provider=source.provider,
-                    year=source.year,
+                    year=source.year or datetime.now().strftime("%Y"),
                     page_url=source.page_url,
                     download_url=source.download_url,
                     format=source.format,
@@ -157,15 +162,16 @@ class Downloader:
         file path as argument.
 
         Args:
-            sources: list[SourceConfig] - SourceConfig objects to download.
+            sources: SourceConfig objects to download.
 
         Returns:
-            list[DownloadRecord] - DownloadRecord objects for successful downloads.
+            List of DownloadRecord objects for successful downloads.
         """
         downloaded_records = []
 
         for source in sources:
-            print(f"Downloading {source.name} ({source.format}, {source.year})...")
+            year_display = source.year or datetime.now().strftime("%Y")
+            print(f"Downloading {source.name} ({source.format}, {year_display})...")
             success, download_record, error_message, file_path = self.download_source(
                 source
             )

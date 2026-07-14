@@ -4,7 +4,6 @@ import csv
 import os
 import sys
 import tempfile
-from datetime import datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -319,9 +318,7 @@ class TestHistoryClass:
             )
 
             # Check if record exists
-            assert (
-                history.exists("existing_source", "2024", "existing_provider") is True
-            )
+            assert history.exists("existing_source", "2024") is True
 
     def test_exists_false(self):
         """Test exists method returns False for non-existing record."""
@@ -330,7 +327,7 @@ class TestHistoryClass:
             history = History(str(history_path))
 
             # Check for non-existing record
-            assert history.exists("nonexistent", "2024", "nonexistent") is False
+            assert history.exists("nonexistent", "2024") is False
 
     def test_exists_different_provider(self):
         """Test exists method distinguishes by provider."""
@@ -351,8 +348,8 @@ class TestHistoryClass:
                 download_duration=10.0,
             )
 
-            # Same name and year, different provider should not exist
-            assert history.exists("source", "2024", "provider2") is False
+            # Same name and year should exist regardless of provider
+            assert history.exists("source", "2024") is True
 
     def test_get_records_by_key(self):
         """Test getting records by source name and year."""
@@ -397,81 +394,21 @@ class TestHistoryClass:
                 download_duration=20.0,
             )
 
-            # Get records for source1
-            records = history.get_records_by_key("source1", "2024")
-            assert len(records) == 1
-            assert records[0].name == "source1"
-            assert records[0].year == "2024"
+            # Get record for source1
+            record = history.get_records_by_key("source1", "2024")
+            assert record is not None
+            assert record.name == "source1"
+            assert record.year == "2024"
 
-            # Get records for source1 with different year
-            records = history.get_records_by_key("source1", "2025")
-            assert len(records) == 1
-            assert records[0].name == "source1"
-            assert records[0].year == "2025"
+            # Get record for source1 with different year
+            record = history.get_records_by_key("source1", "2025")
+            assert record is not None
+            assert record.name == "source1"
+            assert record.year == "2025"
 
-            # Get records for non-existing source
-            records = history.get_records_by_key("nonexistent", "2024")
-            assert len(records) == 0
-
-    def test_get_records_by_download_timestamp(self):
-        """Test getting records by download timestamp."""
-        with tempfile.TemporaryDirectory() as temp_dir:
-            history_path = Path(temp_dir) / "test_history.csv"
-            history = History(str(history_path))
-
-            # Add first record
-            history.add_record(
-                name="early_source",
-                description="test",
-                category="test",
-                provider="provider",
-                year="2024",
-                page_url="https://example.com",
-                download_url="https://example.com",
-                format="csv",
-                download_duration=10.0,
-            )
-
-            # Small delay to ensure different timestamps
-            import time
-
-            time.sleep(0.01)
-
-            # Add second record
-            history.add_record(
-                name="late_source",
-                description="test",
-                category="test",
-                provider="provider",
-                year="2024",
-                page_url="https://example.com",
-                download_url="https://example.com",
-                format="csv",
-                download_duration=10.0,
-            )
-
-            # Get all records
-            all_records = history.read_all()
-            assert len(all_records) == 2
-
-            # Get the timestamp from the second record
-            late_timestamp = datetime.fromisoformat(all_records[1].download_timestamp)
-
-            # Get records before late timestamp (should include both)
-            records = history.get_records_by_download_timestamp(
-                late_timestamp + timedelta(seconds=1)
-            )
-            assert len(records) == 2
-
-            # Get records before early timestamp (should include none)
-            early_timestamp = datetime.fromisoformat(all_records[0].download_timestamp)
-            records = history.get_records_by_download_timestamp(early_timestamp)
-            assert len(records) == 0
-
-            # Get records before late timestamp (should include only first)
-            records = history.get_records_by_download_timestamp(late_timestamp)
-            assert len(records) == 1
-            assert records[0].name == "early_source"
+            # Get record for non-existing source
+            record = history.get_records_by_key("nonexistent", "2024")
+            assert record is None
 
     def test_file_path_property(self):
         """Test file_path property returns absolute path."""
@@ -656,14 +593,14 @@ class TestHistoryClass:
             assert len(history) == 3
 
             # 2. Check existence
-            assert history.exists("source0", "2024", "provider") is True
-            assert history.exists("source1", "2024", "provider") is True
-            assert history.exists("nonexistent", "2024", "provider") is False
+            assert history.exists("source0", "2024") is True
+            assert history.exists("source1", "2024") is True
+            assert history.exists("nonexistent", "2024") is False
 
-            # 3. Get records by key
-            records = history.get_records_by_key("source1", "2024")
-            assert len(records) == 1
-            assert records[0].name == "source1"
+            # 3. Get record by key
+            record = history.get_records_by_key("source1", "2024")
+            assert record is not None
+            assert record.name == "source1"
 
             # 4. Clear and verify
             history.clear()
@@ -684,4 +621,4 @@ class TestHistoryClass:
             )
 
             assert len(history) == 1
-            assert history.exists("new_source", "2025", "new") is True
+            assert history.exists("new_source", "2025") is True

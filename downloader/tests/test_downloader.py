@@ -33,6 +33,8 @@ class TestGenerateFilename:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            post=None,
+            refresh_days=None,
         )
         result = self.downloader._generate_filename(source)
         assert result == "test_source_2024.csv"
@@ -48,6 +50,8 @@ class TestGenerateFilename:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            post=None,
+            refresh_days=None,
         )
         result = self.downloader._generate_filename(source)
         assert result == "test_source_2024_2026.csv"
@@ -63,6 +67,8 @@ class TestGenerateFilename:
             page_url="https://example.com",
             download_url="https://example.com/data.parquet",
             format="parquet",
+            post=None,
+            refresh_days=None,
         )
         result = self.downloader._generate_filename(source)
         assert result == "data_2025.parquet"
@@ -163,6 +169,8 @@ class TestDownloadSource:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            post=None,
+            refresh_days=None,
         )
 
         success, record, error, file_path = self.downloader.download_source(source)
@@ -189,6 +197,8 @@ class TestDownloadSource:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            post=None,
+            refresh_days=None,
         )
 
         success, record, error, file_path = self.downloader.download_source(source)
@@ -218,6 +228,8 @@ class TestDownloadSource:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            post=None,
+            refresh_days=None,
         )
 
         success, record, error, file_path = self.downloader.download_source(source)
@@ -256,6 +268,8 @@ class TestDownloadAll:
             page_url="https://example.com/page1",
             download_url="https://example.com/file1.csv",
             format="csv",
+            post=None,
+            refresh_days=None,
         )
         source2 = SourceConfig(
             name="source2",
@@ -266,6 +280,8 @@ class TestDownloadAll:
             page_url="https://example.com/page2",
             download_url="https://example.com/file2.json",
             format="json",
+            post=None,
+            refresh_days=None,
         )
 
         mock_download_source.side_effect = [
@@ -324,6 +340,8 @@ class TestDownloadAll:
             page_url="https://example.com/page1",
             download_url="https://example.com/file1.csv",
             format="csv",
+            post=None,
+            refresh_days=None,
         )
         source2 = SourceConfig(
             name="source2",
@@ -334,6 +352,8 @@ class TestDownloadAll:
             page_url="https://example.com/page2",
             download_url="https://example.com/file2.json",
             format="json",
+            post=None,
+            refresh_days=None,
         )
 
         mock_download_source.side_effect = [

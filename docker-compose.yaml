@@ -1,0 +1,51 @@
+services:
+  neo4j:
+    image: neo4j:latest
+    container_name: epistasia_neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+      - epistasia_neo4j_data:/data
+
+  neo4j-import:
+    image: neo4j:latest
+    container_name: epistasia_neo4j_import
+    profiles:
+      - import
+    volumes:
+      - epistasia_neo4j_data:/data
+      - ./datalake/gold/graph:/import
+      - ./graph_import.sh:/import.sh:ro
+    entrypoint: ["/import.sh"]
+
+  transformer:
+    build:
+      context: ./transformer
+      dockerfile: Dockerfile
+    container_name: epistasia_transformer
+    ports:
+      - "8080:8080" # dbt docs serve
+    profiles:
+      - import
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./datalake:/datalake
+
+  downloader:
+    build:
+      context: ./downloader
+      dockerfile: Dockerfile
+    container_name: epistasia_downloader
+    profiles:
+      - import
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./datalake:/datalake
+
+volumes:
+  epistasia_neo4j_data:

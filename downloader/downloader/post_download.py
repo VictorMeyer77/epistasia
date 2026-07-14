@@ -21,7 +21,9 @@ def commande_publique(file_path: Path) -> None:
         KeyError: If the expected keys are not found in the JSON data.
     """
     year = int(re.search(r"(\d{4})", file_path.stem).group(1))
-    marche_file_path = Path(file_path.parent / f"commande-publique-marche_{year}.parquet")
+    marche_file_path = Path(
+        file_path.parent / f"commande-publique-marche_{year}.parquet"
+    )
     concession_file_path = Path(
         file_path.parent / f"commande-publique-concession_{year}.parquet"
     )
