@@ -35,3 +35,23 @@ seeds:
         description: NAFA code.
       - name: libelle
         description: NAFA label.
+
+  - name: ministere_culture_division
+    description: >
+      Regional divisions of the Ministère de la Culture.
+    config:
+      column_types:
+        type_division: varchar
+        nom_division: varchar
+        siret: varchar
+    columns:
+      - name: type_division
+        description: >
+          Division type - AC (Administration Centrale) or DRAC (Direction
+          Régionale des Affaires Culturelles) for regional divisions.
+      - name: nom_division
+        description: Name of the division - "Administration Centrale" or the region name.
+      - name: siret
+        description: >
+          SIRET identifier of the division. Empty for Nouvelle-Calédonie,
+          Saint-Pierre-et-Miquelon, Polynésie française, and Wallis-et-Futuna.

@@ -472,3 +472,88 @@ models:
         description: Timestamp when the row was loaded into the bronze model.
       - name: release_year
         description: COG release year extracted from the raw source file path.
+
+  - name: brz_culture_convention_subvention
+    description: >
+      Bronze Ministry of Culture subsidy conventions dataset. Preserves the raw
+      convention fields from the downloader and adds ingestion metadata from
+      the downloaded source file.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
+    columns:
+      - name: Année
+        description: Year of the subsidy convention.
+      - name: Origine des crédits
+        description: Origin of the credits.
+      - name: Détail origine des crédits
+        description: Detailed origin of the credits.
+      - name: CPER
+        description: State-Region Plan Contract identifier.
+      - name: Montant engagé
+        description: Committed amount for the subsidy.
+      - name: Nom du bénéficiaire
+        description: Name of the beneficiary.
+      - name: Région du bénéficiaire
+        description: Region of the beneficiary.
+      - name: Département du bénéficiaire
+        description: Department of the beneficiary.
+      - name: EPCI du bénéficiaire
+        description: Public establishment of inter-municipal cooperation of the beneficiary.
+      - name: Sous-types de communes du bénéficiaire
+        description: Sub-types of communes for the beneficiary.
+      - name: Code postal du bénéficiaire
+        description: Postal code of the beneficiary.
+      - name: Code commune du bénéficiaire
+        description: Commune code of the beneficiary.
+      - name: Commune du bénéficiaire
+        description: Commune name of the beneficiary.
+      - name: N° SIREN du bénéficiaire
+        description: SIREN number of the beneficiary.
+      - name: N° SIRET du bénéficiaire
+        description: SIRET number of the beneficiary.
+      - name: N° EJ
+        description: EJ number.
+      - name: Titre
+        description: Title.
+      - name: Mission
+        description: Mission.
+      - name: Programme
+        description: Program.
+      - name: Localisation interministérielle
+        description: Inter-ministerial location.
+      - name: Fonctionnement/Investissement
+        description: Operating/Investment classification.
+      - name: Domaine fonctionnel
+        description: Functional domain.
+      - name: Compte budgétaire
+        description: Budget account.
+      - name: Code activité
+        description: Activity code.
+      - name: Activité libellé long
+        description: Activity label long form.
+      - name: Activité libellé court
+        description: Activity label short form.
+      - name: Centre financier
+        description: Financial center.
+      - name: Centre de coût
+        description: Cost center.
+      - name: Appellation unité patrimoniale concernée par l''op. fin.
+        description: Name of the patrimonial unit concerned by the financial operation.
+      - name: Région unité patrimoniale concernée par l''op. fin.
+        description: Region of the patrimonial unit concerned by the financial operation.
+      - name: Département unité patrimoniale concernée par l''op. fin.
+        description: Department of the patrimonial unit concerned by the financial operation.
+      - name: Code postal unité patrimoniale concernée par l''op. fin.
+        description: Postal code of the patrimonial unit concerned by the financial operation.
+      - name: Code commune unité patrimoniale concernée par l''op. fin.
+        description: Commune code of the patrimonial unit concerned by the financial operation.
+      - name: Commune unité patrimoniale concernée par l''op. fin.
+        description: Commune of the patrimonial unit concerned by the financial operation.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.

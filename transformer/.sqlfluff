@@ -1,7 +1,7 @@
 [sqlfluff]
 
 dialect = duckdb
-exclude_rules = RF01, ST06
+exclude_rules = RF01, ST06, RF06
 
 [sqlfluff:rules:capitalisation.identifiers]
 

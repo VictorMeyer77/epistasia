@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: svr_subvention_ministere_culture
+    description: >
+      Silver dataset of Ministère de la Culture subsidy conventions, keeping
+      only the latest release year from the bronze source and renaming columns
+      to standardized snake_case identifiers.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: annee
+        description: Year the subsidy was granted.
+      - name: origine_credits
+        description: Origin of the budget credits funding the subsidy.
+      - name: detail_origine_credits
+        description: Detailed origin of the budget credits funding the subsidy.
+      - name: cper
+        description: Contrat de Plan État-Région (CPER) associated with the subsidy, if any.
+      - name: montant_engage
+        description: Committed amount of the subsidy.
+        tests:
+          - not_null
+      - name: nom_beneficiaire
+        description: Name of the subsidy beneficiary.
+        tests:
+          - not_null
+      - name: region_beneficiaire
+        description: Region of the subsidy beneficiary.
+      - name: departement_beneficiaire
+        description: Department of the subsidy beneficiary.
+      - name: epci_beneficiaire
+        description: EPCI (inter-municipal body) of the subsidy beneficiary.
+      - name: sous_types_communes_beneficiaire
+        description: Commune sub-type classification of the subsidy beneficiary.
+      - name: code_postal_beneficiaire
+        description: Postal code of the subsidy beneficiary.
+      - name: code_commune_beneficiaire
+        description: INSEE code of the commune of the subsidy beneficiary.
+      - name: commune_beneficiaire
+        description: Commune name of the subsidy beneficiary.
+      - name: siren_beneficiaire
+        description: SIREN identifier of the subsidy beneficiary.
+      - name: siret_beneficiaire
+        description: SIRET identifier of the subsidy beneficiary.
+      - name: num_engagement_juridique
+        description: Legal commitment number (engagement juridique) for the subsidy.
+        tests:
+          - not_null
+      - name: titre
+        description: Title of the subsidy convention.
+      - name: mission
+        description: Budget mission under which the subsidy is allocated.
+      - name: programme
+        description: Budget programme under which the subsidy is allocated.
+      - name: localisation_interministerielle
+        description: Interministerial location code associated with the subsidy.
+      - name: fonctionnement_investissement
+        description: Budget nature of the subsidy - operating (fonctionnement) or investment.
+      - name: domaine_fonctionnel
+        description: Functional budget domain of the subsidy.
+      - name: compte_budgetaire
+        description: Budget account code associated with the subsidy.
+      - name: code_activite
+        description: Code of the budget activity funding the subsidy.
+      - name: activite_libelle_long
+        description: Long label describing the budget activity funding the subsidy.
+      - name: activite_libelle_court
+        description: Short label describing the budget activity funding the subsidy.
+      - name: centre_financier
+        description: Financial center code associated with the subsidy.
+      - name: centre_cout
+        description: Cost center code associated with the subsidy.
+      - name: appellation_unite_patrimoniale_concernee_par_lop_fin
+        description: Name of the patrimonial unit concerned by the financial operation.
+      - name: region_unite_patrimoniale_concernee_par_lop_fin
+        description: Region of the patrimonial unit concerned by the financial operation.
+      - name: departement_unite_patrimoniale_concernee_par_lop_fin
+        description: Department of the patrimonial unit concerned by the financial operation.
+      - name: code_postal_unite_patrimoniale_concernee_par_lop_fin
+        description: Postal code of the patrimonial unit concerned by the financial operation.
+      - name: code_commune_unite_patrimoniale_concernee_par_lop_fin
+        description: INSEE code of the commune of the patrimonial unit concerned by the financial operation.
+      - name: commune_unite_patrimoniale_concernee_par_lop_fin
+        description: Commune name of the patrimonial unit concerned by the financial operation.
+      - name: release_year
+        description: Release year of the source dataset, used to select the latest available data.
+        tests:
+          - not_null

@@ -26,7 +26,7 @@ models:
         description: Flag indicating whether the legal unit has been purged.
       - name: date_creation_unite_legale
         description: Creation date of the legal unit in the Sirene registry.
-      - name: denomination_unite_legal
+      - name: denomination_unite_legale
         description: >
           Display name of the legal unit. Uses the registered denomination when
           available, otherwise falls back to the usual given name and family
@@ -232,3 +232,52 @@ models:
         description: Price form or pricing structure.
       - name: montant_subvention_publique
         description: Amount of public subsidy for the contract.
+
+  - name: svr_ent_subvention_publique
+    description: >
+      Silver unified enterprise public subsidy dataset. Standardizes public
+      subvention/grant records with enterprise-focused columns describing
+      beneficiaries, funded projects, and awarding administrations.
+    config:
+      tags: silver | entreprise
+    docs:
+      node_color: "#5B8DEF"
+    columns:
+      - name: date_subvention
+        description: Date the subsidy was granted, derived from the grant year.
+      - name: code_commune_beneficiaire
+        description: INSEE code of the commune of the subsidy beneficiary.
+      - name: code_commune_projet
+        description: INSEE code of the commune where the funded project is located.
+      - name: nom_projet
+        description: >
+          Name of the funded project, derived by concatenating the budget
+          mission and programme.
+      - name: description_projet
+        description: Description of the funded project or activity.
+      - name: num_engagement_juridique
+        description: Legal commitment number (engagement juridique) for the subsidy.
+        tests:
+          - not_null
+      - name: nom_beneficiaire
+        description: Name of the subsidy beneficiary.
+        tests:
+          - not_null
+      - name: siret_beneficiaire
+        description: SIRET identifier of the subsidy beneficiary.
+      - name: siret_crediteur
+        description: SIRET identifier of the granting authority/division.
+      - name: montant_engage
+        description: Committed amount of the subsidy.
+        tests:
+          - not_null
+      - name: montant_verse
+        description: Amount of the subsidy actually paid out.
+      - name: domaine
+        description: Policy domain covered by the subsidy (e.g. culture).
+        tests:
+          - not_null
+      - name: origine_data
+        description: Source administration/ministry that published the data.
+        tests:
+          - not_null
