@@ -41,7 +41,7 @@ SELECT
 FROM {{ ref("brz_anct_subvention_ville") }} AS subvention
 WHERE
     subvention.release_year = (
-        SELECT MAX(subvention.release_year)
-        FROM {{ ref("brz_anct_subvention_ville") }}
+        SELECT MAX(subvention_max.release_year)
+        FROM {{ ref("brz_anct_subvention_ville") }} AS subvention_max
     )
     AND subvention."Identification de l'attributaire" IS NOT NULL -- noqa: RF05
