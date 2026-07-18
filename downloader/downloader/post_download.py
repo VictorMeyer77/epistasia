@@ -1,6 +1,8 @@
 import json
 import re
 from pathlib import Path
+import shutil
+import tempfile
 
 import polars as pl
 
@@ -43,13 +45,46 @@ def commande_publique(file_path: Path) -> None:
         print(f"  Wrote Parquet file: {concession_file_path}")
 
 
+def anct_subvention_ville_2019(file_path: Path) -> None:
+    """
+    Clean the ANCT "subvention ville 2019" raw file in place.
+
+    Rewrites the file (encoded in cp1252) to:
+      - drop the first line if it consists only of semicolons
+        (e.g. ";;;;;;;;;;;;;"), a spurious header sometimes present
+        in the raw export
+      - replace triple double-quotes with a single double-quote
+        on every line, fixing an over-escaping artifact in the source data
+
+    Args:
+        file_path: Path to the file to clean. The file is overwritten
+                   in place via an atomic replace (temp file + move).
+    """
+    with file_path.open("r", encoding="cp1252") as src:
+        first_line = src.readline()
+        skip_first_line = first_line.strip() and set(first_line.strip()) == {";"}
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="cp1252",
+            newline="",
+            delete=False,
+            dir=file_path.parent,
+        ) as tmp:
+            if not skip_first_line:
+                tmp.write(first_line.replace('"""', '"'))
+            for line in src:
+                tmp.write(line.replace('"""', '"'))
+    shutil.move(tmp.name, file_path)
+
+
 def post(post_name: str, file_path: Path) -> None:
     """
     Execute a post-download processing script on a file.
 
     Args:
         post_name: Name of the post-processing script to execute.
-                   Currently supported: "commande_publique"
+                   Currently supported: "commande_publique",
+                   "anct_subvention_ville_2019".
         file_path: Path to the downloaded file to process.
 
     Raises:
@@ -57,5 +92,7 @@ def post(post_name: str, file_path: Path) -> None:
     """
     if post_name == "commande_publique":
         commande_publique(file_path)
+    elif post_name == "anct_subvention_ville_2019":
+        anct_subvention_ville_2019(file_path)
     else:
         raise ValueError(f"Unknown post-processing script: {post_name}")

@@ -80,5 +80,86 @@
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/8323f86c-a328-4b5a-a8a9-7a333b5cee98",
     "format": "csv",
     "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2025",
+    "description": "Données essentielles des subventions politique de la ville en 2025.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/27007c8c-3811-4100-a414-569c45a74266",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2024",
+    "description": "Données essentielles des subventions politique de la ville en 2024.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/6908329e-655a-4662-a39d-488c6c48e7c7",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2023",
+    "description": "Données essentielles des subventions politique de la ville en 2023.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/1c7757a3-c43f-4b14-9afc-82e945fb595f",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2022",
+    "description": "Données essentielles des subventions politique de la ville en 2022.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/5afe59f6-4dd5-4346-ad9a-371c18a8a71d",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2021",
+    "description": "Données essentielles des subventions politique de la ville en 2021.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/b2f8b9cf-ac82-440d-87ed-5af2fc3eeb6a",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2020",
+    "description": "Données essentielles des subventions politique de la ville en 2020.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/752e897c-3e15-49a8-b9b1-0350e900628d",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2019",
+    "description": "Données essentielles des subventions politique de la ville en 2019.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/9402b3b4-e59f-46eb-8fe1-08d6ab26a286",
+    "format": "csv",
+    "refresh_days": 15,
+    "post": "anct_subvention_ville_2019"
+  },
+  {
+    "name": "anct-subvention-ville-2018",
+    "description": "Données essentielles des subventions politique de la ville en 2018.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/d20faec1-633a-4859-912a-e0ddbfcad568",
+    "format": "csv",
+    "refresh_days": 15
   }
 ]

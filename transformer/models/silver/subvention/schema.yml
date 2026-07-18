@@ -139,3 +139,52 @@ models:
         description: Percentage of the total subsidy amount allocated to the beneficiary.
       - name: release_year
         description: Release year of the source dataset, used to select the latest available data.
+  - name: svr_subvention_anct_ville
+    description: >
+      Essential data on subsidies awarded under the French Urban Policy (Politique de la Ville)
+      by the French National Agency for Territorial Cohesion (ANCT). Contains information on
+      awarding authorities, departmental directions, beneficiary identification, subsidy purpose,
+      financial amounts, payment conditions, and European notification status.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_attribuant
+        description: Name of the authority awarding the subsidy.
+      - name: identification_attributaire
+        description: SIRET identifier of the awarding authority, stored as text.
+        tests:
+          - not_null
+      - name: date_convention_subvention
+        description: Date on which the subsidy agreement was signed.
+      - name: code_departement_direction
+        description: Department or direction code responsible for the subsidy.
+      - name: libelle_departement_direction
+        description: Label of the department or direction responsible for the subsidy.
+      - name: reference_decision
+        description: Administrative decision reference associated with the subsidy.
+      - name: identification_beneficiaire
+        description: SIRET identifier of the beneficiary, stored as text.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+      - name: objet_subvention
+        description: Purpose or description of the subsidy.
+      - name: montant_total_subvention
+        description: Total amount of the subsidy awarded in euros.
+        tests:
+          - not_null
+      - name: nature_subvention
+        description: Nature or type of the subsidy.
+      - name: conditions_versement
+        description: Payment conditions for the subsidy.
+      - name: date_versement
+        description: Date of payment or scheduled payment of the subsidy.
+      - name: rae
+        description: Enterprise register reference number, when available.
+      - name: notification_ue
+        description: Indicates whether the subsidy was notified to the European Union.
+      - name: pourcentage_subvention
+        description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: release_year
+        description: Release year of the source dataset. The model keeps only the latest available release.

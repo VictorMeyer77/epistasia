@@ -537,3 +537,43 @@ sources:
             description: Indicates whether the subsidy was notified to the European Commission as State aid.
           - name: Pourcentage du montant de la subvention attribué au bénéficiaire*
             description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: anct_subvention_ville
+        description: >
+          Essential data on grants awarded by the French National Agency for Territorial Cohesion (ANCT)
+          under the Urban Policy (Politique de la Ville). Contains information on the awarding authority,
+          departmental directorate, beneficiary identification, grant purpose, financial amounts,
+          payment conditions, and European state aid notification status.
+          (https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville)
+        meta:
+          external_location: "read_csv('../datalake/raw/anct-subvention-ville-*.csv', delim=';', encoding='cp1252', header=true, all_varchar=true, union_by_name=true)"
+        columns:
+          - name: Nom de l'attribuant
+            description: Name of the authority awarding the grant.
+          - name: Code département/Direction
+            description: Code of the department or directorate responsible for the grant.
+          - name: Libellé département/Direction
+            description: Name of the department or directorate responsible for the grant.
+          - name: Identification de l'attributaire
+            description: SIRET identifier of the awarding authority.
+          - name: Référence de la décision
+            description: Administrative decision reference for the grant.
+          - name: Identification du bénéficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: Nom du bénéficiaire
+            description: Name of the beneficiary receiving the grant.
+          - name: Objet de la subvention
+            description: Purpose or subject of the grant.
+          - name: Montant total de la subvention
+            description: Total amount of the grant awarded.
+          - name: Nature de la subvention
+            description: Nature or type of the grant.
+          - name: Conditions de versement
+            description: Conditions governing payment of the grant.
+          - name: Date de versement
+            description: Scheduled or actual payment date of the grant.
+          - name: RAE
+            description: Enterprise register reference, when available.
+          - name: notificationUE
+            description: Indicates whether the grant was notified to the European Commission as State aid.
+          - name: PourcentageSubvention
+            description: Percentage of the total grant amount allocated to the beneficiary.

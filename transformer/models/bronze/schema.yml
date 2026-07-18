@@ -602,3 +602,52 @@ models:
         description: Timestamp when the row was loaded into the bronze model.
       - name: release_year
         description: Release year extracted from the raw source file path.
+  - name: brz_anct_subvention_ville
+    description: >
+      Essential data on grants awarded by the French National Agency for Territorial Cohesion (ANCT)
+      under the Urban Policy (Politique de la Ville). Contains information on the awarding authority,
+      departmental directorate, beneficiary identification, grant purpose, financial amounts,
+      payment conditions, and European state aid notification status.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
+    columns:
+      - name: Nom de l'attribuant
+        description: Name of the authority awarding the grant.
+      - name: Code département/Direction
+        description: Code of the department or directorate responsible for the grant.
+      - name: Libellé département/Direction
+        description: Name of the department or directorate responsible for the grant.
+      - name: Identification de l'attributaire
+        description: SIRET identifier of the awarding authority.
+      - name: Date de la convention de subvention
+        description: Date on which the subsidy agreement was signed.
+      - name: Référence de la décision
+        description: Administrative decision reference for the grant.
+      - name: Identification du bénéficiaire
+        description: SIRET identifier of the beneficiary.
+      - name: Nom du bénéficiaire
+        description: Name of the beneficiary receiving the grant.
+      - name: Objet de la subvention
+        description: Purpose or subject of the grant.
+      - name: Montant total de la subvention
+        description: Total amount of the grant awarded.
+      - name: Nature de la subvention
+        description: Nature or type of the grant.
+      - name: Conditions de versement
+        description: Conditions governing payment of the grant.
+      - name: Date de versement
+        description: Scheduled or actual payment date of the grant.
+      - name: RAE
+        description: Enterprise register reference, when available.
+      - name: notificationUE
+        description: Indicates whether the grant was notified to the European Commission as State aid.
+      - name: PourcentageSubvention
+        description: Percentage of the total grant amount allocated to the beneficiary.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.
