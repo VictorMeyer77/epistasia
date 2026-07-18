@@ -235,49 +235,41 @@ models:
 
   - name: svr_ent_subvention_publique
     description: >
-      Silver unified enterprise public subsidy dataset. Standardizes public
-      subvention/grant records with enterprise-focused columns describing
-      beneficiaries, funded projects, and awarding administrations.
+      Consolidated dataset of public subsidies granted by various French public authorities
+      and agencies. Combines subsidy data from ministries, public agencies, regional
+      authorities, and territorial funding programs into a unified structure.
+      Contains subsidy dates, beneficiary information, project descriptions, amounts,
+      creditor identifiers, funding domains, and source origins.
     config:
       tags: silver | entreprise
     docs:
       node_color: "#5B8DEF"
     columns:
+      - name: id
+        description: Unique UUID identifier for the record. Used as node ID in Neo4j graph.
+        tests:
+          - not_null
       - name: date_subvention
-        description: Date the subsidy was granted, derived from the grant year.
-      - name: code_commune_beneficiaire
-        description: INSEE code of the commune of the subsidy beneficiary.
-      - name: code_commune_projet
-        description: INSEE code of the commune where the funded project is located.
+        description: Date associated with the subsidy agreement, payment, or funding exercise.
+      - name: code_commune
+        description: INSEE commune code associated with the funded project or beneficiary location.
       - name: nom_projet
-        description: >
-          Name of the funded project, derived by concatenating the budget
-          mission and programme.
+        description: Name or title of the funded project.
       - name: description_projet
-        description: Description of the funded project or activity.
-      - name: num_engagement_juridique
-        description: Legal commitment number (engagement juridique) for the subsidy.
-        tests:
-          - not_null
+        description: Description or purpose of the funded project or subsidy.
+      - name: reference_decision
+        description: Administrative decision or commitment reference associated with the subsidy.
       - name: nom_beneficiaire
-        description: Name of the subsidy beneficiary.
-        tests:
-          - not_null
+        description: Name of the entity receiving the subsidy.
       - name: siret_beneficiaire
         description: SIRET identifier of the subsidy beneficiary.
       - name: siret_crediteur
-        description: SIRET identifier of the granting authority/division.
-      - name: montant_engage
-        description: Committed amount of the subsidy.
+        description: SIRET identifier of the public authority or organization granting the subsidy.
+      - name: montant
+        description: Amount of the subsidy granted.
         tests:
           - not_null
-      - name: montant_verse
-        description: Amount of the subsidy actually paid out.
       - name: domaine
-        description: Policy domain covered by the subsidy (e.g. culture).
-        tests:
-          - not_null
+        description: Functional domain of the subsidy, such as culture, agriculture, environment, or territories.
       - name: origine_data
-        description: Source administration/ministry that published the data.
-        tests:
-          - not_null
+        description: Source organization or public program from which the subsidy data originates.
