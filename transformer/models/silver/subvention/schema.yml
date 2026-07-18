@@ -89,3 +89,53 @@ models:
         description: Release year of the source dataset, used to select the latest available data.
         tests:
           - not_null
+
+  - name: svr_subvention_ministere_agriculture
+    description: >
+      Silver dataset of Ministère de l'Agriculture et de l'Alimentation
+      subsidy conventions, keeping only the latest release year from the
+      bronze source and renaming columns to standardized snake_case
+      identifiers.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_attributaire
+        description: Name of the authority awarding the subsidy.
+        tests:
+          - not_null
+      - name: identification_attributaire
+        description: SIRET identifier of the awarding authority.
+        tests:
+          - not_null
+      - name: reference_decision
+        description: Reference number of the administrative decision granting the subsidy.
+      - name: date_convention
+        description: Date the subsidy convention was signed.
+      - name: identification_beneficiaire
+        description: SIRET identifier of the beneficiary.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+        tests:
+          - not_null
+      - name: objet_convention
+        description: Purpose or subject of the subsidy convention.
+      - name: montant_total_subvention
+        description: Total amount of the subsidy awarded.
+        tests:
+          - not_null
+      - name: nature_subvention
+        description: Nature or type of the subsidy (e.g. financial grant).
+      - name: conditions_versement
+        description: Payment conditions for the subsidy (e.g. one-time or installment payments).
+      - name: date_versement
+        description: Date or period during which the subsidy payments were made.
+      - name: numero_referencement_repertoire_entreprises
+        description: Enterprise register reference number, when available.
+      - name: aide_notifiee_europe
+        description: Indicates whether the subsidy was notified to the European Commission as State aid.
+      - name: pourcentage_montant_attribue_beneficiaire
+        description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: release_year
+        description: Release year of the source dataset, used to select the latest available data.

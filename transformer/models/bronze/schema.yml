@@ -557,3 +557,48 @@ models:
         description: Timestamp when the row was loaded into the bronze model.
       - name: release_year
         description: Release year extracted from the raw source file path.
+  - name: brz_agriculture_subvention
+    description: >
+      Essential data on subsidy conventions from the French Ministry of Agriculture and Food.
+      Contains information on the awarding authority, beneficiary identification,
+      convention dates, reference numbers, subsidy amounts, payment conditions,
+      European state aid notification status, and beneficiary allocation percentages.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
+    columns:
+      - name: Nom attributaire*
+        description: Name of the authority awarding the subsidy.
+      - name: Identification de l'attributaire*
+        description: SIRET identifier of the awarding authority.
+      - name: Date de convention*
+        description: Date the subsidy convention was signed.
+      - name: Référence de la décision
+        description: Reference number of the administrative decision granting the subsidy.
+      - name: Identification du bénéficiaire*
+        description: SIRET identifier of the beneficiary.
+      - name: Nom du bénéficiaire*
+        description: Name of the beneficiary receiving the subsidy.
+      - name: Objet de la convention
+        description: Purpose or subject of the subsidy convention.
+      - name: Montant total de la subvention*
+        description: Total amount of the subsidy awarded.
+      - name: Nature de la subvention*
+        description: Nature or type of the subsidy (e.g. financial grant).
+      - name: Conditions de versement*
+        description: Payment conditions for the subsidy (e.g. one-time or installment payments).
+      - name: Date de versement
+        description: Date or period during which the subsidy payments were made.
+      - name: Numéro de référencement au répertoire des entreprises
+        description: Enterprise register reference number, when available.
+      - name: Aide notifiée à l'Europe
+        description: Indicates whether the subsidy was notified to the European Commission as State aid.
+      - name: Pourcentage du montant de la subvention attribué au bénéficiaire*
+        description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.

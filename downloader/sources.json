@@ -70,5 +70,15 @@
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/403c9108-dd0a-443d-9ed5-bca5f056fa8f",
     "format": "csv",
     "refresh_days": 15
+  },
+  {
+    "name": "agriculture-subvention",
+    "description": "Subventions de plus de 23 000 euros attribuées par le ministère de l'agriculture. L'URL change tous les trimestres.",
+    "category": "economic",
+    "provider": "Ministère de l'Agriculture",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-de-plus-de-23-000-euros-attribuees-par-le-ministere-de-lagriculture",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/8323f86c-a328-4b5a-a8a9-7a333b5cee98",
+    "format": "csv",
+    "refresh_days": 15
   }
 ]
