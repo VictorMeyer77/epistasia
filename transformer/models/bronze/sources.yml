@@ -577,3 +577,41 @@ sources:
             description: Indicates whether the grant was notified to the European Commission as State aid.
           - name: PourcentageSubvention
             description: Percentage of the total grant amount allocated to the beneficiary.
+      - name: ademe_aide_financiere
+        description: >
+          Essential data on financial aids awarded by the French Agency for Ecological Transition (ADEME).
+          Contains information on the awarding authority, beneficiary identification, aid purpose,
+          aid schemes, financial amounts, payment conditions, payment periods, and European state aid
+          notification status.
+          (https://www.data.gouv.fr/datasets/les-aides-financieres-de-lademe-1)
+        meta:
+          external_location: "../datalake/raw/ademe-aide-financiere_*.csv"
+        columns:
+          - name: Nom de l attribuant
+            description: Name of the authority awarding the financial aid.
+          - name: idAttribuant
+            description: SIRET identifier of the awarding authority.
+          - name: dateConvention
+            description: Date on which the aid agreement was signed.
+          - name: referenceDecision
+            description: Administrative decision reference associated with the aid.
+          - name: nomBeneficiaire
+            description: Name of the beneficiary receiving the aid.
+          - name: idBeneficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: objet
+            description: Purpose or description of the financial aid.
+          - name: dispositifAide
+            description: Aid scheme or support program associated with the financial aid.
+          - name: montant
+            description: Total amount of the financial aid awarded.
+          - name: nature
+            description: Nature or type of the aid.
+          - name: conditionsVersement
+            description: Conditions governing payment of the aid.
+          - name: datesPeriodeVersement
+            description: Payment date or payment period of the aid.
+          - name: idRAE
+            description: Enterprise register reference identifier, when available.
+          - name: notificationUE
+            description: Indicates whether the aid was notified to the European Commission as State aid.

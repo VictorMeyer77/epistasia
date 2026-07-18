@@ -188,3 +188,47 @@ models:
         description: Percentage of the total subsidy amount allocated to the beneficiary.
       - name: release_year
         description: Release year of the source dataset. The model keeps only the latest available release.
+  - name: svr_subvention_ademe_aide_financiere
+    description: >
+      Curated financial aid data from the French Agency for Ecological Transition (ADEME).
+      Contains the latest available release of awarded aids with standardized beneficiary
+      identifiers, financial amounts, aid schemes, payment information, and administrative metadata.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_attribuant
+        description: Name of the authority awarding the financial aid.
+      - name: id_attribuant
+        description: SIRET identifier of the awarding authority, stored as text.
+        tests:
+          - not_null
+      - name: date_convention
+        description: Date on which the aid agreement was signed.
+      - name: reference_decision
+        description: Administrative decision reference associated with the aid.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the financial aid.
+      - name: id_beneficiaire
+        description: SIRET identifier of the beneficiary, stored as text.
+      - name: objet
+        description: Purpose or description of the financial aid.
+      - name: dispositif_aide
+        description: Aid scheme or support program associated with the financial aid.
+      - name: montant
+        description: Total amount of the financial aid awarded in euros.
+        tests:
+          - not_null
+      - name: nature
+        description: Nature or type of the aid.
+      - name: conditions_versement
+        description: Conditions governing payment of the aid.
+      - name: dates_periode_versement
+        description: Payment date or payment period of the aid.
+      - name: id_rae
+        description: Enterprise register reference identifier, when available.
+      - name: notification_ue
+        description: Indicates whether the aid was notified to the European Commission as State aid.
+      - name: release_year
+        description: Release year of the source dataset. Only records from the latest available release are retained.

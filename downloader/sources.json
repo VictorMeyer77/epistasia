@@ -161,5 +161,15 @@
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/d20faec1-633a-4859-912a-e0ddbfcad568",
     "format": "csv",
     "refresh_days": 15
+  },
+  {
+    "name": "ademe-aide-financiere",
+    "description": "Ce jeu de données comprend l’ensemble des dossiers d’aides engagées par l’ADEME depuis 2021, sans limite de montants, pour des dossiers de subventions et d’aides remboursables.",
+    "category": "economic",
+    "provider": "Agence de l'environnement et de la maîtrise de l'énergie",
+    "page_url": "https://www.data.gouv.fr/datasets/les-aides-financieres-de-lademe-1",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/a514049e-6213-4b7e-81e2-5443fb7cd375",
+    "format": "csv",
+    "refresh_days": 15
   }
 ]

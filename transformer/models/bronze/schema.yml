@@ -651,3 +651,48 @@ models:
         description: Timestamp when the row was loaded into the bronze model.
       - name: release_year
         description: Release year extracted from the raw source file path.
+  - name: brz_ademe_aide_financiere
+    description: >
+      Essential data on financial aids awarded by the French Agency for Ecological Transition (ADEME).
+      Contains information on the awarding authority, beneficiary identification, aid purpose,
+      aid schemes, financial amounts, payment conditions, payment periods, and European state aid
+      notification status.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
+    columns:
+      - name: Nom de l attribuant
+        description: Name of the authority awarding the financial aid.
+      - name: idAttribuant
+        description: SIRET identifier of the awarding authority.
+      - name: dateConvention
+        description: Date on which the aid agreement was signed.
+      - name: referenceDecision
+        description: Administrative decision reference associated with the aid.
+      - name: nomBeneficiaire
+        description: Name of the beneficiary receiving the financial aid.
+      - name: idBeneficiaire
+        description: SIRET identifier of the beneficiary.
+      - name: objet
+        description: Purpose or description of the financial aid.
+      - name: dispositifAide
+        description: Aid scheme or support program associated with the financial aid.
+      - name: montant
+        description: Total amount of the financial aid awarded.
+      - name: nature
+        description: Nature or type of the aid.
+      - name: conditionsVersement
+        description: Conditions governing payment of the aid.
+      - name: datesPeriodeVersement
+        description: Payment date or payment period of the aid.
+      - name: idRAE
+        description: Enterprise register reference identifier, when available.
+      - name: notificationUE
+        description: Indicates whether the aid was notified to the European Commission as State aid.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.
