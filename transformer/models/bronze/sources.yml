@@ -615,3 +615,37 @@ sources:
             description: Enterprise register reference identifier, when available.
           - name: notificationUE
             description: Indicates whether the aid was notified to the European Commission as State aid.
+      - name: dotation_soutien_territoire
+        description: >
+          Essential data on investment projects financed by French State investment support grants
+          for local authorities. Contains information on funding schemes, budget programs,
+          beneficiary identification, project descriptions, investment costs, subsidy amounts,
+          and funding rates.
+          (https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales)
+        meta:
+          external_location: "read_csv('../datalake/raw/dotation-soutien-territoire-*.csv', delim=';', header=true, all_varchar=true, union_by_name=true)"
+        columns:
+          - name: exercice
+            description: Fiscal year of the awarded subsidy.
+          - name: dispositif
+            description: State investment support scheme under which the project was funded.
+          - name: programme
+            description: Budget program associated with the funding.
+          - name: beneficiaire_type
+            description: Type of beneficiary (e.g. municipality, EPCI).
+          - name: beneficiaire_siren
+            description: SIREN identifier of the beneficiary, when available.
+          - name: beneficiaire_dep
+            description: Department code of the beneficiary.
+          - name: beneficiaire_nom
+            description: Name of the beneficiary.
+          - name: beneficiaire_code_insee
+            description: INSEE commune code of the beneficiary, when available.
+          - name: intitule
+            description: Title or description of the funded investment project.
+          - name: cout_ht
+            description: Total project cost excluding taxes.
+          - name: subvention
+            description: Amount of the subsidy awarded.
+          - name: taux
+            description: Subsidy rate as a proportion of the total project cost.

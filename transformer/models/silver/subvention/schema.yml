@@ -232,3 +232,42 @@ models:
         description: Indicates whether the aid was notified to the European Commission as State aid.
       - name: release_year
         description: Release year of the source dataset. Only records from the latest available release are retained.
+  - name: svr_dotation_soutien_territoire
+    description: >
+      Curated data on investment projects financed by French State investment support grants
+      for local authorities. Contains the latest available release with standardized beneficiary
+      identifiers, project descriptions, investment costs, subsidy amounts, funding rates,
+      and administrative metadata.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: exercice
+        description: Fiscal year of the awarded subsidy.
+      - name: dispositif
+        description: State investment support scheme under which the project was funded.
+      - name: programme
+        description: Budget program associated with the funding.
+      - name: beneficiaire_type
+        description: Type of beneficiary (e.g. municipality, EPCI).
+      - name: beneficiaire_siren
+        description: SIREN identifier of the beneficiary, stored as text.
+      - name: beneficiaire_dep
+        description: Department code of the beneficiary.
+      - name: beneficiaire_nom
+        description: Name of the beneficiary.
+      - name: beneficiaire_code_insee
+        description: INSEE commune code of the beneficiary, when available.
+      - name: intitule
+        description: Title or description of the funded investment project.
+      - name: cout_ht
+        description: Total project cost excluding taxes, in euros.
+      - name: subvention
+        description: Amount of the subsidy awarded, in euros.
+        tests:
+          - not_null
+      - name: taux
+        description: Subsidy rate as a proportion of the total project cost.
+      - name: release_year
+        description: Release year of the source dataset. Only records from the latest available release are retained.

@@ -696,3 +696,44 @@ models:
         description: Timestamp when the row was loaded into the bronze model.
       - name: release_year
         description: Release year extracted from the raw source file path.
+  - name: brz_dotation_soutien_territoire
+    description: >
+      Essential data on investment projects financed by French State investment support grants
+      for local authorities. Contains information on funding schemes, budget programs,
+      beneficiary identification, project descriptions, investment costs, subsidy amounts,
+      and funding rates.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
+    columns:
+      - name: exercice
+        description: Fiscal year of the awarded subsidy.
+      - name: dispositif
+        description: State investment support scheme under which the project was funded.
+      - name: programme
+        description: Budget program associated with the funding.
+      - name: beneficiaire_type
+        description: Type of beneficiary (e.g. municipality, EPCI).
+      - name: beneficiaire_siren
+        description: SIREN identifier of the beneficiary, when available.
+      - name: beneficiaire_dep
+        description: Department code of the beneficiary.
+      - name: beneficiaire_nom
+        description: Name of the beneficiary.
+      - name: beneficiaire_code_insee
+        description: INSEE commune code of the beneficiary, when available.
+      - name: intitule
+        description: Title or description of the funded investment project.
+      - name: cout_ht
+        description: Total project cost excluding taxes.
+      - name: subvention
+        description: Amount of the subsidy awarded.
+      - name: taux
+        description: Subsidy rate as a proportion of the total project cost.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.
