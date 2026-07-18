@@ -737,3 +737,50 @@ models:
         description: Timestamp when the row was loaded into the bronze model.
       - name: release_year
         description: Release year extracted from the raw source file path.
+  - name: brz_caisse_depots_subvention
+    description: >
+      Essential data on subsidies awarded by the Caisse des Dépôts et Consignations (CDC)
+      since 1 January 2018. Contains information on the awarding authority, beneficiary
+      identification, subsidy purpose, financial amounts, payment conditions, payment periods,
+      and European state aid notification status.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
+    columns:
+      - name: nomAttribuant
+        description: Name of the authority awarding the subsidy.
+      - name: IdAttribuant
+        description: SIRET identifier of the awarding authority.
+      - name: DateConvention
+        description: Date on which the subsidy agreement was signed.
+      - name: ReferenceDecision
+        description: Administrative decision reference associated with the subsidy.
+      - name: IdBeneficiaire
+        description: SIRET identifier of the beneficiary.
+      - name: NomBeneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+      - name: Objet
+        description: Purpose or description of the subsidy.
+      - name: Montant
+        description: Total amount of the subsidy awarded.
+      - name: Nature
+        description: Nature or type of the subsidy.
+      - name: ConditionsVersement
+        description: Conditions governing payment of the subsidy.
+      - name: DatesVersement_debut
+        description: Start date of the subsidy payment period.
+      - name: DatesVersement_fin
+        description: End date of the subsidy payment period, when applicable.
+      - name: IdRAE
+        description: Enterprise register reference identifier, when available.
+      - name: NotificationUE
+        description: Indicates whether the subsidy was notified to the European Commission as State aid.
+      - name: PourcentageSubvention
+        description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.

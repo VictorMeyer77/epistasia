@@ -271,3 +271,49 @@ models:
         description: Subsidy rate as a proportion of the total project cost.
       - name: release_year
         description: Release year of the source dataset. Only records from the latest available release are retained.
+  - name: svr_subvention_caisse_depots
+    description: >
+      Curated subsidy data from the Caisse des Dépôts et Consignations (CDC).
+      Contains the latest available release of awarded subsidies with standardized beneficiary
+      identifiers, subsidy amounts, payment information, and administrative metadata.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_attribuant
+        description: Name of the authority awarding the subsidy.
+      - name: id_attribuant
+        description: SIRET identifier of the awarding authority, stored as text.
+        tests:
+          - not_null
+      - name: date_convention
+        description: Date on which the subsidy agreement was signed.
+      - name: reference_decision
+        description: Administrative decision reference associated with the subsidy.
+      - name: id_beneficiaire
+        description: SIRET identifier of the beneficiary, stored as text.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+      - name: objet
+        description: Purpose or description of the subsidy.
+      - name: montant
+        description: Total amount of the subsidy awarded in euros.
+        tests:
+          - not_null
+      - name: nature
+        description: Nature or type of the subsidy.
+      - name: conditions_versement
+        description: Conditions governing payment of the subsidy.
+      - name: dates_versement_debut
+        description: Start date of the subsidy payment period.
+      - name: dates_versement_fin
+        description: End date of the subsidy payment period, when applicable.
+      - name: id_rae
+        description: Enterprise register reference identifier, when available.
+      - name: notification_ue
+        description: Indicates whether the subsidy was notified to the European Commission as State aid.
+      - name: pourcentage_subvention
+        description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: release_year
+        description: Release year of the source dataset. Only records from the latest available release are retained.

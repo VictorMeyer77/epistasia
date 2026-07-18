@@ -649,3 +649,43 @@ sources:
             description: Amount of the subsidy awarded.
           - name: taux
             description: Subsidy rate as a proportion of the total project cost.
+      - name: caisse_depots_subvention
+        description: >
+          Essential data on subsidies awarded by the Caisse des Dépôts et Consignations (CDC)
+          since 1 January 2018. Contains information on the awarding authority, beneficiary
+          identification, subsidy purpose, financial amounts, payment conditions, payment periods,
+          and European state aid notification status.
+          (https://www.data.gouv.fr/datasets/subventions-attribuees-par-la-caisse-des-depots-depuis-01-01-2018-1)
+        meta:
+          external_location: "../datalake/raw/subvention-caisse-depots_*.csv"
+        columns:
+          - name: nomAttribuant
+            description: Name of the authority awarding the subsidy.
+          - name: IdAttribuant
+            description: SIRET identifier of the awarding authority.
+          - name: DateConvention
+            description: Date on which the subsidy agreement was signed.
+          - name: ReferenceDecision
+            description: Administrative decision reference associated with the subsidy.
+          - name: IdBeneficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: NomBeneficiaire
+            description: Name of the beneficiary receiving the subsidy.
+          - name: Objet
+            description: Purpose or description of the subsidy.
+          - name: Montant
+            description: Total amount of the subsidy awarded.
+          - name: Nature
+            description: Nature or type of the subsidy.
+          - name: ConditionsVersement
+            description: Conditions governing payment of the subsidy.
+          - name: DatesVersement_debut
+            description: Start date of the subsidy payment period.
+          - name: DatesVersement_fin
+            description: End date of the subsidy payment period, when applicable.
+          - name: IdRAE
+            description: Enterprise register reference identifier, when available.
+          - name: NotificationUE
+            description: Indicates whether the subsidy was notified to the European Commission as State aid.
+          - name: PourcentageSubvention
+            description: Percentage of the total subsidy amount allocated to the beneficiary.

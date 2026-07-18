@@ -241,5 +241,15 @@
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/04980dee-40ba-4a8e-8d96-28a905cfd5b6",
     "format": "csv",
     "refresh_days": 15
+  },
+  {
+    "name": "subvention-caisse-depots",
+    "description": "Subventions octroyées par la CDC, d'un montant supérieur à 23k€/an, à des organismes privés depuis le 01/01/2018.",
+    "category": "economic",
+    "provider": "Caisse des Dépôts",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-attribuees-par-la-caisse-des-depots-depuis-01-01-2018-1",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/21ae620c-2f05-4acb-8cbe-d09e1d1754cc",
+    "format": "csv",
+    "refresh_days": 30
   }
 ]
