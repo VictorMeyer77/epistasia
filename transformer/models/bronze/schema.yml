@@ -831,3 +831,69 @@ models:
         description: Timestamp when the row was loaded into the bronze model.
       - name: release_year
         description: Release year extracted from the raw source file path.
+  - name: brz_fonds_vert_subvention
+    description: >
+      Bronze layer containing raw project funding data from the French Green Fund (Fonds vert).
+      The dataset lists projects supported by the Fonds vert for ecological transition,
+      including territorial information, funding measures, beneficiaries, project descriptions,
+      and committed amounts. Yearly source files may have evolving schemas, therefore missing
+      columns can occur depending on the release.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
+    columns:
+      - name: nom_region
+        description: Name of the region where the funded project is located.
+      - name: code_departement
+        description: Department code where the funded project is located.
+      - name: nom_departement
+        description: Name of the department where the funded project is located.
+      - name: code_commune
+        description: INSEE commune code where the funded project is located.
+      - name: nom_commune
+        description: Name of the commune where the funded project is located.
+      - name: axe
+        description: Fonds vert intervention axis associated with the project.
+      - name: numero_demarche_ds
+        description: Identifier of the Démarches Simplifiées procedure.
+      - name: nom_demarche_ds
+        description: Name of the Démarches Simplifiées procedure.
+      - name: numero_dossier_ds
+        description: Identifier of the funding application dossier.
+      - name: nom_du_projet
+        description: Name of the funded project.
+      - name: nom_beneficiaire_principal
+        description: Main beneficiary or project owner.
+      - name: siren
+        description: SIREN identifier of the beneficiary.
+      - name: montant_engage
+        description: Amount committed by the State for the project.
+      - name: resume_du_projet
+        description: Summary or description of the funded project.
+      - name: numero_ej
+        description: Engagement juridique identifier associated with the funding.
+      - name: numero_operateur
+        description: Identifier of the operator managing the funding.
+      - name: opérateur
+        description: Name of the funding operator.
+      - name: demarche
+        description: Funding procedure or administrative process.
+      - name: siret_beneficiaire
+        description: SIRET identifier of the beneficiary.
+      - name: raison_sociale_beneficiaire
+        description: Legal name of the beneficiary.
+      - name: forme juridique_beneficiaire
+        description: Legal form of the beneficiary.
+      - name: operateur
+        description: Operator responsible for managing the project funding.
+      - name: forme_juridique_beneficiaire
+        description: Legal form of the beneficiary.
+      - name: source_file_path
+        description: Path of the raw source file from which the record was ingested.
+      - name: dt_ingested
+        description: Timestamp when the record was loaded into the bronze layer.
+      - name: exercice
+        description: Funding year.
+      - name: release_year
+        description: Release year extracted from the raw source file name.

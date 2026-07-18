@@ -261,5 +261,35 @@
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/4b936730-1773-456d-a0dc-7ce8bdf875d6",
     "format": "csv",
     "refresh_days": 15
+  },
+  {
+    "name": "fonds-vert-subvention-2025",
+    "description": "Les jeux de données présentés centralisent la liste, respectivement, des dossiers financés en 2025 par le Fonds vert.",
+    "category": "economic",
+    "provider": "Ministère de la Transition écologique",
+    "page_url": "https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/b5d38c64-3ab9-4d88-acc3-d0a5fd651132",
+    "format": "csv",
+    "refresh_days": 30
+  },
+  {
+    "name": "fonds-vert-subvention-2024",
+    "description": "Les jeux de données présentés centralisent la liste, respectivement, des dossiers financés en 2024 par le Fonds vert.",
+    "category": "economic",
+    "provider": "Ministère de la Transition écologique",
+    "page_url": "https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/1fdc94e1-0f50-4d39-8be3-40ab381ee9c4",
+    "format": "csv",
+    "refresh_days": 30
+  },
+  {
+    "name": "fonds-vert-subvention-2023",
+    "description": "Les jeux de données présentés centralisent la liste, respectivement, des dossiers financés en 2023 par le Fonds vert.",
+    "category": "economic",
+    "provider": "Ministère de la Transition écologique",
+    "page_url": "https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/ac2da594-aea2-4b87-973f-03f406ec4cfd",
+    "format": "csv",
+    "refresh_days": 30
   }
 ]

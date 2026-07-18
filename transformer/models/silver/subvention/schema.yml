@@ -364,3 +364,55 @@ models:
         description: Subsidy scheme or aid program associated with the funding.
       - name: release_year
         description: Release year of the source dataset. Only records from the latest available release are retained.
+  - name: svr_fonds_vert_subvention
+    description: >
+      Silver layer containing normalized project funding data from the French Green Fund
+      (Fonds vert). The dataset includes funded projects, beneficiary information,
+      territorial details, committed amounts, administrative references, and enriched
+      beneficiary SIRET identifiers obtained from the Sirene establishment reference data.
+      Only the latest available source release is retained.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_region
+        description: Name of the region where the funded project is located.
+      - name: code_departement
+        description: Department code where the funded project is located.
+      - name: nom_departement
+        description: Name of the department where the funded project is located.
+      - name: code_commune
+        description: INSEE commune code where the funded project is located.
+      - name: nom_commune
+        description: Name of the commune where the funded project is located.
+      - name: numero_dossier_ds
+        description: Identifier of the Démarches Simplifiées funding application dossier.
+      - name: nom_du_projet
+        description: Name or title of the funded project.
+      - name: nom_beneficiaire_principal
+        description: Main beneficiary of the funded project.
+      - name: montant_engage
+        description: Amount committed by the State for the project.
+        tests:
+          - not_null
+      - name: resume_du_projet
+        description: Summary or description of the funded project.
+      - name: numero_ej
+        description: Engagement juridique identifier associated with the funding.
+      - name: numero_operateur
+        description: Identifier of the operator managing the funding.
+      - name: operateur
+        description: Name of the operator responsible for managing the funding.
+      - name: demarche
+        description: Administrative funding procedure associated with the project.
+      - name: siret_beneficiaire
+        description: SIRET identifier of the beneficiary, enriched from Sirene establishment data when missing.
+      - name: raison_sociale_beneficiaire
+        description: Legal name of the beneficiary.
+      - name: forme_juridique_beneficiaire
+        description: Legal form of the beneficiary.
+      - name: exercice
+        description: Fiscal year associated with the project funding.
+      - name: release_year
+        description: Release year of the source dataset. Only the latest release is retained.

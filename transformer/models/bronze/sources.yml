@@ -729,3 +729,60 @@ sources:
             description: Percentage of the project cost covered by the subsidy.
           - name: dispositifAide
             description: Subsidy scheme or aid program associated with the funding.
+      - name: fonds_vert_subvention
+        description: >
+          Essential data on projects funded by the French Green Fund (Fonds vert), a government
+          support mechanism for ecological transition projects. Contains information on project
+          location, funding program, application process, beneficiary identification, project
+          description, committed amounts, and administrative references.
+          The dataset schema may vary between yearly releases.
+          (https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes)
+        meta:
+          external_location: "read_csv('../datalake/raw/fonds-vert-subvention-*.csv', header=true, union_by_name=true)"
+        columns:
+          - name: nom_region
+            description: Name of the French region where the project is located.
+          - name: code_departement
+            description: Department code where the project is located.
+          - name: nom_departement
+            description: Name of the department where the project is located.
+          - name: code_commune
+            description: INSEE commune code where the project is located.
+          - name: nom_commune
+            description: Name of the commune where the project is located.
+          - name: axe
+            description: Green Fund intervention axis or thematic priority.
+          - name: numero_demarche_ds
+            description: Identifier of the administrative procedure on the dematerialized platform.
+          - name: nom_demarche_ds
+            description: Name of the administrative procedure.
+          - name: numero_dossier_ds
+            description: Identifier of the funding application dossier.
+          - name: nom_du_projet
+            description: Name or title of the funded project.
+          - name: nom_beneficiaire_principal
+            description: Main beneficiary of the funded project.
+          - name: siren
+            description: SIREN identifier of the beneficiary.
+          - name: montant_engage
+            description: Amount committed by the State for the project.
+          - name: resume_du_projet
+            description: Summary or description of the project.
+          - name: numero_ej
+            description: Commitment authorization identifier (engagement juridique).
+          - name: numero_operateur
+            description: Identifier of the operator managing the funding.
+          - name: opérateur
+            description: Name of the funding operator.
+          - name: demarche
+            description: Name or identifier of the funding procedure.
+          - name: siret_beneficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: raison_sociale_beneficiaire
+            description: Legal name of the beneficiary.
+          - name: forme juridique_beneficiaire
+            description: Legal form of the beneficiary.
+          - name: operateur
+            description: Operator responsible for managing the project funding.
+          - name: forme_juridique_beneficiaire
+            description: Legal form of the beneficiary.
