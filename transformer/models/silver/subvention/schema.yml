@@ -317,3 +317,50 @@ models:
         description: Percentage of the total subsidy amount allocated to the beneficiary.
       - name: release_year
         description: Release year of the source dataset. Only records from the latest available release are retained.
+  - name: svr_idf_subvention_association
+    description: >
+      Curated subsidy data from the Île-de-France Regional Council for associations.
+      Contains the latest available release of awarded subsidies with standardized identifiers,
+      beneficiary information, project descriptions, funding amounts, payment information,
+      European fund management status, and aid scheme details.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: id_attribuant
+        description: SIRET identifier of the authority awarding the subsidy, stored as text.
+        tests:
+          - not_null
+      - name: nom_attribuant
+        description: Name of the authority awarding the subsidy.
+      - name: annee_exercice
+        description: Fiscal year associated with the subsidy.
+      - name: date_convention
+        description: Date on which the subsidy agreement was signed.
+      - name: reference_decision
+        description: Administrative decision reference associated with the subsidy.
+      - name: id_dossier
+        description: Internal identifier of the subsidy application dossier.
+      - name: id_beneficiaire
+        description: SIRET identifier of the beneficiary, stored as text.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+      - name: objet
+        description: Purpose or description of the subsidy.
+      - name: montant
+        description: Total amount of the subsidy awarded.
+        tests:
+          - not_null
+      - name: dates_periode_versement
+        description: Payment date or payment period associated with the subsidy.
+      - name: delegation
+        description: Indicates whether the subsidy was delegated.
+      - name: gestion_fonds_europeens
+        description: Indicates whether the subsidy is managed through European funds.
+      - name: pourcentage_subvention
+        description: Percentage of the project cost covered by the subsidy.
+      - name: dispositif_aide
+        description: Subsidy scheme or aid program associated with the funding.
+      - name: release_year
+        description: Release year of the source dataset. Only records from the latest available release are retained.

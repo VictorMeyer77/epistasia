@@ -689,3 +689,43 @@ sources:
             description: Indicates whether the subsidy was notified to the European Commission as State aid.
           - name: PourcentageSubvention
             description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: idf_subvention_association
+        description: >
+          Essential data on subsidies awarded by the Île-de-France Regional Council to associations.
+          Contains information on the awarding authority, beneficiary identification, subsidy purpose,
+          funding amounts, payment periods, delegation status, European fund management status,
+          subsidy rates, and aid schemes.
+          (https://www.data.gouv.fr/datasets/subventions-versees-par-la-region-ile-de-france-aux-associations)
+        meta:
+          external_location: "../datalake/raw/idf-subvention-association_*.csv"
+        columns:
+          - name: idAttribuant
+            description: SIRET identifier of the authority awarding the subsidy.
+          - name: nomAttribuant
+            description: Name of the authority awarding the subsidy.
+          - name: anneeExercice
+            description: Fiscal year associated with the subsidy.
+          - name: dateConvention
+            description: Date on which the subsidy agreement was signed.
+          - name: referenceDecision
+            description: Administrative decision reference associated with the subsidy.
+          - name: idDossier
+            description: Internal identifier of the subsidy application dossier.
+          - name: idBeneficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: nomBeneficiaire
+            description: Name of the beneficiary receiving the subsidy.
+          - name: objet
+            description: Purpose or description of the subsidy.
+          - name: montant
+            description: Total amount of the subsidy awarded.
+          - name: datesPeriodeVersement
+            description: Payment date or payment period associated with the subsidy.
+          - name: delegation
+            description: Indicates whether the subsidy was delegated.
+          - name: gestionFondsEuropeens
+            description: Indicates whether the subsidy is managed through European funds.
+          - name: pourcentageSubvention
+            description: Percentage of the project cost covered by the subsidy.
+          - name: dispositifAide
+            description: Subsidy scheme or aid program associated with the funding.

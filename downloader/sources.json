@@ -251,5 +251,15 @@
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/21ae620c-2f05-4acb-8cbe-d09e1d1754cc",
     "format": "csv",
     "refresh_days": 30
+  },
+  {
+    "name": "idf-subvention-association",
+    "description": "Liste des subventions versées par la Région Île-de-France à des associations.",
+    "category": "economic",
+    "provider": "Région Île-de-France",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-versees-par-la-region-ile-de-france-aux-associations",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/4b936730-1773-456d-a0dc-7ce8bdf875d6",
+    "format": "csv",
+    "refresh_days": 15
   }
 ]

@@ -784,3 +784,50 @@ models:
         description: Timestamp when the row was loaded into the bronze model.
       - name: release_year
         description: Release year extracted from the raw source file path.
+  - name: brz_idf_subvention_association
+    description: >
+      Essential data on subsidies awarded by the Île-de-France Regional Council to associations.
+      Contains information on the awarding authority, beneficiary identification, subsidy purpose,
+      funding amounts, payment periods, delegation status, European fund management status,
+      subsidy rates, and aid schemes.
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
+    columns:
+      - name: idAttribuant
+        description: SIRET identifier of the authority awarding the subsidy.
+      - name: nomAttribuant
+        description: Name of the authority awarding the subsidy.
+      - name: anneeExercice
+        description: Fiscal year associated with the subsidy.
+      - name: dateConvention
+        description: Date on which the subsidy agreement was signed.
+      - name: referenceDecision
+        description: Administrative decision reference associated with the subsidy.
+      - name: idDossier
+        description: Internal identifier of the subsidy application dossier.
+      - name: idBeneficiaire
+        description: SIRET identifier of the beneficiary.
+      - name: nomBeneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+      - name: objet
+        description: Purpose or description of the subsidy.
+      - name: montant
+        description: Total amount of the subsidy awarded.
+      - name: datesPeriodeVersement
+        description: Payment date or payment period associated with the subsidy.
+      - name: delegation
+        description: Indicates whether the subsidy was delegated.
+      - name: gestionFondsEuropeens
+        description: Indicates whether the subsidy is managed through European funds.
+      - name: pourcentageSubvention
+        description: Percentage of the project cost covered by the subsidy.
+      - name: dispositifAide
+        description: Subsidy scheme or aid program associated with the funding.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.
