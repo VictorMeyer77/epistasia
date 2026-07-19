@@ -70,5 +70,226 @@
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/403c9108-dd0a-443d-9ed5-bca5f056fa8f",
     "format": "csv",
     "refresh_days": 15
+  },
+  {
+    "name": "agriculture-subvention",
+    "description": "Subventions de plus de 23 000 euros attribuées par le ministère de l'agriculture. L'URL change tous les trimestres.",
+    "category": "economic",
+    "provider": "Ministère de l'Agriculture",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-de-plus-de-23-000-euros-attribuees-par-le-ministere-de-lagriculture",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/8323f86c-a328-4b5a-a8a9-7a333b5cee98",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2025",
+    "description": "Données essentielles des subventions politique de la ville en 2025.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/27007c8c-3811-4100-a414-569c45a74266",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2024",
+    "description": "Données essentielles des subventions politique de la ville en 2024.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/6908329e-655a-4662-a39d-488c6c48e7c7",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2023",
+    "description": "Données essentielles des subventions politique de la ville en 2023.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/1c7757a3-c43f-4b14-9afc-82e945fb595f",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2022",
+    "description": "Données essentielles des subventions politique de la ville en 2022.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/5afe59f6-4dd5-4346-ad9a-371c18a8a71d",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2021",
+    "description": "Données essentielles des subventions politique de la ville en 2021.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/b2f8b9cf-ac82-440d-87ed-5af2fc3eeb6a",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2020",
+    "description": "Données essentielles des subventions politique de la ville en 2020.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/752e897c-3e15-49a8-b9b1-0350e900628d",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "anct-subvention-ville-2019",
+    "description": "Données essentielles des subventions politique de la ville en 2019.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/9402b3b4-e59f-46eb-8fe1-08d6ab26a286",
+    "format": "csv",
+    "refresh_days": 15,
+    "post": "anct_subvention_ville_2019"
+  },
+  {
+    "name": "anct-subvention-ville-2018",
+    "description": "Données essentielles des subventions politique de la ville en 2018.",
+    "category": "economic",
+    "provider": "Agence nationale de la cohésion des territoires",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/d20faec1-633a-4859-912a-e0ddbfcad568",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "ademe-aide-financiere",
+    "description": "Ce jeu de données comprend l’ensemble des dossiers d’aides engagées par l’ADEME depuis 2021, sans limite de montants, pour des dossiers de subventions et d’aides remboursables.",
+    "category": "economic",
+    "provider": "Agence de l'environnement et de la maîtrise de l'énergie",
+    "page_url": "https://www.data.gouv.fr/datasets/les-aides-financieres-de-lademe-1",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/a514049e-6213-4b7e-81e2-5443fb7cd375",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "dotation-soutien-territoire-2024",
+    "description": "Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2024",
+    "category": "economic",
+    "provider": "Direction générale des collectivités locales",
+    "page_url": "https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/ba15fc37-9096-4a09-88c4-93215f91848d",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "dotation-soutien-territoire-2023",
+    "description": "Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2023",
+    "category": "economic",
+    "provider": "Direction générale des collectivités locales",
+    "page_url": "https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/d9e762ae-2f9d-433f-a4de-919785803db8",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "dotation-soutien-territoire-2022",
+    "description": "Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2022",
+    "category": "economic",
+    "provider": "Direction générale des collectivités locales",
+    "page_url": "https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/2432d03a-d0bd-4796-b7b6-f248b2262417",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "dotation-soutien-territoire-2021",
+    "description": "Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2021",
+    "category": "economic",
+    "provider": "Direction générale des collectivités locales",
+    "page_url": "https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/e117e1a6-487d-4172-aab3-483d9e1ea39a",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "dotation-soutien-territoire-2020",
+    "description": "Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2020",
+    "category": "economic",
+    "provider": "Direction générale des collectivités locales",
+    "page_url": "https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/64de3c69-2ec4-41ab-9a29-c0a5dab05e27",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "dotation-soutien-territoire-2019",
+    "description": "Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2019",
+    "category": "economic",
+    "provider": "Direction générale des collectivités locales",
+    "page_url": "https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/f17ae4d4-a9a4-4a6f-9c90-e55f40ecbc2d",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "dotation-soutien-territoire-2018",
+    "description": "Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2018",
+    "category": "economic",
+    "provider": "Direction générale des collectivités locales",
+    "page_url": "https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/04980dee-40ba-4a8e-8d96-28a905cfd5b6",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "subvention-caisse-depots",
+    "description": "Subventions octroyées par la CDC, d'un montant supérieur à 23k€/an, à des organismes privés depuis le 01/01/2018.",
+    "category": "economic",
+    "provider": "Caisse des Dépôts",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-attribuees-par-la-caisse-des-depots-depuis-01-01-2018-1",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/21ae620c-2f05-4acb-8cbe-d09e1d1754cc",
+    "format": "csv",
+    "refresh_days": 30
+  },
+  {
+    "name": "idf-subvention-association",
+    "description": "Liste des subventions versées par la Région Île-de-France à des associations.",
+    "category": "economic",
+    "provider": "Région Île-de-France",
+    "page_url": "https://www.data.gouv.fr/datasets/subventions-versees-par-la-region-ile-de-france-aux-associations",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/4b936730-1773-456d-a0dc-7ce8bdf875d6",
+    "format": "csv",
+    "refresh_days": 15
+  },
+  {
+    "name": "fonds-vert-subvention-2025",
+    "description": "Les jeux de données présentés centralisent la liste, respectivement, des dossiers financés en 2025 par le Fonds vert.",
+    "category": "economic",
+    "provider": "Ministère de la Transition écologique",
+    "page_url": "https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/b5d38c64-3ab9-4d88-acc3-d0a5fd651132",
+    "format": "csv",
+    "refresh_days": 30
+  },
+  {
+    "name": "fonds-vert-subvention-2024",
+    "description": "Les jeux de données présentés centralisent la liste, respectivement, des dossiers financés en 2024 par le Fonds vert.",
+    "category": "economic",
+    "provider": "Ministère de la Transition écologique",
+    "page_url": "https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/1fdc94e1-0f50-4d39-8be3-40ab381ee9c4",
+    "format": "csv",
+    "refresh_days": 30
+  },
+  {
+    "name": "fonds-vert-subvention-2023",
+    "description": "Les jeux de données présentés centralisent la liste, respectivement, des dossiers financés en 2023 par le Fonds vert.",
+    "category": "economic",
+    "provider": "Ministère de la Transition écologique",
+    "page_url": "https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes",
+    "download_url": "https://www.data.gouv.fr/api/1/datasets/r/ac2da594-aea2-4b87-973f-03f406ec4cfd",
+    "format": "csv",
+    "refresh_days": 30
   }
 ]

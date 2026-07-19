@@ -1,0 +1,418 @@
+version: 2
+
+models:
+  - name: svr_subvention_ministere_culture
+    description: >
+      Silver dataset of Ministère de la Culture subsidy conventions, keeping
+      only the latest release year from the bronze source and renaming columns
+      to standardized snake_case identifiers.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: annee
+        description: Year the subsidy was granted.
+      - name: origine_credits
+        description: Origin of the budget credits funding the subsidy.
+      - name: detail_origine_credits
+        description: Detailed origin of the budget credits funding the subsidy.
+      - name: cper
+        description: Contrat de Plan État-Région (CPER) associated with the subsidy, if any.
+      - name: montant_engage
+        description: Committed amount of the subsidy.
+        tests:
+          - not_null
+      - name: nom_beneficiaire
+        description: Name of the subsidy beneficiary.
+        tests:
+          - not_null
+      - name: region_beneficiaire
+        description: Region of the subsidy beneficiary.
+      - name: departement_beneficiaire
+        description: Department of the subsidy beneficiary.
+      - name: epci_beneficiaire
+        description: EPCI (inter-municipal body) of the subsidy beneficiary.
+      - name: sous_types_communes_beneficiaire
+        description: Commune sub-type classification of the subsidy beneficiary.
+      - name: code_postal_beneficiaire
+        description: Postal code of the subsidy beneficiary.
+      - name: code_commune_beneficiaire
+        description: INSEE code of the commune of the subsidy beneficiary.
+      - name: commune_beneficiaire
+        description: Commune name of the subsidy beneficiary.
+      - name: siren_beneficiaire
+        description: SIREN identifier of the subsidy beneficiary.
+      - name: siret_beneficiaire
+        description: SIRET identifier of the subsidy beneficiary.
+      - name: num_engagement_juridique
+        description: Legal commitment number (engagement juridique) for the subsidy.
+        tests:
+          - not_null
+      - name: titre
+        description: Title of the subsidy convention.
+      - name: mission
+        description: Budget mission under which the subsidy is allocated.
+      - name: programme
+        description: Budget programme under which the subsidy is allocated.
+      - name: localisation_interministerielle
+        description: Interministerial location code associated with the subsidy.
+      - name: fonctionnement_investissement
+        description: Budget nature of the subsidy - operating (fonctionnement) or investment.
+      - name: domaine_fonctionnel
+        description: Functional budget domain of the subsidy.
+      - name: compte_budgetaire
+        description: Budget account code associated with the subsidy.
+      - name: code_activite
+        description: Code of the budget activity funding the subsidy.
+      - name: activite_libelle_long
+        description: Long label describing the budget activity funding the subsidy.
+      - name: activite_libelle_court
+        description: Short label describing the budget activity funding the subsidy.
+      - name: centre_financier
+        description: Financial center code associated with the subsidy.
+      - name: centre_cout
+        description: Cost center code associated with the subsidy.
+      - name: appellation_unite_patrimoniale_concernee_par_lop_fin
+        description: Name of the patrimonial unit concerned by the financial operation.
+      - name: region_unite_patrimoniale_concernee_par_lop_fin
+        description: Region of the patrimonial unit concerned by the financial operation.
+      - name: departement_unite_patrimoniale_concernee_par_lop_fin
+        description: Department of the patrimonial unit concerned by the financial operation.
+      - name: code_postal_unite_patrimoniale_concernee_par_lop_fin
+        description: Postal code of the patrimonial unit concerned by the financial operation.
+      - name: code_commune_unite_patrimoniale_concernee_par_lop_fin
+        description: INSEE code of the commune of the patrimonial unit concerned by the financial operation.
+      - name: commune_unite_patrimoniale_concernee_par_lop_fin
+        description: Commune name of the patrimonial unit concerned by the financial operation.
+      - name: release_year
+        description: Release year of the source dataset, used to select the latest available data.
+        tests:
+          - not_null
+
+  - name: svr_subvention_ministere_agriculture
+    description: >
+      Silver dataset of Ministère de l'Agriculture et de l'Alimentation
+      subsidy conventions, keeping only the latest release year from the
+      bronze source and renaming columns to standardized snake_case
+      identifiers.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_attributaire
+        description: Name of the authority awarding the subsidy.
+        tests:
+          - not_null
+      - name: identification_attributaire
+        description: SIRET identifier of the awarding authority.
+        tests:
+          - not_null
+      - name: reference_decision
+        description: Reference number of the administrative decision granting the subsidy.
+      - name: date_convention
+        description: Date the subsidy convention was signed.
+      - name: identification_beneficiaire
+        description: SIRET identifier of the beneficiary.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+        tests:
+          - not_null
+      - name: objet_convention
+        description: Purpose or subject of the subsidy convention.
+      - name: montant_total_subvention
+        description: Total amount of the subsidy awarded.
+        tests:
+          - not_null
+      - name: nature_subvention
+        description: Nature or type of the subsidy (e.g. financial grant).
+      - name: conditions_versement
+        description: Payment conditions for the subsidy (e.g. one-time or installment payments).
+      - name: date_versement
+        description: Date or period during which the subsidy payments were made.
+      - name: numero_referencement_repertoire_entreprises
+        description: Enterprise register reference number, when available.
+      - name: aide_notifiee_europe
+        description: Indicates whether the subsidy was notified to the European Commission as State aid.
+      - name: pourcentage_montant_attribue_beneficiaire
+        description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: release_year
+        description: Release year of the source dataset, used to select the latest available data.
+  - name: svr_subvention_anct_ville
+    description: >
+      Essential data on subsidies awarded under the French Urban Policy (Politique de la Ville)
+      by the French National Agency for Territorial Cohesion (ANCT). Contains information on
+      awarding authorities, departmental directions, beneficiary identification, subsidy purpose,
+      financial amounts, payment conditions, and European notification status.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_attribuant
+        description: Name of the authority awarding the subsidy.
+      - name: identification_attributaire
+        description: SIRET identifier of the awarding authority, stored as text.
+        tests:
+          - not_null
+      - name: date_convention_subvention
+        description: Date on which the subsidy agreement was signed.
+      - name: code_departement_direction
+        description: Department or direction code responsible for the subsidy.
+      - name: libelle_departement_direction
+        description: Label of the department or direction responsible for the subsidy.
+      - name: reference_decision
+        description: Administrative decision reference associated with the subsidy.
+      - name: identification_beneficiaire
+        description: SIRET identifier of the beneficiary, stored as text.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+      - name: objet_subvention
+        description: Purpose or description of the subsidy.
+      - name: montant_total_subvention
+        description: Total amount of the subsidy awarded in euros.
+        tests:
+          - not_null
+      - name: nature_subvention
+        description: Nature or type of the subsidy.
+      - name: conditions_versement
+        description: Payment conditions for the subsidy.
+      - name: date_versement
+        description: Date of payment or scheduled payment of the subsidy.
+      - name: rae
+        description: Enterprise register reference number, when available.
+      - name: notification_ue
+        description: Indicates whether the subsidy was notified to the European Union.
+      - name: pourcentage_subvention
+        description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: release_year
+        description: Release year of the source dataset. The model keeps only the latest available release.
+  - name: svr_subvention_ademe_aide_financiere
+    description: >
+      Curated financial aid data from the French Agency for Ecological Transition (ADEME).
+      Contains the latest available release of awarded aids with standardized beneficiary
+      identifiers, financial amounts, aid schemes, payment information, and administrative metadata.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_attribuant
+        description: Name of the authority awarding the financial aid.
+      - name: id_attribuant
+        description: SIRET identifier of the awarding authority, stored as text.
+        tests:
+          - not_null
+      - name: date_convention
+        description: Date on which the aid agreement was signed.
+      - name: reference_decision
+        description: Administrative decision reference associated with the aid.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the financial aid.
+      - name: id_beneficiaire
+        description: SIRET identifier of the beneficiary, stored as text.
+      - name: objet
+        description: Purpose or description of the financial aid.
+      - name: dispositif_aide
+        description: Aid scheme or support program associated with the financial aid.
+      - name: montant
+        description: Total amount of the financial aid awarded in euros.
+        tests:
+          - not_null
+      - name: nature
+        description: Nature or type of the aid.
+      - name: conditions_versement
+        description: Conditions governing payment of the aid.
+      - name: dates_periode_versement
+        description: Payment date or payment period of the aid.
+      - name: id_rae
+        description: Enterprise register reference identifier, when available.
+      - name: notification_ue
+        description: Indicates whether the aid was notified to the European Commission as State aid.
+      - name: release_year
+        description: Release year of the source dataset. Only records from the latest available release are retained.
+  - name: svr_dotation_soutien_territoire
+    description: >
+      Curated data on investment projects financed by French State investment support grants
+      for local authorities. Contains the latest available release with standardized beneficiary
+      identifiers, project descriptions, investment costs, subsidy amounts, funding rates,
+      and administrative metadata.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: exercice
+        description: Fiscal year of the awarded subsidy.
+      - name: dispositif
+        description: State investment support scheme under which the project was funded.
+      - name: programme
+        description: Budget program associated with the funding.
+      - name: beneficiaire_type
+        description: Type of beneficiary (e.g. municipality, EPCI).
+      - name: beneficiaire_siren
+        description: SIREN identifier of the beneficiary, stored as text.
+      - name: beneficiaire_dep
+        description: Department code of the beneficiary.
+      - name: beneficiaire_nom
+        description: Name of the beneficiary.
+      - name: beneficiaire_code_insee
+        description: INSEE commune code of the beneficiary, when available.
+      - name: intitule
+        description: Title or description of the funded investment project.
+      - name: cout_ht
+        description: Total project cost excluding taxes, in euros.
+      - name: subvention
+        description: Amount of the subsidy awarded, in euros.
+        tests:
+          - not_null
+      - name: taux
+        description: Subsidy rate as a proportion of the total project cost.
+      - name: release_year
+        description: Release year of the source dataset. Only records from the latest available release are retained.
+  - name: svr_subvention_caisse_depots
+    description: >
+      Curated subsidy data from the Caisse des Dépôts et Consignations (CDC).
+      Contains the latest available release of awarded subsidies with standardized beneficiary
+      identifiers, subsidy amounts, payment information, and administrative metadata.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_attribuant
+        description: Name of the authority awarding the subsidy.
+      - name: id_attribuant
+        description: SIRET identifier of the awarding authority, stored as text.
+        tests:
+          - not_null
+      - name: date_convention
+        description: Date on which the subsidy agreement was signed.
+      - name: reference_decision
+        description: Administrative decision reference associated with the subsidy.
+      - name: id_beneficiaire
+        description: SIRET identifier of the beneficiary, stored as text.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+      - name: objet
+        description: Purpose or description of the subsidy.
+      - name: montant
+        description: Total amount of the subsidy awarded in euros.
+        tests:
+          - not_null
+      - name: nature
+        description: Nature or type of the subsidy.
+      - name: conditions_versement
+        description: Conditions governing payment of the subsidy.
+      - name: dates_versement_debut
+        description: Start date of the subsidy payment period.
+      - name: dates_versement_fin
+        description: End date of the subsidy payment period, when applicable.
+      - name: id_rae
+        description: Enterprise register reference identifier, when available.
+      - name: notification_ue
+        description: Indicates whether the subsidy was notified to the European Commission as State aid.
+      - name: pourcentage_subvention
+        description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: release_year
+        description: Release year of the source dataset. Only records from the latest available release are retained.
+  - name: svr_idf_subvention_association
+    description: >
+      Curated subsidy data from the Île-de-France Regional Council for associations.
+      Contains the latest available release of awarded subsidies with standardized identifiers,
+      beneficiary information, project descriptions, funding amounts, payment information,
+      European fund management status, and aid scheme details.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: id_attribuant
+        description: SIRET identifier of the authority awarding the subsidy, stored as text.
+        tests:
+          - not_null
+      - name: nom_attribuant
+        description: Name of the authority awarding the subsidy.
+      - name: annee_exercice
+        description: Fiscal year associated with the subsidy.
+      - name: date_convention
+        description: Date on which the subsidy agreement was signed.
+      - name: reference_decision
+        description: Administrative decision reference associated with the subsidy.
+      - name: id_dossier
+        description: Internal identifier of the subsidy application dossier.
+      - name: id_beneficiaire
+        description: SIRET identifier of the beneficiary, stored as text.
+      - name: nom_beneficiaire
+        description: Name of the beneficiary receiving the subsidy.
+      - name: objet
+        description: Purpose or description of the subsidy.
+      - name: montant
+        description: Total amount of the subsidy awarded.
+        tests:
+          - not_null
+      - name: dates_periode_versement
+        description: Payment date or payment period associated with the subsidy.
+      - name: delegation
+        description: Indicates whether the subsidy was delegated.
+      - name: gestion_fonds_europeens
+        description: Indicates whether the subsidy is managed through European funds.
+      - name: pourcentage_subvention
+        description: Percentage of the project cost covered by the subsidy.
+      - name: dispositif_aide
+        description: Subsidy scheme or aid program associated with the funding.
+      - name: release_year
+        description: Release year of the source dataset. Only records from the latest available release are retained.
+  - name: svr_fonds_vert_subvention
+    description: >
+      Silver layer containing normalized project funding data from the French Green Fund
+      (Fonds vert). The dataset includes funded projects, beneficiary information,
+      territorial details, committed amounts, administrative references, and enriched
+      beneficiary SIRET identifiers obtained from the Sirene establishment reference data.
+      Only the latest available source release is retained.
+    config:
+      tags: silver
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: nom_region
+        description: Name of the region where the funded project is located.
+      - name: code_departement
+        description: Department code where the funded project is located.
+      - name: nom_departement
+        description: Name of the department where the funded project is located.
+      - name: code_commune
+        description: INSEE commune code where the funded project is located.
+      - name: nom_commune
+        description: Name of the commune where the funded project is located.
+      - name: numero_dossier_ds
+        description: Identifier of the Démarches Simplifiées funding application dossier.
+      - name: nom_du_projet
+        description: Name or title of the funded project.
+      - name: nom_beneficiaire_principal
+        description: Main beneficiary of the funded project.
+      - name: montant_engage
+        description: Amount committed by the State for the project.
+        tests:
+          - not_null
+      - name: resume_du_projet
+        description: Summary or description of the funded project.
+      - name: numero_ej
+        description: Engagement juridique identifier associated with the funding.
+      - name: numero_operateur
+        description: Identifier of the operator managing the funding.
+      - name: operateur
+        description: Name of the operator responsible for managing the funding.
+      - name: demarche
+        description: Administrative funding procedure associated with the project.
+      - name: siret_beneficiaire
+        description: SIRET identifier of the beneficiary, enriched from Sirene establishment data when missing.
+      - name: raison_sociale_beneficiaire
+        description: Legal name of the beneficiary.
+      - name: forme_juridique_beneficiaire
+        description: Legal form of the beneficiary.
+      - name: exercice
+        description: Fiscal year associated with the project funding.
+      - name: release_year
+        description: Release year of the source dataset. Only the latest release is retained.

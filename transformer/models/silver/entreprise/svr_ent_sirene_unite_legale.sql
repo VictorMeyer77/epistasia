@@ -44,7 +44,7 @@ SELECT
                 COALESCE(NULLIF(ul.nom_unite_legale, '[ND]'), '')
             )
         ), '')
-    ) AS denomination_unite_legal
+    ) AS denomination_unite_legale
 FROM {{ ref("svr_sirene_unite_legale") }} AS ul
 LEFT JOIN naf_sousclasse AS naf
     ON ul.activite_principale_unite_legale = naf.code

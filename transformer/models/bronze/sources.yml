@@ -423,3 +423,366 @@ sources:
             description: Name in clear text with rich typography.
           - name: LIBELLE
             description: Name in clear text with rich typography and article.
+      - name: culture_convention_subvention
+        description: >
+          Essential data on subsidy conventions from the French Ministry of Culture. Contains all ministerial program data including
+          year, credit origin, beneficiary information, geographic details, financial data, and administrative classifications.
+          (https://www.data.gouv.fr/datasets/donnees-essentielles-des-conventions-de-subvention-5)
+        meta:
+          external_location: "read_csv('../datalake/raw/culture-convention-subvention_*.csv', delim=';', encoding='latin-1', all_varchar=true, header=true)"
+        columns:
+          - name: Année
+            description: Year of the subsidy convention.
+          - name: Origine des crédits
+            description: Origin of the credits.
+          - name: Détail origine des crédits
+            description: Detailed origin of the credits.
+          - name: CPER
+            description: State-Region Plan Contract identifier.
+          - name: Montant engagé
+            description: Committed amount for the subsidy.
+          - name: Nom du bénéficiaire
+            description: Name of the beneficiary.
+          - name: Région du bénéficiaire
+            description: Region of the beneficiary.
+          - name: Département du bénéficiaire
+            description: Department of the beneficiary.
+          - name: EPCI du bénéficiaire
+            description: Public establishment of inter-municipal cooperation of the beneficiary.
+          - name: Sous-types de communes du bénéficiaire
+            description: Sub-types of communes for the beneficiary.
+          - name: Code postal du bénéficiaire
+            description: Postal code of the beneficiary.
+          - name: Code commune du bénéficiaire
+            description: Commune code of the beneficiary.
+          - name: Commune du bénéficiaire
+            description: Commune name of the beneficiary.
+          - name: N° SIREN du bénéficiaire
+            description: SIREN number of the beneficiary.
+          - name: N° SIRET du bénéficiaire
+            description: SIRET number of the beneficiary.
+          - name: N° EJ
+            description: EJ number.
+          - name: Titre
+            description: Title.
+          - name: Mission
+            description: Mission.
+          - name: Programme
+            description: Program.
+          - name: Localisation interministérielle
+            description: Inter-ministerial location.
+          - name: Fonctionnement/Investissement
+            description: Operating/Investment classification.
+          - name: Domaine fonctionnel
+            description: Functional domain.
+          - name: Compte budgétaire
+            description: Budget account.
+          - name: Code activité
+            description: Activity code.
+          - name: Activité libellé long
+            description: Activity label long form.
+          - name: Activité libellé court
+            description: Activity label short form.
+          - name: Centre financier
+            description: Financial center.
+          - name: Centre de coût
+            description: Cost center.
+          - name: Appellation unité patrimoniale concernée par l'op. fin.
+            description: Name of the patrimonial unit concerned by the financial operation.
+          - name: Région unité patrimoniale concernée par l'op. fin.
+            description: Region of the patrimonial unit concerned by the financial operation.
+          - name: Département unité patrimoniale concernée par l'op. fin.
+            description: Department of the patrimonial unit concerned by the financial operation.
+          - name: Code postal unité patrimoniale concernée par l'op. fin.
+            description: Postal code of the patrimonial unit concerned by the financial operation.
+          - name: Code commune unité patrimoniale concernée par l'op. fin.
+            description: Commune code of the patrimonial unit concerned by the financial operation.
+          - name: Commune unité patrimoniale concernée par l'op. fin.
+            description: Commune of the patrimonial unit concerned by the financial operation.
+      - name: agriculture_subvention
+        description: >
+          Essential data on subsidy conventions exceeding €23,000 awarded by the French Ministry of Agriculture and Food.
+          Contains information on the awarding authority, beneficiary identification,
+          convention dates, financial amounts, payment conditions, and administrative
+          metadata for grants subject to the French open data transparency requirements.
+          (https://www.data.gouv.fr/datasets/subventions-de-plus-de-23-000-euros-attribuees-par-le-ministere-de-lagriculture)
+        meta:
+          external_location: "read_csv('../datalake/raw/agriculture-subvention_*.csv', delim=';', encoding='cp1252', header=true, skip=2)"
+        columns:
+          - name: Nom attributaire*
+            description: Name of the authority awarding the subsidy.
+          - name: Identification de l'attributaire*
+            description: SIRET identifier of the awarding authority.
+          - name: Date de convention*
+            description: Date the subsidy convention was signed.
+          - name: Référence de la décision
+            description: Reference number of the administrative decision granting the subsidy.
+          - name: Identification du bénéficiaire*
+            description: SIRET identifier of the beneficiary.
+          - name: Nom du bénéficiaire*
+            description: Name of the beneficiary receiving the subsidy.
+          - name: Objet de la convention
+            description: Purpose or subject of the subsidy convention.
+          - name: Montant total de la subvention*
+            description: Total amount of the subsidy awarded.
+          - name: Nature de la subvention*
+            description: Nature or type of the subsidy (e.g. financial grant).
+          - name: Conditions de versement*
+            description: Payment conditions for the subsidy (e.g. one-time or installment payments).
+          - name: Date de versement
+            description: Date or period during which the subsidy payments were made.
+          - name: Numéro de référencement au répertoire des entreprises
+            description: Enterprise register reference number, when available.
+          - name: Aide notifiée à l'Europe
+            description: Indicates whether the subsidy was notified to the European Commission as State aid.
+          - name: Pourcentage du montant de la subvention attribué au bénéficiaire*
+            description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: anct_subvention_ville
+        description: >
+          Essential data on grants awarded by the French National Agency for Territorial Cohesion (ANCT)
+          under the Urban Policy (Politique de la Ville). Contains information on the awarding authority,
+          departmental directorate, beneficiary identification, grant purpose, financial amounts,
+          payment conditions, and European state aid notification status.
+          (https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville)
+        meta:
+          external_location: "read_csv('../datalake/raw/anct-subvention-ville-*.csv', delim=';', encoding='cp1252', header=true, all_varchar=true, union_by_name=true)"
+        columns:
+          - name: Nom de l'attribuant
+            description: Name of the authority awarding the grant.
+          - name: Code département/Direction
+            description: Code of the department or directorate responsible for the grant.
+          - name: Libellé département/Direction
+            description: Name of the department or directorate responsible for the grant.
+          - name: Identification de l'attributaire
+            description: SIRET identifier of the awarding authority.
+          - name: Référence de la décision
+            description: Administrative decision reference for the grant.
+          - name: Identification du bénéficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: Nom du bénéficiaire
+            description: Name of the beneficiary receiving the grant.
+          - name: Objet de la subvention
+            description: Purpose or subject of the grant.
+          - name: Montant total de la subvention
+            description: Total amount of the grant awarded.
+          - name: Nature de la subvention
+            description: Nature or type of the grant.
+          - name: Conditions de versement
+            description: Conditions governing payment of the grant.
+          - name: Date de versement
+            description: Scheduled or actual payment date of the grant.
+          - name: RAE
+            description: Enterprise register reference, when available.
+          - name: notificationUE
+            description: Indicates whether the grant was notified to the European Commission as State aid.
+          - name: PourcentageSubvention
+            description: Percentage of the total grant amount allocated to the beneficiary.
+      - name: ademe_aide_financiere
+        description: >
+          Essential data on financial aids awarded by the French Agency for Ecological Transition (ADEME).
+          Contains information on the awarding authority, beneficiary identification, aid purpose,
+          aid schemes, financial amounts, payment conditions, payment periods, and European state aid
+          notification status.
+          (https://www.data.gouv.fr/datasets/les-aides-financieres-de-lademe-1)
+        meta:
+          external_location: "../datalake/raw/ademe-aide-financiere_*.csv"
+        columns:
+          - name: Nom de l attribuant
+            description: Name of the authority awarding the financial aid.
+          - name: idAttribuant
+            description: SIRET identifier of the awarding authority.
+          - name: dateConvention
+            description: Date on which the aid agreement was signed.
+          - name: referenceDecision
+            description: Administrative decision reference associated with the aid.
+          - name: nomBeneficiaire
+            description: Name of the beneficiary receiving the aid.
+          - name: idBeneficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: objet
+            description: Purpose or description of the financial aid.
+          - name: dispositifAide
+            description: Aid scheme or support program associated with the financial aid.
+          - name: montant
+            description: Total amount of the financial aid awarded.
+          - name: nature
+            description: Nature or type of the aid.
+          - name: conditionsVersement
+            description: Conditions governing payment of the aid.
+          - name: datesPeriodeVersement
+            description: Payment date or payment period of the aid.
+          - name: idRAE
+            description: Enterprise register reference identifier, when available.
+          - name: notificationUE
+            description: Indicates whether the aid was notified to the European Commission as State aid.
+      - name: dotation_soutien_territoire
+        description: >
+          Essential data on investment projects financed by French State investment support grants
+          for local authorities. Contains information on funding schemes, budget programs,
+          beneficiary identification, project descriptions, investment costs, subsidy amounts,
+          and funding rates.
+          (https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales)
+        meta:
+          external_location: "read_csv('../datalake/raw/dotation-soutien-territoire-*.csv', delim=';', header=true, all_varchar=true, union_by_name=true)"
+        columns:
+          - name: exercice
+            description: Fiscal year of the awarded subsidy.
+          - name: dispositif
+            description: State investment support scheme under which the project was funded.
+          - name: programme
+            description: Budget program associated with the funding.
+          - name: beneficiaire_type
+            description: Type of beneficiary (e.g. municipality, EPCI).
+          - name: beneficiaire_siren
+            description: SIREN identifier of the beneficiary, when available.
+          - name: beneficiaire_dep
+            description: Department code of the beneficiary.
+          - name: beneficiaire_nom
+            description: Name of the beneficiary.
+          - name: beneficiaire_code_insee
+            description: INSEE commune code of the beneficiary, when available.
+          - name: intitule
+            description: Title or description of the funded investment project.
+          - name: cout_ht
+            description: Total project cost excluding taxes.
+          - name: subvention
+            description: Amount of the subsidy awarded.
+          - name: taux
+            description: Subsidy rate as a proportion of the total project cost.
+      - name: caisse_depots_subvention
+        description: >
+          Essential data on subsidies awarded by the Caisse des Dépôts et Consignations (CDC)
+          since 1 January 2018. Contains information on the awarding authority, beneficiary
+          identification, subsidy purpose, financial amounts, payment conditions, payment periods,
+          and European state aid notification status.
+          (https://www.data.gouv.fr/datasets/subventions-attribuees-par-la-caisse-des-depots-depuis-01-01-2018-1)
+        meta:
+          external_location: "../datalake/raw/subvention-caisse-depots_*.csv"
+        columns:
+          - name: nomAttribuant
+            description: Name of the authority awarding the subsidy.
+          - name: IdAttribuant
+            description: SIRET identifier of the awarding authority.
+          - name: DateConvention
+            description: Date on which the subsidy agreement was signed.
+          - name: ReferenceDecision
+            description: Administrative decision reference associated with the subsidy.
+          - name: IdBeneficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: NomBeneficiaire
+            description: Name of the beneficiary receiving the subsidy.
+          - name: Objet
+            description: Purpose or description of the subsidy.
+          - name: Montant
+            description: Total amount of the subsidy awarded.
+          - name: Nature
+            description: Nature or type of the subsidy.
+          - name: ConditionsVersement
+            description: Conditions governing payment of the subsidy.
+          - name: DatesVersement_debut
+            description: Start date of the subsidy payment period.
+          - name: DatesVersement_fin
+            description: End date of the subsidy payment period, when applicable.
+          - name: IdRAE
+            description: Enterprise register reference identifier, when available.
+          - name: NotificationUE
+            description: Indicates whether the subsidy was notified to the European Commission as State aid.
+          - name: PourcentageSubvention
+            description: Percentage of the total subsidy amount allocated to the beneficiary.
+      - name: idf_subvention_association
+        description: >
+          Essential data on subsidies awarded by the Île-de-France Regional Council to associations.
+          Contains information on the awarding authority, beneficiary identification, subsidy purpose,
+          funding amounts, payment periods, delegation status, European fund management status,
+          subsidy rates, and aid schemes.
+          (https://www.data.gouv.fr/datasets/subventions-versees-par-la-region-ile-de-france-aux-associations)
+        meta:
+          external_location: "../datalake/raw/idf-subvention-association_*.csv"
+        columns:
+          - name: idAttribuant
+            description: SIRET identifier of the authority awarding the subsidy.
+          - name: nomAttribuant
+            description: Name of the authority awarding the subsidy.
+          - name: anneeExercice
+            description: Fiscal year associated with the subsidy.
+          - name: dateConvention
+            description: Date on which the subsidy agreement was signed.
+          - name: referenceDecision
+            description: Administrative decision reference associated with the subsidy.
+          - name: idDossier
+            description: Internal identifier of the subsidy application dossier.
+          - name: idBeneficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: nomBeneficiaire
+            description: Name of the beneficiary receiving the subsidy.
+          - name: objet
+            description: Purpose or description of the subsidy.
+          - name: montant
+            description: Total amount of the subsidy awarded.
+          - name: datesPeriodeVersement
+            description: Payment date or payment period associated with the subsidy.
+          - name: delegation
+            description: Indicates whether the subsidy was delegated.
+          - name: gestionFondsEuropeens
+            description: Indicates whether the subsidy is managed through European funds.
+          - name: pourcentageSubvention
+            description: Percentage of the project cost covered by the subsidy.
+          - name: dispositifAide
+            description: Subsidy scheme or aid program associated with the funding.
+      - name: fonds_vert_subvention
+        description: >
+          Essential data on projects funded by the French Green Fund (Fonds vert), a government
+          support mechanism for ecological transition projects. Contains information on project
+          location, funding program, application process, beneficiary identification, project
+          description, committed amounts, and administrative references.
+          The dataset schema may vary between yearly releases.
+          (https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes)
+        meta:
+          external_location: "read_csv('../datalake/raw/fonds-vert-subvention-*.csv', header=true, union_by_name=true)"
+        columns:
+          - name: nom_region
+            description: Name of the French region where the project is located.
+          - name: code_departement
+            description: Department code where the project is located.
+          - name: nom_departement
+            description: Name of the department where the project is located.
+          - name: code_commune
+            description: INSEE commune code where the project is located.
+          - name: nom_commune
+            description: Name of the commune where the project is located.
+          - name: axe
+            description: Green Fund intervention axis or thematic priority.
+          - name: numero_demarche_ds
+            description: Identifier of the administrative procedure on the dematerialized platform.
+          - name: nom_demarche_ds
+            description: Name of the administrative procedure.
+          - name: numero_dossier_ds
+            description: Identifier of the funding application dossier.
+          - name: nom_du_projet
+            description: Name or title of the funded project.
+          - name: nom_beneficiaire_principal
+            description: Main beneficiary of the funded project.
+          - name: siren
+            description: SIREN identifier of the beneficiary.
+          - name: montant_engage
+            description: Amount committed by the State for the project.
+          - name: resume_du_projet
+            description: Summary or description of the project.
+          - name: numero_ej
+            description: Commitment authorization identifier (engagement juridique).
+          - name: numero_operateur
+            description: Identifier of the operator managing the funding.
+          - name: opérateur
+            description: Name of the funding operator.
+          - name: demarche
+            description: Name or identifier of the funding procedure.
+          - name: siret_beneficiaire
+            description: SIRET identifier of the beneficiary.
+          - name: raison_sociale_beneficiaire
+            description: Legal name of the beneficiary.
+          - name: forme juridique_beneficiaire
+            description: Legal form of the beneficiary.
+          - name: operateur
+            description: Operator responsible for managing the project funding.
+          - name: forme_juridique_beneficiaire
+            description: Legal form of the beneficiary.

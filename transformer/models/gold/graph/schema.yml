@@ -40,8 +40,12 @@ models:
     columns:
       - name: "id:ID(CommandePubliqueMarche)"
         description: Unique identifier for the public procurement market. Used as the node ID in Neo4j.
-      - name: montant
+      - name: "montant:double"
         description: Financial amount of the market.
+      - name: "date_contrat:date"
+        description: Date on which the public procurement contract was signed.
+      - name: objet
+        description: Short description of the procurement contract, normalized by removing line breaks, collapsing whitespace, and truncated to 200 characters.
 
   - name: gld_graph_node_commande_publique_concession
     description: >
@@ -54,10 +58,30 @@ models:
     columns:
       - name: "id:ID(CommandePubliqueConcession)"
         description: Unique identifier for the public procurement concession. Used as the node ID in Neo4j.
-      - name: montant
+      - name: "montant:double"
         description: Financial amount of the concession.
-      - name: montant_subvention_publique
-        description: Amount of public subsidy for the concession.
+      - name: "date_contrat:date"
+        description: Date on which the concession contract was signed.
+      - name: objet
+        description: Short description of the concession contract, normalized by removing line breaks, collapsing whitespace, and truncated to 200 characters.
+
+  - name: gld_graph_node_subvention_publique
+    description: >
+      Gold graph node model for public subsidies. Represents public subsidies
+      as nodes in the Neo4j graph.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: "id:ID(SubventionPublique)"
+        description: Unique identifier for the public subsidy. Used as the node ID in Neo4j.
+      - name: "date_subvention:date"
+        description: Date on which the public subsidy was awarded.
+      - name: "montant:double"
+        description: Financial amount of the public subsidy.
+      - name: objet
+        description: Short description of the subsidized project, normalized by removing line breaks, collapsing whitespace, and truncated to 200 characters.
 
   - name: gld_graph_node_region
     description: >
@@ -274,3 +298,59 @@ models:
         description: Code of the region (start node).
       - name: ":END_ID(Departement)"
         description: Code of the department (end node).
+
+  - name: gld_graph_relationship_gives_publique_marche
+    description: >
+      Gold graph relationship model linking establishments to the public
+      procurement markets they have been awarded.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Etablissement)"
+        description: SIRET identifier of the establishment awarded the public procurement market.
+      - name: ":END_ID(CommandePubliqueMarche)"
+        description: Identifier of the public procurement market.
+
+  - name: gld_graph_relationship_gives_publique_concession
+    description: >
+      Gold graph relationship model linking establishments to the public
+      procurement concessions they have been awarded.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Etablissement)"
+        description: SIRET identifier of the establishment awarded the public procurement concession.
+      - name: ":END_ID(CommandePubliqueConcession)"
+        description: Identifier of the public procurement concession.
+
+  - name: gld_graph_relationship_provides_subvention_publique
+    description: >
+      Gold graph relationship model linking establishments acting as public
+      grant providers (creditors) to the public subsidies they provide.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Etablissement)"
+        description: SIRET identifier of the establishment providing the public subsidy.
+      - name: ":END_ID(SubventionPublique)"
+        description: Identifier of the public subsidy.
+
+  - name: gld_graph_relationship_receives_subvention_publique
+    description: >
+      Gold graph relationship model linking beneficiary establishments to the
+      public subsidies they receive.
+    config:
+      tags: gold | graph
+    docs:
+      node_color: "#D4AF37"
+    columns:
+      - name: ":START_ID(Etablissement)"
+        description: SIRET identifier of the establishment receiving the public subsidy.
+      - name: ":END_ID(SubventionPublique)"
+        description: Identifier of the public subsidy.
