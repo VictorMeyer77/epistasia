@@ -16,7 +16,7 @@ WITH siret_siege AS (
 
 ministere_culture AS (
     SELECT
-        make_timestamp(sub.annee, 1, 1, 0, 0, 0) AS date_subvention,
+        make_date(sub.annee, 1, 1) AS date_subvention,
         coalesce(
             sub.code_commune_unite_patrimoniale_concernee_par_lop_fin,
             sub.code_commune_beneficiaire
@@ -40,7 +40,7 @@ ministere_culture AS (
 
 ministere_agriculture AS (
     SELECT
-        date_convention AS date_subvention,
+        date_convention::DATE AS date_subvention,
         NULL AS code_commune,
         NULL AS nom_projet,
         objet_convention AS description_projet,
@@ -56,7 +56,8 @@ ministere_agriculture AS (
 
 anct_ville AS (
     SELECT
-        coalesce(date_versement, date_convention_subvention) AS date_subvention,
+        coalesce(date_versement, date_convention_subvention)::DATE
+            AS date_subvention,
         NULL AS code_commune,
         NULL AS nom_projet,
         objet_subvention AS description_projet,
@@ -72,7 +73,7 @@ anct_ville AS (
 
 ademe_aide AS (
     SELECT
-        date_convention AS date_subvention,
+        date_convention::DATE AS date_subvention,
         NULL AS code_commune,
         NULL AS nom_projet,
         objet AS description_projet,
@@ -89,7 +90,7 @@ ademe_aide AS (
 
 dotation_territoire AS (
     SELECT
-        make_timestamp(dot.exercice, 1, 1, 0, 0, 0) AS date_subvention,
+        make_date(dot.exercice, 1, 1) AS date_subvention,
         dot.beneficiaire_code_insee AS code_commune,
         dot.intitule AS nom_projet,
         dot.intitule AS description_projet,
@@ -109,7 +110,7 @@ dotation_territoire AS (
 
 caisse_depot_sub AS (
     SELECT
-        date_convention AS date_subvention,
+        date_convention::DATE AS date_subvention,
         NULL AS code_commune,
         NULL AS nom_projet,
         objet AS description_projet,
@@ -127,7 +128,7 @@ caisse_depot_sub AS (
 
 idf_sub_asso AS (
     SELECT
-        date_convention AS date_subvention,
+        date_convention::DATE AS date_subvention,
         NULL AS code_commune,
         NULL AS nom_projet,
         objet AS description_projet,
@@ -143,7 +144,7 @@ idf_sub_asso AS (
 
 fonds_vert_sub AS (
     SELECT
-        make_timestamp(exercice::INT, 1, 1, 0, 0, 0) AS date_subvention,
+        make_date(exercice::INT, 1, 1) AS date_subvention,
         code_commune,
         nom_du_projet AS nom_projet,
         resume_du_projet AS description_projet,

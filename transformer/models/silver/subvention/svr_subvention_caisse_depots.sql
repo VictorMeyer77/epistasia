@@ -9,7 +9,7 @@
 SELECT
     nomattribuant AS nom_attribuant,
     idattribuant::TEXT AS id_attribuant,
-    dateconvention AS date_convention,
+    STRPTIME(dateconvention::TEXT, '%Y-%m')::DATE AS date_convention,
     referencedecision AS reference_decision,
     idbeneficiaire::TEXT AS id_beneficiaire,
     nombeneficiaire AS nom_beneficiaire,
