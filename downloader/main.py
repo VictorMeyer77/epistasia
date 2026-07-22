@@ -34,12 +34,18 @@ def plan():
     """
     Show download plan - sources that need to be downloaded.
 
-    A source needs to be downloaded if:
-    - It has year=None (full refresh sources), OR
-    - It has no download history, OR
-    - Its latest download was more than its refresh_days days before now
+    A source is included in the plan if:
+    - It has no download history yet, regardless of year or incremental
+      status, OR
+    - It has year=None (a full refresh source) and either:
+        - it is incremental (incremental sources are always re-included
+          once they have an initial record, to keep pulling increments), OR
+        - it is not incremental and its latest download was more than
+          refresh_days days ago.
 
-    Sources with year not None (historical data) are only included if they have no history.
+    Sources with a fixed year (year is not None, i.e. historical data)
+    are only included if they have no existing download history; once
+    downloaded, they are never re-included.
 
     Uses current datetime to determine what needs refreshing.
 
@@ -63,6 +69,8 @@ def plan():
         else:
             if source.year is not None:
                 continue
+            elif source.incremental:
+                sources_to_download.append(source)
             else:
                 threshold = (
                     datetime.fromisoformat(record.download_timestamp).timestamp()
@@ -119,8 +127,10 @@ def download(yes: bool = False):
     """
     Download sources based on the plan.
 
-    Downloads sources that either have no download history or were downloaded more
-    than their refresh_days days ago.
+    Selection of which sources need downloading is delegated to `plan()`
+    (see its docstring for the exact criteria). This function displays
+    that plan, optionally prompts for confirmation, and then runs the
+    downloads.
 
     Args:
         yes: If True, skip the confirmation prompt and proceed with download.
@@ -140,9 +150,12 @@ def download(yes: bool = False):
         print("Download plan:")
         print(f"  {len(sources_to_download)} source(s) to download:")
         for source in sources_to_download:
-            records = history.get_records_by_key(source.name, source.year)
-            status = "NEW" if not records else "UPDATE"
-            print(f"    [{status}] {source.name} ({source.format}, {source.year})")
+            if source.incremental:
+                print(f"    [INCREMENT] {source.name} ({source.format})")
+            else:
+                records = history.get_records_by_key(source.name, source.year)
+                status = "NEW" if not records else "UPDATE"
+                print(f"    [{status}] {source.name} ({source.format}, {source.year})")
 
         if not yes:
             response = input("\nProceed with download? [Y/N]: ").strip().upper()
@@ -208,9 +221,14 @@ def main():
             print(f"  {len(sources)} source(s) to download:")
             history = History()
             for source in sources:
-                records = history.get_records_by_key(source.name, source.year)
-                status = "NEW" if not records else "UPDATE"
-                print(f"    [{status}] {source.name} ({source.format}, {source.year})")
+                if source.incremental:
+                    print(f"    [INCREMENT] {source.name} ({source.format})")
+                else:
+                    records = history.get_records_by_key(source.name, source.year)
+                    status = "NEW" if not records else "UPDATE"
+                    print(
+                        f"    [{status}] {source.name} ({source.format}, {source.year})"
+                    )
         else:
             print("  All sources are up to date.")
         sys.exit(0)

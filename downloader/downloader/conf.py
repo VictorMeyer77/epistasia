@@ -25,17 +25,20 @@ class SourceConfig:
         description: Human-readable description of the source.
         category: Category the source belongs to.
         provider: Organization or entity providing the data.
-        year: Year or year range of the data (format: YYYY or YYYY-YYYY).
-              If None, the table is considered a full refresh and current year
-              will be used for file output name.
         page_url: URL to the source's information page.
         download_url: URL to download the data file.
         format: File format (one of FileFormat enum values).
+        year: Year or year range of the data (format: YYYY or YYYY-YYYY).
+              If None, the table is considered a full refresh and current year
+              will be used for file output name.
         post: Optional name of post-download processing script to run.
               If None, no post-processing is performed. Defaults to None.
         refresh_days: Number of days after which the source should be re-downloaded.
                      If None, defaults to a standard refresh period. When year is not None
                      (historical data), this should only be run with single download.
+        incremental: Whether the source is re-checked and downloaded incrementally
+                     on every run. If True, year and refresh_days must both be None.
+                     Defaults to None (non-incremental).
     """
 
     name: str
@@ -48,10 +51,13 @@ class SourceConfig:
     year: str | None
     post: str | None
     refresh_days: int | None
+    incremental: bool | None
 
     def __post_init__(self):
-        """Validate the combination of year and refresh_days after initialization."""
-        self._validate_year_refresh_days_combination(self.year, self.refresh_days)
+        """Validate the combination of year, refresh_days, and incremental after initialization."""
+        self._validate_year_refresh_days_combination(
+            self.year, self.refresh_days, self.incremental
+        )
 
     @staticmethod
     def _validate_year(year: str | None) -> None:
@@ -94,26 +100,38 @@ class SourceConfig:
 
     @staticmethod
     def _validate_year_refresh_days_combination(
-        year: str | None, refresh_days: int | None
+        year: str | None, refresh_days: int | None, incremental: bool | None
     ) -> None:
         """
-        Validate the combination of year and refresh_days.
+        Validate the combination of year, refresh_days, and incremental.
 
         Rules:
-        - If year is None (full refresh), refresh_days must be set
-        - If year is not None (historical), refresh_days should not be set (use download_single)
+        - If incremental is True, year and refresh_days must both be None.
+        - Otherwise (incremental is False/None):
+            - If year is None (full refresh), refresh_days must be set.
+            - If year is set (historical), refresh_days should not be set (use download_single).
 
         Args:
             year: The year value to check.
             refresh_days: The refresh_days value to check.
+            incremental: Whether the source is downloaded incrementally.
 
         Raises:
             ValueError: If the combination is invalid according to the rules above.
         """
+        if incremental:
+            if year is not None or refresh_days is not None:
+                raise ValueError(
+                    "If incremental is True, year and refresh_days must both be None. "
+                    "Incremental sources are re-checked on every run and should not "
+                    "carry a fixed year or refresh_days."
+                )
+            return
+
         if year is None and refresh_days is None:
             raise ValueError(
-                "If year is None (full refresh), refresh_days must be set. "
-                "Full refresh sources need a refresh frequency."
+                "If year is None (full refresh) and incremental is not True, "
+                "refresh_days must be set. Full refresh sources need a refresh frequency."
             )
 
         if year is not None and refresh_days is not None:
@@ -129,20 +147,22 @@ class SourceConfig:
 
         Args:
             data: Dictionary containing source configuration data.
-                  Required keys: name, description, category, provider,
-                  page_url, download_url, format.
-                  Optional keys: year, post, refresh_days.
+                Required keys: name, description, category, provider,
+                page_url, download_url, format.
+                Optional keys: year, post, refresh_days, incremental.
 
         Returns:
             A new SourceConfig instance.
 
         Raises:
-            ValueError: If year or format validation fails.
+            ValueError: If year or format validation fails, or if year,
+                refresh_days, and incremental are set to an invalid
+                combination (see _validate_year_refresh_days_combination).
         """
         cls._validate_year(data.get("year"))
         cls._validate_format(data["format"])
         cls._validate_year_refresh_days_combination(
-            data.get("year"), data.get("refresh_days")
+            data.get("year"), data.get("refresh_days"), data.get("incremental")
         )
         return cls(
             name=data["name"],
@@ -155,6 +175,7 @@ class SourceConfig:
             format=data["format"],
             post=data.get("post"),
             refresh_days=data.get("refresh_days"),
+            incremental=data.get("incremental"),
         )
 
 

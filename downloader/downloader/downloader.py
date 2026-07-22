@@ -8,12 +8,28 @@ import requests
 
 from downloader.conf import SourceConfig
 from downloader.history import DownloadRecord, History
+from downloader.incremental import run_incremental
 from downloader.post_download import post
 
 
 class Downloader:
     """
     Downloads source files from a list of SourceConfig objects.
+
+    There are two distinct download paths, chosen per-source based on
+    `source.incremental`:
+
+    - STANDARD sources are fetched directly from `source.download_url`,
+      with retries/backoff handled by `_download_standard`. This is also
+      used for the one-time initial fetch of an incremental source (its
+      "-init" file).
+    - INCREMENTAL sources, once their init file exists on disk, are
+      subsequently updated via `_download_incremental`, which delegates
+      to `downloader.incremental.run_incremental` instead of doing an
+      HTTP download.
+
+    `download_source` is the single entry point and dispatches to
+    whichever path applies.
 
     Files are saved to the datalake/raw/ directory with filename
     format: {name}_{year}.{format}.
@@ -29,13 +45,13 @@ class Downloader:
         retry_count: int = 3,
     ):
         """
-        Initialize the Downloader.
+        Initialize the downloader.
 
         Args:
-            output_dir: Directory to save downloaded files.
-                       Defaults to ../../datalake/raw/ relative to this file.
-            timeout: Request timeout in seconds.
-            retry_count: Number of retries for failed downloads.
+            output_dir: Directory where downloaded files are written. Defaults
+                to datalake/raw relative to this file.
+            timeout: HTTP request timeout, in seconds.
+            retry_count: Number of retries for failed HTTP downloads.
         """
         if output_dir is None:
             self.output_dir = Path(__file__).parent.parent.parent / "datalake" / "raw"
@@ -56,10 +72,17 @@ class Downloader:
             source: SourceConfig containing source metadata.
 
         Returns:
-            The filename as {name}_{year}.{format}
-            If year is None, uses current year for the filename.
+            The filename, depending on the source type:
+            - If source.incremental is True: "{name}-init.{format}"
+            - If source.year is None (full refresh): "{name}_{current_year}.{format}"
+            - Otherwise (historical, fixed year): "{name}_{safe_year}.{format}",
+            where safe_year is source.year with "-" replaced by "_"
+            (e.g. "2024-2026" -> "2024_2026").
         """
-        if source.year is None:
+
+        if source.incremental:
+            return f"{source.name}-init.{source.format}"
+        elif source.year is None:
             current_year = datetime.now().strftime("%Y")
             return f"{source.name}_{current_year}.{source.format}"
         else:
@@ -98,25 +121,23 @@ class Downloader:
         except IOError as e:
             return False, str(e)
 
-    def download_source(
-        self, source: SourceConfig
+    def _download_standard(
+        self, source: SourceConfig, destination: Path
     ) -> tuple[bool, DownloadRecord | None, str | None, Path | None]:
         """
-        Download a single source and return a DownloadRecord for history.
+        Download a source directly from its URL via HTTP, retrying up to
+        self.retry_count times with a linearly increasing backoff on failure.
+
+        Used for non-incremental sources, and for the one-time init fetch
+        of incremental sources.
 
         Args:
             source: SourceConfig to download.
+            destination: Path to save the file to.
 
         Returns:
-            tuple[bool, DownloadRecord | None, str | None, Path | None]
-            - success (bool): True if download succeeded, False otherwise
-            - download_record (DownloadRecord | None): Download record for history if successful
-            - error_message (str | None): Error message if failed, None if successful
-            - file_path (Path | None): Path to the downloaded file if successful, None otherwise
+            Same shape as `download_source`.
         """
-        filename = self._generate_filename(source)
-        destination = self.output_dir / filename
-
         start_time = time.time()
         last_error = None
 
@@ -133,6 +154,7 @@ class Downloader:
                     category=source.category,
                     provider=source.provider,
                     year=source.year or datetime.now().strftime("%Y"),
+                    incremental=False,
                     page_url=source.page_url,
                     download_url=source.download_url,
                     format=source.format,
@@ -153,19 +175,101 @@ class Downloader:
         duration = time.time() - start_time
         return False, None, last_error or "Unknown error", None
 
+    def _download_incremental(
+        self, source: SourceConfig
+    ) -> tuple[bool, DownloadRecord | None, str | None, Path | None]:
+        """
+        Fetch the next increment for an already-initialized incremental
+        source, via downloader.incremental.run_incremental.
+
+        Args:
+            source: SourceConfig to update.
+
+        Returns:
+            Same shape as `download_source`.
+        """
+        print(f"  Load increment for {source.name}")
+        start_time = time.time()
+
+        try:
+            path = run_incremental(source.name)
+        except Exception as e:
+            return False, None, str(e), None
+
+        duration = time.time() - start_time
+
+        download_record = DownloadRecord(
+            name=source.name,
+            description=source.description,
+            category=source.category,
+            provider=source.provider,
+            year=datetime.now().strftime("%Y"),
+            incremental=True,
+            page_url=source.page_url,
+            download_url=source.download_url,
+            format=source.format,
+            download_timestamp=datetime.now().isoformat(),
+            download_duration=duration,
+        )
+
+        return True, download_record, None, path
+
+    def increment_source(
+        self, source: SourceConfig
+    ) -> tuple[bool, DownloadRecord | None, str | None, Path | None]:
+        """Backward-compatible alias for `_download_incremental`."""
+        return self._download_incremental(source)
+
+    def download_source(
+        self, source: SourceConfig
+    ) -> tuple[bool, DownloadRecord | None, str | None, Path | None]:
+        """
+        Download a single source and return a DownloadRecord for history.
+
+        Dispatches to the incremental path if source.incremental is True
+        and its init file already exists on disk; otherwise uses the
+        standard HTTP download path (also used for an incremental
+        source's first-ever init fetch).
+
+        Args:
+            source: SourceConfig to download.
+
+        Returns:
+            tuple[bool, DownloadRecord | None, str | None, Path | None]
+            - success (bool): True if the download succeeded or was skipped
+              because an incremental init file already exists, False otherwise
+            - download_record (DownloadRecord | None): Download record for
+              history if a download actually occurred; None if skipped or failed
+            - error_message (str | None): Error message if failed, None otherwise
+            - file_path (Path | None): Path to the file if downloaded or already
+              present, None if failed
+        """
+        filename = self._generate_filename(source)
+        destination = self.output_dir / filename
+
+        if source.incremental and destination.exists():
+            return self._download_incremental(source)
+
+        return self._download_standard(source, destination)
+
     def download_all(self, sources: list[SourceConfig]) -> list[DownloadRecord]:
         """
         Download all sources in the list.
 
-        For each source, if post-processing is specified (source.post is not None),
-        the corresponding post-processing script will be executed with the downloaded
-        file path as argument.
+        For each source that produces a DownloadRecord (i.e. a real download
+        happened, not a skipped incremental init file):
+            - If source.post is set, the corresponding post-processing script
+              is executed with the downloaded file path as argument.
+            - If self.history is configured, the record is added to history.
 
         Args:
             sources: SourceConfig objects to download.
 
         Returns:
-            List of DownloadRecord objects for successful downloads.
+            List of DownloadRecord objects for sources that were actually
+            downloaded this run. Sources whose download failed, or whose
+            incremental init file already existed (and so were skipped),
+            are not included.
         """
         downloaded_records = []
 
@@ -181,7 +285,7 @@ class Downloader:
                 print(f"    Duration: {download_record.download_duration:.2f}s")
                 downloaded_records.append(download_record)
 
-                # Post Download
+                # Post-download hook
                 if source.post:
                     print(f"  Post download: {source.post}")
                     post(source.post, file_path)
@@ -194,6 +298,7 @@ class Downloader:
                         category=download_record.category,
                         provider=download_record.provider,
                         year=download_record.year,
+                        incremental=download_record.incremental,
                         page_url=download_record.page_url,
                         download_url=download_record.download_url,
                         format=download_record.format,

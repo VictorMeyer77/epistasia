@@ -54,7 +54,7 @@
   {
     "name": "sirene-unite-legal",
     "description": "Base Sirene des entreprises (SIREN).",
-    "category": "economic",
+    "category": "legal",
     "provider": "insee",
     "page_url": "https://www.data.gouv.fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret",
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/350182c9-148a-46e0-8389-76c2ec1374a3",
@@ -64,7 +64,7 @@
   {
     "name": "culture-convention-subvention",
     "description": "Liste des données essentielles des conventions de subvention du ministère de la Culture.",
-    "category": "economic",
+    "category": "legal",
     "provider": "Ministère de la Culture",
     "page_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-des-conventions-de-subvention-5",
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/403c9108-dd0a-443d-9ed5-bca5f056fa8f",
@@ -291,5 +291,15 @@
     "download_url": "https://www.data.gouv.fr/api/1/datasets/r/ac2da594-aea2-4b87-973f-03f406ec4cfd",
     "format": "csv",
     "refresh_days": 30
+  },
+  {
+    "name": "bodacc",
+    "description": "Annonces publiées au BODACC (Bulletin officiel des annonces civiles et commerciales).",
+    "category": "legal",
+    "provider": "Premier ministre",
+    "page_url": "https://bodacc-datadila.opendatasoft.com/pages/home/",
+    "download_url": "https://bodacc-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/annonces-commerciales/exports/csv?lang=fr&timezone=Europe%2FBerlin&use_labels=true&delimiter=%3B",
+    "format": "csv",
+    "incremental": true
   }
 ]

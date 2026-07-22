@@ -9,6 +9,7 @@ HISTORY_CSV_COLUMNS = [
     "category",
     "provider",
     "year",
+    "incremental",
     "page_url",
     "download_url",
     "format",
@@ -26,6 +27,7 @@ class DownloadRecord:
     category: str
     provider: str
     year: str
+    incremental: bool
     page_url: str
     download_url: str
     format: str
@@ -38,12 +40,14 @@ class DownloadRecord:
         Create a DownloadRecord from a dictionary.
 
         Args:
-            data: Dictionary containing all the required fields.
-                 Must include: name, description, category, provider, year, page_url,
-                 download_url, format, download_timestamp, download_duration.
+            data: Dictionary containing the DownloadRecord fields.
 
         Returns:
-            DownloadRecord instance populated with data from the dictionary.
+            DownloadRecord: Instance populated from the dictionary.
+
+        Raises:
+            KeyError: If a required field is missing.
+            ValueError: If download_duration cannot be converted to float.
         """
         return cls(
             name=data["name"],
@@ -51,6 +55,7 @@ class DownloadRecord:
             category=data["category"],
             provider=data["provider"],
             year=data["year"],
+            incremental=bool(data["incremental"]),
             page_url=data["page_url"],
             download_url=data["download_url"],
             format=data["format"],
@@ -60,10 +65,10 @@ class DownloadRecord:
 
     def to_dict(self) -> dict:
         """
-        Convert to dictionary.
+        Return the record as a dictionary.
 
         Returns:
-            Dictionary containing all DownloadRecord fields.
+            dict: Dictionary representation of the record.
         """
         return {
             "name": self.name,
@@ -71,6 +76,7 @@ class DownloadRecord:
             "category": self.category,
             "provider": self.provider,
             "year": self.year,
+            "incremental": self.incremental,
             "page_url": self.page_url,
             "download_url": self.download_url,
             "format": self.format,
@@ -81,20 +87,19 @@ class DownloadRecord:
 
 class History:
     """
-    Maintains a CSV file containing download history of source data.
+    Maintains a CSV file containing download history.
 
-    The CSV file is located at datalake/raw/download_history.csv and contains
-    all SourceConfig fields plus download_timestamp and download_duration.
+    Each row stores metadata about a downloaded source together with the
+    download timestamp and duration.
     """
 
     def __init__(self, history_path: str | None = None):
         """
-        Initialize the History class.
+        Initialize the download history.
 
         Args:
-            history_path: Path to the history CSV file.
-                         Defaults to datalake/raw/download_history.csv relative to the
-                         downloader directory.
+            history_path: Path to the history CSV file. Defaults to
+                datalake/raw/download_history.csv relative to this file.
         """
         if history_path is None:
             self.history_path = (
@@ -111,10 +116,7 @@ class History:
 
     def create_file(self) -> None:
         """
-        Create the history CSV file with headers.
-
-        Creates a new CSV file at the specified history path with the defined
-        column headers if the file doesn't already exist.
+        Create the history CSV file and write the header row.
         """
         with open(self.history_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=HISTORY_CSV_COLUMNS)
@@ -127,6 +129,7 @@ class History:
         category: str,
         provider: str,
         year: str,
+        incremental: bool,
         page_url: str,
         download_url: str,
         format: str,
@@ -136,15 +139,16 @@ class History:
         Add a new download record to the history.
 
         Args:
-            name: Source name
-            description: Source description
-            category: Source category
-            provider: Source provider
-            year: Source year
-            page_url: Source page URL
-            download_url: Source download URL
-            format: File format
-            download_duration: Duration in seconds
+            name: Source name.
+            description: Source description.
+            category: Source category.
+            provider: Source provider.
+            year: Source year.
+            incremental: Whether the download is incremental.
+            page_url: Source page URL.
+            download_url: Download URL.
+            format: File format.
+            download_duration: Download duration in seconds.
         """
         record = {
             "name": name,
@@ -152,6 +156,7 @@ class History:
             "category": category,
             "provider": provider,
             "year": year,
+            "incremental": incremental,
             "page_url": page_url,
             "download_url": download_url,
             "format": format,
@@ -163,11 +168,10 @@ class History:
 
     def _append_record(self, record: dict) -> None:
         """
-        Append a validated record to the CSV file.
+        Append a record to the history CSV.
 
         Args:
-            record: Dictionary containing the record data to append.
-                   Must match the HISTORY_CSV_COLUMNS schema.
+            record: Dictionary matching the HISTORY_CSV_COLUMNS schema.
         """
         with open(self.history_path, "a", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=HISTORY_CSV_COLUMNS)
@@ -178,7 +182,10 @@ class History:
         Read all records from the history file.
 
         Returns:
-            List of DownloadRecord objects.
+            list[DownloadRecord]: Records in the order they appear in the file.
+
+        Raises:
+            ValueError: If the CSV schema is invalid or a record cannot be parsed.
         """
         if not self.history_path.exists():
             return []
@@ -203,9 +210,9 @@ class History:
 
     def clear(self) -> None:
         """
-        Clear all records from the history file.
+        Remove all records from the history file.
 
-        Recreates the history file with only the header row, removing all existing records.
+        Recreates the file with only the header row.
         """
         self.create_file()
 
@@ -218,7 +225,7 @@ class History:
             year: Source year.
 
         Returns:
-            True if a matching record exists, False otherwise.
+            bool: True if a matching record exists, otherwise False.
         """
         all_records = self.read_all()
         for record in all_records:
@@ -231,11 +238,11 @@ class History:
         Get a download record matching the given source name and year.
 
         Args:
-            name: The name of the source to filter by.
-            year: The year of the source to filter by.
+            name: Source name.
+            year: Source year.
 
         Returns:
-            DownloadRecord object that matches both the source name and year, or None if not found.
+            DownloadRecord | None: Matching record, or None if no match exists.
         """
         for record in self.read_all():
             if record.name == name and record.year == year:
@@ -248,7 +255,7 @@ class History:
         Get the absolute path to the history file.
 
         Returns:
-            Absolute path to the history CSV file as a string.
+            str: Absolute path to the history CSV file.
         """
         return str(self.history_path.absolute())
 
@@ -258,7 +265,7 @@ class History:
         Get the number of records in the history file.
 
         Returns:
-            Count of download records in the history file.
+            int: Number of records in the history file.
         """
         return len(self.read_all())
 
@@ -267,7 +274,7 @@ class History:
         Return the number of records.
 
         Returns:
-            The count of download records in the history file.
+            int: Number of records in the history file.
         """
         return self.record_count
 
@@ -276,6 +283,6 @@ class History:
         Return a string representation of the History object.
 
         Returns:
-            String containing the file path and record count.
+            str: String representation of the History object.
         """
         return f"History(file_path='{self.file_path}', record_count={len(self)})"
