@@ -1,10 +1,13 @@
 import json
+import logging
 import re
 from pathlib import Path
 import shutil
 import tempfile
 
 import polars as pl
+
+logger = logging.getLogger(__name__)
 
 
 def commande_publique(file_path: Path) -> None:
@@ -39,10 +42,10 @@ def commande_publique(file_path: Path) -> None:
         )
 
         marche_df.write_parquet(marche_file_path)
-        print(f"  Wrote Parquet file: {marche_file_path}")
+        logger.info(f"  Wrote Parquet file: {marche_file_path}")
 
         concession_df.write_parquet(concession_file_path)
-        print(f"  Wrote Parquet file: {concession_file_path}")
+        logger.info(f"  Wrote Parquet file: {concession_file_path}")
 
 
 def anct_subvention_ville_2019(file_path: Path) -> None:

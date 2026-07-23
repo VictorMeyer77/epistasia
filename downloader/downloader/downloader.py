@@ -1,5 +1,6 @@
 """Downloader module for downloading source files."""
 
+import logging
 import time
 from datetime import datetime
 from pathlib import Path
@@ -10,6 +11,8 @@ from downloader.conf import SourceConfig
 from downloader.history import DownloadRecord, History
 from downloader.incremental import run_incremental
 from downloader.post_download import post
+
+logger = logging.getLogger(__name__)
 
 
 class Downloader:
@@ -167,7 +170,7 @@ class Downloader:
 
             if attempt < self.retry_count - 1:
                 wait_time = (attempt + 1) * 2
-                print(
+                logger.info(
                     f"Retry {attempt + 1}/{self.retry_count} for {source.name} in {wait_time}s..."
                 )
                 time.sleep(wait_time)
@@ -188,7 +191,7 @@ class Downloader:
         Returns:
             Same shape as `download_source`.
         """
-        print(f"  Load increment for {source.name}")
+        logger.info(f"  Load increment for {source.name}")
         start_time = time.time()
 
         try:
@@ -275,19 +278,21 @@ class Downloader:
 
         for source in sources:
             year_display = source.year or datetime.now().strftime("%Y")
-            print(f"Downloading {source.name} ({source.format}, {year_display})...")
+            logger.info(
+                f"Downloading {source.name} ({source.format}, {year_display})..."
+            )
             success, download_record, error_message, file_path = self.download_source(
                 source
             )
 
             if success and download_record:
-                print(f"  Success: Downloaded to {file_path}")
-                print(f"    Duration: {download_record.download_duration:.2f}s")
+                logger.info(f"  Success: Downloaded to {file_path}")
+                logger.info(f"    Duration: {download_record.download_duration:.2f}s")
                 downloaded_records.append(download_record)
 
                 # Post-download hook
                 if source.post:
-                    print(f"  Post download: {source.post}")
+                    logger.info(f"  Post download: {source.post}")
                     post(source.post, file_path)
 
                 # Add to history
@@ -305,6 +310,6 @@ class Downloader:
                         download_duration=download_record.download_duration,
                     )
             else:
-                print(f"  Failed: {error_message}")
+                logger.error(f"  Failed: {error_message}")
 
         return downloaded_records

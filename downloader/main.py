@@ -1,10 +1,19 @@
 import argparse
+import logging
 import sys
 from datetime import datetime
 
 from downloader.conf import Conf
 from downloader.downloader import Downloader
 from downloader.history import History
+
+# Configure basic logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[logging.StreamHandler(sys.stdout)],
+)
+logger = logging.getLogger(__name__)
 
 
 def validate():
@@ -20,13 +29,13 @@ def validate():
     try:
         conf = Conf()
         sources = conf.get_all_sources()
-        print("✓ sources.json is valid")
-        print(f"  Found {len(sources)} source(s):")
+        logger.info("✓ sources.json is valid")
+        logger.info(f"  Found {len(sources)} source(s):")
         for source in sources:
-            print(f"    - {source.name} ({source.format}, {source.year})")
+            logger.info(f"    - {source.name} ({source.format}, {source.year})")
         return 0
     except Exception as e:
-        print(f"✗ Validation failed: {e}")
+        logger.error(f"✗ Validation failed: {e}")
         return 1
 
 
@@ -101,25 +110,27 @@ def download_single(name: str, year: str | None = None):
 
         if not source:
             year_display = year or "None"
-            print(f"✗ No source found with name='{name}' and year='{year_display}'")
+            logger.error(
+                f"✗ No source found with name='{name}' and year='{year_display}'"
+            )
             return 1
 
         file_year = now.strftime("%Y") if source.year is None else source.year
-        print(f"Downloading {source.name} ({source.format}, {file_year})...")
+        logger.info(f"Downloading {source.name} ({source.format}, {file_year})...")
 
         success, record, error, file_path = downloader.download_source(source)
 
         if success and record:
-            print(f"  Success: Downloaded to {file_path}")
-            print(f"    Duration: {record.download_duration:.2f}s")
+            logger.info(f"  Success: Downloaded to {file_path}")
+            logger.info(f"    Duration: {record.download_duration:.2f}s")
         else:
-            print(f"  Failed: {error}")
+            logger.error(f"  Failed: {error}")
             return 1
 
         return 0
 
     except Exception as e:
-        print(f"✗ Download failed: {e}")
+        logger.error(f"✗ Download failed: {e}")
         return 1
 
 
@@ -143,34 +154,36 @@ def download(yes: bool = False):
         sources_to_download = plan()
 
         if not sources_to_download:
-            print("Download plan:")
-            print("  All sources are up to date.")
+            logger.info("Download plan:")
+            logger.info("  All sources are up to date.")
             return 0
 
-        print("Download plan:")
-        print(f"  {len(sources_to_download)} source(s) to download:")
+        logger.info("Download plan:")
+        logger.info(f"  {len(sources_to_download)} source(s) to download:")
         for source in sources_to_download:
             if source.incremental:
-                print(f"    [INCREMENT] {source.name} ({source.format})")
+                logger.info(f"    [INCREMENT] {source.name} ({source.format})")
             else:
                 records = history.get_records_by_key(source.name, source.year)
                 status = "NEW" if not records else "UPDATE"
-                print(f"    [{status}] {source.name} ({source.format}, {source.year})")
+                logger.info(
+                    f"    [{status}] {source.name} ({source.format}, {source.year})"
+                )
 
         if not yes:
             response = input("\nProceed with download? [Y/N]: ").strip().upper()
             if response != "Y":
-                print("Download cancelled.")
+                logger.info("Download cancelled.")
                 return 1
 
-        print("\nStarting download...")
+        logger.info("\nStarting download...")
         downloader = Downloader()
         downloader.download_all(sources_to_download)
-        print("\nDownload complete!")
+        logger.info("\nDownload complete!")
         return 0
 
     except Exception as e:
-        print(f"✗ Download failed: {e}")
+        logger.error(f"✗ Download failed: {e}")
         return 1
 
 
@@ -216,21 +229,21 @@ def main():
         sys.exit(validate())
     elif args.command == "plan":
         sources = plan()
-        print("Download plan:")
+        logger.info("Download plan:")
         if sources:
-            print(f"  {len(sources)} source(s) to download:")
+            logger.info(f"  {len(sources)} source(s) to download:")
             history = History()
             for source in sources:
                 if source.incremental:
-                    print(f"    [INCREMENT] {source.name} ({source.format})")
+                    logger.info(f"    [INCREMENT] {source.name} ({source.format})")
                 else:
                     records = history.get_records_by_key(source.name, source.year)
                     status = "NEW" if not records else "UPDATE"
-                    print(
+                    logger.info(
                         f"    [{status}] {source.name} ({source.format}, {source.year})"
                     )
         else:
-            print("  All sources are up to date.")
+            logger.info("  All sources are up to date.")
         sys.exit(0)
     elif args.command == "download":
         if args.name:
