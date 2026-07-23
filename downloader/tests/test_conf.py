@@ -238,6 +238,7 @@ class TestSourceConfigDataclass:
             format="csv",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
 
         assert config.name == "test"
@@ -250,6 +251,7 @@ class TestSourceConfigDataclass:
         assert config.format == "csv"
         assert config.post is None
         assert config.refresh_days is None
+        assert config.incremental is None
 
     def test_post_field_default_none(self):
         """Test that post field can be set to None."""
@@ -264,6 +266,7 @@ class TestSourceConfigDataclass:
             format="csv",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
         assert config.post is None
 
@@ -280,6 +283,7 @@ class TestSourceConfigDataclass:
             format="csv",
             post="convert_to_parquet",
             refresh_days=None,
+            incremental=None,
         )
         assert config.post == "convert_to_parquet"
 
@@ -296,6 +300,7 @@ class TestSourceConfigDataclass:
             format="csv",
             post=None,
             refresh_days=30,
+            incremental=None,
         )
         assert config.refresh_days == 30
 
@@ -305,13 +310,13 @@ class TestConfClass:
 
     def test_init_with_default_path(self):
         """Test Conf initialization with default path."""
-        # This test assumes sources.json exists in the parent directory
+        # This test assumes sources.yaml exists in the parent directory
         conf = Conf()
         assert len(conf.sources) > 0
 
     def test_init_with_custom_path(self):
         """Test Conf initialization with custom path."""
-        # Create a temporary sources.json file
+        # Create a temporary sources file
         with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             json.dump(
                 [
@@ -342,14 +347,21 @@ class TestConfClass:
         with pytest.raises(FileNotFoundError, match="Sources file not found"):
             Conf("nonexistent_path.json")
 
-    def test_load_sources_invalid_json(self):
-        """Test that loading sources raises ValueError for invalid JSON."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-            f.write("invalid json")
+    def test_load_sources_invalid_yaml(self):
+        """Test that loading sources raises ValueError for invalid YAML.
+
+        Note: arbitrary garbage text (e.g. "invalid json") is not a
+        reliable way to trigger a YAML parse error, since plain,
+        unquoted text is itself valid YAML (it parses as a string
+        scalar). Tab characters, however, are invalid for indentation
+        in YAML and reliably raise yaml.YAMLError.
+        """
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            f.write("key:\n\tvalue: bad")
             temp_path = f.name
 
         try:
-            with pytest.raises(ValueError, match="Invalid JSON"):
+            with pytest.raises(ValueError, match="Invalid YAML"):
                 Conf(temp_path)
         finally:
             Path(temp_path).unlink()

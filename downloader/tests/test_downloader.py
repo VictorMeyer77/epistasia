@@ -35,6 +35,7 @@ class TestGenerateFilename:
             format="csv",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
         result = self.downloader._generate_filename(source)
         assert result == "test_source_2024.csv"
@@ -52,6 +53,7 @@ class TestGenerateFilename:
             format="csv",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
         result = self.downloader._generate_filename(source)
         assert result == "test_source_2024_2026.csv"
@@ -69,6 +71,7 @@ class TestGenerateFilename:
             format="parquet",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
         result = self.downloader._generate_filename(source)
         assert result == "data_2025.parquet"
@@ -171,6 +174,7 @@ class TestDownloadSource:
             format="csv",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
 
         success, record, error, file_path = self.downloader.download_source(source)
@@ -199,6 +203,7 @@ class TestDownloadSource:
             format="csv",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
 
         success, record, error, file_path = self.downloader.download_source(source)
@@ -230,6 +235,7 @@ class TestDownloadSource:
             format="csv",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
 
         success, record, error, file_path = self.downloader.download_source(source)
@@ -270,6 +276,7 @@ class TestDownloadAll:
             format="csv",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
         source2 = SourceConfig(
             name="source2",
@@ -282,6 +289,7 @@ class TestDownloadAll:
             format="json",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
 
         mock_download_source.side_effect = [
@@ -293,6 +301,7 @@ class TestDownloadAll:
                     category="cat1",
                     provider="prov1",
                     year="2024",
+                    incremental=False,
                     page_url="https://example.com/page1",
                     download_url="https://example.com/file1.csv",
                     format="csv",
@@ -310,6 +319,7 @@ class TestDownloadAll:
                     category="cat2",
                     provider="prov2",
                     year="2025",
+                    incremental=False,
                     page_url="https://example.com/page2",
                     download_url="https://example.com/file2.json",
                     format="json",
@@ -342,6 +352,7 @@ class TestDownloadAll:
             format="csv",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
         source2 = SourceConfig(
             name="source2",
@@ -354,6 +365,7 @@ class TestDownloadAll:
             format="json",
             post=None,
             refresh_days=None,
+            incremental=None,
         )
 
         mock_download_source.side_effect = [
@@ -365,6 +377,7 @@ class TestDownloadAll:
                     category="cat1",
                     provider="prov1",
                     year="2024",
+                    incremental=False,
                     page_url="https://example.com/page1",
                     download_url="https://example.com/file1.csv",
                     format="csv",

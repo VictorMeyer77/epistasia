@@ -1,4 +1,4 @@
-import json
+import yaml
 import re
 from dataclasses import dataclass
 from enum import Enum
@@ -181,9 +181,9 @@ class SourceConfig:
 
 class Conf:
     """
-    Configuration class that reads and validates sources from a JSON file.
+    Configuration class that reads and validates sources from a YAML file.
 
-    This class loads source configurations from a JSON file, validates them,
+    This class loads source configurations from a YAML file, validates them,
     and provides methods to access individual sources or all sources.
     It ensures there are no duplicate sources (based on name + year).
     """
@@ -193,11 +193,11 @@ class Conf:
         Initialize the configuration.
 
         Args:
-            sources_path: Path to the sources.json file.
-                         Defaults to ../sources.json relative to this file.
+            sources_path: Path to the sources.yaml file.
+                         Defaults to ../sources.yaml relative to this file.
         """
         if sources_path is None:
-            self.sources_path = Path(__file__).parent.parent / "sources.json"
+            self.sources_path = Path(__file__).parent.parent / "sources.yaml"
         else:
             self.sources_path = Path(sources_path)
 
@@ -206,29 +206,29 @@ class Conf:
 
     def _load_sources(self) -> None:
         """
-        Load sources from the JSON file.
+        Load sources from the YAML file.
 
         Raises:
             FileNotFoundError: If the sources file does not exist.
-            ValueError: If the JSON is invalid or has duplicate sources.
-            KeyError: If required fields are missing from the JSON data.
+            ValueError: If the YAML is invalid or has duplicate sources.
+            KeyError: If required fields are missing from the YAML data.
         """
         try:
             with open(self.sources_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+                data = yaml.safe_load(f)
 
             self.sources = [SourceConfig.from_dict(item) for item in data]
             self._validate_no_duplicates()
         except FileNotFoundError:
             raise FileNotFoundError(
                 f"Sources file not found at {self.sources_path}. "
-                "Please create sources.json with the required source configurations."
+                "Please create sources.yaml with the required source configurations."
             )
-        except json.JSONDecodeError as e:
-            raise ValueError(f"Invalid JSON in sources file: {e}")
+        except yaml.YAMLError as e:
+            raise ValueError(f"Invalid YAML in sources file: {e}")
         except KeyError as e:
             raise ValueError(
-                f"Missing required field in sources.json: {e}. "
+                f"Missing required field in sources.yaml: {e}. "
                 "Each source must have: name, description, category, provider, "
                 "page_url, download_url, format. "
                 "Optional: year, post, refresh_days"

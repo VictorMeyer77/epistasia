@@ -31,6 +31,7 @@ class TestHistoryCsvColumns:
             "category",
             "provider",
             "year",
+            "incremental",
             "page_url",
             "download_url",
             "format",
@@ -42,7 +43,7 @@ class TestHistoryCsvColumns:
 
     def test_columns_count(self):
         """Test the number of columns."""
-        assert len(HISTORY_CSV_COLUMNS) == 10
+        assert len(HISTORY_CSV_COLUMNS) == 11
 
 
 class TestDownloadRecord:
@@ -56,6 +57,7 @@ class TestDownloadRecord:
             category="test_category",
             provider="test_provider",
             year="2024",
+            incremental=False,
             page_url="https://example.com/page",
             download_url="https://example.com/download",
             format="csv",
@@ -68,6 +70,7 @@ class TestDownloadRecord:
         assert record.category == "test_category"
         assert record.provider == "test_provider"
         assert record.year == "2024"
+        assert record.incremental is False
         assert record.page_url == "https://example.com/page"
         assert record.download_url == "https://example.com/download"
         assert record.format == "csv"
@@ -82,6 +85,7 @@ class TestDownloadRecord:
             "category": "test_category",
             "provider": "test_provider",
             "year": "2024",
+            "incremental": False,
             "page_url": "https://example.com/page",
             "download_url": "https://example.com/download",
             "format": "csv",
@@ -92,8 +96,28 @@ class TestDownloadRecord:
         record = DownloadRecord.from_dict(data)
 
         assert record.name == "test_source"
+        assert record.incremental is False
         assert record.download_duration == 120.5
         assert isinstance(record.download_duration, float)
+
+    def test_from_dict_incremental_true(self):
+        """Test creating DownloadRecord with incremental=True."""
+        data = {
+            "name": "test_source",
+            "description": "Test description",
+            "category": "test_category",
+            "provider": "test_provider",
+            "year": "2024",
+            "incremental": True,
+            "page_url": "https://example.com/page",
+            "download_url": "https://example.com/download",
+            "format": "csv",
+            "download_timestamp": "2024-01-01T12:00:00",
+            "download_duration": "120.5",
+        }
+
+        record = DownloadRecord.from_dict(data)
+        assert record.incremental is True
 
     def test_from_dict_with_integer_duration(self):
         """Test creating DownloadRecord with integer duration (should convert to float)."""
@@ -103,6 +127,7 @@ class TestDownloadRecord:
             "category": "test",
             "provider": "test",
             "year": "2024",
+            "incremental": False,
             "page_url": "https://example.com",
             "download_url": "https://example.com",
             "format": "csv",
@@ -122,11 +147,31 @@ class TestDownloadRecord:
             "category": "test",
             "provider": "test",
             "year": "2024",
+            "incremental": False,
             "page_url": "https://example.com",
             "download_url": "https://example.com",
             "format": "csv",
             "download_timestamp": "2024-01-01T12:00:00",
             # missing download_duration
+        }
+
+        with pytest.raises(KeyError):
+            DownloadRecord.from_dict(data)
+
+    def test_from_dict_missing_incremental_field(self):
+        """Test that from_dict raises KeyError for missing incremental field."""
+        data = {
+            "name": "test",
+            "description": "test",
+            "category": "test",
+            "provider": "test",
+            "year": "2024",
+            "page_url": "https://example.com",
+            "download_url": "https://example.com",
+            "format": "csv",
+            "download_timestamp": "2024-01-01T12:00:00",
+            "download_duration": "120.5",
+            # missing incremental
         }
 
         with pytest.raises(KeyError):
@@ -140,6 +185,7 @@ class TestDownloadRecord:
             category="test_category",
             provider="test_provider",
             year="2024",
+            incremental=False,
             page_url="https://example.com/page",
             download_url="https://example.com/download",
             format="csv",
@@ -154,6 +200,7 @@ class TestDownloadRecord:
         assert data["category"] == "test_category"
         assert data["provider"] == "test_provider"
         assert data["year"] == "2024"
+        assert data["incremental"] is False
         assert data["page_url"] == "https://example.com/page"
         assert data["download_url"] == "https://example.com/download"
         assert data["format"] == "csv"
@@ -168,6 +215,7 @@ class TestDownloadRecord:
             category="test",
             provider="test",
             year="2024",
+            incremental=False,
             page_url="https://example.com",
             download_url="https://example.com",
             format="csv",
@@ -226,6 +274,7 @@ class TestHistoryClass:
                 category="test_category",
                 provider="test_provider",
                 year="2024",
+                incremental=False,
                 page_url="https://example.com/page",
                 download_url="https://example.com/download",
                 format="csv",
@@ -254,6 +303,7 @@ class TestHistoryClass:
                     category="category",
                     provider="provider",
                     year="2024",
+                    incremental=False,
                     page_url="https://example.com",
                     download_url="https://example.com",
                     format="csv",
@@ -280,6 +330,7 @@ class TestHistoryClass:
                 category="test",
                 provider="test",
                 year="2024",
+                incremental=False,
                 page_url="https://example.com",
                 download_url="https://example.com",
                 format="csv",
@@ -311,6 +362,7 @@ class TestHistoryClass:
                 category="test",
                 provider="existing_provider",
                 year="2024",
+                incremental=False,
                 page_url="https://example.com",
                 download_url="https://example.com",
                 format="csv",
@@ -342,6 +394,7 @@ class TestHistoryClass:
                 category="test",
                 provider="provider1",
                 year="2024",
+                incremental=False,
                 page_url="https://example.com",
                 download_url="https://example.com",
                 format="csv",
@@ -364,6 +417,7 @@ class TestHistoryClass:
                 category="test",
                 provider="provider",
                 year="2024",
+                incremental=False,
                 page_url="https://example.com",
                 download_url="https://example.com",
                 format="csv",
@@ -376,6 +430,7 @@ class TestHistoryClass:
                 category="test",
                 provider="provider",
                 year="2025",
+                incremental=False,
                 page_url="https://example.com",
                 download_url="https://example.com",
                 format="csv",
@@ -388,6 +443,7 @@ class TestHistoryClass:
                 category="test",
                 provider="provider",
                 year="2024",
+                incremental=False,
                 page_url="https://example.com",
                 download_url="https://example.com",
                 format="csv",
@@ -437,6 +493,7 @@ class TestHistoryClass:
                 category="test",
                 provider="test",
                 year="2024",
+                incremental=False,
                 page_url="https://example.com",
                 download_url="https://example.com",
                 format="csv",
@@ -459,6 +516,7 @@ class TestHistoryClass:
                 category="test",
                 provider="test",
                 year="2024",
+                incremental=False,
                 page_url="https://example.com",
                 download_url="https://example.com",
                 format="csv",
@@ -530,6 +588,7 @@ class TestHistoryClass:
                         "category": "test",
                         "provider": "test",
                         "year": "2024",
+                        "incremental": False,
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "csv",
@@ -556,6 +615,7 @@ class TestHistoryClass:
                 "category": "test",
                 "provider": "test",
                 "year": "2024",
+                "incremental": False,
                 "page_url": "https://example.com",
                 "download_url": "https://example.com",
                 "format": "csv",
@@ -584,6 +644,7 @@ class TestHistoryClass:
                     category="category",
                     provider="provider",
                     year="2024",
+                    incremental=False,
                     page_url="https://example.com",
                     download_url="https://example.com",
                     format="csv",
@@ -614,6 +675,7 @@ class TestHistoryClass:
                 category="new",
                 provider="new",
                 year="2025",
+                incremental=False,
                 page_url="https://new.com",
                 download_url="https://new.com",
                 format="json",
