@@ -1,7 +1,7 @@
 {{
     config(
         materialized="external",
-        location="../datalake/silver/sirene/etablissement.parquet",
+        location="../datalake/silver/legal/etablissement.parquet",
         format="parquet"
     )
 }}

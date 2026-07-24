@@ -10,8 +10,10 @@ sources:
           identifiers, buyer information, procedure details, execution
           location, pricing, awardees, social and environmental considerations,
           and publication metadata.
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/commande-publique-marche_*.parquet"
+          external_location: "../datalake/raw//commande-publique-france/commande-publique-marche_*.parquet"
         columns:
           - name: id
             description: Unique identifier of the public procurement contract notice.
@@ -78,8 +80,10 @@ sources:
           identifiers, nature, object, procedure details, execution dates, financial
           values, concessionaires, social and environmental considerations, and
           publication metadata.
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/commande-publique-concession_*.parquet"
+          external_location: "../datalake/raw/commande-publique-france/commande-publique-concession_*.parquet"
         columns:
           - name: id
             description: Unique identifier of the public procurement concession notice.
@@ -130,8 +134,10 @@ sources:
           one row per legal unit identified by a SIREN, with identity,
           administrative status, activity, legal category, workforce, and head
           office establishment fields.
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/sirene-unite-legal_*.parquet"
+          external_location: "../datalake/raw/sirene-unite-legal/*.parquet"
         columns:
           - name: siren
             description: >
@@ -224,8 +230,10 @@ sources:
           one row per establishment identified by a SIRET, with address,
           administrative status, activity, workforce, head-office flag, and
           employer fields.
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/sirene-etablissement_*.parquet"
+          external_location: "../datalake/raw/sirene-etablissement/*.parquet"
         columns:
           - name: siren
             description: >
@@ -356,8 +364,10 @@ sources:
           Raw INSEE COG communes file. Contains communes, municipal
           arrondissements, delegated communes, and associated communes, with
           higher-level geographic codes such as canton, department, and region.
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/communes-france_*.csv"
+          external_location: "../datalake/raw/communes-france/*.csv"
         columns:
           - name: TYPECOM
             description: Type of commune or commune-like administrative entity.
@@ -389,8 +399,10 @@ sources:
               or delegated communes.
       - name: france_departements
         description: Raw INSEE COG departments file.
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/departements-france_*.csv"
+          external_location: "../datalake/raw/departements-france/*.csv"
         columns:
           - name: DEP
             description: Department code.
@@ -408,8 +420,10 @@ sources:
             description: Name in clear text with rich typography and article.
       - name: france_regions
         description: Raw INSEE COG regions file.
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/regions-france_*.csv"
+          external_location: "../datalake/raw/regions-france/*.csv"
         columns:
           - name: REG
             description: Region code.
@@ -428,8 +442,10 @@ sources:
           Essential data on subsidy conventions from the French Ministry of Culture. Contains all ministerial program data including
           year, credit origin, beneficiary information, geographic details, financial data, and administrative classifications.
           (https://www.data.gouv.fr/datasets/donnees-essentielles-des-conventions-de-subvention-5)
+        config:
+          tags: "raw"
         meta:
-          external_location: "read_csv('../datalake/raw/culture-convention-subvention_*.csv', delim=';', encoding='latin-1', all_varchar=true, header=true)"
+          external_location: "read_csv('../datalake/raw/culture-convention-subvention/*.csv', delim=';', encoding='latin-1', all_varchar=true, header=true)"
         columns:
           - name: Année
             description: Year of the subsidy convention.
@@ -506,8 +522,10 @@ sources:
           convention dates, financial amounts, payment conditions, and administrative
           metadata for grants subject to the French open data transparency requirements.
           (https://www.data.gouv.fr/datasets/subventions-de-plus-de-23-000-euros-attribuees-par-le-ministere-de-lagriculture)
+        config:
+          tags: "raw"
         meta:
-          external_location: "read_csv('../datalake/raw/agriculture-subvention_*.csv', delim=';', encoding='cp1252', header=true, skip=2)"
+          external_location: "read_csv('../datalake/raw/agriculture-subvention/*.csv', delim=';', encoding='cp1252', header=true, skip=2)"
         columns:
           - name: Nom attributaire*
             description: Name of the authority awarding the subsidy.
@@ -544,8 +562,10 @@ sources:
           departmental directorate, beneficiary identification, grant purpose, financial amounts,
           payment conditions, and European state aid notification status.
           (https://www.data.gouv.fr/datasets/subventions-politique-de-la-ville)
+        config:
+          tags: "raw"
         meta:
-          external_location: "read_csv('../datalake/raw/anct-subvention-ville-*.csv', delim=';', encoding='cp1252', header=true, all_varchar=true, union_by_name=true)"
+          external_location: "read_csv('../datalake/raw/anct-subvention-ville/*.csv', delim=';', encoding='cp1252', header=true, all_varchar=true, union_by_name=true)"
         columns:
           - name: Nom de l'attribuant
             description: Name of the authority awarding the grant.
@@ -584,8 +604,10 @@ sources:
           aid schemes, financial amounts, payment conditions, payment periods, and European state aid
           notification status.
           (https://www.data.gouv.fr/datasets/les-aides-financieres-de-lademe-1)
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/ademe-aide-financiere_*.csv"
+          external_location: "../datalake/raw/ademe-aide-financiere/*.csv"
         columns:
           - name: Nom de l attribuant
             description: Name of the authority awarding the financial aid.
@@ -622,8 +644,10 @@ sources:
           beneficiary identification, project descriptions, investment costs, subsidy amounts,
           and funding rates.
           (https://www.data.gouv.fr/datasets/projets-finances-par-les-dotations-de-soutien-a-linvestissement-des-collectivites-territoriales)
+        config:
+          tags: "raw"
         meta:
-          external_location: "read_csv('../datalake/raw/dotation-soutien-territoire-*.csv', delim=';', header=true, all_varchar=true, union_by_name=true)"
+          external_location: "read_csv('../datalake/raw/dotation-soutien-territoire/*.csv', delim=';', header=true, all_varchar=true, union_by_name=true)"
         columns:
           - name: exercice
             description: Fiscal year of the awarded subsidy.
@@ -656,8 +680,10 @@ sources:
           identification, subsidy purpose, financial amounts, payment conditions, payment periods,
           and European state aid notification status.
           (https://www.data.gouv.fr/datasets/subventions-attribuees-par-la-caisse-des-depots-depuis-01-01-2018-1)
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/subvention-caisse-depots_*.csv"
+          external_location: "../datalake/raw/subvention-caisse-depots/*.csv"
         columns:
           - name: nomAttribuant
             description: Name of the authority awarding the subsidy.
@@ -696,8 +722,10 @@ sources:
           funding amounts, payment periods, delegation status, European fund management status,
           subsidy rates, and aid schemes.
           (https://www.data.gouv.fr/datasets/subventions-versees-par-la-region-ile-de-france-aux-associations)
+        config:
+          tags: "raw"
         meta:
-          external_location: "../datalake/raw/idf-subvention-association_*.csv"
+          external_location: "../datalake/raw/idf-subvention-association/*.csv"
         columns:
           - name: idAttribuant
             description: SIRET identifier of the authority awarding the subsidy.
@@ -737,8 +765,10 @@ sources:
           description, committed amounts, and administrative references.
           The dataset schema may vary between yearly releases.
           (https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes)
+        config:
+          tags: "raw"
         meta:
-          external_location: "read_csv('../datalake/raw/fonds-vert-subvention-*.csv', header=true, union_by_name=true)"
+          external_location: "read_csv('../datalake/raw/fonds-vert-subvention/*.csv', header=true, union_by_name=true)"
         columns:
           - name: nom_region
             description: Name of the French region where the project is located.
@@ -786,3 +816,82 @@ sources:
             description: Operator responsible for managing the project funding.
           - name: forme_juridique_beneficiaire
             description: Legal form of the beneficiary.
+      - name: bodacc
+        description: >
+          Official data on French legal notices published in BODACC (Bulletin Officiel des
+          Annonces Civiles et Commerciales), the government gazette for mandatory commercial
+          announcements. Covers company creations, modifications, annual account filings,
+          collective proceedings, and deregistrations recorded with French commercial courts
+          (greffes des tribunaux de commerce). Contains publication metadata, geographic
+          location, company/individual identity, registry numbers, and structured details of
+          the underlying legal act or judgment.
+          (https://www.data.gouv.fr/datasets/bodacc)
+        config:
+          tags: "raw"
+        meta:
+          external_location: "read_csv('../datalake/raw/bodacc/*.csv', header=true, union_by_name=true)"
+        columns:
+          - name: id
+            description: Unique identifier of the notice, combining the publication type letter, issue number, and announcement number.
+          - name: publicationavis
+            description: Publication type letter of the BODACC bulletin (e.g. A, B, C) indicating the notice category.
+          - name: parution
+            description: Issue (bulletin) number in which the notice was published.
+          - name: dateparution
+            description: Publication date of the notice.
+          - name: numeroannonce
+            description: Announcement number within the publication issue.
+          - name: typeavis
+            description: Type of notice (e.g. announcement).
+          - name: typeavis_lib
+            description: Label describing the notice type (e.g. initial notice, rectification, correction).
+          - name: familleavis
+            description: Category code of the notice (e.g. creation, modification, dpc, collective proceedings, deregistration).
+          - name: familleavis_lib
+            description: Label describing the notice category.
+          - name: numerodepartement
+            description: Department code where the commercial court or company is located.
+          - name: departement_nom_officiel
+            description: Official name of the department.
+          - name: region_code
+            description: Region code where the commercial court or company is located.
+          - name: region_nom_officiel
+            description: Official name of the region.
+          - name: tribunal
+            description: Name of the commercial court (greffe du tribunal de commerce) that registered the filing.
+          - name: commercant
+            description: Name of the merchant, company, or individual concerned by the notice.
+          - name: ville
+            description: City associated with the notice or establishment.
+          - name: registre
+            description: RCS (Registre du Commerce et des Sociétés) identification number(s) of the company, in raw and formatted form.
+          - name: cp
+            description: Postal code of the company or establishment.
+          - name: pdf_parution_subfolder
+            description: Subfolder reference used to locate the scanned PDF publication.
+          - name: ispdf_unitaire
+            description: Indicates whether an individual PDF file exists for this specific notice.
+          - name: listepersonnes
+            description: Structured (JSON) data describing the individual(s) or legal entity/entities concerned by the notice, including identification, name, legal form, and registered address.
+          - name: listeetablissements
+            description: Structured (JSON) data describing the establishment(s) concerned by the notice, including activity, address, and origin of the business.
+          - name: jugement
+            description: Details of the court judgment associated with the notice, when applicable (e.g. collective proceedings).
+          - name: acte
+            description: Structured details of the legal act underlying the notice, such as registration date, activity start date, and creation category.
+          - name: modificationsgenerales
+            description: Description of general modifications made to the company or its registration.
+          - name: radiationaurcs
+            description: Details of deregistration from the RCS, when applicable.
+          - name: depot
+            description: Details of a filing deposit, such as annual accounts, including closing date, deposit type, and description.
+          - name: listeprecedentexploitant
+            description: Information on the previous operator of the business, when applicable.
+          - name: listeprecedentproprietaire
+            description: Information on the previous owner of the business, when applicable.
+          - name: divers
+            description: Miscellaneous additional information related to the notice.
+          - name: parutionavisprecedent
+            description: Reference to a previous related publication or notice, when applicable.
+          - name: url_complete
+            description: Full URL to the notice's detail page on bodacc.fr.

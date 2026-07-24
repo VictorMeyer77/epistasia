@@ -897,3 +897,88 @@ models:
         description: Funding year.
       - name: release_year
         description: Release year extracted from the raw source file name.
+  - name: brz_bodacc
+    description: >
+      Official data on French legal notices published in BODACC (Bulletin Officiel des
+      Annonces Civiles et Commerciales), the government gazette for mandatory commercial
+      announcements. Covers company creations, modifications, annual account filings,
+      collective proceedings, and deregistrations recorded with French commercial courts
+      (greffes des tribunaux de commerce). Contains publication metadata, geographic
+      location, company/individual identity, registry numbers, and structured details of
+      the underlying legal act or judgment.
+      (https://www.data.gouv.fr/datasets/bodacc)
+    config:
+      tags: bronze
+    docs:
+      node_color: "#CD7F32"
+    columns:
+      - name: id
+        description: Unique identifier of the notice, combining the publication type letter, issue number, and announcement number.
+      - name: publicationavis
+        description: Publication type letter of the BODACC bulletin (e.g. A, B, C) indicating the notice category.
+      - name: parution
+        description: Issue (bulletin) number in which the notice was published.
+      - name: dateparution
+        description: Publication date of the notice.
+      - name: numeroannonce
+        description: Announcement number within the publication issue.
+      - name: typeavis
+        description: Type of notice (e.g. announcement).
+      - name: typeavis_lib
+        description: Label describing the notice type (e.g. initial notice, rectification, correction).
+      - name: familleavis
+        description: Category code of the notice (e.g. creation, modification, dpc, collective proceedings, deregistration).
+      - name: familleavis_lib
+        description: Label describing the notice category.
+      - name: numerodepartement
+        description: Department code where the commercial court or company is located.
+      - name: departement_nom_officiel
+        description: Official name of the department.
+      - name: region_code
+        description: Region code where the commercial court or company is located.
+      - name: region_nom_officiel
+        description: Official name of the region.
+      - name: tribunal
+        description: Name of the commercial court (greffe du tribunal de commerce) that registered the filing.
+      - name: commercant
+        description: Name of the merchant, company, or individual concerned by the notice.
+      - name: ville
+        description: City associated with the notice or establishment.
+      - name: registre
+        description: RCS (Registre du Commerce et des Sociétés) identification number(s) of the company, in raw and formatted form.
+      - name: cp
+        description: Postal code of the company or establishment.
+      - name: pdf_parution_subfolder
+        description: Subfolder reference used to locate the scanned PDF publication.
+      - name: ispdf_unitaire
+        description: Indicates whether an individual PDF file exists for this specific notice.
+      - name: listepersonnes
+        description: Structured (JSON) data describing the individual(s) or legal entity/entities concerned by the notice, including identification, name, legal form, and registered address.
+      - name: listeetablissements
+        description: Structured (JSON) data describing the establishment(s) concerned by the notice, including activity, address, and origin of the business.
+      - name: jugement
+        description: Details of the court judgment associated with the notice, when applicable (e.g. collective proceedings).
+      - name: acte
+        description: Structured details of the legal act underlying the notice, such as registration date, activity start date, and creation category.
+      - name: modificationsgenerales
+        description: Description of general modifications made to the company or its registration.
+      - name: radiationaurcs
+        description: Details of deregistration from the RCS, when applicable.
+      - name: depot
+        description: Details of a filing deposit, such as annual accounts, including closing date, deposit type, and description.
+      - name: listeprecedentexploitant
+        description: Information on the previous operator of the business, when applicable.
+      - name: listeprecedentproprietaire
+        description: Information on the previous owner of the business, when applicable.
+      - name: divers
+        description: Miscellaneous additional information related to the notice.
+      - name: parutionavisprecedent
+        description: Reference to a previous related publication or notice, when applicable.
+      - name: url_complete
+        description: Full URL to the notice's detail page on bodacc.fr.
+      - name: source_file_path
+        description: Path of the raw file from which the row was ingested.
+      - name: dt_ingested
+        description: Timestamp when the row was loaded into the bronze model.
+      - name: release_year
+        description: Release year extracted from the raw source file path.

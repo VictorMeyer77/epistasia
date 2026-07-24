@@ -221,3 +221,6 @@ __marimo__/
 datalake/**/*.parquet
 datalake/**/*.csv
 datalake/**/*.json
+datalake/**/*.tmp
+
+*.duckdb

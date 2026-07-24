@@ -260,3 +260,83 @@ models:
         description: Level I legal category code, parent of level II.
       - name: libelle_i
         description: Level I legal category label.
+
+  - name: svr_bodacc
+    description: >
+      Silver BODACC (Bulletin Officiel des Annonces Civiles et Commerciales) dataset.
+      Standardizes raw BODACC columns into lower snake_case names for consistency.
+    config:
+      tags: "silver"
+    docs:
+      node_color: "#C0C0C0"
+    columns:
+      - name: id
+        description: Unique identifier for the record.
+        tests:
+          - not_null
+      - name: publication_avis
+        description: Publication notice identifier or reference.
+      - name: parution
+        description: Publication number (BIGINT).
+      - name: date_parution
+        description: Date of publication for the notice.
+        tests:
+          - not_null
+      - name: numero_annonce
+        description: Announcement number (BIGINT).
+        tests:
+          - not_null
+      - name: type_avis
+        description: Type of notice (e.g., legal, administrative).
+      - name: type_avis_lib
+        description: Human-readable label for the notice type.
+      - name: famille_avis
+        description: Category or family of the notice.
+      - name: famille_avis_lib
+        description: Human-readable label for the notice family.
+      - name: numero_departement
+        description: Department number (e.g., "75" for Paris).
+      - name: departement_nom_officiel
+        description: Official name of the department.
+      - name: region_code
+        description: Code for the region (BIGINT).
+      - name: region_nom_officiel
+        description: Official name of the region.
+      - name: tribunal
+        description: Tribunal associated with the notice.
+      - name: commercant
+        description: Merchant or entity name mentioned in the notice.
+      - name: ville
+        description: City associated with the notice.
+      - name: registre
+        description: Registry reference (e.g., trade registry).
+      - name: cp
+        description: Postal code (VARCHAR).
+      - name: pdf_parution_subfolder
+        description: Subfolder reference for PDF publication (BIGINT).
+      - name: ispdf_unitaire
+        description: Flag indicating if the PDF is unitary (e.g., "Y" or "N").
+      - name: liste_personnes
+        description: List of persons involved (e.g., JSON or comma-separated).
+      - name: liste_etablissements
+        description: List of establishments involved.
+      - name: jugement
+        description: Judgment details or reference.
+      - name: acte
+        description: Act or legal document reference.
+      - name: modifications_generales
+        description: General modifications mentioned in the notice.
+      - name: radiation_au_rcs
+        description: Radiation status from the RCS (Registre du Commerce et des Sociétés).
+      - name: depot
+        description: Deposit or filing details.
+      - name: liste_precedent_exploitant
+        description: List of previous operators/exploiters.
+      - name: liste_precedent_proprietaire
+        description: List of previous owners.
+      - name: divers
+        description: Miscellaneous information.
+      - name: parution_avis_precedent
+        description: Reference to the previous publication notice.
+      - name: url_complete
+        description: Full URL to the source or document.
