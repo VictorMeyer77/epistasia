@@ -7,6 +7,7 @@ import tempfile
 from pathlib import Path
 
 import pytest
+import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from downloader.conf import Conf, FileFormat, SourceConfig
@@ -124,6 +125,7 @@ class TestSourceConfigFromDict:
             "page_url": "https://example.com/page",
             "download_url": "https://example.com/download",
             "format": "csv",
+            "folder": "test_folder",
         }
 
         config = SourceConfig.from_dict(data)
@@ -136,6 +138,7 @@ class TestSourceConfigFromDict:
         assert config.page_url == "https://example.com/page"
         assert config.download_url == "https://example.com/download"
         assert config.format == "csv"
+        assert config.folder == "test_folder"
         assert config.post is None
 
     def test_from_dict_with_post_field(self):
@@ -149,6 +152,7 @@ class TestSourceConfigFromDict:
             "page_url": "https://example.com/page",
             "download_url": "https://example.com/download",
             "format": "json",
+            "folder": "test_folder",
             "post": "json_to_parquet",
         }
 
@@ -168,6 +172,7 @@ class TestSourceConfigFromDict:
             "page_url": "https://example.com",
             "download_url": "https://example.com/download",
             "format": "json",
+            "folder": "test_folder",
         }
 
         config = SourceConfig.from_dict(data)
@@ -184,6 +189,7 @@ class TestSourceConfigFromDict:
             "page_url": "https://example.com",
             "download_url": "https://example.com",
             "format": "csv",
+            "folder": "test_folder",
         }
 
         with pytest.raises(ValueError, match="Invalid year format"):
@@ -200,6 +206,7 @@ class TestSourceConfigFromDict:
             "page_url": "https://example.com",
             "download_url": "https://example.com",
             "format": "invalid",
+            "folder": "test_folder",
         }
 
         with pytest.raises(ValueError, match="Invalid format"):
@@ -215,7 +222,7 @@ class TestSourceConfigFromDict:
             "year": "2024",
             "page_url": "https://example.com",
             "download_url": "https://example.com",
-            # missing format
+            # missing format and folder
         }
 
         with pytest.raises(KeyError):
@@ -236,6 +243,7 @@ class TestSourceConfigDataclass:
             page_url="https://example.com/page",
             download_url="https://example.com/download",
             format="csv",
+            folder="test_folder",
             post=None,
             refresh_days=None,
             incremental=None,
@@ -249,6 +257,7 @@ class TestSourceConfigDataclass:
         assert config.page_url == "https://example.com/page"
         assert config.download_url == "https://example.com/download"
         assert config.format == "csv"
+        assert config.folder == "test_folder"
         assert config.post is None
         assert config.refresh_days is None
         assert config.incremental is None
@@ -264,6 +273,7 @@ class TestSourceConfigDataclass:
             page_url="https://example.com/page",
             download_url="https://example.com/download",
             format="csv",
+            folder="test_folder",
             post=None,
             refresh_days=None,
             incremental=None,
@@ -281,6 +291,7 @@ class TestSourceConfigDataclass:
             page_url="https://example.com/page",
             download_url="https://example.com/download",
             format="csv",
+            folder="test_folder",
             post="convert_to_parquet",
             refresh_days=None,
             incremental=None,
@@ -298,6 +309,7 @@ class TestSourceConfigDataclass:
             page_url="https://example.com/page",
             download_url="https://example.com/download",
             format="csv",
+            folder="test_folder",
             post=None,
             refresh_days=30,
             incremental=None,
@@ -317,8 +329,8 @@ class TestConfClass:
     def test_init_with_custom_path(self):
         """Test Conf initialization with custom path."""
         # Create a temporary sources file
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-            json.dump(
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            yaml.dump(
                 [
                     {
                         "name": "custom_source",
@@ -329,6 +341,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com/download",
                         "format": "json",
+                        "folder": "custom_folder",
                     }
                 ],
                 f,
@@ -345,17 +358,10 @@ class TestConfClass:
     def test_load_sources_file_not_found(self):
         """Test that loading sources raises FileNotFoundError for missing file."""
         with pytest.raises(FileNotFoundError, match="Sources file not found"):
-            Conf("nonexistent_path.json")
+            Conf("nonexistent_path.yaml")
 
     def test_load_sources_invalid_yaml(self):
-        """Test that loading sources raises ValueError for invalid YAML.
-
-        Note: arbitrary garbage text (e.g. "invalid json") is not a
-        reliable way to trigger a YAML parse error, since plain,
-        unquoted text is itself valid YAML (it parses as a string
-        scalar). Tab characters, however, are invalid for indentation
-        in YAML and reliably raise yaml.YAMLError.
-        """
+        """Test that loading sources raises ValueError for invalid YAML."""
         with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
             f.write("key:\n\tvalue: bad")
             temp_path = f.name
@@ -368,8 +374,8 @@ class TestConfClass:
 
     def test_load_sources_missing_required_field(self):
         """Test that loading sources raises ValueError for missing required field."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-            json.dump(
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            yaml.dump(
                 [
                     {
                         "name": "test",
@@ -380,6 +386,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "csv",
+                        "folder": "test_folder",
                     }
                 ],
                 f,
@@ -394,8 +401,8 @@ class TestConfClass:
 
     def test_validate_no_duplicates_valid(self):
         """Test that duplicate validation passes for unique sources."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-            json.dump(
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            yaml.dump(
                 [
                     {
                         "name": "source1",
@@ -406,6 +413,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "csv",
+                        "folder": "folder1",
                     },
                     {
                         "name": "source2",
@@ -416,6 +424,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "json",
+                        "folder": "folder2",
                     },
                 ],
                 f,
@@ -430,8 +439,8 @@ class TestConfClass:
 
     def test_validate_no_duplicates_same_name_different_year(self):
         """Test that sources with same name but different years are allowed."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-            json.dump(
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            yaml.dump(
                 [
                     {
                         "name": "source",
@@ -442,6 +451,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "csv",
+                        "folder": "folder1",
                     },
                     {
                         "name": "source",
@@ -452,6 +462,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "json",
+                        "folder": "folder2",
                     },
                 ],
                 f,
@@ -466,8 +477,8 @@ class TestConfClass:
 
     def test_validate_no_duplicates_fails(self):
         """Test that duplicate validation fails for same name and year."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-            json.dump(
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            yaml.dump(
                 [
                     {
                         "name": "source",
@@ -478,6 +489,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "csv",
+                        "folder": "folder1",
                     },
                     {
                         "name": "source",
@@ -488,6 +500,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "json",
+                        "folder": "folder2",
                     },
                 ],
                 f,
@@ -502,8 +515,8 @@ class TestConfClass:
 
     def test_get_source_found(self):
         """Test getting a source by name and year."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-            json.dump(
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            yaml.dump(
                 [
                     {
                         "name": "find_me",
@@ -514,6 +527,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "csv",
+                        "folder": "find_me_folder",
                     }
                 ],
                 f,
@@ -530,8 +544,8 @@ class TestConfClass:
 
     def test_get_source_not_found(self):
         """Test getting a non-existent source returns None."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-            json.dump(
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            yaml.dump(
                 [
                     {
                         "name": "existing",
@@ -542,6 +556,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "csv",
+                        "folder": "existing_folder",
                     }
                 ],
                 f,
@@ -557,7 +572,7 @@ class TestConfClass:
 
     def test_get_all_sources(self):
         """Test getting all sources."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
             sources_data = [
                 {
                     "name": f"source{i}",
@@ -568,10 +583,11 @@ class TestConfClass:
                     "page_url": "https://example.com",
                     "download_url": "https://example.com",
                     "format": "csv",
+                    "folder": f"folder{i}",
                 }
                 for i in range(3)
             ]
-            json.dump(sources_data, f)
+            yaml.dump(sources_data, f)
             temp_path = f.name
 
         try:
@@ -586,8 +602,8 @@ class TestConfClass:
 
     def test_reload(self):
         """Test reloading sources from file."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
-            json.dump(
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            yaml.dump(
                 [
                     {
                         "name": "original",
@@ -598,6 +614,7 @@ class TestConfClass:
                         "page_url": "https://example.com",
                         "download_url": "https://example.com",
                         "format": "csv",
+                        "folder": "original_folder",
                     }
                 ],
                 f,
@@ -611,7 +628,7 @@ class TestConfClass:
 
             # Modify the file
             with open(temp_path, "w") as f:
-                json.dump(
+                yaml.dump(
                     [
                         {
                             "name": "updated",
@@ -622,6 +639,7 @@ class TestConfClass:
                             "page_url": "https://example.com",
                             "download_url": "https://example.com",
                             "format": "json",
+                            "folder": "updated_folder",
                         }
                     ],
                     f,
@@ -637,7 +655,7 @@ class TestConfClass:
 
     def test_sources_path_attribute(self):
         """Test that sources_path is set correctly."""
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
             f.write("[]")
             temp_path = f.name
 

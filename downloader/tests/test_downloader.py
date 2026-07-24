@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import requests
+import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from downloader.conf import SourceConfig
@@ -33,6 +34,7 @@ class TestGenerateFilename:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            folder="test_folder",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,
@@ -51,6 +53,7 @@ class TestGenerateFilename:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            folder="test_folder",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,
@@ -69,6 +72,7 @@ class TestGenerateFilename:
             page_url="https://example.com",
             download_url="https://example.com/data.parquet",
             format="parquet",
+            folder="test_folder",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,
@@ -172,6 +176,7 @@ class TestDownloadSource:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            folder="test_folder",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,
@@ -201,6 +206,7 @@ class TestDownloadSource:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            folder="test_folder",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,
@@ -233,6 +239,7 @@ class TestDownloadSource:
             page_url="https://example.com/page",
             download_url="https://example.com/file.csv",
             format="csv",
+            folder="test_folder",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,
@@ -274,6 +281,7 @@ class TestDownloadAll:
             page_url="https://example.com/page1",
             download_url="https://example.com/file1.csv",
             format="csv",
+            folder="folder1",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,
@@ -287,6 +295,7 @@ class TestDownloadAll:
             page_url="https://example.com/page2",
             download_url="https://example.com/file2.json",
             format="json",
+            folder="folder2",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,
@@ -350,6 +359,7 @@ class TestDownloadAll:
             page_url="https://example.com/page1",
             download_url="https://example.com/file1.csv",
             format="csv",
+            folder="folder1",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,
@@ -363,6 +373,7 @@ class TestDownloadAll:
             page_url="https://example.com/page2",
             download_url="https://example.com/file2.json",
             format="json",
+            folder="folder2",  # Added folder field
             post=None,
             refresh_days=None,
             incremental=None,

@@ -3,6 +3,8 @@ import logging
 import sys
 from datetime import datetime
 
+from dotenv import load_dotenv
+
 from downloader.conf import Conf
 from downloader.downloader import Downloader
 from downloader.history import History
@@ -224,6 +226,7 @@ def main():
     )
 
     args = parser.parse_args()
+    load_dotenv()
 
     if args.command == "validate":
         sys.exit(validate())

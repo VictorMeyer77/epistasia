@@ -64,6 +64,7 @@
   format: csv
   refresh_days: 15
 - name: anct-subvention-ville-2025
+  folder: anct-subvention-ville
   description: Données essentielles des subventions politique de la ville en 2025.
   category: economic
   provider: Agence nationale de la cohésion des territoires
@@ -72,6 +73,7 @@
   format: csv
   refresh_days: 15
 - name: anct-subvention-ville-2024
+  folder: anct-subvention-ville
   description: Données essentielles des subventions politique de la ville en 2024.
   category: economic
   provider: Agence nationale de la cohésion des territoires
@@ -80,6 +82,7 @@
   format: csv
   refresh_days: 15
 - name: anct-subvention-ville-2023
+  folder: anct-subvention-ville
   description: Données essentielles des subventions politique de la ville en 2023.
   category: economic
   provider: Agence nationale de la cohésion des territoires
@@ -88,6 +91,7 @@
   format: csv
   refresh_days: 15
 - name: anct-subvention-ville-2022
+  folder: anct-subvention-ville
   description: Données essentielles des subventions politique de la ville en 2022.
   category: economic
   provider: Agence nationale de la cohésion des territoires
@@ -96,6 +100,7 @@
   format: csv
   refresh_days: 15
 - name: anct-subvention-ville-2021
+  folder: anct-subvention-ville
   description: Données essentielles des subventions politique de la ville en 2021.
   category: economic
   provider: Agence nationale de la cohésion des territoires
@@ -104,6 +109,7 @@
   format: csv
   refresh_days: 15
 - name: anct-subvention-ville-2020
+  folder: anct-subvention-ville
   description: Données essentielles des subventions politique de la ville en 2020.
   category: economic
   provider: Agence nationale de la cohésion des territoires
@@ -112,6 +118,7 @@
   format: csv
   refresh_days: 15
 - name: anct-subvention-ville-2019
+  folder: anct-subvention-ville
   description: Données essentielles des subventions politique de la ville en 2019.
   category: economic
   provider: Agence nationale de la cohésion des territoires
@@ -121,6 +128,7 @@
   refresh_days: 15
   post: anct_subvention_ville_2019
 - name: anct-subvention-ville-2018
+  folder: anct-subvention-ville
   description: Données essentielles des subventions politique de la ville en 2018.
   category: economic
   provider: Agence nationale de la cohésion des territoires
@@ -137,6 +145,7 @@
   format: csv
   refresh_days: 15
 - name: dotation-soutien-territoire-2024
+  folder: dotation-soutien-territoire
   description: Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2024
   category: economic
   provider: Direction générale des collectivités locales
@@ -145,6 +154,7 @@
   format: csv
   refresh_days: 15
 - name: dotation-soutien-territoire-2023
+  folder: dotation-soutien-territoire
   description: Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2023
   category: economic
   provider: Direction générale des collectivités locales
@@ -153,6 +163,7 @@
   format: csv
   refresh_days: 15
 - name: dotation-soutien-territoire-2022
+  folder: dotation-soutien-territoire
   description: Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2022
   category: economic
   provider: Direction générale des collectivités locales
@@ -161,6 +172,7 @@
   format: csv
   refresh_days: 15
 - name: dotation-soutien-territoire-2021
+  folder: dotation-soutien-territoire
   description: Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2021
   category: economic
   provider: Direction générale des collectivités locales
@@ -169,6 +181,7 @@
   format: csv
   refresh_days: 15
 - name: dotation-soutien-territoire-2020
+  folder: dotation-soutien-territoire
   description: Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2020
   category: economic
   provider: Direction générale des collectivités locales
@@ -177,6 +190,7 @@
   format: csv
   refresh_days: 15
 - name: dotation-soutien-territoire-2019
+  folder: dotation-soutien-territoire
   description: Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2019
   category: economic
   provider: Direction générale des collectivités locales
@@ -185,6 +199,7 @@
   format: csv
   refresh_days: 15
 - name: dotation-soutien-territoire-2018
+  folder: dotation-soutien-territoire
   description: Projets financés par les dotations de soutien à l'investissement des collectivités territoriales en 2018
   category: economic
   provider: Direction générale des collectivités locales
@@ -209,6 +224,7 @@
   format: csv
   refresh_days: 15
 - name: fonds-vert-subvention-2025
+  folder: fonds-vert-subvention
   description: Les jeux de données présentés centralisent la liste, respectivement, des dossiers financés en 2025 par le Fonds vert.
   category: economic
   provider: Ministère de la Transition écologique
@@ -217,6 +233,7 @@
   format: csv
   refresh_days: 30
 - name: fonds-vert-subvention-2024
+  folder: fonds-vert-subvention
   description: Les jeux de données présentés centralisent la liste, respectivement, des dossiers financés en 2024 par le Fonds vert.
   category: economic
   provider: Ministère de la Transition écologique
@@ -225,6 +242,7 @@
   format: csv
   refresh_days: 30
 - name: fonds-vert-subvention-2023
+  folder: fonds-vert-subvention
   description: Les jeux de données présentés centralisent la liste, respectivement, des dossiers financés en 2023 par le Fonds vert.
   category: economic
   provider: Ministère de la Transition écologique
@@ -239,4 +257,11 @@
   page_url: https://bodacc-datadila.opendatasoft.com/pages/home/
   download_url: https://bodacc-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/annonces-commerciales/exports/csv?lang=fr&timezone=Europe%2FBerlin&use_labels=true&delimiter=%3B
   format: csv
+  incremental: true
+- name: inpi-rne-companies
+  description: L’INPI met à disposition, sur DATA INPI, une base de données contenant l’ensemble des données des entreprises du Registre national des entreprises (RNE), les informations légales ainsi que les actes et comptes annuels non confidentiels.
+  category: legal
+  provider: Institut national de la propriété industrielle
+  page_url: https://data.inpi.fr/
+  format: json
   incremental: true

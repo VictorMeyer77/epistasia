@@ -1,8 +1,9 @@
-import yaml
 import re
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
+
+import yaml
 
 
 class FileFormat(Enum):
@@ -28,6 +29,7 @@ class SourceConfig:
         page_url: URL to the source's information page.
         download_url: URL to download the data file.
         format: File format (one of FileFormat enum values).
+        folder: Folder where the downloaded file will be stored. If None, name will be used.
         year: Year or year range of the data (format: YYYY or YYYY-YYYY).
               If None, the table is considered a full refresh and current year
               will be used for file output name.
@@ -46,18 +48,42 @@ class SourceConfig:
     category: str
     provider: str
     page_url: str
-    download_url: str
+    download_url: str | None
     format: str
+    folder: str | None
     year: str | None
     post: str | None
     refresh_days: int | None
     incremental: bool | None
 
     def __post_init__(self):
-        """Validate the combination of year, refresh_days, and incremental after initialization."""
+        """Validate all constraints after initialization."""
+        self._validate_year(self.year)
+        self._validate_format(self.format)
         self._validate_year_refresh_days_combination(
             self.year, self.refresh_days, self.incremental
         )
+        self._validate_download_url(self.download_url, self.incremental)
+
+    @staticmethod
+    def _validate_download_url(
+        download_url: str | None, incremental: bool | None
+    ) -> None:
+        """
+        Validate that download_url is only None if incremental is True.
+
+        Args:
+            download_url: The download URL to validate.
+            incremental: Whether the source is incremental.
+
+        Raises:
+            ValueError: If download_url is None but incremental is not True.
+        """
+        if download_url is None and incremental is not True:
+            raise ValueError(
+                "download_url can only be None if incremental is True. "
+                "Non-incremental sources must have a download_url."
+            )
 
     @staticmethod
     def _validate_year(year: str | None) -> None:
@@ -148,7 +174,7 @@ class SourceConfig:
         Args:
             data: Dictionary containing source configuration data.
                 Required keys: name, description, category, provider,
-                page_url, download_url, format.
+                page_url, download_url, format, folder.
                 Optional keys: year, post, refresh_days, incremental.
 
         Returns:
@@ -164,6 +190,7 @@ class SourceConfig:
         cls._validate_year_refresh_days_combination(
             data.get("year"), data.get("refresh_days"), data.get("incremental")
         )
+        cls._validate_download_url(data.get("download_url"), data.get("incremental"))
         return cls(
             name=data["name"],
             description=data["description"],
@@ -171,8 +198,9 @@ class SourceConfig:
             provider=data["provider"],
             year=data.get("year"),
             page_url=data["page_url"],
-            download_url=data["download_url"],
+            download_url=data.get("download_url"),
             format=data["format"],
+            folder=data.get("folder"),
             post=data.get("post"),
             refresh_days=data.get("refresh_days"),
             incremental=data.get("incremental"),
@@ -230,8 +258,8 @@ class Conf:
             raise ValueError(
                 f"Missing required field in sources.yaml: {e}. "
                 "Each source must have: name, description, category, provider, "
-                "page_url, download_url, format. "
-                "Optional: year, post, refresh_days"
+                "page_url, download_url, format, folder. "
+                "Optional: year, post, refresh_days, incremental"
             )
 
     def _validate_no_duplicates(self) -> None:
@@ -281,7 +309,7 @@ class Conf:
 
     def reload(self) -> None:
         """
-        Reload sources from the JSON file.
+        Reload sources from the YAML file.
 
         Clears the current sources list and reloads from the sources file.
         This is useful for refreshing the configuration without restarting.

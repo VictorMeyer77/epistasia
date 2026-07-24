@@ -1,11 +1,11 @@
-from datetime import date, datetime
+import json
 import logging
-from pathlib import Path
 import random
 import re
 import tempfile
 import time
-import json
+from datetime import date, datetime
+from pathlib import Path
 
 import duckdb
 import requests
@@ -48,7 +48,10 @@ class BodaccIncremental:
         """
         if raw_dir is None:
             self.raw_dir = (
-                Path(__file__).parent.parent.parent.parent / "datalake" / "raw"
+                Path(__file__).parent.parent.parent.parent
+                / "datalake"
+                / "raw"
+                / "bodacc"
             )
         else:
             self.raw_dir = Path(raw_dir)

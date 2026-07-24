@@ -229,28 +229,40 @@ class Downloader:
         """
         Download a single source and return a DownloadRecord for history.
 
-        Dispatches to the incremental path if source.incremental is True
-        and its init file already exists on disk; otherwise uses the
-        standard HTTP download path (also used for an incremental
-        source's first-ever init fetch).
+        This method downloads the source file to a destination folder.
+        The destination folder is determined by:
+          - `source.folder` if it is provided (mandatory field).
+          - If `source.folder` is not provided (should not happen as it is mandatory),
+            defaults to `source.name`.
+
+        If the source is incremental and either:
+          - `source.download_url` is None (no init file), or
+          - the destination file already exists,
+        the method delegates to `_download_incremental`.
+        Otherwise, it uses the standard HTTP download path via `_download_standard`.
 
         Args:
-            source: SourceConfig to download.
+            source: The SourceConfig object representing the source to download.
 
         Returns:
-            tuple[bool, DownloadRecord | None, str | None, Path | None]
-            - success (bool): True if the download succeeded or was skipped
-              because an incremental init file already exists, False otherwise
-            - download_record (DownloadRecord | None): Download record for
-              history if a download actually occurred; None if skipped or failed
-            - error_message (str | None): Error message if failed, None otherwise
-            - file_path (Path | None): Path to the file if downloaded or already
-              present, None if failed
+            A tuple containing:
+                - success (bool): True if the download succeeded or was skipped
+                  (e.g., incremental init file already exists), False otherwise.
+                - download_record (DownloadRecord | None): The download record for
+                  history if a download occurred; None if skipped or failed.
+                - error_message (str | None): Error message if the download failed;
+                  None otherwise.
+                - file_path (Path | None): Path to the downloaded or existing file
+                  if successful or skipped; None if failed.
         """
         filename = self._generate_filename(source)
-        destination = self.output_dir / filename
+        destination_folder = self.output_dir / (
+            source.folder if source.folder is not None else source.name
+        )
+        destination_folder.mkdir(exist_ok=True)
+        destination = destination_folder / filename
 
-        if source.incremental and destination.exists():
+        if source.incremental and (source.download_url is None or destination.exists()):
             return self._download_incremental(source)
 
         return self._download_standard(source, destination)

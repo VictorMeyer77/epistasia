@@ -1,6 +1,8 @@
+import os
 from pathlib import Path
 
 from downloader.incremental.bodacc import BodaccIncremental
+from downloader.incremental.inpi_rne_companies import InpiRneCompaniesClient
 
 
 def run_incremental(name: str) -> Path | None:
@@ -27,5 +29,13 @@ def run_incremental(name: str) -> Path | None:
         checkpoint = incr.get_checkpoint()
         records = incr.fetch_new_lines(checkpoint)
         return incr.write_incremental_csv(records)
+    elif name == "inpi-rne-companies":
+        inpi_client = InpiRneCompaniesClient(
+            username=os.environ["INPI_USERNAME"],
+            password=os.environ["INPI_PASSWORD"],
+            start_date=os.environ["INPI_START_DATE"],
+            reverse=False,
+        )
+        inpi_client.run()
     else:
         raise ValueError(f"Unknown incremental process: {name}")
